@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -72,6 +73,20 @@ Route::group([
             Route::patch('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
             Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
             Route::get('/activate/{id}', [CategoryController::class, 'activate'])->name('category.activate');
+
+        });
+
+
+
+        Route::group(['prefix'=>'product'  ],function(){
+            Route::get('/', [ProductController::class, 'index'])->name('product');
+            Route::get('/create', [ProductController::class, 'create'])->name('product.create');
+            Route::post('/store', [ProductController::class, 'store'])->name('product.store');
+            Route::post('/save', [ProductController::class, 'store_image'])->name('product.store_image');
+            Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+            Route::patch('/update/{id}', [ProductController::class, 'update'])->name('product.update');
+            Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+            Route::get('/activate/{id}', [ProductController::class, 'activate'])->name('product.activate');
 
         });
 

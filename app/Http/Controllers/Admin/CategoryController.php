@@ -24,7 +24,7 @@ class CategoryController extends Controller
 
 
     public function create(){
-        $categories = Category::all();
+        $categories = Category::active()->get();
 
         return view('admin.category.create',compact('categories'));
     }
@@ -37,7 +37,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
-            'description' => ['nullable','string' , 'min:10'] ,
+            'description' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
         ]);
 
@@ -67,7 +67,7 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
 
-        $categories = Category::all();
+        $categories = Category::active()->get();
 
         return view('admin.category.edit',compact('category','categories'));
     }
@@ -78,7 +78,7 @@ class CategoryController extends Controller
         $request->validate([
             'name' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
-            'description' => ['nullable','string' , 'min:10'] ,
+            'description' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
         ]);
 

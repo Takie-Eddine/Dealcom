@@ -323,7 +323,7 @@ return [
     'search category' => ' البحث عن فئة',
     'categories' => 'الفئات',
     'thumbnail' => 'الصورة المصغرة',
-    'cateory name' => 'اسم الفئة',
+    'category name' => 'اسم الفئة',
     'a category name is required and recommended to be unique' => 'مطلوب اسم الفئة ويوصى به ليكون فريدًا.',
     'set the category status' => 'ضبط حالة الفئة.',
     'set a description to the category for better visibility' => 'قم بتعيين وصف للفئة لرؤية أفضل.',

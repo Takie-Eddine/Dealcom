@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -38,5 +39,10 @@ class Brand extends Model implements HasMedia
         $this
             ->addMediaCollection('brands')
             ->singleFile();
+    }
+
+
+    public function scopeActive(Builder $builder){
+        $builder->where('status','=' ,'active');
     }
 }

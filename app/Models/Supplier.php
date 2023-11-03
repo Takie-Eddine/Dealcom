@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -37,6 +38,11 @@ class Supplier extends Model implements HasMedia
         $this
             ->addMediaCollection('suppliers')
             ->singleFile();
+    }
+
+
+    public function scopeActive(Builder $builder){
+        $builder->where('status','=' ,'active');
     }
 
 

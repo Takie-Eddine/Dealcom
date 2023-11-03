@@ -43,15 +43,15 @@ class SupplierController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'name' => ['required', 'string', 'min:5', 'max:255'] ,
+            'name' => ['required', 'string', 'min:2', 'max:255'] ,
             'code' => ['required',  'string', 'min:2', 'max:7'] ,
-            'description' => ['nullable', 'string', 'min:30'] ,
+            'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','mobile_phone')] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','office_phone')] ,
             'email' => ['required', 'string', 'email', Rule::unique('suppliers','email')] ,
             'country' => ['required' ,'string' , 'size:2'],
             'city' => ['nullable' ,'string'],
-            'address' => ['required', 'string', 'min:10', 'max:255'],
+            'address' => ['required', 'string', 'min:2', 'max:255'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
@@ -99,15 +99,15 @@ class SupplierController extends Controller
         $supplier = Supplier::findOrFail($id);
 
         $request->validate([
-            'name' => ['required', 'string', 'min:5', 'max:255'] ,
+            'name' => ['required', 'string', 'min:2', 'max:255'] ,
             'code' => ['required',  'string', 'min:2', 'max:7'] ,
-            'description' => ['nullable', 'string', 'min:30'] ,
+            'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','mobile_phone')->ignore($id)] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','office_phone')->ignore($id)] ,
             'email' => ['required', 'string', 'email', Rule::unique('suppliers','email')->ignore($id)] ,
             'country' => ['required' ,'string' , 'size:2'],
             'city' => ['nullable' ,'string'],
-            'address' => ['required', 'string', 'min:10', 'max:255'],
+            'address' => ['required', 'string', 'min:2', 'max:255'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
