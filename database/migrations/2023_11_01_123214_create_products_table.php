@@ -22,12 +22,13 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->float('price')->default(0);
             $table->integer('quantity')->default(0);
+            $table->string('image')->nullable();
             $table->string('sku');
             $table->json('options')->nullable();
             $table->float('rating')->default(0);
             $table->boolean('featured')->default(0);
             $table->boolean('approved')->default(0);
-            $table->boolean('price_list')->default(0);
+            $table->enum('price_type',['price_list','on_demande'])->default('on_demande');
             $table->enum('status',['active' , 'draft' , 'archived'])->default('active');
             $table->softDeletes();
             $table->timestamps();

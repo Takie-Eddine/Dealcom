@@ -132,7 +132,7 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select2-->
-                                <select class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select">
+                                <select name="status" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select">
                                     <option></option>
                                     <option value="active" selected="selected">{{__('master.active')}}</option>
                                     <option value="draft" >{{__('master.draft')}}</option>
@@ -188,7 +188,7 @@
                                 <label class="form-label d-block">{{__('master.tags')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input id="kt_ecommerce_add_product_tags" name="tags[]" class="form-control mb-2" value="{{old('tags')}}" />
+                                <input id="kt_tagify_1" name="tags" class="form-control mb-2" value="{{old('tags')}}" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">{{__('master.add tags to a product.')}}</div>
@@ -301,30 +301,36 @@
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <!--begin::Input group-->
-                                            <div class="mb-10 fv-row">
-                                                <!--begin::Label-->
-                                                <label class="required form-label">{{__('master.product name')}}</label>
-                                                <!--end::Label-->
-                                                <!--begin::Input-->
-                                                <input type="text" name="name" class="form-control mb-2" placeholder="{{__('master.product name')}}" value="{{old('name')}}" />
-                                                <!--end::Input-->
-                                                <!--begin::Description-->
-                                                <div class="text-muted fs-7">{{__('master.a product name is required and recommended to be unique.')}}</div>
-                                                <!--end::Description-->
-                                            </div>
+                                            @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                                <div class="mb-10 fv-row">
+                                                    <!--begin::Label-->
+                                                    <label class="required form-label">{{__('master.product name')}}</label>
+                                                    <!--end::Label-->
+                                                    <!--begin::Input-->
+                                                    <input type="text" name="product_{{$localeCode}}" class="form-control mb-2" placeholder="{{__('master.product name')}}" value="{{old("product_".$localeCode)}}" />
+                                                    <!--end::Input-->
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">{{__('master.a product name is required and recommended to be unique.')}}</div>
+                                                    <!--end::Description-->
+                                                </div>
+                                            @empty
+                                            @endforelse
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
-                                            <div>
-                                                <!--begin::Label-->
-                                                <label class="form-label">{{__('master.description')}}</label>
-                                                <!--end::Label-->
-                                                <textarea name="description" id="kt_docs_ckeditor_classic" placeholder="{{__('master.type your text')}}">
-                                                    {!!old('description')!!}
-                                                </textarea>
-                                                <!--begin::Description-->
-                                                <div class="text-muted fs-7">{{__('master.set a description to the product for better visibility.')}}</div>
-                                                <!--end::Description-->
-                                            </div>
+                                            @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                                <div>
+                                                    <!--begin::Label-->
+                                                    <label class="form-label">{{__('master.description')}}</label>
+                                                    <!--end::Label-->
+                                                    <textarea name="description_{{$localeCode}}" class="kt_docs_ckeditor_classic{{$localeCode}}" placeholder="{{__('master.type your text')}}">
+                                                        {!!old("description_".$localeCode)!!}
+                                                    </textarea>
+                                                    <!--begin::Description-->
+                                                    <div class="text-muted fs-7">{{__('master.set a description to the product for better visibility.')}}</div>
+                                                    <!--end::Description-->
+                                                </div>
+                                            @empty
+                                            @endforelse
                                             <!--end::Input group-->
                                         </div>
                                         <!--end::Card header-->
@@ -452,7 +458,7 @@
                                             <!--begin::Tax-->
 
                                                 <div class="mb-10 fv-row">
-                                                <label class="required form-label">{{__('master.base price')}}</label>
+                                                <label class=" form-label">{{__('master.base price')}}</label>
                                                 <input type="text" name="price" class="form-control mb-2" placeholder="{{__('master.base price')}}" value="{{old('price')}}" />
                                                 <div class="text-muted fs-7">{{__('master.set the product price.')}}</div>
                                                 </div>
@@ -508,7 +514,7 @@
                                             <!--begin::Input group-->
                                             <div class="mb-10 fv-row">
                                                 <!--begin::Label-->
-                                                <label class="required form-label">{{('master.quantity')}}</label>
+                                                <label class=" form-label">{{('master.quantity')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <div class="d-flex gap-3">
@@ -537,44 +543,49 @@
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <!--begin::Input group-->
-                                            <div class="" data-kt-ecommerce-catalog-add-product="auto-options">
+                                            <div class=""  data-kt-ecommerce-catalog-add-product="auto-options">
                                                 <!--begin::Label-->
                                                 <label class="form-label">Add Product Variations</label>
                                                 <!--end::Label-->
                                                 <!--begin::Repeater-->
-                                                <div id="kt_ecommerce_add_product_options">
+                                                <div id="kt_docs_repeater_advanced">
                                                     <!--begin::Form group-->
                                                     <div class="form-group">
-                                                        <div data-repeater-list="kt_ecommerce_add_product_options" class="d-flex flex-column gap-3">
-                                                            <div data-repeater-item="" class="form-group d-flex flex-wrap align-items-center gap-5">
-                                                                <!--begin::Select2-->
-                                                                <div class="w-100 w-md-200px">
-                                                                    <select class="form-select" name="product_option" data-placeholder="Select a variation" data-kt-ecommerce-catalog-add-product="product_option">
-                                                                        <option></option>
-                                                                        <option value="color">Color</option>
-                                                                        <option value="size">Size</option>
-                                                                        <option value="material">Material</option>
-                                                                        <option value="style">Style</option>
-                                                                    </select>
+                                                        <div data-repeater-list="options">
+                                                            <div data-repeater-item>
+                                                                <div class="form-group row mb-5">
+                                                                    <div class="col-md-5">
+                                                                        <label class="form-label">Select Options:</label>
+                                                                        <select name="attributes" class="form-select" data-kt-repeater="select2" data-placeholder="Select an option">
+                                                                            <option></option>
+                                                                            @forelse ($attributes as $attribute)
+                                                                                <option value="{{$attribute->id}}" @selected(old('attributes') == $attribute->id)>{{$attribute->name}}</option>
+                                                                            @empty
+                                                                            @endforelse
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <label class="form-label">{{__('master.variant')}}</label>
+                                                                        <input type="text" id="kt_tagify_2" class="form-control"  name="variant" placeholder="{{__('master.variant')}}" value="{{old('variant')}}"/>
+                                                                    </div>
+                                                                    <div class="col-md-2">
+                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-3 mt-md-9">
+                                                                            <i class="ki-duotone ki-trash fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                            Delete
+                                                                        </a>
+                                                                    </div>
                                                                 </div>
-                                                                <!--end::Select2-->
-                                                                <!--begin::Input-->
-                                                                <input type="text" class="form-control mw-100 w-200px" name="product_option_value" placeholder="Variation" />
-                                                                <!--end::Input-->
-                                                                <button type="button" data-repeater-delete="" class="btn btn-sm btn-icon btn-light-danger">
-                                                                    <i class="ki-duotone ki-cross fs-1">
-                                                                        <span class="path1"></span>
-                                                                        <span class="path2"></span>
-                                                                    </i>
-                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!--end::Form group-->
+
                                                     <!--begin::Form group-->
-                                                    <div class="form-group mt-5">
-                                                        <button type="button" data-repeater-create="" class="btn btn-sm btn-light-primary">
-                                                        <i class="ki-duotone ki-plus fs-2"></i>Add another variation</button>
+                                                    <div class="form-group">
+                                                        <a href="javascript:;" data-repeater-create class="btn btn-flex btn-light-primary">
+                                                            <i class="ki-duotone ki-plus fs-3"></i>
+                                                            Add
+                                                        </a>
                                                     </div>
                                                     <!--end::Form group-->
                                                 </div>
@@ -655,19 +666,28 @@
 
 @push('script')
 
-    <script src="{{asset('assets/js/custom/apps/ecommerce/catalog/save-product.js')}}"></script>
     <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
-
+    <script src="{{asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
     <script>
         ClassicEditor
-        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .create(document.querySelector('.kt_docs_ckeditor_classicar'))
         .then(editor => {
-            console.log(editor);
+            // console.log(editor);
         })
         .catch(error => {
-            console.error(error);
+            // console.error(error);
         });
     </script>
+        <script>
+            ClassicEditor
+            .create(document.querySelector('.kt_docs_ckeditor_classicen'))
+            .then(editor => {
+                // console.log(editor);
+            })
+            .catch(error => {
+                // console.error(error);
+            });
+        </script>
     <script>
         var myDropzone = new Dropzone("#kt_dropzonejs_example_1", {
              // Set the url for your upload script location
@@ -700,6 +720,39 @@
                 $('form').find('input[name="images[]"][value="' + name + '"]').remove()
             }
             ,
+        });
+    </script>
+    <script>
+        var input1 = document.querySelector("#kt_tagify_1");
+        var input2 = document.querySelector("#kt_tagify_2");
+        new Tagify(input1);
+        new Tagify(input2);
+    </script>
+    <script>
+        $('#kt_docs_repeater_advanced').repeater({
+            initEmpty: false,
+
+            defaultValues: {
+                'text-input': 'foo'
+            },
+
+            show: function () {
+                $(this).slideDown();
+
+                // Re-init select2
+                $(this).find('[data-kt-repeater="select2"]').select2();
+
+            },
+
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            },
+
+            ready: function(){
+                // Init select2
+                $('[data-kt-repeater="select2"]').select2();
+
+            }
         });
     </script>
 @endpush

@@ -496,21 +496,16 @@
 
 
 @push('script')
-<script src="{{asset('assets/js/custom/apps/ecommerce/catalog/save-category.js')}}"></script>
 
 <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
-<script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-inline.bundle.js')}}"></script>
-<script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-balloon.bundle.js')}}"></script>
-<script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-balloon-block.bundle.js')}}"></script>
-<script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-document.bundle.js')}}"></script>
 <script>
     ClassicEditor
     .create(document.querySelector('#kt_docs_ckeditor_classic'))
     .then(editor => {
-        console.log(editor);
+        // console.log(editor);
     })
     .catch(error => {
-        console.error(error);
+        // console.error(error);
     });
 </script>
 @endpush
