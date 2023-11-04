@@ -19,7 +19,7 @@ class ProductController extends Controller
 {
     public function index(){
 
-        $products = Product::with(['tags','attributes','category'])->when(request()->keyword != null,function ($query){
+        $products = Product::with(['tags','category'])->when(request()->keyword != null,function ($query){
             $query->search(request()->keyword);
         })
         ->when(\request()->status != null, function ($query) {

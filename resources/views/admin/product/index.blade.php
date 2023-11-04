@@ -251,8 +251,8 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="">
                                                     <div class="symbol-label">
-                                                        @if ($product->getFirstMediaUrl('categories'))
-                                                            <img src="{{$product->getFirstMediaUrl('categories')}}" alt="{{$product->name}}" class="w-100" />
+                                                        @if ($product->image_url)
+                                                            <img src="{{$product->image_url}}" alt="{{$product->name}}" class="w-100" />
                                                         @else
                                                             <img src="{{asset('assets/media/svg/avatars/blank.svg')}}" alt="{{$product->name}}" class="w-100" />
                                                         @endif

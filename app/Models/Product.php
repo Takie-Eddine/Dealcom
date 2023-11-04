@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -70,6 +71,21 @@ class Product extends Model
         return $this->belongsToMany(ProductAttribute::class, 'product_attributes')
             ->withPivot(['value'])
             ->as('option') ;
+    }
+
+
+    public function getImageUrlAttribute(){
+
+        if(!$this->image){
+            return 'https://icphso.org/global_graphics/default-store-350x350.jpg';
+        }
+
+        if (Str::startsWith($this->image,['http://' , 'https://'])) {
+            return $this->image;
+        }
+
+        return asset('assets/images/product_images/' .$this->image);
+
     }
 
 }
