@@ -25,9 +25,12 @@
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="{{route('admin.dashboard')}}" class="text-muted text-hover-primary">{{('master.home')}}</a>
+                            <a href="{{route('admin.dashboard')}}" class="text-muted text-hover-primary">{{__('master.home')}}</a>
                         </li>
                         <!--end::Item-->
+                        <li class="breadcrumb-item">
+                            <span class="bullet bg-gray-400 w-5px h-2px"></span>
+                        </li>
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
                             <a href="{{route('admin.product')}}" class="text-muted text-hover-primary">{{__('master.products')}}</a>
@@ -140,7 +143,7 @@
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">{{__('master.set the product status.')}}</div>
+                                <div class="text-muted fs-7">{{__('master.set the product status')}}</div>
                                 <!--end::Description-->
                                 <!--begin::Datepicker-->
                                 <!--end::Datepicker-->
@@ -163,10 +166,10 @@
                             <div class="card-body pt-0">
                                 <!--begin::Input group-->
                                 <!--begin::Label-->
-                                <label class="form-label">{{('master.categories')}}</label>
+                                <label class="form-label">{{__('master.categories')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Select2-->
-                                <select name="category" class="form-select mb-2" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" >
+                                <select name="category" class="form-select mb-2" data-control="select2" data-placeholder="{{__('master.select category')}}" data-allow-clear="true" >
                                     <option></option>
                                     @forelse ($categories as $category)
                                     <option value="{{$category->id }}" @selected(old('category') == $category->id)>{{$category->name }}</option>
@@ -176,7 +179,7 @@
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7 mb-7">{{__('master.add product to a category.')}}</div>
+                                <div class="text-muted fs-7 mb-7">{{__('master.add product to a category')}}</div>
                                 <!--end::Description-->
                                 <!--end::Input group-->
                                 <!--begin::Button-->
@@ -191,7 +194,7 @@
                                 <input id="kt_tagify_1" name="tags" class="form-control mb-2" value="{{old('tags')}}" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
-                                <div class="text-muted fs-7">{{__('master.add tags to a product.')}}</div>
+                                <div class="text-muted fs-7">{{__('master.add tags to a product')}}</div>
                                 <!--end::Description-->
                                 <!--end::Input group-->
                             </div>
@@ -212,10 +215,10 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
-                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add supplier to a product.')}}</label>
+                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add supplier to a product')}}</label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
-                                <select name="supplier" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="">
+                                <select name="supplier" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="{{__('master.select supplier')}}" id="">
                                     <option></option>
                                     @forelse ($suppliers as $supplier)
                                         <option value="{{$supplier->id }}" @selected(old('supplier') == $supplier->id)>{{$supplier->name }}</option>
@@ -241,10 +244,10 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
-                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add brand to a product.')}}</label>
+                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add brand to a product')}}</label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
-                                <select name="brand" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_store_template">
+                                <select name="brand" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="{{__('master.select brand')}}" id="kt_ecommerce_add_product_store_template">
                                     <option></option>
                                     @forelse ($brands as $brand)
                                         <option value="{{$brand->id }}" @selected(old('brand') == $brand->id)>{{$brand->name }}</option>
@@ -304,13 +307,13 @@
                                             @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
                                                 <div class="mb-10 fv-row">
                                                     <!--begin::Label-->
-                                                    <label class="required form-label">{{__('master.product name')}}</label>
+                                                    <label class="required form-label">{{__('master.product name')}} ({{$localeCode}})</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
                                                     <input type="text" name="product_{{$localeCode}}" class="form-control mb-2" placeholder="{{__('master.product name')}}" value="{{old("product_".$localeCode)}}" />
                                                     <!--end::Input-->
                                                     <!--begin::Description-->
-                                                    <div class="text-muted fs-7">{{__('master.a product name is required and recommended to be unique.')}}</div>
+                                                    <div class="text-muted fs-7">{{__('master.a product name is required and recommended to be unique')}}</div>
                                                     <!--end::Description-->
                                                 </div>
                                             @empty
@@ -320,13 +323,13 @@
                                             @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
                                                 <div>
                                                     <!--begin::Label-->
-                                                    <label class="form-label">{{__('master.description')}}</label>
+                                                    <label class="form-label">{{__('master.description')}} ({{$localeCode}})</label>
                                                     <!--end::Label-->
                                                     <textarea name="description_{{$localeCode}}" class="kt_docs_ckeditor_classic{{$localeCode}}" placeholder="{{__('master.type your text')}}">
                                                         {!!old("description_".$localeCode)!!}
                                                     </textarea>
                                                     <!--begin::Description-->
-                                                    <div class="text-muted fs-7">{{__('master.set a description to the product for better visibility.')}}</div>
+                                                    <div class="text-muted fs-7">{{__('master.set a description to the product for better visibility')}}</div>
                                                     <!--end::Description-->
                                                 </div>
                                             @empty
@@ -371,7 +374,7 @@
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Description-->
-                                            <div class="text-muted fs-7">Set the product media gallery.</div>
+                                            <div class="text-muted fs-7">{{__('master.set the product media gallery')}}</div>
                                             <!--end::Description-->
                                         </div>
                                         <!--end::Card header-->
@@ -382,7 +385,7 @@
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
-                                                <h2>Pricing</h2>
+                                                <h2>{{__('master.pricing')}}</h2>
                                             </div>
                                         </div>
                                         <!--end::Card header-->
@@ -404,14 +407,8 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="fs-6 fw-semibold mb-2">{{('master. price list')}}
-                                                <span class="ms-1" data-bs-toggle="tooltip" title="Select a discount type that will be applied to this product">
-                                                    <i class="ki-duotone ki-information-5 text-gray-500 fs-6">
-                                                        <span class="path1"></span>
-                                                        <span class="path2"></span>
-                                                        <span class="path3"></span>
-                                                    </i>
-                                                </span></label>
+                                                <label class="fs-6 fw-semibold mb-2">{{__('master.price type')}}
+                                                </label>
                                                 <!--End::Label-->
                                                 <!--begin::Row-->
                                                 <div class="row row-cols-1 row-cols-md-3 row-cols-lg-1 row-cols-xl-3 g-9" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button='true']">
@@ -460,7 +457,7 @@
                                                 <div class="mb-10 fv-row">
                                                 <label class=" form-label">{{__('master.base price')}}</label>
                                                 <input type="text" name="price" class="form-control mb-2" placeholder="{{__('master.base price')}}" value="{{old('price')}}" />
-                                                <div class="text-muted fs-7">{{__('master.set the product price.')}}</div>
+                                                <div class="text-muted fs-7">{{__('master.set the product price')}}</div>
                                                 </div>
 
                                             <!--end:Tax-->
@@ -488,13 +485,13 @@
                                             <!--begin::Input group-->
                                             <div class="mb-10 fv-row">
                                                 <!--begin::Label-->
-                                                <label class="required form-label">{{__('master.SKU')}}</label>
+                                                <label class="required form-label">{{__('master.sku')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="text" name="sku" class="form-control mb-2" placeholder="{{__('master.SKU Number')}}" value="{{old('sku')}}" />
+                                                <input type="text" name="sku" class="form-control mb-2" placeholder="{{__('master.sku')}}" value="{{old('sku')}}" />
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fs-7">{{__('master.Enter the product SKU.')}}</div>
+                                                <div class="text-muted fs-7">{{__('master.Enter the product sku')}}</div>
                                                 <!--end::Description-->
                                             </div>
                                             <!--end::Input group-->
@@ -507,23 +504,23 @@
                                                 <input type="text" name="code" class="form-control mb-2" placeholder="{{__('master.code')}}" value="{{old('code')}}" />
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fs-7">Enter the product barcode number.</div>
+                                                <div class="text-muted fs-7">{{__('master.enter the product code number')}}</div>
                                                 <!--end::Description-->
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="mb-10 fv-row">
                                                 <!--begin::Label-->
-                                                <label class=" form-label">{{('master.quantity')}}</label>
+                                                <label class=" form-label">{{__('master.quantity')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <div class="d-flex gap-3">
-                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{('master.quantity')}}" value="{{old('quantity')}}" />
+                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{__('master.quantity')}}" value="{{old('quantity')}}" />
 
                                                 </div>
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fs-7">Enter the product quantity.</div>
+                                                <div class="text-muted fs-7">{{__('master.enter the product quantity')}}</div>
                                                 <!--end::Description-->
                                             </div>
                                             <!--end::Input group-->
@@ -536,7 +533,7 @@
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
-                                                <h2>Variations</h2>
+                                                <h2>{{__('master.variations')}}</h2>
                                             </div>
                                         </div>
                                         <!--end::Card header-->

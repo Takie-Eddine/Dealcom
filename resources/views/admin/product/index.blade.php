@@ -280,6 +280,9 @@
                                             @if ($product->status == 'archived')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-danger">{{$product->status}}</span>
                                             @endif
+                                            @if ($product->status == 'draft')
+                                                <span class="badge py-3 px-4 fs-7 badge-light-warning">{{$product->status}}</span>
+                                            @endif
                                         </td>
                                         <td class="text-end">
                                             <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
