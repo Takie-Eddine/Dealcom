@@ -60,7 +60,7 @@ class ProductController extends Controller
         //json_decode($request->tags) ;
         $request->validate([
             'category' => ['required', Rule::exists('categories','id')],
-            'tags' => ['required'],
+            'tags' => ['nullable'],
             'supplier' => ['required', Rule::exists('suppliers','id')],
             'brand' => ['required', Rule::exists('brands','id')],
             'status' => ['required','in:active,draft,archived'],
