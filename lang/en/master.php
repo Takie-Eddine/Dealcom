@@ -361,7 +361,7 @@ return [
     'sku' => 'SKU',
     'enter the product sku' => 'Enter the product SKU.',
     'enter the product code number' => 'Enter the product code number.',
-    'quantity' => 'Quantity',
+    'minimum quantity' => 'Minimum Quantity',
     'enter the product quantity.' => 'Enter the product quantity.',
     'advanced' => 'advanced',
     'enter the product quantity' => 'Enter the product quantity.',

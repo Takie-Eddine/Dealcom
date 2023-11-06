@@ -496,7 +496,7 @@
                                             </div>
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
-                                            <div class="mb-10 fv-row">
+                                            {{-- <div class="mb-10 fv-row">
                                                 <!--begin::Label-->
                                                 <label class="required form-label">{{__('master.code')}}</label>
                                                 <!--end::Label-->
@@ -506,21 +506,32 @@
                                                 <!--begin::Description-->
                                                 <div class="text-muted fs-7">{{__('master.enter the product code number')}}</div>
                                                 <!--end::Description-->
-                                            </div>
+                                            </div> --}}
                                             <!--end::Input group-->
                                             <!--begin::Input group-->
                                             <div class="mb-10 fv-row">
                                                 <!--begin::Label-->
-                                                <label class=" form-label">{{__('master.quantity')}}</label>
+                                                <label class=" form-label">{{__('master.minimum quantity')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <div class="d-flex gap-3">
-                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{__('master.quantity')}}" value="{{old('quantity')}}" />
+                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{__('master.minimum quantity')}}" value="{{old('quantity')}}" />
 
                                                 </div>
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
                                                 <div class="text-muted fs-7">{{__('master.enter the product quantity')}}</div>
+                                                <!--end::Description-->
+                                            </div>
+                                            <div class="mb-10 fv-row">
+                                                <!--begin::Label-->
+                                                <label class=" form-label">{{__('master.other terms')}}</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" name="terms" class="form-control mb-2" placeholder="{{__('master.other terms')}}" value="{{old('terms')}}" />
+                                                <!--end::Input-->
+                                                <!--begin::Description-->
+                                                <div class="text-muted fs-7">{{__('master.enter the product terms')}}</div>
                                                 <!--end::Description-->
                                             </div>
                                             <!--end::Input group-->
@@ -609,7 +620,7 @@
                                                 <!--begin::Input-->
                                                 <div class="mb-10 fv-row">
                                                     <!--begin::Label-->
-                                                    <label class="required form-label">{{('master.delivery time')}}</label>
+                                                    <label class=" form-label">{{('master.delivery time')}}</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
                                                     <div class="d-flex gap-3">

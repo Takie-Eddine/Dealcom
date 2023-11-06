@@ -72,7 +72,7 @@ class ProductController extends Controller
             'price' => ['nullable','numeric', 'between:0,99999999.99'],
             'sku' => ['required','min:3',Rule::unique('products','code')],
             'quantity' => ['nullable','numeric'],
-            'code' => ['required','min:3',Rule::unique('products','code')],
+            //'code' => ['required','min:3',Rule::unique('products','code')],
             'delivery' => ['nullable','numeric'],
             'avatar' => ['nullable','mimes:jpg,jpeg,png'],
             'options' => [
@@ -100,18 +100,23 @@ class ProductController extends Controller
             $translation1  =  array_merge ($translation1, [$localeCode => $request->input("description_".$localeCode)] );
         }
 
+        $supplier = Supplier::findOrFail($request->supplier);
+        $brand = Brand::findOrFail($request->brand);
+
+        $code = $brand->code.'-'.$request->sku.'-'.$supplier->code;
+
         $product = Product::create([
             'brand_id' => $request->brand,
             'supplier_id' => $request->supplier,
             'category_id' => $request->category,
             'name' => $translation,
             'description' => $translation1,
-            'slug' => $request->code,
+            'slug' => Str::slug($request->code),
             'price_type' => $request->price_type,
             'price' => $request->price,
             'sku' => $request->sku,
             'quantity' => $request->quantity,
-            'code' => $request->code,
+            'code' => $code,
             'delivery' => $request->delivery,
             'status' => $request->status,
             'avatar' => $file_name,

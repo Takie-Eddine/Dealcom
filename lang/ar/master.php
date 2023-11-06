@@ -361,7 +361,7 @@ return [
     'sku' => 'رمز التخزين التعريفي',
     'enter the product sku' => 'أدخل رمز المنتج.',
     'enter the product code number' => 'أدخل رقم كود المنتج.',
-    'quantity' => 'الكمية',
+    'minimum quantity' => 'الحد الأدنى للكمية',
     'enter the product quantity.' => 'أدخل كمية المنتج.',
     'advanced' => '  متقدم ',
     'enter the product quantity' => 'أدخل كمية المنتج.',
