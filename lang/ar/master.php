@@ -371,6 +371,10 @@ return [
     'variant' => 'الخيارات',
     'delivery time' => 'موعد التسليم',
     'delivery' => 'توصيل',
-
+    'shipping' => 'الشحن',
+    'enter the product delivery time' => 'أدخل وقت تسليم المنتج.',
+    'add' => 'اضافة',
+    'select option' => 'حدد الخيار',
+    'add product variations' => 'إضافة خيارات المنتج',
 
 ];

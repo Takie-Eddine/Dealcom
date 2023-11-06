@@ -491,7 +491,7 @@
                                                 <input type="text" name="sku" class="form-control mb-2" placeholder="{{__('master.sku')}}" value="{{old('sku')}}" />
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
-                                                <div class="text-muted fs-7">{{__('master.Enter the product sku')}}</div>
+                                                <div class="text-muted fs-7">{{__('master.enter the product sku')}}</div>
                                                 <!--end::Description-->
                                             </div>
                                             <!--end::Input group-->
@@ -553,7 +553,7 @@
                                             <!--begin::Input group-->
                                             <div class=""  data-kt-ecommerce-catalog-add-product="auto-options">
                                                 <!--begin::Label-->
-                                                <label class="form-label">Add Product Variations</label>
+                                                <label class="form-label">{{__('master.add product variations')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Repeater-->
                                                 <div id="kt_docs_repeater_advanced">
@@ -563,8 +563,8 @@
                                                             <div data-repeater-item>
                                                                 <div class="form-group row mb-5">
                                                                     <div class="col-md-5">
-                                                                        <label class="form-label">Select Options:</label>
-                                                                        <select name="attributes" class="form-select" data-kt-repeater="select2" data-placeholder="Select an option">
+                                                                        <label class="form-label">{{__('master.select option')}}</label>
+                                                                        <select name="attributes" class="form-select" data-kt-repeater="select2" data-placeholder="{{__('master.select option')}}">
                                                                             <option></option>
                                                                             @forelse ($attributes as $attribute)
                                                                                 <option value="{{$attribute->id}}" @selected(old('attributes') == $attribute->id)>{{$attribute->name}}</option>
@@ -579,7 +579,7 @@
                                                                     <div class="col-md-2">
                                                                         <a href="javascript:;" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-3 mt-md-9">
                                                                             <i class="ki-duotone ki-trash fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
-                                                                            Delete
+                                                                            {{__('master.delete')}}
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -592,7 +592,7 @@
                                                     <div class="form-group">
                                                         <a href="javascript:;" data-repeater-create class="btn btn-flex btn-light-primary">
                                                             <i class="ki-duotone ki-plus fs-3"></i>
-                                                            Add
+                                                            {{__('master.add')}}
                                                         </a>
                                                     </div>
                                                     <!--end::Form group-->
@@ -609,7 +609,7 @@
                                         <!--begin::Card header-->
                                         <div class="card-header">
                                             <div class="card-title">
-                                                <h2>Shipping</h2>
+                                                <h2>{{__('master.shipping')}}</h2>
                                             </div>
                                         </div>
                                         <!--end::Card header-->
@@ -620,16 +620,16 @@
                                                 <!--begin::Input-->
                                                 <div class="mb-10 fv-row">
                                                     <!--begin::Label-->
-                                                    <label class=" form-label">{{('master.delivery time')}}</label>
+                                                    <label class=" form-label">{{__('master.delivery time')}}</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
                                                     <div class="d-flex gap-3">
-                                                        <input type="number" name="delivery" class="form-control mb-2" placeholder="{{('master.delivery')}}" value="{{old('delivery')}}" />
+                                                        <input type="number" name="delivery" class="form-control mb-2" placeholder="{{__('master.delivery')}}" value="{{old('delivery')}}" />
 
                                                     </div>
                                                     <!--end::Input-->
                                                     <!--begin::Description-->
-                                                    <div class="text-muted fs-7">Enter the product delivery time.</div>
+                                                    <div class="text-muted fs-7">{{__('master.enter the product delivery time')}}</div>
                                                     <!--end::Description-->
                                                 </div>
                                                 <!--end::Description-->
