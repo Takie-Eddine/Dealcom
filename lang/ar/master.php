@@ -366,6 +366,11 @@ return [
     'advanced' => '  متقدم ',
     'enter the product quantity' => 'أدخل كمية المنتج.',
     'variations' => 'الاختلافات',
+    'other terms' => 'شروط أخرى',
+    'enter the product terms' => 'أدخل شروط المنتج.',
+    'variant' => 'الخيارات',
+    'delivery time' => 'موعد التسليم',
+    'delivery' => 'توصيل',
 
 
 ];

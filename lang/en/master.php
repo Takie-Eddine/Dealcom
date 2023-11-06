@@ -366,5 +366,10 @@ return [
     'advanced' => 'advanced',
     'enter the product quantity' => 'Enter the product quantity.',
     'variations' => 'Variations',
+    'other terms' => 'Other Terms',
+    'enter the product terms' => 'Enter the product terms.',
+    'variant' => 'Variant',
+    'delivery time' => 'Delivery Time',
+    'delivery' => 'Delivery',
 
 ];
