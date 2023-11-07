@@ -112,7 +112,7 @@
                         </ul> -->
 
                         <div class="auth ms-2 d-none d-lg-inline-block">
-                            <a id="loginButton" href="#" style="color: #3ec0c2;" class="m-5">دخول</a>
+                            <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">دخول</a>
                             <!-- <a href="#" class="btn-lg btn-danger text-white me-3"
                                 style="background-color: #3ec0c2;">دخول</a> -->
 
