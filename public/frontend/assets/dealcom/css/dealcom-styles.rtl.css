@@ -1,0 +1,281 @@
+@font-face {
+  font-family: "SST Arabic";
+  src: url("../fonts/SSTArabic-Medium.woff2") format("woff2"),
+    url("../fonts/SSTArabic-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "SST Arabic" !important;
+}
+
+.dealcom-header {
+  background-color: #0a213e;
+}
+
+.mainmenu > li > a {
+  color: white;
+  font-weight: 400;
+}
+
+.mainmenu > li > a.active {
+  color: #3ec0c2;
+  font-weight: 400;
+}
+.mainmenu > li > a:hover {
+  color: #3ec0c2;
+}
+
+.mainmenu > li > a.active:before {
+  width: 100%;
+  opacity: 0;
+}
+
+li.p-3.rounded-circle.search-button {
+  background-color: #3ec0c2;
+}
+
+a.language-button.px-3 {
+  background-color: white;
+  color: black;
+}
+
+ul li a {
+  font-family: "SST Arabic";
+}
+
+ul.action-list li {
+  margin: 0 30px;
+}
+
+.main-slider-style-1 {
+  z-index: unset;
+  background-color: rgb(192, 131, 131);
+}
+
+.slider h2,
+p {
+  font-family: "SST Arabic";
+}
+
+/* ul.slick-dots li {
+} */
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  color: black;
+  height: 4em;
+  width: 4em;
+}
+
+.section-spreator {
+  background-color: #0a213e;
+}
+.section-spreator a,
+p,
+h3 {
+  color: white;
+  font-family: "SST Arabic";
+}
+
+.border-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border: 1px solid #fff;
+}
+
+.border-shadow .col-md-2:hover {
+  background-color: #3ec0c2;
+  color: #ffffff;
+  border-radius: 10px;
+}
+.border-shadow a:hover {
+  color: #ffffff;
+}
+
+.border-shadow .active {
+  background-color: #3ec0c2;
+  color: #ffffff;
+}
+
+.border-shadow a.active {
+  color: #ffffff;
+}
+
+.product-text {
+  color: var(--color-body);
+}
+
+.axil-footer-area {
+  background-color: #0a213e;
+}
+
+.axil-footer-area a,
+h5 {
+  font-family: "SST Arabic";
+}
+
+.axil-footer-area a {
+  color: white !important;
+}
+
+.axil-footer-area h5 {
+  color: #3ec0c2 !important;
+}
+
+.service-box {
+  background-color: #f7f7f7;
+}
+.service-box h6 {
+  font-family: "SST Arabic";
+}
+
+.how-to-sell p {
+  color: black;
+}
+
+.extra-service-filter {
+  border: #bbcec0 1px solid;
+}
+
+button.extra-service-btn.is-checked {
+  color: white;
+}
+
+button.extra-service-btn.is-checked:after {
+  background-color: #3ec0c2;
+}
+
+a#loginButton:hover {
+  color: white !important;
+}
+
+/* Start of images css */
+
+.images-preview {
+  position: relative;
+  display: block;
+}
+.images-preview {
+  position: relative;
+  display: block;
+}
+.images-preview img {
+  width: 100%;
+  vertical-align: bottom;
+  transition: 0.3s;
+}
+.images-preview img:not(:nth-child(1)) {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.images-preview img:nth-child(1) {
+  position: relative;
+  z-index: 4;
+}
+.images-preview img:nth-child(2) {
+  z-index: 3;
+}
+.images-preview img:nth-child(3) {
+  z-index: 2;
+}
+.images-preview img:nth-child(4) {
+  z-index: 1;
+}
+
+.images-preview01:hover img:nth-child(2) {
+  transform: rotate(-4deg);
+}
+.images-preview01:hover img:nth-child(3) {
+  transform: rotate(12deg);
+}
+.images-preview01:hover img:nth-child(4) {
+  transform: rotate(-12deg);
+}
+
+.images-preview02:hover img:nth-child(2) {
+  transform: translate(15px, -15px);
+}
+.images-preview02:hover img:nth-child(3) {
+  transform: translate(30px, -30px);
+}
+.images-preview02:hover img:nth-child(4) {
+  transform: translate(45px, -45px);
+}
+
+.images-preview03 img:not(:nth-child(1)) {
+  transform-origin: 50% 0;
+}
+.images-preview03:hover img:nth-child(2) {
+  transform: translateY(-15px) scale(0.95);
+}
+.images-preview03:hover img:nth-child(3) {
+  transform: translateY(-30px) scale(0.9);
+}
+.images-preview03:hover img:nth-child(4) {
+  transform: translateY(-45px) scale(0.85);
+}
+
+.images-preview04 img:nth-child(2),
+.images-preview04 img:nth-child(3) {
+  z-index: 3;
+}
+.images-preview04 img:nth-child(4),
+.images-preview04 img:nth-child(5) {
+  z-index: 2;
+}
+.images-preview04 img:nth-child(6),
+.images-preview04 img:nth-child(7) {
+  z-index: 1;
+}
+.images-preview04:hover img:nth-child(2) {
+  transform: translateX(-30px) scale(0.9);
+}
+.images-preview04:hover img:nth-child(3) {
+  transform: translateX(30px) scale(0.9);
+}
+.images-preview04:hover img:nth-child(4) {
+  transform: translateX(-60px) scale(0.8);
+}
+.images-preview04:hover img:nth-child(5) {
+  transform: translateX(60px) scale(0.8);
+}
+.images-preview04:hover img:nth-child(6) {
+  transform: translateX(-90px) scale(0.7);
+}
+.images-preview04:hover img:nth-child(7) {
+  transform: translateX(90px) scale(0.7);
+}
+
+.images-preview05:hover img:nth-child(1) {
+  transform: rotate(5deg);
+}
+.images-preview05:hover img:nth-child(2) {
+  transform: translate(20px, -20px) rotate(9deg);
+}
+.images-preview05:hover img:nth-child(3) {
+  transform: translate(40px, -40px) rotate(13deg);
+}
+.images-preview05:hover img:nth-child(4) {
+  transform: translate(60px, -60px) rotate(17deg);
+}
+
+.images-preview06 img:nth-child(1) {
+  transform-origin: 0 0;
+}
+.images-preview06 img:nth-child(2) {
+  transform-origin: 100% 0;
+}
+.images-preview06 img:nth-child(3) {
+  transform-origin: 0 100%;
+}
+.images-preview06 img:nth-child(4) {
+  transform-origin: 100% 100%;
+}
+.images-preview06:hover img {
+  transform: scale(0.49);
+}
+
+/* end of images css */

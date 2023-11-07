@@ -1,0 +1,48 @@
+@font-face {
+  font-family: "SST Arabic";
+  src: url("../fonts/SSTArabic-Medium.woff2") format("woff2"),
+    url("../fonts/SSTArabic-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  font-family: "SST Arabic" !important;
+}
+
+.login-bg-image {
+  background-color: #0a213e;
+}
+
+.second-bg-color {
+  background-color: #3ec0c2 !important;
+  color: white !important;
+}
+
+.second-bg-color:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.isotope-button button.is-checked:after {
+  transform: scale(1.035) perspective(1px);
+  opacity: 1;
+  background-color: #3ec0c2 !important;
+}
+
+.extra-service-filter {
+  border: #bbcec0 1px solid;
+}
+
+.w-40 {
+  width: 47% !important;
+}
+
+.axil-signin-form-wrap {
+  width: 100%;
+  height: calc(100vh - 180px);
+  overflow-y: auto;
+  display: flex;
+  margin: 180px -30px -30px;
+}

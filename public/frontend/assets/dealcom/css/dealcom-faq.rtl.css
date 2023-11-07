@@ -1,0 +1,100 @@
+* {
+  font-family: "SST Arabic" !important;
+}
+
+.second-bg-color {
+  background-color: #3ec0c2 !important;
+  color: white !important;
+}
+
+.second-bg-color:hover {
+  background-color: #217677 !important;
+  color: white !important;
+}
+
+.mainbg-color {
+  background-color: #0a213e !important;
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900;
+}
+
+.second-color {
+  color: #3ec0c2 !important;
+}
+
+.faq-tabs {
+  max-width: 1000px;
+  margin: 40px auto;
+}
+
+.faq-tabs__item {
+  padding: 10px 20px 15px;
+  margin-bottom: 15px;
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  border: 1px solid #efefef;
+  border-radius: 3px;
+}
+.faq-tabs__content {
+  align-self: flex-start;
+}
+.faq-tabs__content > h3 {
+  font-family: "Playfair Display", serif;
+  color: #084f70;
+  font-size: 21px;
+}
+
+.faq-tabs__item > i,
+.faq-tabs__item > svg {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+  background: #f3f3f3;
+  color: #999;
+  padding: 5px;
+  border-radius: 50%;
+  align-self: start;
+  cursor: pointer;
+  transform: rotate(0);
+  transition: all 0.3s ease-out;
+}
+
+.faq-tabs__item.content--is-visible > i,
+.faq-tabs__item.content--is-visible > svg,
+.faq-tabs__item > i:hover,
+.faq-tabs__item > svg:hover,
+.faq-tabs__item > i:active,
+.faq-tabs__item > svg:active {
+  background: #efefef;
+  color: #333;
+}
+.fa-circle {
+  position: relative;
+  display: inline;
+  font-size: 5px;
+  top: -3px;
+  margin-right: 3px;
+  height: 100%;
+}
+.tabbed {
+  padding-left: 10px;
+}
+.faq-tabs__content > p {
+  display: none;
+  position: relative;
+  padding-top: 10px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 300;
+  color: #8f8f8f;
+  font-size: 16px;
+  line-height: 22px;
+}
+
+.content--is-visible > i {
+  transform: rotate(-90deg);
+}

@@ -1,0 +1,39 @@
+.single-product-content h2,
+h4,
+h6,
+p,
+span {
+  font-family: "SST Arabic" !important;
+}
+
+.axil-product-area h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "SST Arabic" !important;
+}
+
+.main-color {
+  color: #3ec0c2 !important;
+}
+
+.bg-second-color {
+  background-color: #0a213e !important;
+  color: white !important;
+}
+
+.bg-second-color:hover {
+  background-color: #3ec0c2 !important;
+  color: white !important;
+}
+
+.main-color-outline-btn {
+  color: #3ec0c2;
+  border-color: #3ec0c2;
+  background-color: #c7f5f6;
+}
+.main-color-outline-btn:hover {
+  background-color: #0a213e !important;
+  color: white !important;
+}

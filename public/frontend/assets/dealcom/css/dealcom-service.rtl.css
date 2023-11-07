@@ -1,0 +1,31 @@
+* {
+  font-family: "SST Arabic" !important;
+}
+
+.second-bg-color {
+  background-color: #3ec0c2 !important;
+  color: white !important;
+}
+
+.second-bg-color:hover {
+  background-color: #217677 !important;
+  color: white !important;
+}
+
+.mainbg-color {
+  background-color: #0a213e !important;
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900;
+}
+
+.second-color {
+  color: #3ec0c2 !important;
+}
+
+.service-box {
+  background-color: white;
+}

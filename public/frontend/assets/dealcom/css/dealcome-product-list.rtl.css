@@ -1,0 +1,14 @@
+* {
+  font-family: "SST Arabic" !important;
+}
+
+.fa,
+.fas {
+  font-family: "Font Awesome 5 Pro" !important;
+  font-weight: 900;
+}
+
+.fal,
+.far {
+  font-family: "Font Awesome 5 Pro" !important;
+}
