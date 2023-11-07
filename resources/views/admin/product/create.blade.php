@@ -121,7 +121,7 @@
                             <!--begin::Card header-->
                             <div class="card-header">
                                 <!--begin::Card title-->
-                                <div class="card-title">
+                                <div class="required card-title">
                                     <h2>{{__('master.status')}}</h2>
                                 </div>
                                 <!--end::Card title-->
@@ -166,7 +166,7 @@
                             <div class="card-body pt-0">
                                 <!--begin::Input group-->
                                 <!--begin::Label-->
-                                <label class="form-label">{{__('master.categories')}}</label>
+                                <label class="required form-label">{{__('master.categories')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Select2-->
                                 <select name="category" class="form-select mb-2" data-control="select2" data-placeholder="{{__('master.select category')}}" data-allow-clear="true" >
@@ -215,7 +215,7 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
-                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add supplier to a product')}}</label>
+                                <label for="kt_ecommerce_add_product_store_template" class="required form-label">{{__('master.add supplier to a product')}}</label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
                                 <select name="supplier" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="{{__('master.select supplier')}}" id="">
@@ -244,7 +244,7 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Select store template-->
-                                <label for="kt_ecommerce_add_product_store_template" class="form-label">{{__('master.add brand to a product')}}</label>
+                                <label for="kt_ecommerce_add_product_store_template" class="required form-label">{{__('master.add brand to a product')}}</label>
                                 <!--end::Select store template-->
                                 <!--begin::Select2-->
                                 <select name="brand" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="{{__('master.select brand')}}" id="kt_ecommerce_add_product_store_template">
@@ -323,7 +323,7 @@
                                             @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
                                                 <div>
                                                     <!--begin::Label-->
-                                                    <label class="form-label">{{__('master.description')}} ({{$localeCode}})</label>
+                                                    <label class="required form-label">{{__('master.description')}} ({{$localeCode}})</label>
                                                     <!--end::Label-->
                                                     <textarea name="description_{{$localeCode}}" class="kt_docs_ckeditor_classic{{$localeCode}}" placeholder="{{__('master.type your text')}}">
                                                         {!!old("description_".$localeCode)!!}
@@ -343,7 +343,7 @@
                                     <div class="card card-flush py-4">
                                         <!--begin::Card header-->
                                         <div class="card-header">
-                                            <div class="card-title">
+                                            <div class="required card-title">
                                                 <h2>{{__('master.media')}}</h2>
                                             </div>
                                         </div>
@@ -407,7 +407,7 @@
                                             <!--begin::Input group-->
                                             <div class="fv-row mb-10">
                                                 <!--begin::Label-->
-                                                <label class="fs-6 fw-semibold mb-2">{{__('master.price type')}}
+                                                <label class="required fs-6 fw-semibold mb-2">{{__('master.price type')}}
                                                 </label>
                                                 <!--End::Label-->
                                                 <!--begin::Row-->

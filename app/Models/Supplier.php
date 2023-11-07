@@ -46,4 +46,9 @@ class Supplier extends Model implements HasMedia
     }
 
 
+    public function categories(){
+        return $this->belongsToMany(Category::class,'supplier_categories');
+    }
+
+
 }

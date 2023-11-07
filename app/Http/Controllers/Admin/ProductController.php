@@ -111,7 +111,7 @@ class ProductController extends Controller
             'category_id' => $request->category,
             'name' => $translation,
             'description' => $translation1,
-            'slug' => Str::slug($request->code),
+            'slug' => Str::slug($code),
             'price_type' => $request->price_type,
             'price' => $request->price,
             'sku' => $request->sku,
