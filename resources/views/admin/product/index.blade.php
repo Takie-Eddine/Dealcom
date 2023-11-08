@@ -271,8 +271,12 @@
                                         <td>{{$product->category->name}}</td>
                                         <td>{{$product->supplier->name}}</td>
                                         <td>{{$product->brand->name}}</td>
-                                        <td>{{$product->price_list}}</td>
-                                        <td>{{$product->approved}}</td>
+                                        <td>{{$product->price_type}}</td>
+                                        @if ($product->approved == 0)
+                                            <td><span class="badge py-3 px-4 fs-7 badge-light-danger">{{__('master.not approved')}}</span></td>
+                                        @else
+                                            <td><span class="badge py-3 px-4 fs-7 badge-light-success">{{__('master.approved')}}</span></td>
+                                        @endif
                                         <td >
                                             @if ($product->status == 'active')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-success">{{$product->status}}</span>

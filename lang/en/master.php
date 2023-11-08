@@ -375,6 +375,8 @@ return [
     'enter the product delivery time' => 'Enter the product delivery time.',
     'add' => 'Add',
     'select option' => 'Select Option',
-    'add product variations' => 'Add Product Variations'
+    'add product variations' => 'Add Product Variations',
+    'approved' => 'Approved',
+    'not approved' => 'Not Approved',
 
 ];

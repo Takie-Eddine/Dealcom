@@ -230,32 +230,38 @@
                             <!--begin::Card body-->
                             <div class="card-body pt-0">
                                 <!--begin::Input group-->
-                                <div class="mb-10 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="required form-label">{{__('master.category name')}}</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input type="text" name="name" class="form-control mb-2" placeholder="{{__('master.category name')}}" value="{{$category->name}}" />
-                                    <!--end::Input-->
-                                    <!--begin::Description-->
-                                    <div class="text-muted fs-7">{{__('master.a category name is required and recommended to be unique')}}</div>
-                                    <!--end::Description-->
-                                </div>
+                                @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                    <div class="mb-10 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="required form-label">{{__('master.category name')}} ({{$localeCode}})</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" name="name_{{$localeCode}}" class="form-control mb-2" placeholder="{{__('master.category name')}}" value="{{$category->getTranslation('name',$localeCode,false)}}" />
+                                        <!--end::Input-->
+                                        <!--begin::Description-->
+                                        <div class="text-muted fs-7">{{__('master.a category name is required and recommended to be unique')}}</div>
+                                        <!--end::Description-->
+                                    </div>
+                                @empty
+                                @endforelse
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
-                                <div>
-                                    <!--begin::Label-->
-                                    <label class="form-label">{{__('master.description')}}</label>
-                                    <!--end::Label-->
-                                    <!--begin::Editor-->
-                                    <textarea name="description" id="kt_docs_ckeditor_classic" placeholder="{{__('master.type your text')}}">
-                                        {!!($category->description)!!}
-                                    </textarea>
-                                    <!--end::Editor-->
-                                    <!--begin::Description-->
-                                    <div class="text-muted fs-7">{{__('master.set a description to the category for better visibility')}}</div>
-                                    <!--end::Description-->
-                                </div>
+                                @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                    <div>
+                                        <!--begin::Label-->
+                                        <label class="form-label">{{__('master.description')}} ({{$localeCode}})</label>
+                                        <!--end::Label-->
+                                        <!--begin::Editor-->
+                                        <textarea name="description_{{$localeCode}}" id="kt_docs_ckeditor_classic{{$localeCode}}" placeholder="{{__('master.type your text')}}">
+                                            {!!$category->getTranslation('description',$localeCode,false)!!}
+                                        </textarea>
+                                        <!--end::Editor-->
+                                        <!--begin::Description-->
+                                        <div class="text-muted fs-7">{{__('master.set a description to the category for better visibility')}}</div>
+                                        <!--end::Description-->
+                                    </div>
+                                @empty
+                                @endforelse
                                 <!--end::Input group-->
                                 <br>
                                 <br>
@@ -500,7 +506,17 @@
 <script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
 <script>
     ClassicEditor
-    .create(document.querySelector('#kt_docs_ckeditor_classic'))
+    .create(document.querySelector('#kt_docs_ckeditor_classicar'))
+    .then(editor => {
+        // console.log(editor);
+    })
+    .catch(error => {
+        // console.error(error);
+    });
+</script>
+<script>
+    ClassicEditor
+    .create(document.querySelector('#kt_docs_ckeditor_classicen'))
     .then(editor => {
         // console.log(editor);
     })

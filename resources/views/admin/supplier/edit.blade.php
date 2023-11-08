@@ -279,7 +279,22 @@
                                 </div>
                                 <!--end::Col-->
                             </div>
-
+                            <div class="row mb-8">
+                                <!--begin::Label-->
+                                <div class="col-xl-3">
+                                    <label class="fs-6 fw-semibold mt-2 mb-3">
+                                        <span class="required">{{__('master.categories')}}</span>
+                                    </label>
+                                </div>
+                                <div class="col-xl-9 fv-row">
+                                    <select name="category[]" aria-label="Select a Category" multiple data-control="select2" data-placeholder="{{__('master.select category')}}" class="form-select form-select-solid form-select-lg fw-semibold">
+                                        <option value="">{{__('master.select category')}}</option>
+                                        @foreach ($categories as $category)
+                                            <option value="{{$category->id}}"  {{in_array($category->id,$supplier->categories->pluck('id')->toArray())? 'selected' : null }}>{{$category->name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                         <!--end::Card body-->
                         <!--begin::Card footer-->

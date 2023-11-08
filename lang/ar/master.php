@@ -376,5 +376,6 @@ return [
     'add' => 'اضافة',
     'select option' => 'حدد الخيار',
     'add product variations' => 'إضافة خيارات المنتج',
-
+    'approved' => 'موافق عليه',
+    'not approved' => 'غير موافق عليه',
 ];

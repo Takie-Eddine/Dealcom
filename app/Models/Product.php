@@ -43,7 +43,7 @@ class Product extends Model
 
     // public function getApproved()
     // {
-    //     return $this->approved == 0 ? {{__('master.not approved')}} : {{__('master.approved')}};
+    //     return $this->approved == 0 ? "{{__('master.not approved')}}" : "{{__('master.approved')}}";
     // }
 
 

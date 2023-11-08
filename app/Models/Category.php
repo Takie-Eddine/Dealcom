@@ -16,7 +16,7 @@ class Category extends Model implements HasMedia
     use HasFactory, InteractsWithMedia, HasTranslations, SoftDeletes, SearchableTrait;
 
 
-    public $translatable = ['name'];
+    public $translatable = ['name','description'];
 
     protected $fillable = [
         'name', 'parent_id', 'description', 'status', 'slug',
@@ -25,6 +25,7 @@ class Category extends Model implements HasMedia
     protected $searchable = [
 
         'columns' => [
+            'categories.name' => 10,
             'categories.name' => 10,
             'categories.slug' => 10,
         ],

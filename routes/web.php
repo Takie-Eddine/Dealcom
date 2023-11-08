@@ -16,16 +16,16 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('index');
-// Route::group([
-//     'prefix' => LaravelLocalization::setLocale(),
-//     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
-// ], function () {
+
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+], function () {
 
 
-
+    Route::get('/', function () {
+        return view('welcome');
+    })->name('index');
 
 
 
@@ -40,7 +40,7 @@ Route::get('/', function () {
         });
 
 
-// });
+});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CategoryController extends Controller
 {
@@ -33,11 +34,13 @@ class CategoryController extends Controller
 
     public function store(Request $request){
 
-
+        //return $request ;
         $request->validate([
-            'name' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
+            'name_en' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
+            'name_ar' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
-            'description' => ['nullable','string' , 'min:5'] ,
+            'description_en' => ['nullable','string' , 'min:5'] ,
+            'description_ar' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
         ]);
 
@@ -46,12 +49,22 @@ class CategoryController extends Controller
             toastr()->error('This category exists. please change !', 'Opps', ['timeOut' => 8000]);
             return redirect()->back();
         }
+        $translation = [] ;
 
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation  =  array_merge ($translation, [$localeCode => $request->input("name_".$localeCode)] );
+        }
+
+        $translation1 = [] ;
+
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation1  =  array_merge ($translation1, [$localeCode => $request->input("description_".$localeCode)] );
+        }
         $category = Category::create([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
+            'name' => $translation,
+            'slug' => Str::slug($request->name_en),
             'parent_id' => $request->category,
-            'description' => $request->description,
+            'description' => $translation1,
             'status' =>$request->status,
         ]);
 
@@ -76,19 +89,33 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
 
         $request->validate([
-            'name' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
+            'name_en' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
+            'name_ar' => ['required', 'string' ,'min:4', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
-            'description' => ['nullable','string' , 'min:5'] ,
+            'description_en' => ['nullable','string' , 'min:5'] ,
+            'description_ar' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
         ]);
 
         $category = Category::findOrFail($id);
 
+        $translation = [] ;
+
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation  =  array_merge ($translation, [$localeCode => $request->input("name_".$localeCode)] );
+        }
+
+        $translation1 = [] ;
+
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation1  =  array_merge ($translation1, [$localeCode => $request->input("description_".$localeCode)] );
+        }
+
         $category->update([
-            'name' => $request->name,
-            'slug' => Str::slug($request->name),
+            'name' => $translation,
+            'slug' => Str::slug($request->name_en),
             'parent_id' => $request->category,
-            'description' => $request->description,
+            'description' => $translation1,
             'status' =>$request->status,
         ]);
 

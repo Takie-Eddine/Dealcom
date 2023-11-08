@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -36,12 +37,13 @@ class SupplierController extends Controller
         return view('admin.supplier.create',[
             'countries' => Countries::getNames(),
             'locales' => Languages::getNames(),
+            'categories' => Category::active()->get(),
         ]);
     }
 
 
     public function store(Request $request){
-
+        //return $request ;
         $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'] ,
             'code' => ['required',  'string', 'min:2', 'max:7'] ,
@@ -54,6 +56,7 @@ class SupplierController extends Controller
             'address' => ['required', 'string', 'min:2', 'max:255'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
+            'category' => ['required','array','min:1',Rule::exists('categories','id')],
         ]);
 
         $supplier = Supplier::create([
@@ -68,7 +71,7 @@ class SupplierController extends Controller
             'address' => $request->address,
             'postal_code' => $request->postal_code,
         ]);
-
+        $supplier->categories()->sync($request->category);
         if ($photo = $request->file('avatar')) {
             $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
         }
@@ -88,6 +91,7 @@ class SupplierController extends Controller
             'supplier' => $supplier,
             'countries' => Countries::getNames(),
             'locales' => Languages::getNames(),
+            'categories' => Category::active()->get(),
         ]);
     }
 
@@ -110,6 +114,7 @@ class SupplierController extends Controller
             'address' => ['required', 'string', 'min:2', 'max:255'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
+            'category' => ['required','array','min:1',Rule::exists('categories','id')],
         ]);
 
         $supplier->update([
@@ -124,7 +129,7 @@ class SupplierController extends Controller
             'address' => $request->address,
             'postal_code' => $request->postal_code,
         ]);
-
+        $supplier->categories()->sync($request->category);
         if ($photo = $request->file('avatar')) {
             $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
         }
