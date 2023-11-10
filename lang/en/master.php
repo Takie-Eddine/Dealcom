@@ -378,5 +378,12 @@ return [
     'add product variations' => 'Add Product Variations',
     'approved' => 'Approved',
     'not approved' => 'Not Approved',
+    'not featured' => 'Not Featured',
+    'featured' => 'Featured',
+    'edit product' => 'Edit Product',
+    'add featured to a product' => 'Add featured to a product',
+    'approve product' => 'Approve The Product',
+    'approve' => 'Approve',
+
 
 ];

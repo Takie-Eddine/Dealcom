@@ -21,6 +21,7 @@ class Product extends Model
         'brand_id', 'supplier_id', 'category_id', 'name', 'code', 'slug',
         'description', 'price', 'quantity', 'sku', 'options', 'rating',
         'featured', 'approved', 'status', 'price_list', 'price_type',
+        'image', 'terms',
     ];
 
 
@@ -72,12 +73,14 @@ class Product extends Model
         ->withDefault();
     }
 
-
     public function attributes(){
-        return $this->belongsToMany(ProductAttribute::class, 'product_attributes')
-            ->withPivot(['value'])
-            ->as('option') ;
+        return $this->hasMany(ProductAttribute::class,'product_id');
     }
+
+    public function variants(){
+        return $this->belongsToMany(Attribute::class,'product_variants');
+    }
+
 
 
     public function getImageUrlAttribute(){

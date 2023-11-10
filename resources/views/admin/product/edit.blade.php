@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 
-@section('title', 'Add Product')
+@section('title', 'Edit Product')
 
 
 @push('style')
@@ -42,7 +42,7 @@
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">{{__('master.add product')}}</li>
+                        <li class="breadcrumb-item text-muted">{{__('master.edit product')}}</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -57,7 +57,8 @@
             <!--begin::Content container-->
             <div id="kt_app_content_container" class="app-container container-xxl">
                 <!--begin::Form-->
-                <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="" action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
+                <form id="kt_ecommerce_add_product_form" class="form d-flex flex-column flex-lg-row" data-kt-redirect="" action="{{route('admin.product.update',$product->id)}}" method="POST" enctype="multipart/form-data">
+                    @method('patch')
                     @csrf
                     <!--begin::Aside column-->
                     <div class="d-flex flex-column gap-7 gap-lg-10 w-100 w-lg-300px mb-7 me-lg-10">
@@ -73,7 +74,11 @@
                             <div class="card-body text-center pt-0">
                                 <!--begin::Image input-->
                                 <!--begin::Image input placeholder-->
-                                <style>.image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image.svg")}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image-dark.svg")}}'); }</style>
+                                @if ($product->image_url)
+                                    <style>.image-input-placeholder { background-image: url('{{$product->image_url}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{$product->image_url}}'); }</style>
+                                @else
+                                    <style>.image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image.svg")}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image-dark.svg")}}'); }</style>
+                                @endif
                                 <!--end::Image input placeholder-->
                                 <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3" data-kt-image-input="true">
                                     <!--begin::Preview existing avatar-->
@@ -127,7 +132,16 @@
                                 <!--end::Card title-->
                                 <!--begin::Card toolbar-->
                                 <div class="card-toolbar">
-                                    <div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+                                    @if ($product->status == 'active')
+                                        <div class="rounded-circle bg-success w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+                                    @endif
+                                    @if ($product->status == 'draft')
+                                        <div class="rounded-circle bg-warning w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+                                    @endif
+                                    @if ($product->status == 'archived')
+                                        <div class="rounded-circle bg-danger w-15px h-15px" id="kt_ecommerce_add_product_status"></div>
+                                    @endif
+
                                 </div>
                                 <!--begin::Card toolbar-->
                             </div>
@@ -137,9 +151,9 @@
                                 <!--begin::Select2-->
                                 <select name="status" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="kt_ecommerce_add_product_status_select">
                                     <option></option>
-                                    <option value="active" selected="selected">{{__('master.active')}}</option>
-                                    <option value="draft" >{{__('master.draft')}}</option>
-                                    <option value="archived">{{__('master.archived')}}</option>
+                                    <option value="active" {{$product->status == 'active' ? 'selected' : null}}>{{__('master.active')}}</option>
+                                    <option value="draft" {{$product->status == 'draft' ? 'selected' : null}}>{{__('master.draft')}}</option>
+                                    <option value="archived" {{$product->status == 'archived' ? 'selected' : null}}>{{__('master.archived')}}</option>
                                 </select>
                                 <!--end::Select2-->
                                 <!--begin::Description-->
@@ -172,7 +186,7 @@
                                 <select name="category" class="form-select mb-2" data-control="select2" data-placeholder="{{__('master.select category')}}" data-allow-clear="true" >
                                     <option></option>
                                     @forelse ($categories as $category)
-                                    <option value="{{$category->id }}" @selected(old('category') == $category->id)>{{$category->name }}</option>
+                                    <option value="{{$category->id }}" @selected($product->category_id == $category->id)>{{$category->name }}</option>
                                     @empty
                                     @endforelse
 
@@ -191,7 +205,7 @@
                                 <label class="form-label d-block">{{__('master.tags')}}</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <input id="kt_tagify_1" name="tags" class="form-control mb-2" value="{{old('tags')}}" />
+                                <input id="kt_tagify_1" name="tags" class="form-control mb-2" value="{{$product->tags->pluck('name')}}" />
                                 <!--end::Input-->
                                 <!--begin::Description-->
                                 <div class="text-muted fs-7">{{__('master.add tags to a product')}}</div>
@@ -221,7 +235,7 @@
                                 <select name="supplier" class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="{{__('master.select supplier')}}" id="">
                                     <option></option>
                                     @forelse ($suppliers as $supplier)
-                                        <option value="{{$supplier->id }}" @selected(old('supplier') == $supplier->id)>{{$supplier->name }}</option>
+                                        <option value="{{$supplier->id }}" @selected($product->supplier_id == $supplier->id)>{{$supplier->name }}</option>
                                     @empty
                                     @endforelse
                                 </select>
@@ -250,7 +264,7 @@
                                 <select name="brand" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="{{__('master.select brand')}}" id="kt_ecommerce_add_product_store_template">
                                     <option></option>
                                     @forelse ($brands as $brand)
-                                        <option value="{{$brand->id }}" @selected(old('brand') == $brand->id)>{{$brand->name }}</option>
+                                        <option value="{{$brand->id }}" @selected($product->brand_id == $brand->id)>{{$brand->name }}</option>
                                     @empty
                                     @endforelse
                                 </select>
@@ -276,8 +290,33 @@
                                 <!--begin::Select2-->
                                 <select name="featured" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="">
                                     <option></option>
-                                    <option value="0" selected="selected">{{__('master.not featured')}}</option>
-                                    <option value="1" >{{__('master.featured')}}</option>
+                                    <option value="0" @selected($product->featured == 0)>{{__('master.not featured')}}</option>
+                                    <option value="1" @selected($product->featured == 1)>{{__('master.featured')}}</option>
+                                </select>
+                                <!--end::Select2-->
+                            </div>
+                            <!--end::Card body-->
+                        </div>
+                        <div class="card card-flush py-4">
+                            <!--begin::Card header-->
+                            <div class="card-header">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>{{__('master.approve')}}</h2>
+                                </div>
+                                <!--end::Card title-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0">
+                                <!--begin::Select store template-->
+                                <label for="kt_ecommerce_add_product_store_template" class="required form-label">{{__('master.approve product')}}</label>
+                                <!--end::Select store template-->
+                                <!--begin::Select2-->
+                                <select name="approved" class="form-select mb-2" data-control="select2" data-hide-search="true" data-placeholder="Select an option" id="">
+                                    <option></option>
+                                    <option value="0" @selected($product->approved == 0)>{{__('master.not approved')}}</option>
+                                    <option value="1" @selected($product->approved == 1)>{{__('master.approved')}}</option>
                                 </select>
                                 <!--end::Select2-->
                             </div>
@@ -335,7 +374,7 @@
                                                     <label class="required form-label">{{__('master.product name')}} ({{$localeCode}})</label>
                                                     <!--end::Label-->
                                                     <!--begin::Input-->
-                                                    <input type="text" name="product_{{$localeCode}}" class="form-control mb-2" placeholder="{{__('master.product name')}}" value="{{old("product_".$localeCode)}}" />
+                                                    <input type="text" name="product_{{$localeCode}}" class="form-control mb-2" placeholder="{{__('master.product name')}}" value="{{$product->getTranslation('name',$localeCode,false)}}" />
                                                     <!--end::Input-->
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">{{__('master.a product name is required and recommended to be unique')}}</div>
@@ -351,7 +390,7 @@
                                                     <label class="required form-label">{{__('master.description')}} ({{$localeCode}})</label>
                                                     <!--end::Label-->
                                                     <textarea name="description_{{$localeCode}}" class="kt_docs_ckeditor_classic{{$localeCode}}" placeholder="{{__('master.type your text')}}">
-                                                        {!!old("description_".$localeCode)!!}
+                                                        {!!$product->getTranslation('description',$localeCode,false)!!}
                                                     </textarea>
                                                     <!--begin::Description-->
                                                     <div class="text-muted fs-7">{{__('master.set a description to the product for better visibility')}}</div>
@@ -443,7 +482,7 @@
                                                         <label class="btn btn-outline btn-outline-dashed btn-active-light-primary active d-flex text-start p-6" data-kt-button="true">
                                                             <!--begin::Radio-->
                                                             <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                                <input class="form-check-input" type="radio" name="price_type" value="on_demande" checked="checked" />
+                                                                <input class="form-check-input" type="radio" name="price_type" value="on_demande" @if ($product->price_type == "on_demande") checked @endif />
                                                             </span>
                                                             <!--end::Radio-->
                                                             <!--begin::Info-->
@@ -461,7 +500,7 @@
                                                         <label class="btn btn-outline btn-outline-dashed btn-active-light-primary d-flex text-start p-6" data-kt-button="true">
                                                             <!--begin::Radio-->
                                                             <span class="form-check form-check-custom form-check-solid form-check-sm align-items-start mt-1">
-                                                                <input class="form-check-input" type="radio" name="price_type" value="price_list" />
+                                                                <input class="form-check-input" type="radio" name="price_type" value="price_list" @if ($product->price_type == "on_demande") checked @endif/>
                                                             </span>
                                                             <!--end::Radio-->
                                                             <!--begin::Info-->
@@ -481,7 +520,7 @@
 
                                                 <div class="mb-10 fv-row">
                                                 <label class=" form-label">{{__('master.base price')}}</label>
-                                                <input type="text" name="price" class="form-control mb-2" placeholder="{{__('master.base price')}}" value="{{old('price')}}" />
+                                                <input type="text" name="price" class="form-control mb-2" placeholder="{{__('master.base price')}}" value="{{$product->price}}" />
                                                 <div class="text-muted fs-7">{{__('master.set the product price')}}</div>
                                                 </div>
 
@@ -513,7 +552,7 @@
                                                 <label class="required form-label">{{__('master.sku')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="text" name="sku" class="form-control mb-2" placeholder="{{__('master.sku')}}" value="{{old('sku')}}" />
+                                                <input type="text" name="sku" class="form-control mb-2" placeholder="{{__('master.sku')}}" value="{{$product->sku}}" />
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
                                                 <div class="text-muted fs-7">{{__('master.enter the product sku')}}</div>
@@ -540,7 +579,7 @@
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
                                                 <div class="d-flex gap-3">
-                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{__('master.minimum quantity')}}" value="{{old('quantity')}}" />
+                                                    <input type="number" name="quantity" class="form-control mb-2" placeholder="{{__('master.minimum quantity')}}" value="{{$product->quantity}}" />
 
                                                 </div>
                                                 <!--end::Input-->
@@ -553,7 +592,7 @@
                                                 <label class=" form-label">{{__('master.other terms')}}</label>
                                                 <!--end::Label-->
                                                 <!--begin::Input-->
-                                                <input type="text" name="terms" class="form-control mb-2" placeholder="{{__('master.other terms')}}" value="{{old('terms')}}" />
+                                                <input type="text" name="terms" class="form-control mb-2" placeholder="{{__('master.other terms')}}" value="{{$product->terms}}" />
                                                 <!--end::Input-->
                                                 <!--begin::Description-->
                                                 <div class="text-muted fs-7">{{__('master.enter the product terms')}}</div>
@@ -579,50 +618,105 @@
                                             <div class=""  data-kt-ecommerce-catalog-add-product="auto-options">
                                                 <!--begin::Label-->
                                                 <label class="form-label">{{__('master.add product variations')}}</label>
-                                                <!--end::Label-->
+                                                <!--begin::Repeater-->
                                                 <div id="kt_docs_repeater_nested">
                                                     <!--begin::Form group-->
                                                     <div class="form-group">
                                                         <div data-repeater-list="options">
-                                                            <div data-repeater-item>
-                                                                <div class="form-group row mb-5">
-                                                                    <div class="col-md-4">
-                                                                        <label class="form-label">{{__('master.select option')}}</label>
-                                                                        <select name="attributes" data-kt-repeater="select2" class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="{{__('master.select option')}}" id="">
-                                                                            <option></option>
-                                                                            @forelse ($attributes as $attribute)
-                                                                                <option value="{{$attribute->id}}" @selected(old('attributes') == $attribute->id)>{{$attribute->name}}</option>
-                                                                            @empty
-                                                                            @endforelse
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <div class="inner-repeater">
-                                                                            <div data-repeater-list="variants" class="mb-5">
-                                                                                <div data-repeater-item>
-                                                                                    <label class="form-label">{{__('master.variant')}}</label>
-                                                                                    <div class="input-group pb-3">
-                                                                                        <input type="text" class="form-control" name="variant" placeholder="{{__('master.variant')}}" value="{{old('variant')}}" />
-                                                                                        <button class="border border-secondary btn btn-icon btn-flex btn-light-danger" data-repeater-delete type="button">
-                                                                                            <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
-                                                                                        </button>
+                                                            @forelse ($product->variants as $item)
+                                                                <div data-repeater-item>
+                                                                    <div class="form-group row mb-5">
+                                                                        <div class="col-md-4">
+                                                                            <label class="form-label">{{__('master.select option')}}</label>
+                                                                            <select name="attributes" data-kt-repeater="select2" class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="{{__('master.select option')}}" id="">
+                                                                                <option></option>
+                                                                                @forelse ($attributes as $attribute)
+                                                                                    <option value="{{$attribute->id}}" @selected($item->id == $attribute->id)>{{$attribute->name}}</option>
+                                                                                @empty
+                                                                                @endforelse
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="inner-repeater">
+                                                                                <div data-repeater-list="variants" class="mb-5">
+                                                                                    <div data-repeater-item>
+                                                                                        @forelse ($product->attributes as $attribute)
+                                                                                        @if ($attribute->attribute_id == $item->id)
+                                                                                            <label class="form-label">{{__('master.variant')}}</label>
+                                                                                            <div class="input-group pb-3">
+                                                                                                <input type="text" class="form-control" name="variant" placeholder="{{__('master.variant')}}" value="{{$attribute->value}}" />
+                                                                                                <button class="border border-secondary btn btn-icon btn-flex btn-light-danger" data-repeater-delete type="button">
+                                                                                                    <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        @endif
+                                                                                        @empty
+                                                                                            <label class="form-label">{{__('master.variant')}}</label>
+                                                                                            <div class="input-group pb-3">
+                                                                                                <input type="text" class="form-control" name="variant" placeholder="{{__('master.variant')}}" value="{{old('variant')}}" />
+                                                                                                <button class="border border-secondary btn btn-icon btn-flex btn-light-danger" data-repeater-delete type="button">
+                                                                                                    <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                                                </button>
+                                                                                            </div>
+                                                                                        @endforelse
+
                                                                                     </div>
                                                                                 </div>
+                                                                                <button class="btn btn-sm btn-flex btn-light-primary" data-repeater-create type="button">
+                                                                                    <i class="ki-duotone ki-plus fs-5"></i>
+                                                                                    {{__('master.add')}}
+                                                                                </button>
                                                                             </div>
-                                                                            <button class="btn btn-sm btn-flex btn-light-primary" data-repeater-create type="button">
-                                                                                <i class="ki-duotone ki-plus fs-5"></i>
-                                                                                {{__('master.add')}}
-                                                                            </button>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-flex btn-light-danger mt-3 mt-md-9">
+                                                                                <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                                {{__('master.delete')}}
+                                                                            </a>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-md-4">
-                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-flex btn-light-danger mt-3 mt-md-9">
-                                                                            <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
-                                                                            {{__('master.delete')}}
-                                                                        </a>
+                                                                </div>
+                                                            @empty
+                                                                <div data-repeater-item>
+                                                                    <div class="form-group row mb-5">
+                                                                        <div class="col-md-4">
+                                                                            <label class="form-label">{{__('master.select option')}}</label>
+                                                                            <select name="attributes" data-kt-repeater="select2" class="form-select mb-2" data-control="select2" data-hide-search="false" data-placeholder="{{__('master.select option')}}" id="">
+                                                                                <option></option>
+                                                                                @forelse ($attributes as $attribute)
+                                                                                    <option value="{{$attribute->id}}" @selected(old('attributes') == $attribute->id)>{{$attribute->name}}</option>
+                                                                                @empty
+                                                                                @endforelse
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="inner-repeater">
+                                                                                <div data-repeater-list="variants" class="mb-5">
+                                                                                    <div data-repeater-item>
+                                                                                        <label class="form-label">{{__('master.variant')}}</label>
+                                                                                        <div class="input-group pb-3">
+                                                                                            <input type="text" class="form-control" name="variant" placeholder="{{__('master.variant')}}" value="{{old('variant')}}" />
+                                                                                            <button class="border border-secondary btn btn-icon btn-flex btn-light-danger" data-repeater-delete type="button">
+                                                                                                <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                                            </button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <button class="btn btn-sm btn-flex btn-light-primary" data-repeater-create type="button">
+                                                                                    <i class="ki-duotone ki-plus fs-5"></i>
+                                                                                    {{__('master.add')}}
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <a href="javascript:;" data-repeater-delete class="btn btn-sm btn-flex btn-light-danger mt-3 mt-md-9">
+                                                                                <i class="ki-duotone ki-trash fs-5"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
+                                                                                {{__('master.delete')}}
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            @endforelse
                                                         </div>
                                                     </div>
                                                     <!--end::Form group-->
@@ -636,48 +730,7 @@
                                                     </div>
                                                     <!--end::Form group-->
                                                 </div>
-                                                <!--begin::Repeater-->
-                                                {{-- <div id="kt_docs_repeater_advanced">
-                                                    <!--begin::Form group-->
-                                                    <div class="form-group">
-                                                        <div data-repeater-list="options">
-                                                            <div data-repeater-item>
-                                                                <div class="form-group row mb-5">
-                                                                    <div class="col-md-5">
-                                                                        <label class="form-label">{{__('master.select option')}}</label>
-                                                                        <select name="attributes" class="form-select" data-kt-repeater="select2" data-placeholder="{{__('master.select option')}}">
-                                                                            <option></option>
-                                                                            @forelse ($attributes as $attribute)
-                                                                                <option value="{{$attribute->id}}" @selected(old('attributes') == $attribute->id)>{{$attribute->name}}</option>
-                                                                            @empty
-                                                                            @endforelse
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-5">
-                                                                        <label class="form-label">{{__('master.variant')}}</label>
-                                                                        <input type="text"  class="form-control" data-kt-repeater="tagify"  name="variant" placeholder="{{__('master.variant')}}" value="{{old('variant')}}"/>
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <a href="javascript:;" data-repeater-delete class="btn btn-flex btn-sm btn-light-danger mt-3 mt-md-9">
-                                                                            <i class="ki-duotone ki-trash fs-3"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span></i>
-                                                                            {{__('master.delete')}}
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--end::Form group-->
-
-                                                    <!--begin::Form group-->
-                                                    <div class="form-group">
-                                                        <a href="javascript:;" data-repeater-create class="btn btn-flex btn-light-primary">
-                                                            <i class="ki-duotone ki-plus fs-3"></i>
-                                                            {{__('master.add')}}
-                                                        </a>
-                                                    </div>
-                                                    <!--end::Form group-->
-                                                </div> --}}
+                                                <!--end::Repeater-->
                                                 <!--end::Repeater-->
                                             </div>
                                             <!--end::Input group-->
@@ -823,44 +876,22 @@
                 highlightFirst: true
             }
         });
-        // new Tagify(input2);
+
     </script>
-    {{-- <script>
-        $('#kt_docs_repeater_advanced').repeater({
-            initEmpty: false,
+    <script>
+        $('#kt_docs_repeater_nested').repeater({
+                repeaters: [{
+                    selector: '.inner-repeater',
+                    show: function () {
+                        $(this).slideDown();
+                        $(this).find('[data-kt-repeater="select2"]').select2();
+                    },
 
-            defaultValues: {
-                'text-input': 'foo'
-            },
+                    hide: function (deleteElement) {
+                        $(this).slideUp(deleteElement);
+                    }
+                }],
 
-            show: function () {
-                $(this).slideDown();
-
-                // Re-init select2
-                $(this).find('[data-kt-repeater="select2"]').select2();
-
-                // Re-init tagify
-                new Tagify(this.querySelector('[data-kt-repeater="tagify"]'));
-            },
-
-            hide: function (deleteElement) {
-                $(this).slideUp(deleteElement);
-            },
-
-            ready: function(){
-                // Init select2
-                $('[data-kt-repeater="select2"]').select2();
-
-
-                new Tagify(document.querySelector('[data-kt-repeater="tagify"]'));
-            }
-        });
-    </script> --}}
-
-<script>
-    $('#kt_docs_repeater_nested').repeater({
-            repeaters: [{
-                selector: '.inner-repeater',
                 show: function () {
                     $(this).slideDown();
                     $(this).find('[data-kt-repeater="select2"]').select2();
@@ -869,16 +900,7 @@
                 hide: function (deleteElement) {
                     $(this).slideUp(deleteElement);
                 }
-            }],
+        });
+    </script>
 
-            show: function () {
-                $(this).slideDown();
-                $(this).find('[data-kt-repeater="select2"]').select2();
-            },
-
-            hide: function (deleteElement) {
-                $(this).slideUp(deleteElement);
-            }
-    });
-</script>
 @endpush

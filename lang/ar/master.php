@@ -378,4 +378,10 @@ return [
     'add product variations' => 'إضافة خيارات المنتج',
     'approved' => 'موافق عليه',
     'not approved' => 'غير موافق عليه',
+    'not featured' => 'غير ممول',
+    'featured' => 'ممول',
+    'edit product' => 'تعديل المنتج',
+    'add featured to a product' => 'اضافة المنتج الى الممولين',
+    'approve product' => 'الموافقة على المنتج',
+    'approve' => 'الموافقة  ',
 ];

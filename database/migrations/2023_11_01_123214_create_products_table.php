@@ -28,6 +28,7 @@ return new class extends Migration
             $table->float('rating')->default(0);
             $table->boolean('featured')->default(0);
             $table->boolean('approved')->default(0);
+            $table->string('terms')->nullable();
             $table->enum('price_type',['price_list','on_demande'])->default('on_demande');
             $table->enum('status',['active' , 'draft' , 'archived'])->default('active');
             $table->softDeletes();

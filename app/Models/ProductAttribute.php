@@ -9,10 +9,6 @@ class ProductAttribute extends Model
 {
     use HasFactory;
 
-
-    public $table = 'product_attributes';
-    public $timestamps = false;
-
     protected $fillable = [
         'value', 'product_id', 'attribute_id',
     ];

@@ -49,7 +49,7 @@ class BrandController extends Controller
     public function store(Request $request){
 
         $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:255'] ,
+            'name' => ['required', 'string', 'min:2', 'max:190'] ,
             'code' => ['required',  'string', 'min:2', 'max:7'] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','mobile_phone')] ,
@@ -57,7 +57,7 @@ class BrandController extends Controller
             'email' => ['required', 'string', 'email', Rule::unique('brands','email')] ,
             'country' => ['required' ,'string' , 'size:2'],
             'city' => ['nullable' ,'string'],
-            'address' => ['required', 'string', 'min:2', 'max:255'],
+            'address' => ['required', 'string', 'min:2', 'max:253'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
@@ -105,7 +105,7 @@ class BrandController extends Controller
         $brand = Brand::findOrFail($id);
 
         $request->validate([
-            'name' => ['required', 'string', 'min:2', 'max:255'] ,
+            'name' => ['required', 'string', 'min:2', 'max:190'] ,
             'code' => ['required',  'string', 'min:2', 'max:7'] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','mobile_phone')->ignore($id)] ,
@@ -113,7 +113,7 @@ class BrandController extends Controller
             'email' => ['required', 'string', 'email', Rule::unique('brands','email')->ignore($id)] ,
             'country' => ['required' ,'string' , 'size:2'],
             'city' => ['nullable' ,'string'],
-            'address' => ['required', 'string', 'min:2', 'max:255'],
+            'address' => ['required', 'string', 'min:2', 'max:253'],
             'postal_code' => ['nullable' , 'integer' ],
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
