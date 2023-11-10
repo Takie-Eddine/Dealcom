@@ -104,7 +104,8 @@
                         <!--end::Card body-->
                         <!--begin::Card footer-->
                         <div class="card-footer d-flex justify-content-end py-6 px-9">
-                            <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
+                            <a href="{{route('admin.attribute')}}" id="kt_ecommerce_add_product_cancel" class="btn btn-light btn-active-light-primary me-2">Cancel</a>
+
                             <button type="submit" class="btn btn-primary" id="kt_project_settings_submit">Save Changes</button>
                         </div>
                         <!--end::Card footer-->
