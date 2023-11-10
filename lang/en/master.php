@@ -384,6 +384,11 @@ return [
     'add featured to a product' => 'Add featured to a product',
     'approve product' => 'Approve The Product',
     'approve' => 'Approve',
+    'attributes' => 'Attributes',
+    'attribute' => 'Attribute',
+    'add attribute' => 'Add Attribute',
+    'edit attribute' => 'Edit Attribute',
+    'search attribute' => 'Search Attribute',
 
 
 ];

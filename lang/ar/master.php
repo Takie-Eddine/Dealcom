@@ -384,4 +384,9 @@ return [
     'add featured to a product' => 'اضافة المنتج الى الممولين',
     'approve product' => 'الموافقة على المنتج',
     'approve' => 'الموافقة  ',
+    'attributes' => 'الصفات',
+    'attribute' => 'الصفة',
+    'add attribute' => 'اضافة صفة',
+    'edit attribute' => 'تعديل الصفة',
+    'search attribute' => 'البحث عن صفة',
 ];

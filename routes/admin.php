@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -88,6 +89,15 @@ Route::group([
             Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
             Route::get('/activate/{id}', [ProductController::class, 'activate'])->name('product.activate');
 
+        });
+
+        Route::group(['prefix'=>'attribute'  ],function(){
+            Route::get('/', [AttributeController::class, 'index'])->name('attribute');
+            Route::get('/create', [AttributeController::class, 'create'])->name('attribute.create');
+            Route::post('/store', [AttributeController::class, 'store'])->name('attribute.store');
+            Route::get('/edit/{id}', [AttributeController::class, 'edit'])->name('attribute.edit');
+            Route::patch('/update/{id}', [AttributeController::class, 'update'])->name('attribute.update');
+            Route::get('/delete/{id}', [AttributeController::class, 'destroy'])->name('attribute.delete');
         });
 
 

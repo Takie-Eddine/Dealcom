@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class AttributeController extends Controller
 {
@@ -51,7 +52,7 @@ class AttributeController extends Controller
 
         $attribute = Attribute::findOrFail($id);
 
-        return view('dashboard.attribute.edit',compact('attribute'));
+        return view('admin.attribute.edit',compact('attribute'));
     }
 
 
@@ -65,11 +66,15 @@ class AttributeController extends Controller
 
         $attribute = Attribute::findOrFail($id);
 
+        $translation = [] ;
+
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation  =  array_merge ($translation, [$localeCode => $request->input("name_".$localeCode)] );
+        }
+
+
         $attribute->update([
-            'name' => [
-                'en' => $request->name_en,
-                'ar' => $request->name_ar,
-            ],
+            'name' => $translation,
         ]);
 
 
