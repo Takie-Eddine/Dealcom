@@ -88,6 +88,7 @@ Route::group([
             Route::patch('/update/{id}', [ProductController::class, 'update'])->name('product.update');
             Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
             Route::get('/activate/{id}', [ProductController::class, 'activate'])->name('product.activate');
+            Route::get('/delete-image/{id}', [ProductController::class, 'delete_image'])->name('product.deleteimage');
 
         });
 

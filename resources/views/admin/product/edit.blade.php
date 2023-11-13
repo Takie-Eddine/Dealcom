@@ -415,6 +415,45 @@
                                         <!--begin::Card body-->
                                         <div class="card-body pt-0">
                                             <!--begin::Input group-->
+                                            <div class="row g-10">
+                                                @forelse ($product->images as $image)
+                                                    <div class="col-md-4">
+                                                        <div class="card-xl-stretch me-md-6">
+                                                            <a class="d-block overlay" data-fslightbox="lightbox-hot-sales" href="{{asset('assets/images/product_images/'.$image->name)}}">
+                                                                <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-175px" style="background-image:url('{{asset("assets/images/product_images/".$image->name)}}')"></div>
+                                                                <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                                    <i class="ki-duotone ki-eye fs-2x text-white">
+                                                                        <span class="path1"></span>
+                                                                        <span class="path2"></span>
+                                                                        <span class="path3"></span>
+                                                                    </i>
+                                                                </div>
+                                                            </a>
+                                                            <div class="mt-5">
+                                                                <a href="#" class="fs-4 text-dark fw-bold text-hover-primary text-dark lh-base"></a>
+                                                                <div class="fw-semibold fs-5 text-gray-600 text-dark mt-3"></div>
+                                                                <div class="fs-6 fw-bold mt-5 d-flex flex-stack">
+                                                                    <span class="">
+                                                                    <span class="fs-6 fw-semibold text-gray-400"></span></span>
+
+                                                                    <a href="{{route('admin.product.deleteimage',$image->id)}}" class="">
+                                                                        <i class="ki-outline ki-trash text-danger fs-2x">
+                                                                        <span class="path1"></span>
+                                                                        <span class="path2"></span>
+                                                                        <span class="path3"></span>
+                                                                        <span class="path4"></span>
+                                                                        <span class="path5"></span>
+                                                                        </i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @empty
+                                                @endforelse
+                                            </div>
+                                            <br>
+                                            <div class="separator separator-dashed mb-9"></div>
                                             <div class="fv-row mb-2">
                                                 <!--begin::Dropzone-->
                                                 <div class="fv-row">

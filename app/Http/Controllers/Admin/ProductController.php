@@ -318,6 +318,14 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function delete_image($id){
+        $image = ProductImage::findOrFail($id);
+
+        $image->delete();
+        toastr()->success('Deleted successfully!', 'Congrats', ['timeOut' => 6000]);
+
+        return redirect()->back();
+    }
 
 
 }
