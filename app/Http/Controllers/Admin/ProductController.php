@@ -295,7 +295,7 @@ class ProductController extends Controller
                 }
             }
 
-            if ($request->options) {
+            if ($request->options && !($request->options)) {
                 foreach ($product->attributes as $attribute) {
                     $attribute->delete();
 
