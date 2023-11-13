@@ -157,7 +157,7 @@ class ProductController extends Controller
                 }
             }
 
-            if ($request->options) {
+            if ($request->options && !($request->options)) {
 
                 foreach ($request->options as $option) {
                     $product->variants()->syncWithoutDetaching($option['attributes']);
