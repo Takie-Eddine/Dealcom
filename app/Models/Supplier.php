@@ -51,6 +51,10 @@ class Supplier extends Model implements HasMedia
         return $this->belongsToMany(Category::class,'supplier_categories');
     }
 
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
 
     public function getImageUrlAttribute(){
 

@@ -60,8 +60,10 @@ class Brand extends Model implements HasMedia
         }
 
         return asset('assets/images/brand_images/' .$this->image);
+    }
 
 
-
+    public function products(){
+        return $this->hasMany(Product::class);
     }
 }

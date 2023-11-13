@@ -91,7 +91,7 @@ return [
     'select a plan' => 'Select a Plan',
     'create participant' => 'Create Brand',
     'discard' => 'Discard',
-    'edit brand' => 'Edit Participant',
+    'edit brand' => 'Edit Brand',
     'update participant' => 'Update Participant',
     'view participant' => 'View Participant',
     'participant details' => 'Participant Details',
@@ -389,6 +389,15 @@ return [
     'add attribute' => 'Add Attribute',
     'edit attribute' => 'Edit Attribute',
     'search attribute' => 'Search Attribute',
+    'office phone' => 'Office Phone',
+    'mobile phone' => 'Mobile Phone',
+    'view supplier' => 'View Supplier',
+    'orders' => 'Orders',
+    'order' => 'Order',
+    'products requested' => 'Products Requested',
+    'product requested' => 'Product Requested',
+    'brand details' => 'Brand Details',
+    'view brand' => 'View Brand',
 
 
 ];

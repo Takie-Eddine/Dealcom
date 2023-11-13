@@ -389,4 +389,13 @@ return [
     'add attribute' => 'اضافة صفة',
     'edit attribute' => 'تعديل الصفة',
     'search attribute' => 'البحث عن صفة',
+    'office phone' => 'هاتف المكتب',
+    'mobile phone' => 'تليفون محمول',
+    'view supplier' => 'عرض المورد',
+    'orders' => 'الطلبات',
+    'order' => 'الطلب',
+    'products requested' => 'المنتجات المطلوبة',
+    'product requested' => 'المنتج مطلوب',
+    'brand details' => 'تفاصيل الماركة ',
+    'view brand' => 'عرض الماركة',
 ];

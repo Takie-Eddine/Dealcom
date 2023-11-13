@@ -206,6 +206,16 @@ class SupplierController extends Controller
     }
 
 
+    public function show(Supplier $supplier){
+
+        return view('admin.supplier.view',compact('supplier'));
+    }
+
+
+    public function products(Supplier $supplier){
+
+        return view('admin.supplier.product',compact('supplier'));
+    }
 
 
 

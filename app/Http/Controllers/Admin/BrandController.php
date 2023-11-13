@@ -203,4 +203,16 @@ class BrandController extends Controller
         toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
     }
+
+
+    public function show(Brand $brand){
+
+        return view('admin.brand.view',compact('brand'));
+    }
+
+
+    public function products(Brand $brand){
+
+        return view('admin.brand.product',compact('brand'));
+    }
 }

@@ -250,7 +250,7 @@
                                         <td class="d-flex align-items-center">
                                             <!--begin:: Avatar -->
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="">
+                                                <a href="{{route('admin.brand.show',$brand->id)}}">
                                                     <div class="symbol-label">
                                                         @if ($brand->image_url)
                                                             <img src="{{$brand->image_url}}" alt="{{$brand->name}}" class="w-100" />
@@ -263,7 +263,7 @@
                                             <!--end::Avatar-->
                                             <!--begin::User details-->
                                             <div class="d-flex flex-column">
-                                                <a href="" class="text-gray-800 text-hover-primary mb-1">{{$brand->name}}</a>
+                                                <a href="{{route('admin.brand.show',$brand->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$brand->name}}</a>
 
                                             </div>
                                             <!--begin::User details-->

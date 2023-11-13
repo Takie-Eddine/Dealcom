@@ -44,6 +44,8 @@ Route::group([
             Route::get('/all', [SupplierController::class, 'getSuppliersDatatable'])->name('supplier.all');
             Route::get('/create', [SupplierController::class, 'create'])->name('supplier.create');
             Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
+            Route::get('show/{supplier}', [SupplierController::class, 'show'])->name('supplier.show');
+            Route::get('product/{supplier}', [SupplierController::class, 'products'])->name('supplier.product');
             Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
             Route::patch('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
             Route::get('/delete/{id}', [SupplierController::class, 'delete'])->name('supplier.delete');
@@ -57,6 +59,8 @@ Route::group([
             Route::get('/', [BrandController::class, 'index'])->name('brand');
             Route::get('/create', [BrandController::class, 'create'])->name('brand.create');
             Route::post('/store', [BrandController::class, 'store'])->name('brand.store');
+            Route::get('show/{brand}', [BrandController::class, 'show'])->name('brand.show');
+            Route::get('product/{brand}', [BrandController::class, 'products'])->name('brand.product');
             Route::get('/edit/{id}', [BrandController::class, 'edit'])->name('brand.edit');
             Route::patch('/update/{id}', [BrandController::class, 'update'])->name('brand.update');
             Route::get('/delete/{id}', [BrandController::class, 'delete'])->name('brand.delete');
@@ -87,6 +91,7 @@ Route::group([
             Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
             Route::patch('/update/{id}', [ProductController::class, 'update'])->name('product.update');
             Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
+            Route::get('show/{product}', [ProductController::class, 'show'])->name('product.show');
             Route::get('/activate/{id}', [ProductController::class, 'activate'])->name('product.activate');
             Route::get('/delete-image/{id}', [ProductController::class, 'delete_image'])->name('product.deleteimage');
 
