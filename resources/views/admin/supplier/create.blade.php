@@ -295,6 +295,22 @@
                                 </div>
                                 <!--end::Col-->
                             </div>
+                            <div class="row mb-8">
+                                <!--begin::Label-->
+                                <div class="col-xl-3">
+                                    {{-- <label class="fs-6 fw-semibold mt-2 mb-3">
+                                        <span class="required">{{__('master.categories')}}</span>
+                                    </label> --}}
+                                </div>
+
+                                <!--end::Label-->
+                                <!--begin::Col-->
+                                <div class="col-xl-9 fv-row">
+                                    <a href="{{route('admin.category.create')}}" class="btn btn-light-primary btn-sm mb-10">
+                                        <i class="ki-duotone ki-plus fs-2"></i>{{__('master.create new category')}}</a>
+                                </div>
+                                <!--end::Col-->
+                            </div>
 
                         </div>
                         <!--end::Card body-->

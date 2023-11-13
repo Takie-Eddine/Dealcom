@@ -60,7 +60,7 @@ class ProductController extends Controller
         //return($request);
         $request->validate([
             'category' => ['required', Rule::exists('categories','id')],
-            'tags' => ['nullable'],
+            'tags' => ['required'],
             'supplier' => ['required', Rule::exists('suppliers','id')],
             'brand' => ['required', Rule::exists('brands','id')],
             'status' => ['required','in:active,draft,archived'],
@@ -193,7 +193,7 @@ class ProductController extends Controller
 
         $request->validate([
             'category' => ['required', Rule::exists('categories','id')],
-            'tags' => ['nullable'],
+            'tags' => ['required'],
             'supplier' => ['required', Rule::exists('suppliers','id')],
             'brand' => ['required', Rule::exists('brands','id')],
             'status' => ['required','in:active,draft,archived'],
