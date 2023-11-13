@@ -94,8 +94,8 @@
                                     <!--begin::Image input-->
                                     <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{asset("assets/media/svg/avatars/blank.svg")}}')">
                                         <!--begin::Preview existing avatar-->
-                                        @if ($supplier->getFirstMediaUrl('suppliers'))
-                                            <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 75%; background-image: url('{{$supplier->getFirstMediaUrl("suppliers")}}')"></div>
+                                        @if ($supplier->image_url)
+                                            <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 75%; background-image: url('{{$supplier->image_url}}')"></div>
                                         @else
                                             <div class="image-input-wrapper w-125px h-125px bgi-position-center" style="background-size: 75%; background-image: url('{{asset("assets/media/svg/brand-logos/volicity-9.svg")}}')"></div>
                                         @endif

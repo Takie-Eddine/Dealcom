@@ -10,6 +10,7 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Str;
 
 class Category extends Model implements HasMedia
 {
@@ -19,7 +20,7 @@ class Category extends Model implements HasMedia
     public $translatable = ['name','description'];
 
     protected $fillable = [
-        'name', 'parent_id', 'description', 'status', 'slug',
+        'name', 'parent_id', 'description', 'status', 'slug', 'image',
     ];
 
     protected $searchable = [
@@ -67,5 +68,20 @@ class Category extends Model implements HasMedia
 
     public function suppliers(){
         return $this->belongsToMany(Supplier::class,'supplier_categories');
+    }
+
+
+    public function getImageUrlAttribute(){
+
+        if(!$this->image){
+            return asset('assets/media/svg/files/blank-image.svg');
+        }
+
+        if (Str::startsWith($this->image,['http://' , 'https://'])) {
+            return $this->image;
+        }
+
+        return asset('assets/images/category_images/' .$this->image);
+
     }
 }

@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Nicolaslopezj\Searchable\SearchableTrait;
+use Illuminate\Support\Str;
 
 class Supplier extends Model implements HasMedia
 {
@@ -18,7 +19,7 @@ class Supplier extends Model implements HasMedia
     protected $fillable = [
         'name', 'description', 'country', 'city',
         'address', 'postal_code', 'email', 'mobile_phone',
-        'office_phone', 'code', 'status',
+        'office_phone', 'code', 'status', 'image',
     ];
 
     protected $searchable = [
@@ -50,5 +51,19 @@ class Supplier extends Model implements HasMedia
         return $this->belongsToMany(Category::class,'supplier_categories');
     }
 
+
+    public function getImageUrlAttribute(){
+
+        if(!$this->image){
+            return asset('assets/media/svg/files/blank-image.svg');
+        }
+
+        if (Str::startsWith($this->image,['http://' , 'https://'])) {
+            return $this->image;
+        }
+
+        return asset('assets/images/supplier_images/' .$this->image);
+
+    }
 
 }

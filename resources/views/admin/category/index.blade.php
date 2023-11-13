@@ -249,10 +249,10 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="">
                                                     <div class="symbol-label">
-                                                        @if ($category->getFirstMediaUrl('categories'))
-                                                            <img src="{{$category->getFirstMediaUrl('categories')}}" alt="{{$category->name}}" class="w-100" />
+                                                        @if ($category->image_url)
+                                                            <img src="{{$category->image_url}}" alt="{{$category->name}}" class="w-100" />
                                                         @else
-                                                            <img src="{{asset('assets/media/svg/avatars/blank.svg')}}" alt="{{$category->name}}" class="w-100" />
+                                                            <img src="{{asset('assets/media/svg/files/blank-image.svg')}}" alt="{{$category->name}}" class="w-100" />
                                                         @endif
                                                     </div>
                                                 </a>

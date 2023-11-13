@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->char('country',2);
             $table->string('city')->nullable();
+            $table->string('image')->nullable();
             $table->string('address','254');
             $table->string('postal_code')->nullable();
             $table->string('email')->unique();

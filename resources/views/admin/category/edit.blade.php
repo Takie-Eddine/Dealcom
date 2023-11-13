@@ -79,8 +79,8 @@
                             <div class="card-body text-center pt-0">
                                 <!--begin::Image input-->
                                 <!--begin::Image input placeholder-->
-                                @if ($category->getFirstMediaUrl('categories'))
-                                    <style>.image-input-placeholder { background-image: url('{{$category->getFirstMediaUrl("categories")}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{$category->getFirstMediaUrl("categories")}}'); }</style>
+                                @if ($category->image_url)
+                                    <style>.image-input-placeholder { background-image: url('{{$category->image_url}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{$category->image_url}}'); }</style>
                                 @else
                                     <style>.image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image.svg")}}'); } [data-bs-theme="dark"] .image-input-placeholder { background-image: url('{{asset("assets/media/svg/files/blank-image-dark.svg")}}'); }</style>
                                 @endif

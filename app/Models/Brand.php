@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Nicolaslopezj\Searchable\SearchableTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Str;
 
 class Brand extends Model implements HasMedia
 {
@@ -19,7 +20,7 @@ class Brand extends Model implements HasMedia
     protected $fillable = [
         'name', 'description', 'country', 'city',
         'address', 'postal_code', 'email', 'mobile_phone',
-        'office_phone', 'code', 'status',
+        'office_phone', 'code', 'status', 'image',
     ];
 
 
@@ -44,5 +45,23 @@ class Brand extends Model implements HasMedia
 
     public function scopeActive(Builder $builder){
         $builder->where('status','=' ,'active');
+    }
+
+
+    public function getImageUrlAttribute(){
+
+        if(!$this->image){
+            return asset('assets/media/svg/files/blank-image.svg');
+
+        }
+
+        if (Str::startsWith($this->image,['http://' , 'https://'])) {
+            return $this->image;
+        }
+
+        return asset('assets/images/brand_images/' .$this->image);
+
+
+
     }
 }

@@ -62,6 +62,12 @@ class BrandController extends Controller
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
 
+        $file_name = null ;
+
+        if ($photo = $request->file('avatar')) {
+            $file_name = uploadImage($photo, 'brand_images', $request->name);
+        }
+
         $brand = Brand::create([
             'name' => $request->name,
             'code' => $request->code,
@@ -73,11 +79,12 @@ class BrandController extends Controller
             'city' => $request->city,
             'address' => $request->address,
             'postal_code' => $request->postal_code,
+            'image' => $file_name,
         ]);
 
-        if ($photo = $request->file('avatar')) {
-            $brand->addMediaFromRequest('avatar')->toMediaCollection('brands');
-        }
+        // if ($photo = $request->file('avatar')) {
+        //     $brand->addMediaFromRequest('avatar')->toMediaCollection('brands');
+        // }
 
         toastr()->success('Created successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
@@ -118,6 +125,14 @@ class BrandController extends Controller
             'avatar' => ['nullable', 'mimes:jpg,jpeg,png'] ,
         ]);
 
+        if ($photo = $request->file('avatar')) {
+            UnlinkImage('brand_images',$brand->image,$brand);
+            $file_name = uploadImage($photo,'brand_images',$request->name);
+            $brand->update([
+                'image' => $file_name,
+            ]);
+        }
+
         $brand->update([
             'name' => $request->name,
             'code' => $request->code,
@@ -131,9 +146,9 @@ class BrandController extends Controller
             'postal_code' => $request->postal_code,
         ]);
 
-        if ($photo = $request->file('avatar')) {
-            $brand->addMediaFromRequest('avatar')->toMediaCollection('brands');
-        }
+        // if ($photo = $request->file('avatar')) {
+        //     $brand->addMediaFromRequest('avatar')->toMediaCollection('brands');
+        // }
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();

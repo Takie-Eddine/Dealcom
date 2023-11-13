@@ -59,6 +59,12 @@ class SupplierController extends Controller
             'category' => ['required','array','min:1',Rule::exists('categories','id')],
         ]);
 
+        $file_name = null ;
+
+        if ($photo = $request->file('avatar')) {
+            $file_name = uploadImage($photo, 'supplier_images', $request->name);
+        }
+
         $supplier = Supplier::create([
             'name' => $request->name,
             'code' => $request->code,
@@ -70,11 +76,12 @@ class SupplierController extends Controller
             'city' => $request->city,
             'address' => $request->address,
             'postal_code' => $request->postal_code,
+            'image' => $file_name,
         ]);
         $supplier->categories()->sync($request->category);
-        if ($photo = $request->file('avatar')) {
-            $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
-        }
+        // if ($photo = $request->file('avatar')) {
+        //     $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
+        // }
 
         toastr()->success('Created successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
@@ -117,6 +124,15 @@ class SupplierController extends Controller
             'category' => ['required','array','min:1',Rule::exists('categories','id')],
         ]);
 
+        if ($photo = $request->file('avatar')) {
+            UnlinkImage('supplier_images',$supplier->image,$supplier);
+            $file_name = uploadImage($photo,'supplier_images',$request->name);
+
+            $supplier->update([
+                'image' => $file_name,
+            ]);
+        }
+
         $supplier->update([
             'name' => $request->name,
             'code' => $request->code,
@@ -130,9 +146,9 @@ class SupplierController extends Controller
             'postal_code' => $request->postal_code,
         ]);
         $supplier->categories()->sync($request->category);
-        if ($photo = $request->file('avatar')) {
-            $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
-        }
+        // if ($photo = $request->file('avatar')) {
+        //     $supplier->addMediaFromRequest('avatar')->toMediaCollection('suppliers');
+        // }
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();

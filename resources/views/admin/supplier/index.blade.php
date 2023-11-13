@@ -252,10 +252,10 @@
                                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                                 <a href="">
                                                     <div class="symbol-label">
-                                                        @if ($supplier->getFirstMediaUrl('suppliers'))
-                                                            <img src="{{$supplier->getFirstMediaUrl('suppliers')}}" alt="{{$supplier->name}}" class="w-100" />
+                                                        @if ($supplier->image_url)
+                                                            <img src="{{$supplier->image_url}}" alt="{{$supplier->name}}" class="w-100" />
                                                         @else
-                                                            <img src="{{asset('assets/media/svg/avatars/blank.svg')}}" alt="{{$supplier->name}}" class="w-100" />
+                                                            <img src="{{asset('assets/media/svg/files/blank-image.svg')}}" alt="{{$supplier->name}}" class="w-100" />
                                                         @endif
                                                     </div>
                                                 </a>

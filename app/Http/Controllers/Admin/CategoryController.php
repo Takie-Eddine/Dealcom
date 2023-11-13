@@ -42,6 +42,7 @@ class CategoryController extends Controller
             'description_en' => ['nullable','string' , 'min:5'] ,
             'description_ar' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
+            'avatar' => ['nullable', 'mimes:jpg,jpeg,png']
         ]);
 
         $category1 = Category::whereSlug(Str::slug($request->name))->first();
@@ -60,12 +61,19 @@ class CategoryController extends Controller
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
             $translation1  =  array_merge ($translation1, [$localeCode => $request->input("description_".$localeCode)] );
         }
+
+        $file_name = null ;
+
+        if ($photo = $request->file('avatar')) {
+            $file_name = uploadImage($photo, 'category_images', $request->name_en);
+        }
         $category = Category::create([
             'name' => $translation,
             'slug' => Str::slug($request->name_en),
             'parent_id' => $request->category,
             'description' => $translation1,
             'status' =>$request->status,
+            'image' => $file_name,
         ]);
 
         if ($photo = $request->file('avatar')) {
@@ -95,6 +103,7 @@ class CategoryController extends Controller
             'description_en' => ['nullable','string' , 'min:5'] ,
             'description_ar' => ['nullable','string' , 'min:5'] ,
             'status' => ['required' , 'in:active,archived'] ,
+            'avatar' => ['nullable','mimes:jpg,jpeg,png'],
         ]);
 
         $category = Category::findOrFail($id);
@@ -111,6 +120,14 @@ class CategoryController extends Controller
             $translation1  =  array_merge ($translation1, [$localeCode => $request->input("description_".$localeCode)] );
         }
 
+        if ($photo = $request->file('avatar')) {
+            UnlinkImage('category_images',$category->image,$category);
+            $file_name = uploadImage($photo,'category_images',$request->name_en);
+            $category->update([
+                'image' => $file_name,
+            ]);
+        }
+
         $category->update([
             'name' => $translation,
             'slug' => Str::slug($request->name_en),
@@ -119,9 +136,9 @@ class CategoryController extends Controller
             'status' =>$request->status,
         ]);
 
-        if ($photo = $request->file('avatar')) {
-            $category->addMediaFromRequest('avatar')->toMediaCollection('categories');
-        }
+        // if ($photo = $request->file('avatar')) {
+        //     $category->addMediaFromRequest('avatar')->toMediaCollection('categories');
+        // }
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();

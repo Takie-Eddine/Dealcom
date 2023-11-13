@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Nicolaslopezj\Searchable\SearchableTrait;
-use Spatie\Translatable\HasTranslations;
+//use Spatie\Translatable\HasTranslations;
 
 class Tag extends Model
 {
-    use HasFactory, HasTranslations, SearchableTrait;
+    use HasFactory,  SearchableTrait;
 
 
-    public $translatable = ['name'];
+    // public $translatable = ['name'];
 
     protected $fillable = [
         'name', 'slug',
