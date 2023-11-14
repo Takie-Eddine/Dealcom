@@ -70,7 +70,7 @@ class ProductController extends Controller
             'description_ar' => ['required', 'min:10'],
             'price_type' => ['required','in:price_list,on_demande'],
             'price' => ['nullable','numeric', 'between:0,99999999.99'],
-            'sku' => ['required','min:3',Rule::unique('products','code')],
+            'sku' => ['required','min:3',Rule::unique('products','sku')],
             'quantity' => ['nullable','numeric'],
             'terms' => ['nullable','string'],
             //'code' => ['required','min:3',Rule::unique('products','code')],
@@ -85,6 +85,8 @@ class ProductController extends Controller
             'images' => ['required', 'array' ,'min:1' ],
             'featured' => ['required','in:0,1'],
         ]);
+
+
 
         $file_name = null ;
 
@@ -108,7 +110,11 @@ class ProductController extends Controller
         $brand = Brand::findOrFail($request->brand);
 
         $code = $brand->code.'-'.$request->sku.'-'.$supplier->code;
-
+        $product_code = Product::where('code','=',$code)->first();
+        if ($product_code) {
+            toastr()->warning('The code exist', 'Opps', ['timeOut' => 7000]);
+            return redirect()->back();
+        }
         $product = Product::create([
             'brand_id' => $request->brand,
             'supplier_id' => $request->supplier,

@@ -68,7 +68,7 @@
                     <div class="card-header cursor-pointer">
                         <!--begin::Card title-->
                         <div class="card-title m-0">
-                            <h3 class="fw-bold m-0">{{__('admin.supplier details')}}</h3>
+                            <h3 class="fw-bold m-0">{{__('master.supplier details')}}</h3>
                         </div>
                         <!--end::Card title-->
                         <!--begin::Action-->

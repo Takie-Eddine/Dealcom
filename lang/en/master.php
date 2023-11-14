@@ -398,6 +398,7 @@ return [
     'product requested' => 'Product Requested',
     'brand details' => 'Brand Details',
     'view brand' => 'View Brand',
+    'supplier details' => 'Supplier Details',
 
 
 ];

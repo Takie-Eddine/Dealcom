@@ -398,4 +398,5 @@ return [
     'product requested' => 'المنتج مطلوب',
     'brand details' => 'تفاصيل الماركة ',
     'view brand' => 'عرض الماركة',
+    'supplier details' => 'تفاصيل المورد',
 ];
