@@ -57,7 +57,9 @@ class ProductController extends Controller
 
     public function store(Request $request){
 
-        //return($request);
+
+
+
         $request->validate([
             'category' => ['required', Rule::exists('categories','id')],
             'tags' => ['required'],
@@ -163,7 +165,7 @@ class ProductController extends Controller
                 }
             }
 
-            if ($request->options && !($request->options)) {
+            if ($request->options && !in_array(null,array_column($request->options,'attributes'))) {
 
                 foreach ($request->options as $option) {
                     $product->variants()->syncWithoutDetaching($option['attributes']);
@@ -197,6 +199,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id){
 
+        //return $request;
         $request->validate([
             'category' => ['required', Rule::exists('categories','id')],
             'tags' => ['required'],
@@ -227,7 +230,6 @@ class ProductController extends Controller
         ]);
 
         $product = Product::findOrFail($id);
-
 
         if ($photo = $request->file('avatar')) {
             UnlinkImage('product_images',$product->image,$product);
@@ -301,11 +303,10 @@ class ProductController extends Controller
                 }
             }
 
-            if ($request->options && !($request->options)) {
+            if ($request->options && !in_array(null,array_column($request->options,'attributes'))) {
                 foreach ($product->attributes as $attribute) {
-                    $attribute->delete();
 
-                    $product->variants()->delete();
+                    $attribute->delete();
                 }
 
                 foreach ($request->options as $option) {

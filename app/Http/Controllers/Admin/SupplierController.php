@@ -46,7 +46,7 @@ class SupplierController extends Controller
         //return $request ;
         $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'] ,
-            'code' => ['required',  'string', 'min:2', 'max:7'] ,
+            'code' => ['required',  'string', 'min:2', 'max:7', Rule::unique('suppliers','code')] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','mobile_phone')] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','office_phone')] ,
@@ -111,7 +111,7 @@ class SupplierController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:255'] ,
-            'code' => ['required',  'string', 'min:2', 'max:7'] ,
+            'code' => ['required',  'string', 'min:2', 'max:7', Rule::unique('suppliers','code')->ignore($id)] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','mobile_phone')->ignore($id)] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('suppliers','office_phone')->ignore($id)] ,
@@ -218,5 +218,12 @@ class SupplierController extends Controller
     }
 
 
+    public function pricelist(Supplier $supplier){
+
+        $files = $supplier->pricelists()->get();
+
+        return view('admin.supplier.file',compact('files','supplier'));
+
+    }
 
 }

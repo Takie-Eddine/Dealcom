@@ -55,6 +55,10 @@ class Supplier extends Model implements HasMedia
         return $this->hasMany(Product::class);
     }
 
+    public function pricelists(){
+        return $this->hasMany(PriceList::class);
+    }
+
 
     public function getImageUrlAttribute(){
 

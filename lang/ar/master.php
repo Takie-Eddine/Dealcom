@@ -399,4 +399,9 @@ return [
     'brand details' => 'تفاصيل الماركة ',
     'view brand' => 'عرض الماركة',
     'supplier details' => 'تفاصيل المورد',
+    'price lists' => 'قوائم الأسعار',
+    'add price list' => 'إضافة قائمة الأسعار',
+    'edit price list' => 'تعديل قائمة الأسعار',
+    'view price list' => 'عرض قائمة الأسعار',
+    'search price list' => 'البحث عن قائمة الأسعار'
 ];

@@ -81,7 +81,9 @@ class Product extends Model
         return $this->belongsToMany(Attribute::class,'product_variants');
     }
 
-
+    public function lists(){
+        return $this->hasMany(PriceList::class);
+    }
 
     public function getImageUrlAttribute(){
 

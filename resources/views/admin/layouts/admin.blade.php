@@ -9,7 +9,6 @@
 		<link href="{{asset('assets/plugins/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
-
         @if (app() -> getLocale() === 'ar')
             <link href="{{asset('assets/css/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />
         @else
@@ -73,7 +72,6 @@
 		<script>var hostUrl = "{{asset('assets/')}}";</script>
 		<script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
-
 		<!--begin::Vendors Javascript(used for this page only)-->
 
         @stack('script')

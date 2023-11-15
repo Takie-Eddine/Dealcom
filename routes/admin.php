@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SupplierController;
@@ -46,6 +47,7 @@ Route::group([
             Route::post('/store', [SupplierController::class, 'store'])->name('supplier.store');
             Route::get('show/{supplier}', [SupplierController::class, 'show'])->name('supplier.show');
             Route::get('product/{supplier}', [SupplierController::class, 'products'])->name('supplier.product');
+            Route::get('price-list/{supplier}', [SupplierController::class, 'pricelist'])->name('supplier.price-list');
             Route::get('/edit/{id}', [SupplierController::class, 'edit'])->name('supplier.edit');
             Route::patch('/update/{id}', [SupplierController::class, 'update'])->name('supplier.update');
             Route::get('/delete/{id}', [SupplierController::class, 'delete'])->name('supplier.delete');
@@ -104,6 +106,18 @@ Route::group([
             Route::get('/edit/{id}', [AttributeController::class, 'edit'])->name('attribute.edit');
             Route::patch('/update/{id}', [AttributeController::class, 'update'])->name('attribute.update');
             Route::get('/delete/{id}', [AttributeController::class, 'destroy'])->name('attribute.delete');
+        });
+
+
+        Route::group(['prefix'=>'price-list'  ],function(){
+            Route::get('/', [PricelistController::class, 'index'])->name('price-list');
+            Route::get('/create', [PricelistController::class, 'create'])->name('price-list.create');
+            Route::post('/store', [PricelistController::class, 'store'])->name('price-list.store');
+            Route::get('/edit/{id}', [PricelistController::class, 'edit'])->name('price-list.edit');
+            Route::patch('/update/{id}', [PricelistController::class, 'update'])->name('price-list.update');
+            Route::get('/delete/{id}', [PricelistController::class, 'destroy'])->name('price-list.delete');
+            Route::get('/download/{id}', [PricelistController::class, 'download'])->name('price-list.download');
+            Route::get('/activate/{id}', [PricelistController::class, 'activate'])->name('price-list.activate');
         });
 
 

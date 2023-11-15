@@ -50,7 +50,7 @@ class BrandController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:190'] ,
-            'code' => ['required',  'string', 'min:2', 'max:7'] ,
+            'code' => ['required',  'string', 'min:2', 'max:7', Rule::unique('brands','code')] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','mobile_phone')] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','office_phone')] ,
@@ -113,7 +113,7 @@ class BrandController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'min:2', 'max:190'] ,
-            'code' => ['required',  'string', 'min:2', 'max:7'] ,
+            'code' => ['required',  'string', 'min:2', 'max:7', Rule::unique('brands','code')->ignore($id)] ,
             'description' => ['nullable', 'string', 'min:2'] ,
             'phone' => ['required', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','mobile_phone')->ignore($id)] ,
             'office_phone' => ['nullable', 'regex:/^([0-9\s\-\+\(\)]*)$/', Rule::unique('brands','office_phone')->ignore($id)] ,

@@ -100,6 +100,9 @@
                 <a class="nav-link text-active-primary py-5 me-6 {{request()->routeIs('admin.supplier.product') ? 'active' : ''}}" href="{{route('admin.supplier.product',$supplier->id)}}">{{__('master.products')}}</a>
             </li>
             <!--end::Nav item-->
+            <li class="nav-item">
+                <a class="nav-link text-active-primary py-5 me-6 {{request()->routeIs('admin.supplier.price-list') ? 'active' : ''}}" href="{{route('admin.supplier.price-list',$supplier->id)}}">{{__('master.price list')}}</a>
+            </li>
         </ul>
         <!--end::Nav-->
     </div>

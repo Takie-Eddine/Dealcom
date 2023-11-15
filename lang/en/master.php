@@ -399,6 +399,13 @@ return [
     'brand details' => 'Brand Details',
     'view brand' => 'View Brand',
     'supplier details' => 'Supplier Details',
+    'price lists' => 'Price Lists',
+    'add price list' => 'Add Price List',
+    'edit price list' => 'Edit Price List',
+    'view price list' => 'View Price List',
+    'search price list' => 'Search Price List',
+    'upload price list' => 'Upload Price List',
+
 
 
 ];
