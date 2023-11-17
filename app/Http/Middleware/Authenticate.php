@@ -21,7 +21,7 @@ class Authenticate extends Middleware
             //     return route('coach.login');
             // }
 
-            if(FacadesRoute::is(app()->getLocale().'admin/*')){
+            if(FacadesRoute::is(app()->getLocale() . '.admin*')){
                 return route('admin.login');
             }
 

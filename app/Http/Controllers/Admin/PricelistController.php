@@ -56,7 +56,7 @@ class PricelistController extends Controller
     }
 
 
-    public function delete($id){
+    public function destroy($id){
 
         $file = PriceList::findOrFail($id);
 
