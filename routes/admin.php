@@ -78,6 +78,7 @@ Route::group([
             Route::post('/store', [CategoryController::class, 'store'])->name('category.store');
             Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
             Route::patch('/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+            Route::get('show/{category}', [CategoryController::class, 'show'])->name('category.show');
             Route::get('/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
             Route::get('/activate/{id}', [CategoryController::class, 'activate'])->name('category.activate');
 

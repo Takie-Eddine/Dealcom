@@ -16,6 +16,8 @@ class DashboardController extends Controller
         $data['products'] = Product::all();
         $data['users'] = User::all();
         $data['suppliers'] = Supplier::all();
+
+        //return count($data);
         return view('admin.admin',$data);
     }
 

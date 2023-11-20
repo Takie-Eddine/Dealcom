@@ -403,5 +403,6 @@ return [
     'add price list' => 'إضافة قائمة الأسعار',
     'edit price list' => 'تعديل قائمة الأسعار',
     'view price list' => 'عرض قائمة الأسعار',
-    'search price list' => 'البحث عن قائمة الأسعار'
+    'search price list' => 'البحث عن قائمة الأسعار',
+    'view product' => 'عرض المنتج',
 ];

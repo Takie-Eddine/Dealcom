@@ -405,6 +405,7 @@ return [
     'view price list' => 'View Price List',
     'search price list' => 'Search Price List',
     'upload price list' => 'Upload Price List',
+    'view product' => 'View Product',
 
 
 

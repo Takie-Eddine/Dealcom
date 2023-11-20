@@ -252,7 +252,7 @@
                     </div>
                     <!--end::Col-->
                     <!--begin::Col-->
-                    <div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
+                    {{-- <div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
                         <!--begin::Chart widget 3-->
                         <div class="card card-flush overflow-hidden h-md-100">
                             <!--begin::Header-->
@@ -367,7 +367,7 @@
                             <!--end::Card body-->
                         </div>
                         <!--end::Chart widget 3-->
-                    </div>
+                    </div> --}}
                     <!--end::Col-->
                 </div>
                 <!--end::Row-->
