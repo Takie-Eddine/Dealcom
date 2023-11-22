@@ -307,7 +307,7 @@
 
                         <!--end::Section-->
                         <!--begin::latest instagram-->
-                        <div class="">
+                        <div class="mb-17">
                             <!--begin::Section-->
                             <div class="m-0">
                                 <!--begin::Content-->
