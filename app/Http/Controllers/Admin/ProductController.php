@@ -79,9 +79,9 @@ class ProductController extends Controller
             'delivery' => ['nullable','numeric'],
             'avatar' => ['nullable','mimes:jpg,jpeg,png'],
             'options' => [
-                    '*.attributes'=> ['required', Rule::exists('attributes','id')],
+                    '*.attributes'=> ['nullable', Rule::exists('attributes','id')],
                     '*.variants'=> [
-                                                        '*.variant' => ['required', 'string'],
+                                                        '*.variant' => ['nullable', 'string'],
                                                         ],
                 ],
             'images' => ['required', 'array' ,'min:1' ],
@@ -221,9 +221,9 @@ class ProductController extends Controller
             'delivery' => ['nullable','numeric'],
             'avatar' => ['nullable','mimes:jpg,jpeg,png'],
             'options' => [
-                    '*.attributes'=> ['required', Rule::exists('attributes','id')],
+                    '*.attributes'=> ['nullable', Rule::exists('attributes','id')],
                     '*.variants'=> [
-                                                        '*.variant' => ['required', 'string'],
+                                                        '*.variant' => ['nullable', 'string'],
                                                         ],
                 ],
             'images' => ['nullable', 'array' ,'min:1' ],
