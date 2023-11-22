@@ -95,6 +95,8 @@ Route::group([
             Route::patch('/update/{id}', [ProductController::class, 'update'])->name('product.update');
             Route::get('/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
             Route::get('show/{product}', [ProductController::class, 'show'])->name('product.show');
+            Route::get('/approve/{id}', [ProductController::class, 'approve'])->name('product.approve');
+            Route::get('/feature/{id}', [ProductController::class, 'feature'])->name('product.feature');
             Route::get('/activate/{id}', [ProductController::class, 'activate'])->name('product.activate');
             Route::get('/delete-image/{id}', [ProductController::class, 'delete_image'])->name('product.deleteimage');
 

@@ -87,28 +87,27 @@
                                             <!--begin::Title-->
                                             <a href="#" class="fs-2 text-dark fw-bold text-hover-primary text-dark lh-base">{{$product->name}}
                                                 @if ($product->status == 'active')
-                                                    <span class="badge badge-light-success fw-bold my-2">{{$product->status}}</span>
-
+                                                    <a href="{{route('admin.product.activate',$product->id)}}"><span class="badge badge-light-success fw-bold my-2">{{$product->status}}</span></a>
                                                 @endif
+
                                                 @if ($product->status == 'draft')
-                                                    <span class="badge badge-light-warning fw-bold my-2">{{$product->status}}</span>
-
+                                                    <a href="{{route('admin.product.activate',$product->id)}}"><span class="badge badge-light-warning fw-bold my-2">{{$product->status}}</span></a>
                                                 @endif
-                                                @if ($product->status == 'archived')
-                                                    <span class="badge badge-light-danger fw-bold my-2">{{$product->status}}</span>
 
+                                                @if ($product->status == 'archived')
+                                                    <a href="{{route('admin.product.activate',$product->id)}}"><span class="badge badge-light-danger fw-bold my-2">{{$product->status}}</span></a>
                                                 @endif
 
                                                 @if ($product->approved == 0)
-                                                    <span class="badge badge-light-danger fw-bold my-2">{{__('master.not approved')}}</span>
+                                                    <a href="{{route('admin.product.approve',$product->id)}}"><span class="badge badge-light-danger fw-bold my-2">{{__('master.not approved')}}</span></a>
                                                 @else
-                                                    <span class="badge badge-light-success fw-bold my-2">{{__('master.approved')}}</span>
+                                                    <a href="{{route('admin.product.approve',$product->id)}}"><span class="badge badge-light-success fw-bold my-2">{{__('master.approved')}}</span></a>
                                                 @endif
 
                                                 @if ($product->featured == 0)
-                                                    <span class="badge badge-light-danger fw-bold my-2">{{__('master.not featured')}}</span>
+                                                    <a href="{{route('admin.product.feature',$product->id)}}"><span class="badge badge-light-danger fw-bold my-2">{{__('master.not featured')}}</span></a>
                                                 @else
-                                                    <span class="badge badge-light-success fw-bold my-2">{{__('master.featured')}}</span>
+                                                    <a href="{{route('admin.product.feature',$product->id)}}"><span class="badge badge-light-success fw-bold my-2">{{__('master.featured')}}</span></a>
                                                 @endif
                                                 <br /><h6>{{$product->code}}</h6>
                                             </a>

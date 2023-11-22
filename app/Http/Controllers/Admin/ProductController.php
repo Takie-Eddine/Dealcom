@@ -342,4 +342,75 @@ class ProductController extends Controller
     }
 
 
+
+    public function approve($id){
+
+        $product = Product::findOrFail($id);
+
+        if ($product->approved == 0) {
+            $product->update([
+                'approved' => 1
+            ]);
+        }else{
+            $product->update([
+                'approved' => 0
+            ]);
+        }
+
+        toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
+        return redirect()->back();
+    }
+
+
+    public function feature($id){
+
+        $product = Product::findOrFail($id);
+
+        if ($product->featured == 0) {
+            $product->update([
+                'featured' => 1
+            ]);
+        }else{
+            $product->update([
+                'featured' => 0
+            ]);
+        }
+        toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
+        return redirect()->back();
+    }
+
+
+    public function activate($id){
+
+        $product = Product::findOrFail($id);
+
+        if ($product->status == 'active') {
+            $product->update([
+                'status' => 'draft',
+            ]);
+
+            toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
+            return redirect()->back();
+        }
+
+        if ($product->status == 'draft') {
+            $product->update([
+                'status' => 'archived',
+            ]);
+            toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
+            return redirect()->back();
+        };
+
+        if ($product->status == 'archived') {
+            $product->update([
+                'status' => 'active',
+            ]);
+            toastr()->success('Changed successfully!', 'Congrats', ['timeOut' => 6000]);
+            return redirect()->back();
+        };
+
+
+    }
+
+
 }
