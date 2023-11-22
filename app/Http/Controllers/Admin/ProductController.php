@@ -88,14 +88,6 @@ class ProductController extends Controller
             'featured' => ['required','in:0,1'],
         ]);
 
-
-
-        $file_name = null ;
-
-        if ($photo = $request->file('avatar')) {
-            $file_name = uploadImage($photo, 'product_images', $request->product_en);
-        }
-
         $translation = [] ;
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
@@ -109,14 +101,24 @@ class ProductController extends Controller
         }
 
         $supplier = Supplier::findOrFail($request->supplier);
+
         $brand = Brand::findOrFail($request->brand);
 
         $code = $brand->code.'-'.$request->sku.'-'.$supplier->code;
+
         $product_code = Product::where('code','=',$code)->first();
+
         if ($product_code) {
             toastr()->warning('The code exist', 'Opps', ['timeOut' => 7000]);
             return redirect()->back();
         }
+
+        $file_name = null ;
+
+        if ($photo = $request->file('avatar')) {
+            $file_name = uploadImage($photo, 'product_images', $code);
+        }
+
         $product = Product::create([
             'brand_id' => $request->brand,
             'supplier_id' => $request->supplier,
@@ -231,13 +233,7 @@ class ProductController extends Controller
 
         $product = Product::findOrFail($id);
 
-        if ($photo = $request->file('avatar')) {
-            UnlinkImage('product_images',$product->image,$product);
-            $file_name = uploadImage($photo,'product_images',$request->product_en);
-            $product->update([
-                'image' => $file_name,
-            ]);
-        }
+        //return $product->image ;
         $translation = [] ;
 
         foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
@@ -254,6 +250,14 @@ class ProductController extends Controller
         $brand = Brand::findOrFail($request->brand);
 
         $code = $brand->code.'-'.$request->sku.'-'.$supplier->code;
+
+        if ($photo = $request->file('avatar')) {
+            UnlinkImage('product_images',$product->image,$product);
+            $file_name = uploadImage($photo,'product_images',$code);
+            $product->update([
+                'image' => $file_name,
+            ]);
+        }
 
         $product->update([
             'brand_id' => $request->brand,

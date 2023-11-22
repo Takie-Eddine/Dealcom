@@ -25,7 +25,7 @@ if (!function_exists('uploadImage')) {
 
         function UnlinkImage($folder, $name, $value){
             if(File::exists('assets/images/'.$folder.'/'.$name) && $name) {
-                unlink('images/'.$folder.'/'.$name);
+                unlink('assets/images/'.$folder.'/'.$name);
                 $name = null ;
                 $value->save();
             }
