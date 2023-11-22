@@ -352,6 +352,27 @@
                             <!--begin::Row-->
                         </div>
                         <!--end::latest instagram-->
+                        <div class="">
+                            <!--begin::Section-->
+                            <div class="m-0">
+                                <!--begin::Content-->
+                                <div class="d-flex flex-stack">
+                                    <!--begin::Title-->
+                                    <h3 class="text-dark"></h3>
+                                    <!--end::Title-->
+                                    <!--begin::Link-->
+                                    <div >
+                                        <a href="{{route('admin.product.edit',$product->id)}}" class="btn btn-light-primary">{{__('master.edit')}}</a>
+                                        <a href="{{route('admin.product.delete',$product->id)}}" class="btn btn-light-danger">{{__('master.delete')}}</a>
+                                    </div>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Content-->
+                                <!--begin::Separator-->
+                                <!--end::Separator-->
+                            </div>
+                            <!--end::Section-->
+                        </div>
                     </div>
                     <!--end::Body-->
                 </div>
