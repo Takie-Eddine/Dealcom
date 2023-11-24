@@ -417,4 +417,17 @@ class ProductController extends Controller
     }
 
 
+
+    public function delete($id){
+        $product = Product::findOrFail($id);
+
+        $product->delete();
+
+
+        toastr()->success('Deleted successfully!', 'Congrats', ['timeOut' => 6000]);
+
+        return redirect()->back();
+    }
+
+
 }
