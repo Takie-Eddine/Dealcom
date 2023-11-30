@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -125,12 +126,19 @@ Route::group([
 
 
         Route::group(['prefix'=>'slider'  ],function(){
-            Route::get('/', [AttributeController::class, 'index'])->name('slider');
-            Route::get('/create', [AttributeController::class, 'create'])->name('slider.create');
-            Route::post('/store', [AttributeController::class, 'store'])->name('slider.store');
-            Route::get('/edit/{id}', [AttributeController::class, 'edit'])->name('slider.edit');
-            Route::patch('/update/{id}', [AttributeController::class, 'update'])->name('slider.update');
-            Route::get('/delete/{id}', [AttributeController::class, 'destroy'])->name('slider.delete');
+            Route::get('/', [SliderController::class, 'index'])->name('slider');
+            Route::get('/create', [SliderController::class, 'create'])->name('slider.create');
+            Route::post('/store', [SliderController::class, 'store'])->name('slider.store');
+            Route::get('/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+            Route::patch('/update/{id}', [SliderController::class, 'update'])->name('slider.update');
+            Route::get('/delete/{id}', [SliderController::class, 'destroy'])->name('slider.delete');
+        });
+
+        Route::group(['prefix'=>'vedio'  ],function(){
+            Route::get('/', [SliderController::class, 'vedio'])->name('vedio');
+            Route::get('/create', [SliderController::class, 'createvedio'])->name('vedio.create');
+            Route::post('/store', [SliderController::class, 'storevedio'])->name('vedio.store');
+            Route::get('/delete/{id}', [SliderController::class, 'deletevedio'])->name('vedio.delete');
         });
 
 

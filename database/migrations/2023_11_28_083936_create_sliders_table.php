@@ -14,7 +14,10 @@ return new class extends Migration
         Schema::create('sliders', function (Blueprint $table) {
             $table->id();
             $table->string('name',254);
-            $table->string('position',254);
+            $table->enum('position',['top','center','bottom']);
+            $table->enum('page',['home','category','product']);
+            $table->string('image',254);
+            $table->string('link',254);
             $table->enum('status',['active','draft'])->default('draft');
             $table->char('locale',4)->default('en');
             $table->timestamps();

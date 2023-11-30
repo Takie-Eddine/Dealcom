@@ -18,7 +18,7 @@
                 <div class="col-lg-11">
                     <div class="slider-box-wrap">
                         <div class="slider-activation-one axil-slick-dots">
-                            <div class="single-slide slick-slide">
+                            {{-- <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
                                     <h2 class="fw-bold">ديلكوم</h2>
                                     <p class="lead text-dark">منصة متاجر للتجارة الإلكترونية ، ابدأ تجارتك
@@ -28,21 +28,19 @@
                                 <div class="main-slider-thumb">
                                     <img src="https://via.placeholder.com/500x300" alt="Product">
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
-                                    <h2 class="fw-bold"> سلايد التاني ديلكوم</h2>
-                                    <p class="lead text-dark">منصة متاجر للتجارة الإلكترونية ، ابدأ تجارتك
-                                        الإلكترونية و أمتلك
-                                        موقع و تطبيق متجر الكتروني خاص بك</p>
+                                    <h2 class="fw-bold"> {{$vedio->title}}</h2>
+                                    <p class="lead text-dark"> {{$vedio->sub_title}} </p>
                                 </div>
 
 
                                 <div class="main-slider-thumb">
                                     <div class="video-banner">
-                                        <img src="https://via.placeholder.com/500x300" alt="Product">
+                                        <img src="{{$vedio->image_url}}" alt="Product">
                                         <div class="popup-video-icon">
-                                            <a href="https://www.youtube.com/watch?v=FkUn86bH34M"
+                                            <a href="{{$vedio->link}}"
                                                 class="popup-youtube video-icon">
                                                 <i class="fas fa-play"></i>
                                             </a>
@@ -50,18 +48,18 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="single-slide slick-slide">
+                            {{-- <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
                                     <h2 class="fw-bold"> سلايد ثالث ديلكوم</h2>
                                     <p class="lead text-dark">منصة متاجر للتجارة الإلكترونية ، ابدأ تجارتك
-                                        الإلكترونية و أمتلك
-                                        موقع و تطبيق متجر الكتروني خاص بك</p>
+                                            الإلكترونية و أمتلك
+                                            موقع و تطبيق متجر الكتروني خاص بك</p>
                                 </div>
-                                <div class="main-slider-thumb">
-                                    <img src="https://via.placeholder.com/500x300" alt="Product">
+                                <div class="">
+                                    <img src="" alt="Product">
                                 </div>
-                            </div>
+                            </div> --}}
+
 
                         </div>
                     </div>
@@ -79,15 +77,23 @@
         <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
+                    @forelse ($sliders as $slider)
+                        @if ($slider->position == 'center')
+                            <div class="carousel-item active">
+                                <img src="{{$slider->image_url}}" class="d-block w-100" alt="...">
+                            </div>
+                        @endif
+
+                    @empty
+
+                    @endforelse
+
+                    {{-- <div class="carousel-item">
                         <img src="https://via.placeholder.com/800x200" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="https://via.placeholder.com/800x200" class="d-block w-100" alt="...">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="https://via.placeholder.com/800x200" class="d-block w-100" alt="...">
-                    </div>
+                    </div> --}}
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
                     data-bs-slide="prev">

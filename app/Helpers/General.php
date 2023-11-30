@@ -31,4 +31,13 @@ if (!function_exists('uploadImage')) {
             }
 
         }
+
+
+        function uploadSlider($photo, $folder, $name)
+        {
+            $file_name = Str::slug($name).".".$photo->getClientOriginalExtension();
+                $path = public_path('assets/images/'.$folder.'/' .$file_name);
+                Image::make($photo->getRealPath())->save($path);
+                return $file_name;
+        }
     }

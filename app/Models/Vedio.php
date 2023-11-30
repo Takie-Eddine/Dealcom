@@ -7,24 +7,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-class Slider extends Model
+class Vedio extends Model
 {
     use HasFactory;
 
 
-
     protected $fillable = [
-        'name', 'status', 'locale', 'position',
-        'image', 'link', 'page'
+        'title', 'sub_title', 'image', 'link',
+        'status',
     ];
 
     public function scopeActive(Builder $builder){
         $builder->where('status' , '=' , 'active');
     }
 
-    public function scopeHome(Builder $builder){
-        $builder->where('page' , '=' , 'home');
-    }
+
 
 
     public function getImageUrlAttribute(){
