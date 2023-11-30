@@ -84,4 +84,8 @@ class Category extends Model implements HasMedia
         return asset('assets/images/category_images/' .$this->image);
 
     }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
 }

@@ -40,6 +40,9 @@ class Product extends Model
     public function scopeActive(Builder $builder){
         $builder->where('status' , '=' , 'active');
     }
+    public function scopeFeatured(Builder $builder){
+        $builder->where('featured' , '=' , 1);
+    }
 
 
     // public function getApproved()

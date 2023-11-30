@@ -124,6 +124,15 @@ Route::group([
         });
 
 
+        Route::group(['prefix'=>'slider'  ],function(){
+            Route::get('/', [AttributeController::class, 'index'])->name('slider');
+            Route::get('/create', [AttributeController::class, 'create'])->name('slider.create');
+            Route::post('/store', [AttributeController::class, 'store'])->name('slider.store');
+            Route::get('/edit/{id}', [AttributeController::class, 'edit'])->name('slider.edit');
+            Route::patch('/update/{id}', [AttributeController::class, 'update'])->name('slider.update');
+            Route::get('/delete/{id}', [AttributeController::class, 'destroy'])->name('slider.delete');
+        });
+
 
 
     });

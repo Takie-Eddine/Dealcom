@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Home\CategoryController;
+use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -23,9 +26,16 @@ Route::group([
 ], function () {
 
 
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('index');
+    Route::get('/',  [HomeController::class, 'index'])->name('index');
+
+    Route::group(['prefix'=>'category'  ],function(){
+        Route::get('/', [CategoryController::class, 'index'])->name('category');
+        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    });
+    Route::group(['prefix'=>'product'  ],function(){
+        Route::get('/', [ProductController::class, 'index'])->name('product');
+        Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
+    });
 
 
 
