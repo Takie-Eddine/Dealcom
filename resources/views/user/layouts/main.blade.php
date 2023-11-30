@@ -38,7 +38,10 @@
 
                                 <div class="main-slider-thumb">
                                     <div class="video-banner">
-                                        <img src="{{$vedio->image_url}}" alt="Product">
+                                        @if ($vedio)
+                                            <img src="{{$vedio->image_url}}" alt="Product">
+                                        @endif
+
                                         <div class="popup-video-icon">
                                             <a href="{{$vedio->link ?? ''}}"
                                                 class="popup-youtube video-icon">
