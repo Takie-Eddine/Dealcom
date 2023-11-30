@@ -31,8 +31,8 @@
                             </div> --}}
                             <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
-                                    <h2 class="fw-bold"> {{$vedio->title}}</h2>
-                                    <p class="lead text-dark"> {{$vedio->sub_title}} </p>
+                                    <h2 class="fw-bold"> {{$vedio->title ?? ''}}</h2>
+                                    <p class="lead text-dark"> {{$vedio->sub_title ?? ''}} </p>
                                 </div>
 
 
@@ -40,7 +40,7 @@
                                     <div class="video-banner">
                                         <img src="{{$vedio->image_url}}" alt="Product">
                                         <div class="popup-video-icon">
-                                            <a href="{{$vedio->link}}"
+                                            <a href="{{$vedio->link ?? ''}}"
                                                 class="popup-youtube video-icon">
                                                 <i class="fas fa-play"></i>
                                             </a>
