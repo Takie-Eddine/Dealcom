@@ -30,7 +30,7 @@ class SliderController extends Controller
             'name' => ['required'],
             'position' => ['required','in:top,center,bottom'],
             'image' => ['required', 'mimes:jpg,jpeg,png,video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi'],
-            'link' => ['required','url'],
+            'link' => ['nullable','url'],
             'status' => ['required','in:active,draft'],
             'locale' => ['required','in:en,ar'],
             'page' => ['required','in:home,product,category'],
@@ -66,7 +66,7 @@ class SliderController extends Controller
             'name' => ['required'],
             'position' => ['required','in:top,center,bottom'],
             'image' => ['nullable', 'mimes:jpg,jpeg,png,video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi'],
-            'link' => ['required','url'],
+            'link' => ['nullable','url'],
             'status' => ['required','in:active,draft'],
             'locale' => ['required','in:en,ar'],
             'page' => ['required','in:home,product,category'],
@@ -122,7 +122,7 @@ class SliderController extends Controller
         ]);
         $slidernam = null;
         if ($request->has('image')) {
-            $slidername = uploadSlider($request->image, 'slider_images', $request->title);
+            $slidername = uploadSlider($request->image, 'video_images', $request->title);
         }
 
         $vedio = Vedio::create([
@@ -136,6 +136,38 @@ class SliderController extends Controller
         toastr()->success('Created successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
 
+    }
+
+
+    public function editvedio($id){
+
+        $video = Vedio::findOrFail($id);
+        return view('admin.vedio.edit',compact('video'));
+    }
+
+
+
+    public function updatevedio(Request $request, $id){
+        $video = Vedio::findOrFail($id);
+        $request->validate([
+            'title' => ['required'],
+            'sub_title' => ['required'],
+            'image' => ['nullable', 'mimes:jpg,jpeg,png,video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi'],
+            'link' => ['required','url'],
+            'status' => ['required','in:active,draft'],
+        ]);
+
+        if ($request->image) {
+            UnlinkImage('video_images',$video->image,$video);
+            $slidername = uploadSlider($request->image, 'video_images', $request->name);
+
+            $request->request->add(['image' => $slidername]);
+        }
+
+
+        $video->update($request->except('_token'));
+        toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
+        return redirect()->back();
     }
 
 

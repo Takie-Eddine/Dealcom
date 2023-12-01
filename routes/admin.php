@@ -134,10 +134,12 @@ Route::group([
             Route::get('/delete/{id}', [SliderController::class, 'destroy'])->name('slider.delete');
         });
 
-        Route::group(['prefix'=>'vedio'  ],function(){
+        Route::group(['prefix'=>'video'  ],function(){
             Route::get('/', [SliderController::class, 'vedio'])->name('vedio');
             Route::get('/create', [SliderController::class, 'createvedio'])->name('vedio.create');
             Route::post('/store', [SliderController::class, 'storevedio'])->name('vedio.store');
+            Route::get('/edit/{id}', [SliderController::class, 'editvedio'])->name('vedio.edit');
+            Route::patch('/update/{id}', [SliderController::class, 'updatevedio'])->name('vedio.update');
             Route::get('/delete/{id}', [SliderController::class, 'deletevedio'])->name('vedio.delete');
         });
 
