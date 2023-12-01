@@ -118,7 +118,7 @@
                             <div class="row mb-8">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.link')}}</span></div>
+                                    <div class="fs-6 fw-semibold mt-2 mb-3"><span class="">{{__('master.link')}}</span></div>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
