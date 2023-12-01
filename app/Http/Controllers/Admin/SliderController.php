@@ -73,15 +73,19 @@ class SliderController extends Controller
         ]);
 
         $slider = Slider::findOrFail($id);
+
         if ($request->image) {
+
             UnlinkImage('slider_images',$slider->image,$slider);
             $slidername = uploadSlider($request->image, 'slider_images', $request->name);
 
-            $request->request->add(['image' => $slidername]);
+            $slider->update([
+                'image' => $slidername,
+            ]);
         }
 
 
-        $slider->update($request->except('_token'));
+        $slider->update($request->except('_token','image'));
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
