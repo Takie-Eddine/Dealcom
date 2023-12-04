@@ -25,7 +25,7 @@
                         <ul class="mainmenu me-5">
 
                             <li><a class="me-5 active" href="{{route('index')}}">الرئيسية</a></li>
-                            <li><a href="contact.html">الفئات</a></li>
+                            <li><a href="{{route('category')}}">الفئات</a></li>
                             <li><a href="contact.html">مقالات</a></li>
                             <li><a href="contact.html">حول ديلكوم</a></li>
                             <li><a href="contact.html">تواصل معنا</a></li>

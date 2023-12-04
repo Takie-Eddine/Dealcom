@@ -430,4 +430,8 @@ return [
     'search vedio' => 'البحث عن فيديو',
     'title' => 'العنوان',
     'sub title' => 'العنوان الفرعي',
+    'content' => 'المحتوى',
+    'add content' => 'اضافة محتوى',
+    'edit content' => 'تعديل محتوى',
+    'search content' => 'البحث عن محتوى',
 ];

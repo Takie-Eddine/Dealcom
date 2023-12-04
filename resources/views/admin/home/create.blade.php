@@ -1,7 +1,7 @@
 @extends('admin.layouts.admin')
 
 
-@section('title', 'Add Slider')
+@section('title', 'Add Content')
 
 
 @push('style')
@@ -20,7 +20,7 @@
                 <!--begin::Page title-->
                 <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
                     <!--begin::Title-->
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{__('master.vedio')}}</h1>
+                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">{{__('master.content')}}</h1>
                     <!--end::Title-->
                     <!--begin::Breadcrumb-->
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
@@ -35,7 +35,7 @@
                         </li>
                         <!--end::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="{{route('admin.vedio')}}" class="text-muted text-hover-primary">{{__('master.vedios')}}</a>
+                            <a href="{{route('admin.content')}}" class="text-muted text-hover-primary">{{__('master.content')}}</a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->
@@ -43,7 +43,7 @@
                             <span class="bullet bg-gray-400 w-5px h-2px"></span>
                         </li>
                         <!--begin::Item-->
-                        <li class="breadcrumb-item text-muted">{{__('master.add vedio')}}</li>
+                        <li class="breadcrumb-item text-muted">{{__('master.add content')}}</li>
                         <!--end::Item-->
                     </ul>
                     <!--end::Breadcrumb-->
@@ -62,7 +62,7 @@
                     <!--begin::Card header-->
                     <div class="card-header">
                         <!--begin::Card title-->
-                        <div class="card-title fs-3 fw-bold">{{__('master.add vedio')}}</div>
+                        <div class="card-title fs-3 fw-bold">{{__('master.add content')}}</div>
                         <!--end::Card title-->
                     </div>
                     @if ($errors->any())
@@ -77,7 +77,7 @@
                     @endif
                     <!--end::Card header-->
                     <!--begin::Form-->
-                    <form class="form" action="{{route('admin.vedio.store')}}" method="POST" enctype="multipart/form-data">
+                    <form class="form" action="{{route('admin.content.store')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Card body-->
                         <div class="card-body p-9">
@@ -85,7 +85,7 @@
                             <div class="row mb-5">
                                 <!--begin::Col-->
                                 <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3">{{__('master.thumbnail')}}</div>
+                                    <div class="fs-6 fw-semibold mt-2 mb-3">{{__('master.content')}}</div>
                                 </div>
                                 <!--end::Col-->
                                 <!--begin::Col-->
@@ -94,52 +94,49 @@
                                     <input type="file" class="form-control" name="image">
                                     <!--end::Image input-->
                                     <!--begin::Hint-->
-                                    <div class="form-text">{{__('master.allowed')}}.</div>
+                                    <div class="form-text">{{__('master.content')}}.</div>
                                     <!--end::Hint-->
                                 </div>
                                 <!--end::Col-->
                             </div>
                             <!--end::Row-->
                             <!--begin::Row-->
-                            <div class="row mb-8">
-                                <!--begin::Col-->
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.title')}}</span></div>
+                            @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                <div class="row mb-8">
+                                    <!--begin::Col-->
+                                    <div class="col-xl-3">
+                                        <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.title')}}({{$localeCode}})</span></div>
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-xl-9 fv-row">
+                                        <input type="text" class="form-control form-control-solid" name="title_{{$localeCode}}" value="{{old('title_'.$localeCode)}}" placeholder="{{__('master.title')}}" />
+                                    </div>
                                 </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-9 fv-row">
-                                    <input type="text" class="form-control form-control-solid" name="title" value="{{old('title')}}" placeholder="{{__('master.title')}}" />
-                                </div>
-                            </div>
+                            @empty
+                            @endforelse
                             <!--end::Row-->
                             <!--begin::Row-->
-                            <div class="row mb-8">
-                                <!--begin::Col-->
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.sub title')}}</span></div>
+                            @forelse (LaravelLocalization::getSupportedLocales() as $localeCode => $properties )
+                                <div class="row mb-8">
+                                    <!--begin::Col-->
+                                    <div class="col-xl-3">
+                                        <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.sub title')}}({{$localeCode}})</span></div>
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-xl-9 fv-row">
+                                        <textarea  class="kt_docs_ckeditor_classic{{$localeCode}}" name="sub_title_{{$localeCode}}" value="" placeholder="{{__('master.sub title')}}" >
+                                            {!!old('sub_title_'.$localeCode)!!}
+                                        </textarea>
+                                    </div>
                                 </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-9 fv-row">
-                                    <input type="text" class="form-control form-control-solid" name="sub_title" value="{{old('sub_title')}}" placeholder="{{__('master.sub title')}}" />
-                                </div>
-                            </div>
+                            @empty
+                            @endforelse
                             <!--end::Row-->
-                            <!--begin::Row-->
+
+
                             <div class="row mb-8">
-                                <!--begin::Col-->
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.link')}}</span></div>
-                                </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-xl-9 fv-row">
-                                    <input type="text" class="form-control form-control-solid" name="link" value="{{old('link')}}" placeholder="{{__('master.link')}}" />
-                                </div>
-                            </div>
-                            <!--end::Row-->
-                            {{-- <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">
                                     <label class="fs-6 fw-semibold mt-2 mb-3">
@@ -179,7 +176,7 @@
                                 </div>
                                 <!--end::Col-->
                             </div>
-                            <div class="row mb-8">
+                            {{-- <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">
                                     <label class="fs-6 fw-semibold mt-2 mb-3">
@@ -243,4 +240,26 @@
 
 @push('script')
 <script src="{{asset('assets/js/custom/apps/projects/settings/settings.js')}}"></script>
+<script src="{{asset('assets/plugins/custom/ckeditor/ckeditor-classic.bundle.js')}}"></script>
+    <script src="{{asset('assets/plugins/custom/formrepeater/formrepeater.bundle.js')}}"></script>
+    <script>
+        ClassicEditor
+        .create(document.querySelector('.kt_docs_ckeditor_classicar'))
+        .then(editor => {
+            // console.log(editor);
+        })
+        .catch(error => {
+            // console.error(error);
+        });
+    </script>
+        <script>
+            ClassicEditor
+            .create(document.querySelector('.kt_docs_ckeditor_classicen'))
+            .then(editor => {
+                // console.log(editor);
+            })
+            .catch(error => {
+                // console.error(error);
+            });
+        </script>
 @endpush

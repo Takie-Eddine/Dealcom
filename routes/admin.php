@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\HomeManageController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -143,6 +144,15 @@ Route::group([
             Route::get('/delete/{id}', [SliderController::class, 'deletevedio'])->name('vedio.delete');
         });
 
+
+        Route::group(['prefix'=>'content'  ],function(){
+            Route::get('/', [HomeManageController::class, 'index'])->name('content');
+            Route::get('/create', [HomeManageController::class, 'create'])->name('content.create');
+            Route::post('/store', [HomeManageController::class, 'store'])->name('content.store');
+            Route::get('/edit/{id}', [HomeManageController::class, 'edit'])->name('content.edit');
+            Route::patch('/update/{id}', [HomeManageController::class, 'update'])->name('content.update');
+            Route::get('/delete/{id}', [HomeManageController::class, 'destroy'])->name('content.delete');
+        });
 
 
     });

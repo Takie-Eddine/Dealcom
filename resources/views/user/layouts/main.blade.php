@@ -124,7 +124,7 @@
                     <h3>التصنيفات</h3>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="{{route('category')}}">عرض الكل</a>
+                    <a href="{{route('product')}}">عرض الكل</a>
                 </div>
             </div>
         </div>
@@ -222,13 +222,13 @@
 
                         </div>
                         <div class="row row--15 isotope-list">
-                            @forelse ($categories as $category)
+                            @forelse ($products as $product)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product all">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
                                             <a href="product-details.html">
                                                 <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                    src="{{asset('frontend/assets/images/product/nft/product-15.png')}}" alt="Product Images">
+                                                    src="{{$product->image_url}}" width="630" height="630" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
@@ -239,7 +239,7 @@
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="product-details.html">سيارة</a>
+                                                <h5 class="title"><a href="product-details.html">{{$product->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -252,12 +252,9 @@
                                                     </span>
 
                                                     <a class="d-block" href="product-details.html" style="color: #3ec0c2;
-                                                        ">اسم الشركة</a>
+                                                        ">{{$product->brand->name}}</a>
 
-                                                    <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                                        في
-                                                        نفس
-                                                        المساحة، لقد تم توليد
+                                                    <p class="product-text"{{$product->description}}
                                                     </p>
                                                 </div>
                                             </div>
@@ -684,23 +681,21 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 order-lg-2">
                     <div class="about-thumbnail">
-                        <img src="{{asset('frontend/assets/images/about/about-03.png')}}" alt="about">
+                        @if ($content)
+                            <img src="{{$content->image_url}}" alt="about">
+                        @endif
                     </div>
                 </div>
                 <div class="col-lg-7 order-lg-1">
                     <div class="about-content content-left">
-                        <h4 class="title">لماذا نحن ؟</h4>
-                        <p class="lead text-dark">إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد النص العربى
-                            زيادة عدد
-                            الفقرات كما
-                            تريد، النص لن يبدو مقسما ولا يحوي أخطاء لغوية، مولد النص العربى مفيد لمصممي المواقع على
-                            وجه الخصوص، حيث يحتاج العميل فى كثير من الأحيان أن يطلع على صورة حقيقية لتصميم الموقع.
-                            ومن هنا وجب على المصمم أن يضع نصوصا مؤقتة على التصميم ليظهر للعميل الشكل كاملاً،دور مولد
-                            النص العربى أن يوفر على المصمم عناء البحث عن نص بديل لا علاقة له بالموضوع الذى يتحدث عنه
-                            التصميم فيظهر بشكل لا يليق.</p>
-                        <button class="btn btn-primary w-25 p-3 "
+                        <h4 class="title">{{$content->title ?? ''}}</h4>
+                        <p class="lead text-dark">{{$content->sub_title ?? ''}}</p>
+                        @if ($content)
+                            <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
                             style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
-                            الان</button>
+                            الان</a>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -709,7 +704,7 @@
     <!-- End About Area  -->
 
 
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    {{-- <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
@@ -905,7 +900,7 @@
             </div>
         </div>
     </section>
-    <!-- End Support Services Area  -->
+    <!-- End Support Services Area  --> --}}
 
 </main>
 

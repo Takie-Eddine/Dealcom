@@ -431,6 +431,10 @@ return [
     'search vedio' => 'Search Video',
     'title' => 'Title',
     'sub title' => 'Sub Title',
+    'content' => 'Content',
+    'add content' => 'Add Content',
+    'edit content' => 'Edit Content',
+    'search content' => 'Search Content',
 
 
 
