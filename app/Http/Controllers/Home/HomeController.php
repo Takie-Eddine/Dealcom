@@ -14,7 +14,10 @@ class HomeController extends Controller
 {
     public function index(){
 
-        $data['products'] = Product::orderBy("name","DESC")->active()->featured()->latest()->take(8)->get();
+        $data['products'] = Product::active()->featured()->latest()->take(8)->get();
+        if (!$data['products']) {
+            $data['products'] = Product::orderBy("name","DESC")->get();
+        }
 
         $data['categories'] = Category::parents()->active()->get();
 
