@@ -689,7 +689,7 @@
                 <div class="col-lg-7 order-lg-1">
                     <div class="about-content content-left">
                         <h4 class="title">{{$content->title ?? ''}}</h4>
-                        <p class="lead text-dark">{!!$content->sub_title ?? ''!!}</p>
+                        <p class="lead text-dark">{!!($content->sub_title ?? '')!!}</p>
                         @if ($content)
                             <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
                             style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
@@ -704,7 +704,7 @@
     <!-- End About Area  -->
 
 
-    {{-- <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
@@ -806,7 +806,7 @@
 
 
 
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    {{-- <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
@@ -818,12 +818,12 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
 
     <!-- Start Support Service Area  -->
 
-    <section id="support-service">
+    {{-- <section id="support-service">
 
         <div class="axil-product-area bg-color-white axil-section-gap pb--0">
             <div class="container">
@@ -899,8 +899,8 @@
                 </div>
             </div>
         </div>
-    </section>
-    <!-- End Support Services Area  --> --}}
+    </section> --}}
+    <!-- End Support Services Area  -->
 
 </main>
 
