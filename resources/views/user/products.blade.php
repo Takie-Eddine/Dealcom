@@ -156,7 +156,7 @@
                                     <div class="thumbnail">
                                         <a href="{{route('product.show',$product->slug)}}">
                                             <img src="{{$product->image_url}}"
-                                                alt="Product Images" style="width:276px;  height:276px;">
+                                                alt="Product Images" style="width:300px;  height:300px;">
                                         </a>
                                         {{-- <div class="label-block label-right">
                                             <div class="product-badget">10% خصم</div>
