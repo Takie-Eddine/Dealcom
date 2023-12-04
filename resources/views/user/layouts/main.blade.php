@@ -689,7 +689,7 @@
                 <div class="col-lg-7 order-lg-1">
                     <div class="about-content content-left">
                         <h4 class="title">{{$content->title ?? ''}}</h4>
-                        <p class="lead text-dark">{{$content->sub_title ?? ''}}</p>
+                        <p class="lead text-dark">{!!$content->sub_title ?? ''!!}</p>
                         @if ($content)
                             <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
                             style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
