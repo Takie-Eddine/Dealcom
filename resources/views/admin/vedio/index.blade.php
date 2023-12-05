@@ -232,7 +232,7 @@
                                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                                     <th class="min-w-125px">ID</th>
                                     <th class="min-w-125px">Title</th>
-                                    <th class="min-w-125px">Sub Title</th>
+                                    {{-- <th class="min-w-125px">Sub Title</th> --}}
                                     <th class="min-w-125px">Link</th>
                                     <th class="min-w-125px">status</th>
                                     <th class="text-end min-w-100px">Actions</th>
@@ -267,7 +267,7 @@
                                             </div>
                                             <!--begin::User details-->
                                         </td>
-                                        <td>{{$vedio->sub_title}}</td>
+                                        {{-- <td>{{$vedio->sub_title}}</td> --}}
                                         <td>{{$vedio->link}}</td>
                                         <td >
                                             @if ($vedio->status == 'active')

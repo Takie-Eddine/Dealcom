@@ -82,7 +82,7 @@
                             <li><span></span></li>
                             <li><span></span></li>
                             <li><span></span></li>
-                            <li><span>2023 &copy;</span><span>All Rights Reserved To <span style="color: #3ec0c2;">Lifenvst</span></span></li>
+                            <li><span>2023 &copy;</span><span>All Rights Reserved To <a href="https://lifetekno.net/"><span style="color: #3ec0c2;">Lifetekno</span></a></span></li>
                         </ul>
                     </div>
                 </div>

@@ -117,6 +117,7 @@ class SliderController extends Controller
     }
 
     public function storevedio(Request $request){
+
         $request->validate([
             'title' => ['required'],
             'sub_title' => ['required'],
