@@ -81,7 +81,7 @@
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     @forelse ($sliders as $slider)
-                        @if ($slider->position == 'center')
+                        @if ($slider->position == 'top')
                             <div class="carousel-item active">
                                 <img src="{{$slider->image_url}}" class="d-block w-100" alt="...">
                             </div>
@@ -689,7 +689,7 @@
                 <div class="col-lg-7 order-lg-1">
                     <div class="about-content content-left">
                         <h4 class="title">{{$content->title ?? ''}}</h4>
-                        <p class="lead text-dark">{!!($content->sub_title ?? '')!!}</p>
+                        <span style="color: black;">{!!($content->sub_title ?? '')!!}</span>
                         @if ($content)
                             <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
                             style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
@@ -806,30 +806,30 @@
 
 
 
-    {{-- <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
                 <div class="col-md-6">
-                    <h3>الخدمات المساندة</h3>
+                    <h3>آراء العملاء </h3>
                 </div>
                 <div class="col-md-6 text-end">
                     <a href="#">عرض الكل</a>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 
     <!-- Start Support Service Area  -->
 
-    {{-- <section id="support-service">
+    <section id="support-service">
 
         <div class="axil-product-area bg-color-white axil-section-gap pb--0">
             <div class="container">
                 <div class="product-area pb--20">
                     <div class="axil-isotope-wrapper">
-                        <div class="product-isotope-heading">
+                        {{-- <div class="product-isotope-heading">
 
                             <div class="isotope-button mb-3">
                                 <div class="isotope-button filter-button-group mb-3 extra-service-filter">
@@ -846,7 +846,7 @@
 
                             </div>
 
-                        </div>
+                        </div> --}}
                         <div class="row service-grid ">
 
                             <div class="col-md-3 service-grid-item shipping">
@@ -899,7 +899,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     <!-- End Support Services Area  -->
 
 </main>

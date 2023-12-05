@@ -15,9 +15,7 @@ class HomeController extends Controller
     public function index(){
 
         $data['products'] = Product::active()->featured()->latest()->take(8)->get();
-        if (!$data['products']) {
-            $data['products'] = Product::orderBy("created_at","DESC")->take(8)->get();
-        }
+
 
         $data['categories'] = Category::parents()->active()->get();
 
@@ -26,7 +24,7 @@ class HomeController extends Controller
         $data['vedio'] = Vedio::active()->first();
         $data['content'] = Content::active()->home()->bottom()->first();
 
-        //return $data ;
+        //return $data['sliders'] ;
 
         return view('user.layouts.main',$data);
     }

@@ -80,6 +80,7 @@ class HomeManageController extends Controller
 
 
     public function update(Request $request, $id){
+        //return $request;
         $request->validate([
             'title_en' => ['required'],
             'sub_title_en' => ['required'],
@@ -102,8 +103,26 @@ class HomeManageController extends Controller
             ]);
         }
 
+        $translation = [] ;
 
-        $content->update($request->except('_token','image'));
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation  =  array_merge ($translation, [$localeCode => $request->input("title_".$localeCode)] );
+        }
+
+        $translation1 = [] ;
+
+        foreach (LaravelLocalization::getSupportedLocales() as $localeCode=> $properties) {
+            $translation1  =  array_merge ($translation1, [$localeCode => $request->input("sub_title_".$localeCode)] );
+        }
+
+        $content->update([
+            'title' => $translation,
+            'sub_title' => $translation1,
+            'position' => $request->position,
+            'status' => $request->status,
+            //'locale' => $request->locale,
+            'page' => $request->page,
+        ]);
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
