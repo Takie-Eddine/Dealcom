@@ -80,11 +80,13 @@
         <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
+                    @php $first = true; @endphp
                     @forelse ($sliders as $slider)
-                        @if ($slider->position == 'top')
-                            <div class="carousel-item active">
+                        @if ($slider->position == 'top' && app()->getLocale() == $slider->locale)
+                            <div class="carousel-item{{ $first ? ' active' : '' }}">
                                 <img src="{{$slider->image_url}}" class="d-block w-100" alt="...">
                             </div>
+                            @php $first = false; @endphp
                         @endif
 
                     @empty
