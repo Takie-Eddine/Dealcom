@@ -34,7 +34,7 @@ class Vedio extends Model
             return $this->image;
         }
 
-        return asset('assets/images/slider_images/' .$this->image);
+        return asset('assets/images/video_images/' .$this->image);
 
     }
 }
