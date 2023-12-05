@@ -166,11 +166,13 @@ class SliderController extends Controller
             UnlinkImage('video_images',$video->image,$video);
             $slidername = uploadSlider($request->image, 'video_images', $request->name);
 
-            $request->request->add(['image' => $slidername]);
+            $video->update([
+                'image' => $slidername,
+            ]);
         }
 
 
-        $video->update($request->except('_token'));
+        $video->update($request->except('_token','image'));
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
     }
