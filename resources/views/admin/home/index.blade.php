@@ -269,7 +269,7 @@
                                         </td>
                                         <td>{{$content->page}}</td>
                                         <td>{{$content->position}}</td>
-                                        <td>{{$content->locale}}</td>
+                                        {{-- <td>{{$content->locale}}</td> --}}
                                         <td >
                                             @if ($content->status == 'active')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-success">{{$content->status}}</span>
