@@ -9,11 +9,11 @@
                         <h5 class="widget-title">بيع/شراء</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="about-us.html">الخطط</a></li>
-                                <li><a href="about-us.html">كيف تبيع</a></li>
+                                {{-- <li><a href="about-us.html">الخطط</a></li>
+                                <li><a href="about-us.html">كيف تبيع</a></li> --}}
                                 <li><a href="blog.html">كيف اشتري</a></li>
                                 <li><a href="shop-sidebar.html">فئات</a></li>
-                                <li><a href="contact.html">مقاطع فيديو/شهادات</a></li>
+                                <li><a href="contact.html"> أراء العملاء</a></li>
                             </ul>
                         </div>
                     </div>
@@ -40,9 +40,9 @@
                         <h5 class="widget-title">حول ديلكوم</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="my-account.html">معلومات الشركة</a></li>
+                                <li><a href="my-account.html">من نحن</a></li>
                                 <li><a href="sign-up.html">لماذا ديلكوم</a></li>
-                                <li><a href="cart.html">خدمات</a></li>
+                                {{-- <li><a href="cart.html">خدمات</a></li> --}}
                                 <li><a href="wishlist.html">المدونات</a></li>
                             </ul>
                         </div>
@@ -55,8 +55,8 @@
                         <h5 class="widget-title">خدمة العملاء</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="privacy-policy.html">التعليمات</a></li>
-                                <li><a href="terms-of-service.html">سياسات</a></li>
+                                {{-- <li><a href="privacy-policy.html">التعليمات</a></li> --}}
+                                <li><a href="terms-of-service.html">سياسة الخصوصية</a></li>
                                 <li><a href="#">اتصل بنا</a></li>
                             </ul>
                         </div>
@@ -73,13 +73,16 @@
             <div class="row align-items-center justify-content-center">
 
                 <div class=" col-12 col-md-6">
-                    <div class="copyright-right d-flex flex-wrap align-items-center">
+                    <div class="copyright-center d-flex flex-wrap align-items-center">
                         <ul class="payment-icons-bottom quick-link">
-                            <li><img src="{{asset('frontend/assets/images/icons/cart/cart-1.png')}}" alt="paypal cart"></li>
-                            <li><img src="{{asset('frontend/assets/images/icons/cart/cart-2.png')}}" alt="paypal cart"></li>
-                            <li><img src="{{asset('frontend/assets/images/icons/cart/cart-3.png')}}" alt="paypal cart"></li>
-                            <li><img src="{{asset('frontend/assets/images/icons/cart/cart-6.png')}}" alt="paypal cart"></li>
-                            <li><img src="{{asset('frontend/assets/images/icons/cart/cart-5.png')}}" alt="paypal cart"></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span></span></li>
+                            <li><span>2023 &copy;</span><span>All Rights Reserved To <span style="color: #3ec0c2;">Lifenvst</span></span></li>
                         </ul>
                     </div>
                 </div>

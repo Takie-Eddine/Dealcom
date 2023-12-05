@@ -854,7 +854,7 @@
                             <div class="col-md-3 service-grid-item shipping">
                                 <div class="service-box how-to-sell">
                                     <div class="icon">
-                                        <img src="./{{asset('frontend/assets/images/icons/choose.png')}}" alt="Service">
+                                        {{-- <img src="./{{asset('frontend/assets/images/icons/choose.png')}}" alt="Service"> --}}
                                     </div>
                                     <!-- <h6 class="title">Choose Your Favourite</h6> -->
                                     <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
@@ -865,7 +865,7 @@
                             <div class="col-md-3 service-grid-item shipping">
                                 <div class="service-box how-to-sell">
                                     <div class="icon">
-                                        <img src="./{{asset('frontend/assets/images/icons/protection.png')}}" alt="Service">
+                                        {{-- <img src="./{{asset('frontend/assets/images/icons/protection.png')}}" alt="Service"> --}}
                                     </div>
                                     <!-- <h6 class="title">Verify NFTs</h6> -->
                                     <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
@@ -876,7 +876,7 @@
                             <div class="col-md-3 service-grid-item transfer">
                                 <div class="service-box how-to-sell">
                                     <div class="icon">
-                                        <img src="./{{asset('frontend/assets/images/icons/purchasing.png')}}" alt="Service">
+                                        {{-- <img src="./{{asset('frontend/assets/images/icons/purchasing.png')}}" alt="Service"> --}}
                                     </div>
                                     <!-- <h6 class="title">Purchase NFTS</h6> -->
                                     <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
@@ -887,7 +887,7 @@
                             <div class="col-md-3 service-grid-item transfer">
                                 <div class="service-box how-to-sell">
                                     <div class="icon">
-                                        <img src="./{{asset('frontend/assets/images/icons/dancing.png')}}" alt="Service">
+                                        {{-- <img src="./{{asset('frontend/assets/images/icons/dancing.png')}}" alt="Service"> --}}
                                     </div>
                                     <!-- <h6 class="title">Enjoy!</h6> -->
                                     <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
