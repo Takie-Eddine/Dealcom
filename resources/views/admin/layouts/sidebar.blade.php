@@ -349,7 +349,7 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <!--begin:Menu link-->
                             <a class="menu-link" href="{{route('admin.slider.create')}}">
                                 <span class="menu-bullet">
@@ -358,7 +358,7 @@
                                 <span class="menu-title">{{__('master.add slider')}}</span>
                             </a>
                             <!--end:Menu link-->
-                        </div>
+                        </div> --}}
                         <!--end:Menu item-->
                     </div>
                     <div class="menu-sub menu-sub-accordion">
@@ -375,7 +375,7 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <!--begin:Menu link-->
                             <a class="menu-link" href="{{route('admin.vedio.create')}}">
                                 <span class="menu-bullet">
@@ -384,7 +384,7 @@
                                 <span class="menu-title">{{__('master.add vedio')}}</span>
                             </a>
                             <!--end:Menu link-->
-                        </div>
+                        </div> --}}
                         <!--end:Menu item-->
                     </div>
                     <div class="menu-sub menu-sub-accordion">
@@ -401,7 +401,7 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div class="menu-item">
+                        {{-- <div class="menu-item">
                             <!--begin:Menu link-->
                             <a class="menu-link" href="{{route('admin.content.create')}}">
                                 <span class="menu-bullet">
@@ -410,7 +410,7 @@
                                 <span class="menu-title">{{__('master.add content')}}</span>
                             </a>
                             <!--end:Menu link-->
-                        </div>
+                        </div> --}}
                         <!--end:Menu item-->
                     </div>
                     <!--end:Menu sub-->
