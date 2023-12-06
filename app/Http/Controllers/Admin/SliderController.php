@@ -159,7 +159,7 @@ class SliderController extends Controller
 
 
     public function updatevedio(Request $request, $id){
-        $video = Vedio::findOrFail($id);
+
         $request->validate([
             'title' => ['required'],
             'sub_title' => ['required'],
@@ -171,9 +171,11 @@ class SliderController extends Controller
             'page' => ['required','in:home,product,category'],
         ]);
 
+        $video = Vedio::findOrFail($id);
+
         if ($request->image) {
             UnlinkImage('video_images',$video->image,$video);
-            $slidername = uploadSlider($request->image, 'video_images', $request->name);
+            $slidername = uploadSlider($request->image, 'video_images', $request->title);
 
             $video->update([
                 'image' => $slidername,
