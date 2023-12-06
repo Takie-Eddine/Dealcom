@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\CategoryController;
+use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -36,7 +38,12 @@ Route::group([
         Route::get('/', [ProductController::class, 'index'])->name('product');
         Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
     });
-
+    Route::group(['prefix'=>'about'  ],function(){
+        Route::get('/', [AboutController::class, 'index'])->name('about');
+    });
+    Route::group(['prefix'=>'contact'  ],function(){
+        Route::get('/', [ContactController::class, 'index'])->name('contact');
+    });
 
 
         Route::get('/dashboard', function () {

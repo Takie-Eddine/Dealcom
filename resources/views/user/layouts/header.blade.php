@@ -24,11 +24,12 @@
                         </div>
                         <ul class="mainmenu me-5">
 
-                            <li><a href="{{route('category')}}">الفئات</a></li>
-                            <li><a href="{{route('product')}}">المنتجات</a></li>
-                            <li><a href="contact.html">حول ديلكوم</a></li>
-                            <li><a href="contact.html">مقالات</a></li>
-                            <li><a href="contact.html">تواصل معنا</a></li>
+                            {{-- <li><a class="active" href="{{route('index')}}">الرئيسية</a></li> --}}
+                            <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
+                            <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li>
+                            <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
+                            <li><a class="{{request()->routeIs('') ? 'active' : ''}}" href="contact.html">مقالات</a></li>
+                            <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
                             <li class="menu-item-has-children d-lg-none">
                                 <a href="#">اللغة</a>
                                 <ul class="axil-submenu">

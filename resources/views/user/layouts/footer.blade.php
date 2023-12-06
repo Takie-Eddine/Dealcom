@@ -40,7 +40,7 @@
                         <h5 class="widget-title">حول ديلكوم</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="my-account.html">من نحن</a></li>
+                                <li><a href="{{route('about')}}">من نحن</a></li>
                                 <li><a href="sign-up.html">لماذا ديلكوم</a></li>
                                 {{-- <li><a href="cart.html">خدمات</a></li> --}}
                                 <li><a href="wishlist.html">المدونات</a></li>
@@ -57,7 +57,7 @@
                             <ul>
                                 {{-- <li><a href="privacy-policy.html">التعليمات</a></li> --}}
                                 <li><a href="terms-of-service.html">سياسة الخصوصية</a></li>
-                                <li><a href="#">اتصل بنا</a></li>
+                                <li><a href="{{route('contact')}}">اتصل بنا</a></li>
                             </ul>
                         </div>
                     </div>
