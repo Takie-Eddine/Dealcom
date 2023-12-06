@@ -7,10 +7,10 @@
             <div class="header-navbar">
                 <div class="header-brand">
                     <a href="{{route('index')}}" class="logo logo-dark">
-                        <img src="{{asset('frontend/assets/dealcom/images/logos/logo-light.png')}}" class="w-50" alt="Site Logo">
+                        <img src="{{asset('assets/logo/Asset 15 (1).png')}}" class="w-50" alt="Site Logo">
                     </a>
                     <a href="{{route('index')}}" class="logo logo-light">
-                        <img src="{{asset('frontend/assets/dealcom/images/logos/logo-dark.png')}}" class="w-50" alt="Site Logo">
+                        <img src="{{asset('assets/logo/Asset 15 (1).png')}}" class="w-50" alt="Site Logo">
                     </a>
                 </div>
                 <div class="header-main-nav">
@@ -24,10 +24,10 @@
                         </div>
                         <ul class="mainmenu me-5">
 
-                            <li><a class="me-5 active" href="{{route('index')}}">الرئيسية</a></li>
                             <li><a href="{{route('category')}}">الفئات</a></li>
-                            <li><a href="contact.html">مقالات</a></li>
+                            <li><a href="{{route('product')}}">المنتجات</a></li>
                             <li><a href="contact.html">حول ديلكوم</a></li>
+                            <li><a href="contact.html">مقالات</a></li>
                             <li><a href="contact.html">تواصل معنا</a></li>
                             <li class="menu-item-has-children d-lg-none">
                                 <a href="#">اللغة</a>
