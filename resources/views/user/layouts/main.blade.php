@@ -230,7 +230,7 @@
                                         <div class="thumbnail">
                                             <a href="product-details.html">
                                                 <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                    src="{{$product->image_url}}"  width="350" height="350" alt="Product Images">
+                                                    src="{{$product->image_url}}" style="width:300px;  height:300px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
