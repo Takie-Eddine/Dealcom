@@ -139,7 +139,7 @@
                                 </div>
                             </div>
                             <!--end::Row-->
-                            {{-- <div class="row mb-8">
+                            <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">
                                     <label class="fs-6 fw-semibold mt-2 mb-3">
@@ -197,7 +197,7 @@
                                     </select>
                                 </div>
                                 <!--end::Col-->
-                            </div> --}}
+                            </div>
                             <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">

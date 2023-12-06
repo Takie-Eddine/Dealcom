@@ -124,6 +124,9 @@ class SliderController extends Controller
             'image' => ['required', 'mimes:jpg,jpeg,png,video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi'],
             'link' => ['required','url'],
             'status' => ['required','in:active,draft'],
+            'position' => ['required','in:top,center,bottom'],
+            'locale' => ['required','in:en,ar'],
+            'page' => ['required','in:home,product,category'],
         ]);
         $slidernam = null;
         if ($request->has('image')) {
@@ -136,6 +139,9 @@ class SliderController extends Controller
             'image' => $slidername,
             'link' => $request->link,
             'status' => $request->status,
+            'position' => $request->position,
+            'locale' => $request->locale,
+            'page' => $request->page,
         ]);
 
         toastr()->success('Created successfully!', 'Congrats', ['timeOut' => 6000]);
@@ -160,6 +166,9 @@ class SliderController extends Controller
             'image' => ['nullable', 'mimes:jpg,jpeg,png,video/x-ms-asf,video/x-flv,video/mp4,application/x-mpegURL,video/MP2T,video/3gpp,video/quicktime,video/x-msvideo,video/x-ms-wmv,video/avi'],
             'link' => ['required','url'],
             'status' => ['required','in:active,draft'],
+            'position' => ['required','in:top,center,bottom'],
+            'locale' => ['required','in:en,ar'],
+            'page' => ['required','in:home,product,category'],
         ]);
 
         if ($request->image) {

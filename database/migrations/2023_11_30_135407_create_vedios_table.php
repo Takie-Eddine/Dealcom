@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('image',254)->nullable();
             $table->string('link',254)->nullable();
             $table->enum('status',['active','draft']);
+            $table->enum('position',['top','center','bottom']);
+            $table->enum('page',['home','category','product']);
+            $table->char('locale',4)->default('en');
             $table->timestamps();
         });
     }

@@ -14,14 +14,22 @@ class Vedio extends Model
 
     protected $fillable = [
         'title', 'sub_title', 'image', 'link',
-        'status',
+        'status', 'position', 'page', 'locale',
     ];
 
     public function scopeActive(Builder $builder){
         $builder->where('status' , '=' , 'active');
     }
 
-
+    public function scopeHome(Builder $builder){
+        $builder->where('page' , '=' , 'home');
+    }
+    public function scopeTop(Builder $builder){
+        $builder->where('position' , '=' , 'top');
+    }
+    public function scopeBottom(Builder $builder){
+        $builder->where('position' , '=' , 'bottom');
+    }
 
 
     public function getImageUrlAttribute(){

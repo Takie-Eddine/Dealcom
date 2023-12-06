@@ -42,6 +42,12 @@ class Content extends Model
     public function scopeBottom(Builder $builder){
         $builder->where('position' , '=' , 'bottom');
     }
+    public function scopeCenter(Builder $builder){
+        $builder->where('position' , '=' , 'center');
+    }
+    public function scopeTop(Builder $builder){
+        $builder->where('position' , '=' , 'top');
+    }
 
 
     public function getImageUrlAttribute(){

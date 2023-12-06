@@ -140,7 +140,7 @@
                                 </div>
                             </div>
                             <!--end::Row-->
-                            {{-- <div class="row mb-8">
+                            <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">
                                     <label class="fs-6 fw-semibold mt-2 mb-3">
@@ -153,9 +153,9 @@
                                 <div class="col-xl-9 fv-row">
                                     <select name="page" aria-label="Select a Page" data-control="select2" data-placeholder="{{__('master.select page')}}" class="form-select form-select-solid form-select-lg fw-semibold">
                                         <option value="">{{__('master.select a page')}}</option>
-                                        <option value="home" @selected('home' == old('page'))>{{__('master.home')}}</option>
-                                        <option value="product" @selected('product' == old('page'))>{{__('master.product')}}</option>
-                                        <option value="category" @selected('category' == old('page'))>{{__('master.category')}}</option>
+                                        <option value="home" @selected('home' == $video->page)>{{__('master.home')}}</option>
+                                        <option value="product" @selected('product' == $video->page)>{{__('master.product')}}</option>
+                                        <option value="category" @selected('category' == $video->page)>{{__('master.category')}}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->
@@ -173,9 +173,9 @@
                                 <div class="col-xl-9 fv-row">
                                     <select name="position" aria-label="Select a Position" data-control="select2" data-placeholder="{{__('master.select position')}}" class="form-select form-select-solid form-select-lg fw-semibold">
                                         <option value="">{{__('master.select position')}}</option>
-                                        <option value="top" @selected('top' == old('position'))>{{__('master.top')}}</option>
-                                        <option value="center" @selected('center' == old('position'))>{{__('master.center')}}</option>
-                                        <option value="bottom" @selected('bottom' == old('position'))>{{__('master.bottom')}}</option>
+                                        <option value="top" @selected('top' == $video->position)>{{__('master.top')}}</option>
+                                        <option value="center" @selected('center' == $video->position)>{{__('master.center')}}</option>
+                                        <option value="bottom" @selected('bottom' == $video->position)>{{__('master.bottom')}}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->
@@ -193,12 +193,12 @@
                                 <div class="col-xl-9 fv-row">
                                     <select name="locale" aria-label="Select a Locale" data-control="select2" data-placeholder="{{__('master.select locale')}}" class="form-select form-select-solid form-select-lg fw-semibold">
                                         <option value="" >{{__('master.select locale')}}</option>
-                                        <option value="en" @selected('en' == old('locale'))>{{__('master.english')}}</option>
-                                        <option value="ar" @selected('ar' == old('locale'))>{{__('master.arabic')}}</option>
+                                        <option value="en" @selected('en' == $video->locale)>{{__('master.english')}}</option>
+                                        <option value="ar" @selected('ar' == $video->locale)>{{__('master.arabic')}}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->
-                            </div> --}}
+                            </div>
                             <div class="row mb-8">
                                 <!--begin::Label-->
                                 <div class="col-xl-3">

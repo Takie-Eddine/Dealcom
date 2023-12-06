@@ -21,9 +21,11 @@ class HomeController extends Controller
 
         $data['sliders'] = Slider::active()->home()->get();
 
-        $data['vedio'] = Vedio::active()->first();
-        $data['content'] = Content::active()->home()->bottom()->first();
-
+        $data['vedio_top'] = Vedio::active()->home()->top()->first();
+        $data['vedio_bottom'] = Vedio::active()->home()->bottom()->first();
+        $data['content_top'] = Content::active()->home()->top()->first();
+        $data['content_center'] = Content::active()->home()->center()->get();
+        $data['content_bottom'] = Content::active()->home()->bottom()->get();
         //return $data['sliders'] ;
 
         return view('user.layouts.main',$data);

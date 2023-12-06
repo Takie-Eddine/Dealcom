@@ -31,19 +31,19 @@
                             </div> --}}
                             <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
-                                    <h2 class="fw-bold"> {{$vedio->title ?? ''}}</h2>
-                                    <p class="lead text-dark"> {{$vedio->sub_title ?? ''}} </p>
+                                    <h2 class="fw-bold"> {{$vedio_top->title ?? ''}}</h2>
+                                    <p class="lead text-dark"> {{$vedio_top->sub_title ?? ''}} </p>
                                 </div>
 
 
                                 <div class="main-slider-thumb">
                                     <div class="video-banner">
-                                        @if ($vedio)
-                                            <img src="{{$vedio->image_url}}" alt="Product">
+                                        @if ($vedio_top)
+                                            <img src="{{$vedio_top->image_url}}" alt="Product">
                                         @endif
 
                                         <div class="popup-video-icon">
-                                            <a href="{{$vedio->link ?? ''}}"
+                                            <a href="{{$vedio_top->link ?? ''}}"
                                                 class="popup-youtube video-icon">
                                                 <i class="fas fa-play"></i>
                                             </a>
@@ -683,21 +683,21 @@
             <div class="row align-items-center">
                 <div class="col-lg-5 order-lg-2">
                     <div class="about-thumbnail">
-                        @if ($content)
-                            <img src="{{$content->image_url}}" alt="about">
+                        @if ($content_top)
+                            <img src="{{$content_top->image_url}}" alt="about">
                         @endif
                     </div>
                 </div>
                 <div class="col-lg-7 order-lg-1">
                     <div class="about-content content-left">
-                        <h4 class="title">{{$content->title ?? ''}}</h4>
-                        @if ($content)
+                        <h4 class="title">{{$content_top->title ?? ''}}</h4>
+                        @if ($content_top)
                         <div class="how-to-sell">
-                            {!!$content->sub_title!!}
+                            {!!$content_top->sub_title!!}
                         </div>
 
                         @endif
-                        @if ($content)
+                        @if ($content_center)
                             <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
                             style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
                             الان</a>
@@ -730,55 +730,17 @@
         data-aos-easing="ease-out-cubic" data-aos-duration="1000">
         <div class="container">
             <div class="row ">
-
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service1.png')}}" alt="Service">
+                @forelse ($content_center as $content)
+                    <div class="col-6 col-md-4">
+                        <div class="service-box">
+                            <div class="icon">
+                                <img src="{{$content->image_url}}" alt="Service">
+                            </div>
+                            <h6 class="title">{{$content->title}}</h6>
                         </div>
-                        <h6 class="title">اسم الخدمة</h6>
                     </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service2.png')}}" alt="Service">
-                        </div>
-                        <h6 class="title">اسم الخدمة</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service3.png')}}" alt="Service">
-                        </div>
-                        <h6 class="title">اسم الخدمة</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service4.png')}}" alt="Service">
-                        </div>
-                        <h6 class="title">اسم الخدمة</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service5.png')}}" alt="Service">
-                        </div>
-                        <h6 class="title">اسم الخدمة</h6>
-                    </div>
-                </div>
-                <div class="col-6 col-md-4">
-                    <div class="service-box">
-                        <div class="icon">
-                            <img src="./{{asset('frontend/assets/images/icons/service5.png')}}" alt="Service">
-                        </div>
-                        <h6 class="title">اسم الخدمة</h6>
-                    </div>
-                </div>
+                @empty
+                @endforelse
             </div>
         </div>
     </div>
@@ -796,9 +758,11 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="video-banner">
-                            <img src="{{asset('frontend/assets/images/bg/bg-image-7.jpg')}}" alt="Images">
+                            @if ($vedio_bottom)
+                                <img src="{{$vedio_bottom->image_url}}" alt="Images">
+                            @endif
                             <div class="popup-video-icon">
-                                <a href="https://www.youtube.com/watch?v=FkUn86bH34M"
+                                <a href="{{$vedio_bottom->link ?? ''}}"
                                     class="popup-youtube video-icon">
                                     <i class="fas fa-play"></i>
                                 </a>
@@ -855,52 +819,19 @@
 
                         </div> --}}
                         <div class="row service-grid ">
+                            @forelse ($content_bottom as $content)
+                                <div class="col-md-3 service-grid-item shipping">
+                                    <div class="service-box how-to-sell">
+                                        <div class="icon">
+                                            {{-- <img src="./{{asset('frontend/assets/images/icons/choose.png')}}" alt="Service"> --}}
+                                        </div>
+                                        <h6 class="title">{{$content->title}}</h6>
+                                        <p>{!!$content->sub_title!!}</p>
+                                    </div>
+                                </div>
+                            @empty
 
-                            <div class="col-md-3 service-grid-item shipping">
-                                <div class="service-box how-to-sell">
-                                    <div class="icon">
-                                        {{-- <img src="./{{asset('frontend/assets/images/icons/choose.png')}}" alt="Service"> --}}
-                                    </div>
-                                    <!-- <h6 class="title">Choose Your Favourite</h6> -->
-                                    <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
-                                        تيمبور
-                                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد .</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 service-grid-item shipping">
-                                <div class="service-box how-to-sell">
-                                    <div class="icon">
-                                        {{-- <img src="./{{asset('frontend/assets/images/icons/protection.png')}}" alt="Service"> --}}
-                                    </div>
-                                    <!-- <h6 class="title">Verify NFTs</h6> -->
-                                    <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
-                                        تيمبور
-                                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد .</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 service-grid-item transfer">
-                                <div class="service-box how-to-sell">
-                                    <div class="icon">
-                                        {{-- <img src="./{{asset('frontend/assets/images/icons/purchasing.png')}}" alt="Service"> --}}
-                                    </div>
-                                    <!-- <h6 class="title">Purchase NFTS</h6> -->
-                                    <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
-                                        تيمبور
-                                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد .</p>
-                                </div>
-                            </div>
-                            <div class="col-md-3 service-grid-item transfer">
-                                <div class="service-box how-to-sell">
-                                    <div class="icon">
-                                        {{-- <img src="./{{asset('frontend/assets/images/icons/dancing.png')}}" alt="Service"> --}}
-                                    </div>
-                                    <!-- <h6 class="title">Enjoy!</h6> -->
-                                    <p>لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج أليايت,سيت دو أيوسمود
-                                        تيمبور
-                                        أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد .</p>
-                                </div>
-                            </div>
-
+                            @endforelse
                         </div>
                     </div>
                 </div>
