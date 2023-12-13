@@ -58,7 +58,7 @@
                                     <div
                                         class="uk-card uk-card-default uk-align-center clothing-card uk-margin-left uk-margin-right">
                                         <div class="uk-card-media-top uk-margin-top">
-                                            <img class="uk-align-center" src="{{$category->image_url}}" alt="" uk-image="target: .categories-container" style="width:200px;  height:200px;">
+                                            <img class="uk-align-center" src="{{$category->image_url}}" alt="" uk-image="target: .categories-container" style="width:100px;  height:100px;">
                                         </div>
                                         <div class="uk-card-body">
                                             <h3 class="uk-card-title">{{$category->name}}</h3>
