@@ -165,7 +165,7 @@
                                             <ul class="cart-action">
                                                 {{-- <li class="wishlist"><a href="wishlist.html"><i
                                                             class="far fa-heart"></i></a></li> --}}
-                                                <li class="select-option"><a href="cart.html">اطلب المنتج </a></li>
+                                                <li class="select-option"><a href="{{route('product.show',$product->slug)}}">اطلب المنتج </a></li>
                                                 {{-- <li class="quickview"><a href="product-details.html"><i
                                                             class="far fa-eye"></i></a></li> --}}
                                             </ul>
@@ -226,19 +226,19 @@
         });
 
         function filterProductsByCategory(brand){
-        var categories = "";
-        $("input[name='categories']:checked").each(function(){
-            if(categories=="")
-            {
-                categories += this.value;
-            }
-            else{
-                categories += "," + this.value;
-            }
-        });
-        $("#categories").val(categories);
-        $("#frmFilter").submit();
-}
+            var categories = "";
+            $("input[name='categories']:checked").each(function(){
+                if(categories=="")
+                {
+                    categories += this.value;
+                }
+                else{
+                    categories += "," + this.value;
+                }
+            });
+            $("#categories").val(categories);
+            $("#frmFilter").submit();
+        }
     </script>
 
 @endpush

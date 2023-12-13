@@ -76,6 +76,7 @@ p {
 .section-spreator a,
 p,
 h3 {
+    /* color: rgb(63, 61, 61); */
   color: white;
   font-family: "SST Arabic";
 }

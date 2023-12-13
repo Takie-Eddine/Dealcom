@@ -30,26 +30,32 @@
                                 </div>
                             </div> --}}
                             <div class="single-slide slick-slide">
-                                <div class="main-slider-content">
-                                    <h2 class="fw-bold"> {{$vedio_top->title ?? ''}}</h2>
-                                    <p class="lead text-dark"> {{$vedio_top->sub_title ?? ''}} </p>
-                                </div>
-
-
-                                <div class="main-slider-thumb">
-                                    <div class="video-banner">
-                                        @if ($vedio_top)
-                                            <img src="{{$vedio_top->image_url}}" alt="Product">
-                                        @endif
-
-                                        <div class="popup-video-icon">
-                                            <a href="{{$vedio_top->link ?? ''}}"
-                                                class="popup-youtube video-icon">
-                                                <i class="fas fa-play"></i>
-                                            </a>
+                                @forelse ($vedio_top as $vedio_top)
+                                    @if ($vedio_top->locale == app()->getLocale())
+                                        <div class="main-slider-content">
+                                            <h2 class="fw-bold"> {{$vedio_top->title ?? ''}}</h2>
+                                            <p class="lead text-dark"> {{$vedio_top->sub_title ?? ''}} </p>
                                         </div>
-                                    </div>
-                                </div>
+
+
+                                        <div class="main-slider-thumb">
+                                            <div class="video-banner">
+                                                @if ($vedio_top)
+                                                    <img src="{{$vedio_top->image_url}}" alt="Product">
+                                                @endif
+
+                                                <div class="popup-video-icon">
+                                                    <a href="{{$vedio_top->link ?? ''}}"
+                                                        class="popup-youtube video-icon">
+                                                        <i class="fas fa-play"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                @empty
+                                @endforelse
                             </div>
                             {{-- <div class="single-slide slick-slide">
                                 <div class="main-slider-content">
@@ -205,10 +211,25 @@
                         <div class="product-isotope-heading">
 
                             <div class="isotope-button mb-3">
-                                <button data-filter="*" class="is-checked"><span
-                                        class="filter-text">الكل</span></button>
+                                    <button class="is-checked"><span class="filter-text">الكل</span></button>
                                 @forelse ($categories as $category)
-                                    <button data-filter=".all" class=""><span class="filter-text"><i class="bi bi-star"></i>{{$category->name}}</span></button>
+                                    <button  data-filter=".{{$category}}">
+                                        <span class="filter-text">
+                                            @if ($category->slug == 'apparel')
+                                                <img src="{{asset('assets/logo/clothes.jpg')}}" alt="">
+                                            @endif
+                                            @if ($category->slug == 'carpets')
+                                                <img src="{{asset('assets/logo/fourniture.jpg')}}" alt="">
+                                            @endif
+                                            @if ($category->slug == 'food')
+                                                <img src="{{asset('assets/logo/food.jpg')}}" alt="">
+                                            @endif
+                                            @if ($category->slug == 'machines')
+                                                <img src="{{asset('assets/logo/equipment.jpg')}}" alt="">
+                                            @endif
+                                            {{$category->name}}
+                                        </span>
+                                    </button>
                                 @empty
 
                                 @endforelse
@@ -228,14 +249,12 @@
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product all">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
-                                            <a href="product-details.html">
-                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                    src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
+                                            <a href="{{route('product.show',$product->slug)}}">
+                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="product-details.html">شراء
-                                                            المنتج</a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">طلب المنتج</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -652,7 +671,7 @@
             <div class="row d-flex flex-column align-items-center">
                 <div class="col-md-4 py-5">
                     <h3>لم تستطع ايجاد <span style="color: #3ec0c2;">منتجك</span> هنا ؟</h3>
-                    <a href="product-list.html" class="btn btn-primary w-50 p-3 "
+                    <a href="{{route('product.request')}}" class="btn btn-primary w-50 p-3 "
                         style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;">طلب عرض
                         الاسعار</a>
 
@@ -715,11 +734,11 @@
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
-                <div class="col-md-6">
-                    <h3>الخدمات</h3>
+                <div class="">
+                    <h3 style="text-align:center">الخدمات</h3>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="#">عرض الكل</a>
+                    {{-- <a href="#">عرض الكل</a> --}}
                 </div>
             </div>
         </div>
@@ -758,15 +777,21 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-12">
                         <div class="video-banner">
-                            @if ($vedio_bottom)
-                                <img src="{{$vedio_bottom->image_url}}" alt="Images">
-                            @endif
-                            <div class="popup-video-icon">
-                                <a href="{{$vedio_bottom->link ?? ''}}"
-                                    class="popup-youtube video-icon">
-                                    <i class="fas fa-play"></i>
-                                </a>
-                            </div>
+                            @forelse ($vedio_bottom as $vedio_bottom)
+                                @if ($vedio_bottom->locale == app()->getLocale())
+                                    @if ($vedio_bottom)
+                                        <img src="{{$vedio_bottom->image_url}}" alt="Images">
+                                    @endif
+                                    <div class="popup-video-icon">
+                                        <a href="{{$vedio_bottom->link ?? ''}}"
+                                            class="popup-youtube video-icon">
+                                            <i class="fas fa-play"></i>
+                                        </a>
+                                    </div>
+                                @endif
+                            @empty
+                            @endforelse
+
                         </div>
                     </div>
                 </div>
@@ -781,11 +806,11 @@
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
-                <div class="col-md-6">
-                    <h3>آراء العملاء </h3>
+                <div class="">
+                    <h3 style="text-align:center">آراء العملاء </h3>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="#">عرض الكل</a>
+                    {{-- <a href="#">عرض الكل</a> --}}
                 </div>
             </div>
         </div>
@@ -841,6 +866,7 @@
     <!-- End Support Services Area  -->
 
 </main>
+
 
 @endsection
 

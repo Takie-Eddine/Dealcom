@@ -27,8 +27,9 @@ Route::group([
     'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
 ], function () {
 
-
+    // Route::get('/index',  [HomeController::class, 'home'])->name('home');
     Route::get('/',  [HomeController::class, 'index'])->name('index');
+    Route::get('/filter/{id}',  [HomeController::class, 'getproduct'])->name('filter');
 
     Route::group(['prefix'=>'category'  ],function(){
         Route::get('/', [CategoryController::class, 'index'])->name('category');
@@ -37,6 +38,7 @@ Route::group([
     Route::group(['prefix'=>'product'  ],function(){
         Route::get('/', [ProductController::class, 'index'])->name('product');
         Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
+        Route::get('/request', [ProductController::class, 'request'])->name('product.request');
     });
     Route::group(['prefix'=>'about'  ],function(){
         Route::get('/', [AboutController::class, 'index'])->name('about');

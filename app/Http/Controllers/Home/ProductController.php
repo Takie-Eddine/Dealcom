@@ -79,8 +79,15 @@ class ProductController extends Controller
 
     public function show($slug){
 
-        $category = Category::where('slug','=',$slug)->firstOrFail();
+        $product = Product::where('slug','=',$slug)->firstOrFail();
 
-        return $category->products()->get();
+        return view('user.product-details',compact('product'));
+    }
+
+
+
+
+    public function request(){
+        return view('user.request-product');
     }
 }
