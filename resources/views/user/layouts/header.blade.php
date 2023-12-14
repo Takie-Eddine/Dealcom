@@ -5,6 +5,17 @@
     <div class="axil-mainmenu">
         <div class="container">
             <div class="header-navbar">
+                <div class="mobile-menu me-5">
+                    <button id="toggleMenu">☰</button>
+                    <ul id="menuList" >
+                        <li><a class="{{request()->routeIs('login') ? 'active' : ''}}" href="{{route('login')}}">دخول</a></li>
+                        <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
+                        <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li>
+                        <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
+                        <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">مقالات</a></li>
+                        <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
+                    </ul>
+                </div>
                 <div class="header-brand">
                     <a href="{{route('index')}}" class="logo logo-dark">
                         <img src="{{asset('assets/logo/Asset 15 (1).png')}}" class="w-50" alt="Site Logo">
@@ -28,16 +39,16 @@
                             <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
                             <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li>
                             <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
-                            <li><a class="{{request()->routeIs('') ? 'active' : ''}}" href="contact.html">مقالات</a></li>
+                            <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">مقالات</a></li>
                             <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
-                            <li class="menu-item-has-children d-lg-none">
+                            {{-- <li class="menu-item-has-children d-lg-none">
                                 <a href="#">اللغة</a>
                                 <ul class="axil-submenu">
                                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                         <li><a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  data-language="{{ $localeCode }}">العربية</a></li>
                                     @endforeach
                                 </ul>
-                            </li>
+                            </li> --}}
 
                         </ul>
 

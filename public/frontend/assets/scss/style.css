@@ -17394,4 +17394,50 @@ select, .select2 {
   margin-left: 0;
 }
 
+.mobile-menu {
+    display: none; /* Initially hide the menu */
+}
+
+#toggleMenu {
+    display: block;
+    background-color: #3ec0c3;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#menuList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #3ec0c3;
+    display: none; /* Initially hide the menu items */
+}
+
+#menuList li {
+    padding: 10px;
+    text-align: center;
+}
+
+#menuList li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Media query to show the menu on smaller screens */
+@media screen and (max-width: 600px) {
+    .mobile-menu {
+        display: block; /* Show the mobile menu */
+    }
+
+    #menuList {
+        display: none; /* Initially hide the menu items */
+    }
+
+    #menuList.show {
+        display: block; /* Show the menu items when the button is clicked */
+    }
+}
 /*# sourceMappingURL=style.css.map */

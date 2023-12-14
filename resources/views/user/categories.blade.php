@@ -38,9 +38,9 @@
                     <div class="col-md-6">
                         <h3>التصنيفات</h3>
                     </div>
-                    <div class="col-md-6 text-end">
+                    {{-- <div class="col-md-6 text-end">
                         <a href="{{route('category')}}">عرض الكل</a>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

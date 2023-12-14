@@ -25,10 +25,10 @@
                         <h5 class="widget-title">خدمات</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="">خدمات الشحن</a></li>
-                                <li><a href="">خدمات تحويل الاموال</a></li>
-                                <li><a href="">ترجمة</a></li>
-                                <li><a href="">معارض تجارية</a></li>
+                                <li><a href="#">خدمات الشحن</a></li>
+                                <li><a href="#">خدمات تحويل الاموال</a></li>
+                                <li><a href="#">ترجمة</a></li>
+                                <li><a href="#">معارض تجارية</a></li>
                             </ul>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                         <div class="inner">
                             <ul>
                                 {{-- <li><a href="privacy-policy.html">التعليمات</a></li> --}}
-                                <li><a href="terms-of-service.html">سياسة الخصوصية</a></li>
+                                <li><a href="">سياسة الخصوصية</a></li>
                                 <li><a href="{{route('contact')}}">اتصل بنا</a></li>
                             </ul>
                         </div>

@@ -435,6 +435,16 @@
         });
 
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.getElementById('toggleMenu');
+            const menuList = document.getElementById('menuList');
+
+            toggleButton.addEventListener('click', function () {
+                menuList.classList.toggle('show');
+            });
+        });
+    </script>
     @stack('script')
 </body>
 
