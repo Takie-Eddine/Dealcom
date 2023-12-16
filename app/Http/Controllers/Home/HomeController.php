@@ -18,7 +18,7 @@ class HomeController extends Controller
 
         $data['products'] = Product::active()->featured()->latest()->take(8)->get();
         if (isset($data['products'])) {
-            $data['products'] = Product::active()->latest()->take(8)->get();
+            $data['products'] = Product::active()->orderBy('updated_at','DESC')->take(8)->get();
         }
 
         $data['categories'] = Category::parents()->active()->get();

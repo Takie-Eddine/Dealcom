@@ -41,7 +41,7 @@
                         <div class="inner">
                             <ul>
                                 <li><a href="{{route('about')}}">من نحن</a></li>
-                                <li><a href="">لماذا ديلكوم</a></li>
+                                <li><a href="{{route('commercial')}}">العلامات التجارية </a></li>
                                 {{-- <li><a href="cart.html">خدمات</a></li> --}}
                                 <li><a href="">المدونات</a></li>
                             </ul>

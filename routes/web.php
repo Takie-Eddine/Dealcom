@@ -50,6 +50,9 @@ Route::group([
     Route::get('/how-to-by', function () {
         return view('user.howtoby');
     })->name('howtoby');
+    Route::get('/commercial-brand', function () {
+        return view('user.whydealcom');
+    })->name('commercial');
 
         Route::get('/dashboard', function () {
             return view('dashboard');
