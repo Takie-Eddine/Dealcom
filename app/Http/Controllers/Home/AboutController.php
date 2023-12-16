@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 class AboutController extends Controller
 {
     public function index(){
+        $locale = app()->getLocale();
 
-        return view('user.about');
+        if ($locale == 'en') {
+            return view('user.abouten');
+        }
+        if ($locale == 'ar') {
+            return view('user.about');
+        }
+
     }
 }
