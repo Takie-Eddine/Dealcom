@@ -124,15 +124,15 @@
     <!-- Ends Ads slider Area -->
 
     <!-- Start Categories Section -->
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5"  data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
-                <div class="col-md-6">
-                    <h3>التصنيفات</h3>
+                <div class="">
+                    <h3 style="text-align:center">التصنيفات</h3>
                 </div>
                 <div class="col-md-6 text-end">
-                    <a href="{{route('product')}}">عرض الكل</a>
+                    {{-- <a href="{{route('product')}}">عرض الكل</a> --}}
                 </div>
             </div>
         </div>
@@ -665,7 +665,7 @@
     </section>
 
 
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5"  data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row d-flex flex-column align-items-center">
@@ -730,7 +730,7 @@
     <!-- End About Area  -->
 
 
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5"  data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">
@@ -802,7 +802,7 @@
 
 
 
-    <div class="section-spreator mt-5" data-aos="flip-left" data-aos-easing="ease-out-cubic"
+    <div class="section-spreator mt-5"  data-aos-easing="ease-out-cubic"
         data-aos-duration="2000">
         <div class="container ">
             <div class="row pt-3">

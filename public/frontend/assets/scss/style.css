@@ -6494,6 +6494,7 @@ Header Styles
 @media only screen and (max-width: 991px) {
   .header-brand a img {
     max-height: 35px;
+
   }
 }
 @media only screen and (max-width: 320px) {

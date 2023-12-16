@@ -47,6 +47,9 @@ Route::group([
         Route::get('/', [ContactController::class, 'index'])->name('contact');
     });
 
+    Route::get('/how-to-by', function () {
+        return view('user.howtoby');
+    })->name('howtoby');
 
         Route::get('/dashboard', function () {
             return view('dashboard');

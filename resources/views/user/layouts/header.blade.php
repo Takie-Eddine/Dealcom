@@ -37,10 +37,11 @@
 
                             {{-- <li><a class="active" href="{{route('index')}}">الرئيسية</a></li> --}}
                             <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
-                            <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li>
+                            {{-- <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li> --}}
                             <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
                             <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">مقالات</a></li>
                             <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
+
                             {{-- <li class="menu-item-has-children d-lg-none">
                                 <a href="#">اللغة</a>
                                 <ul class="axil-submenu">
