@@ -5,6 +5,7 @@ use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\CategoryController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\PageController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -50,9 +51,7 @@ Route::group([
     Route::get('/how-to-by', function () {
         return view('user.howtoby');
     })->name('howtoby');
-    Route::get('/commercial-brand', function () {
-        return view('user.whydealcom');
-    })->name('commercial');
+    Route::get('/commercial-brand',[PageController::class, 'index']  )->name('commercial');
 
         Route::get('/dashboard', function () {
             return view('dashboard');
