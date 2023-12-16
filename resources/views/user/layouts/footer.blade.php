@@ -11,7 +11,7 @@
                             <ul>
                                 {{-- <li><a href="about-us.html">الخطط</a></li>
                                 <li><a href="about-us.html">كيف تبيع</a></li> --}}
-                                <li><a href="{{route('howtoby')}}" target="_blank">كيف اشتري</a></li>
+                                <li><a href="{{route('howtoby')}}" >كيف اشتري</a></li>
                                 <li><a href="{{route('category')}}">فئات</a></li>
                                 <li><a href=""> أراء العملاء</a></li>
                             </ul>
