@@ -6,14 +6,14 @@
                 <!-- Start Single Widget  -->
                 <div class="col-md-3 col-sm-4">
                     <div class="axil-footer-widget">
-                        <h5 class="widget-title">بيع/شراء</h5>
+                        <h5 class="widget-title">{{__('master.by/sell')}}</h5>
                         <div class="inner">
                             <ul>
                                 {{-- <li><a href="about-us.html">الخطط</a></li>
                                 <li><a href="about-us.html">كيف تبيع</a></li> --}}
-                                <li><a href="{{route('howtoby')}}" >كيف اشتري</a></li>
-                                <li><a href="{{route('category')}}">فئات</a></li>
-                                <li><a href=""> أراء العملاء</a></li>
+                                <li><a href="{{route('howtoby')}}" >{{__('master.how by')}} </a></li>
+                                <li><a href="{{route('category')}}">{{__('master.categories')}}</a></li>
+                                <li><a href=""> {{__('master.customer review')}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -22,13 +22,13 @@
                 <!-- Start Single Widget  -->
                 <div class="col-md-3 col-sm-4">
                     <div class="axil-footer-widget">
-                        <h5 class="widget-title">خدمات</h5>
+                        <h5 class="widget-title">{{__('master.services')}}</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="#">خدمات الشحن</a></li>
-                                <li><a href="#">خدمات تحويل الاموال</a></li>
-                                <li><a href="#">ترجمة</a></li>
-                                <li><a href="#">معارض تجارية</a></li>
+                                <li><a href="#">{{__('master.shipping services')}} </a></li>
+                                <li><a href="#">{{__('master.money transfer services')}}  </a></li>
+                                <li><a href="#">{{__('master.translation')}} </a></li>
+                                <li><a href="#">{{__('master.trade shows')}} </a></li>
                             </ul>
                         </div>
                     </div>
@@ -37,13 +37,13 @@
                 <!-- Start Single Widget  -->
                 <div class="col-md-3 col-sm-4">
                     <div class="axil-footer-widget">
-                        <h5 class="widget-title">حول ديلكوم</h5>
+                        <h5 class="widget-title">{{__('master.about dealcom')}} </h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="{{route('about')}}">من نحن</a></li>
-                                <li><a href="{{route('commercial')}}">العلامة التجارية الخاصة </a></li>
+                                <li><a href="{{route('about')}}">{{__('master.who we are')}} </a></li>
+                                <li><a href="{{route('commercial')}}">{{__('master.why dealcom')}}   </a></li>
                                 {{-- <li><a href="cart.html">خدمات</a></li> --}}
-                                <li><a href="">المدونات</a></li>
+                                <li><a href="">{{__('master.blogs')}} </a></li>
                             </ul>
                         </div>
                     </div>
@@ -52,12 +52,12 @@
                 <!-- Start Single Widget  -->
                 <div class="col-md-3 col-sm-4">
                     <div class="axil-footer-widget">
-                        <h5 class="widget-title">خدمة العملاء</h5>
+                        <h5 class="widget-title">{{__('master.customer service')}} </h5>
                         <div class="inner">
                             <ul>
                                 {{-- <li><a href="privacy-policy.html">التعليمات</a></li> --}}
-                                <li><a href="">سياسة الخصوصية</a></li>
-                                <li><a href="{{route('contact')}}">اتصل بنا</a></li>
+                                <li><a href="">{{__('master.privacy policy')}} </a></li>
+                                <li><a href="{{route('contact')}}">{{__('master.contact us')}} </a></li>
                             </ul>
                         </div>
                     </div>

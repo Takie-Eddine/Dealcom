@@ -129,7 +129,7 @@
         <div class="container ">
             <div class="row pt-3">
                 <div class="">
-                    <h3 style="text-align:center">التصنيفات</h3>
+                    <h3 style="text-align:center">{{__('master.categories')}}</h3>
                 </div>
                 <div class="col-md-6 text-end">
                     {{-- <a href="{{route('product')}}">عرض الكل</a> --}}
@@ -211,7 +211,7 @@
                         <div class="product-isotope-heading">
 
                             <div class="isotope-button mb-3">
-                                    <button class="is-checked"><span class="filter-text">الكل</span></button>
+                                    <button class="is-checked"><span class="filter-text">{{__('master.all')}}</span></button>
                                 @forelse ($categories as $category)
                                     <button  data-filter=".{{$category}}">
                                         <span class="filter-text">
@@ -254,7 +254,7 @@
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">طلب المنتج</a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}} </a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -670,10 +670,10 @@
         <div class="container ">
             <div class="row d-flex flex-column align-items-center">
                 <div class="col-md-4 py-5">
-                    <h3>لم تستطع ايجاد <span style="color: #3ec0c2;">منتجك</span> هنا ؟</h3>
+                    <h3>{{__('master.not found')}}<span style="color: #3ec0c2;">{{__('master.your product')}}</span> {{__('master.here')}}</h3>
                     <a href="{{route('product.request')}}" class="btn btn-primary w-50 p-3 "
-                        style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;">طلب عرض
-                        الاسعار</a>
+                        style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;"> {{__('master.ask price list')}}
+                        </a>
 
                 </div>
 
@@ -718,8 +718,8 @@
                         @endif
                         @if ($content_center)
                             <a href="{{route('login')}}" class="btn btn-primary w-25 p-3 "
-                            style="background-color: #3ec0c2;font-size: 1.3em;">اشترك
-                            الان</a>
+                            style="background-color: #3ec0c2;font-size: 1.3em;">{{__('master.subscribe')}}
+                            </a>
                         @endif
 
                     </div>
@@ -735,7 +735,7 @@
         <div class="container ">
             <div class="row pt-3">
                 <div class="">
-                    <h3 style="text-align:center">الخدمات</h3>
+                    <h3 style="text-align:center">{{__('master.services')}}</h3>
                 </div>
                 <div class="col-md-6 text-end">
                     {{-- <a href="#">عرض الكل</a> --}}
@@ -807,7 +807,7 @@
         <div class="container ">
             <div class="row pt-3">
                 <div class="">
-                    <h3 style="text-align:center">آراء العملاء </h3>
+                    <h3 style="text-align:center">{{__('master.customer review')}}</h3>
                 </div>
                 <div class="col-md-6 text-end">
                     {{-- <a href="#">عرض الكل</a> --}}
