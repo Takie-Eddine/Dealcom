@@ -36,11 +36,11 @@
                         <ul class="mainmenu me-5">
 
                             {{-- <li><a class="active" href="{{route('index')}}">الرئيسية</a></li> --}}
-                            <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
+                            <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">{{__('master.category')}}</a></li>
                             {{-- <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li> --}}
-                            <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
-                            <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">مقالات</a></li>
-                            <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
+                            <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">{{__('master.about dealcom')}}</a></li>
+                            <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">{{__('master.blogs')}}</a></li>
+                            <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">{{__('master.contact us')}} </a></li>
 
                             {{-- <li class="menu-item-has-children d-lg-none">
                                 <a href="#">اللغة</a>
@@ -84,7 +84,7 @@
                     </ul> -->
 
                     <div class="auth ms-2 d-none d-lg-inline-block">
-                        <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">دخول</a>
+                        <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">{{__('master.login')}}</a>
                         <!-- <a href="#" class="btn-lg btn-danger text-white me-3"
                             style="background-color: #3ec0c2;">دخول</a> -->
 
@@ -93,7 +93,7 @@
                     <div class="dropdown">
                         <button style="background-color: #3ec0c2;color: white;" class="dropdown-toggle"
                             type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            اللغة
+                            {{__('master.language')}}
                         </button>
                         <ul class="dropdown-menu">
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)

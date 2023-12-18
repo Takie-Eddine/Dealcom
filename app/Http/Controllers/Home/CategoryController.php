@@ -20,9 +20,6 @@ class CategoryController extends Controller
             $q->select('id','name', 'parent_id', 'slug','image');
             $q->with(['children' => function ($qq) {
                 $qq->select('id','name', 'parent_id', 'slug','image');
-                $qq->with(['children' => function ($qqq) {
-                    $qqq->select('id','name', 'parent_id', 'slug','image');
-                }]);
             }]);
         }])
         ->paginate(\request()->limit_by ?? 15);

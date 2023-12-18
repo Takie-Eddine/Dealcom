@@ -435,6 +435,11 @@ return [
     'add content' => 'Add Content',
     'edit content' => 'Edit Content',
     'search content' => 'Search Content',
+    'blogs' => 'Blogs',
+    'contact us' => 'Contact Us',
+    'login' => 'Login',
+    'language' => 'Language',
+    'about dealcom' => 'About Dealcom',
 
 
 

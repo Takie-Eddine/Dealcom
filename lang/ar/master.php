@@ -434,4 +434,9 @@ return [
     'add content' => 'اضافة محتوى',
     'edit content' => 'تعديل محتوى',
     'search content' => 'البحث عن محتوى',
+    'blogs' => 'المقالات',
+    'contact us' => 'تواصل معنا',
+    'login' => 'دخول',
+    'language' => 'اللغة',
+    'about dealcom' => ' حول ديلكوم',
 ];
