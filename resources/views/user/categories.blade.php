@@ -34,13 +34,13 @@
     <!-- Slider -->
     <div class="uk-container categories-container mt--70 mb--60">
         <div id="fade-slider">
-            <div uk-slider="center: true">
+            <div >
 
                 <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
                     <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-2@s uk-grid">
                         @forelse ($categories as $category)
                             <li>
-                                <a href="google.es">
+                                <a href="{{route('product.show',$category->id)}}">
                                     <div class="uk-card uk-card-default clothing-card uk-margin-left uk-margin-right">
                                         <div class="uk-card-media-top uk-margin-top">
                                             <img class="uk-align-center" src="{{$category->image_url}}" alt="" style="width:100px;  height:100px;">
@@ -100,11 +100,12 @@
                                     <div class="uk-child-width-expand@s uk-grid-divider mt--50" uk-grid>
                                 @endif
                                         <div>
-                                            <h4>{{$child->name}}</h4>
+                                            <h4><a href="{{route('product.show',$child->id)}}">{{$child->name}}</a></h4>
                                             <ul class="uk-list">
-                                                <li><a href="">اكسسورات</a></li>
-                                                <li><a href="">احذية</a></li>
-                                                <li><a href="">حقائب</a></li>
+                                                @forelse ($child->children as $_child)
+                                                    <li><a href="{{route('product.show',$_child->id)}}">{{$_child->name}}</a></li>
+                                                @empty
+                                                @endforelse
                                             </ul>
                                         </div>
                                 @if ($loop->last || $loop->iteration % 2 == 0)
