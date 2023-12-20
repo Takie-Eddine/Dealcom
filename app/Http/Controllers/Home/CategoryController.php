@@ -10,21 +10,8 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::parents()->active()->when(request()->keyword != null,function ($query){
-            $query->search(request()->keyword);
-        })
-        ->when(\request()->status != null, function ($query) {
-            $query->whereStatus(\request()->status);
-        })
-        ->select('id','name', 'slug','image')->with(['children' => function ($q) {
-            $q->select('id','name', 'parent_id', 'slug','image');
-            $q->with(['children' => function ($qq) {
-                $qq->select('id','name', 'parent_id', 'slug','image');
-            }]);
-        }])
-        ->paginate(\request()->limit_by ?? 15);
+        $categories = Category::parents()->active()->get();
 
-        //return $categories ;
         return view('user.categories',compact('categories'));
     }
 }
