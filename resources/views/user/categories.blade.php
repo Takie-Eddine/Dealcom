@@ -40,7 +40,7 @@
                     <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-2@s uk-grid">
                         @forelse ($categories as $category)
                             <li>
-                                <a href="{{route('product.show',$category->id)}}">
+                                <a href="{{route('product.show',$category->slug)}}">
                                     <div class="uk-card uk-card-default clothing-card uk-margin-left uk-margin-right">
                                         <div class="uk-card-media-top uk-margin-top">
                                             <img class="uk-align-center" src="{{$category->image_url}}" alt="" style="width:100px;  height:100px;">
@@ -100,10 +100,20 @@
                                     <div class="uk-child-width-expand@s uk-grid-divider mt--50" uk-grid>
                                 @endif
                                         <div>
-                                            <h4><a href="{{route('product.show',$child->id)}}">{{$child->name}}</a></h4>
+                                            <h4>
+                                                <a href="{{route('product.show',$child->slug)}}">
+                                                    {{$child->name}}
+                                                </a>
+                                            </h4>
                                             <ul class="uk-list">
                                                 @forelse ($child->children as $_child)
-                                                    <li><a href="{{route('product.show',$_child->id)}}">{{$_child->name}}</a></li>
+                                                    @if ($_child->products->count()>=1 )
+                                                        <li>
+                                                            <a href="{{route('product.show',$_child->slug)}}">
+                                                                {{$_child->name}}
+                                                            </a>
+                                                        </li>
+                                                    @endif
                                                 @empty
                                                 @endforelse
                                             </ul>
