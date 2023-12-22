@@ -76,9 +76,7 @@
         <!-- Start Category Item  -->
         <div class="axil-about-area " data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
             <div class="container">
-                    @php
-                        $chi = $category->children()->random(4)->get();
-                    @endphp
+
                 <div class="row align-items-center">
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
