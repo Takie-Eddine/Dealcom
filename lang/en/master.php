@@ -460,6 +460,7 @@ return [
     'privacy policy' => 'Privacy Policy ',
     'customer service' => 'Customer Service',
     'articles' => 'Articles',
+    'special brand' => 'Private Label',
 
 
 

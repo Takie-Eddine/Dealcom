@@ -37,7 +37,7 @@ Route::group([
         Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     });
     Route::group(['prefix'=>'product'  ],function(){
-        Route::get('/', [ProductController::class, 'index'])->name('product');
+        Route::get('/{slug}', [ProductController::class, 'index'])->name('product');
         Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
         Route::get('/request', [ProductController::class, 'request'])->name('product.request');
     });

@@ -10,7 +10,8 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::parents()->active()->get();
+        $categories = Category::parents()->with(['children'])->active()->get();
+
 
         return view('user.categories',compact('categories'));
     }

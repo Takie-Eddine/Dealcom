@@ -73,7 +73,7 @@
                                     @forelse ($categories as $category)
                                         <li>
                                             <div class="form-check ps-0 custom-form-check">
-                                                <input type="checkbox" class="checkbox_animated check-it" id="ct{{$category->id}}" name="categories" @if (in_array($category->id,explode(',',$q_categories))) checked @endif value="{{$category->id}}" onchange="filterProductsByCategory(this)">
+                                                <input type="checkbox" class="checkbox_animated check-it" id="ct{{$category->id}}" name="categories"  value="{{$category->id}}" onchange="filterProductsByCategory(this)">
                                                 <label class="form-check-label">{{$category->name}}</label>
                                             </div>
                                         </li>
@@ -112,7 +112,7 @@
                         @endforelse
 
 
-                        <a href="{{route('product')}}" class="axil-btn btn-bg-primary">اعادة الكل</a>
+                        <a href="" class="axil-btn btn-bg-primary">اعادة الكل</a>
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>
@@ -208,7 +208,7 @@
     <input type="hidden" name="page" id="page" value="{{$page}}">
     <input type="hidden" name="size" id="size" value="{{$size}}">
     <input type="hidden" name="order" id="order" value="{{$order}}">
-    <input type="hidden" name="categories" id="categories" value="{{$q_categories}}">
+    {{-- <input type="hidden" name="categories" id="categories" value="{{$q_categories}}"> --}}
 
 </form>
 @endsection

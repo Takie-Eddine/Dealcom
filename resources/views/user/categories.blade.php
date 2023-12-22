@@ -40,7 +40,7 @@
                     <ul class="uk-slider-items uk-child-width-1-4@m uk-child-width-1-2@s uk-grid">
                         @forelse ($categories as $category)
                             <li>
-                                <a href="{{route('product.show',$category->slug)}}">
+                                <a href="{{route('product',$category->slug)}}">
                                     <div class="uk-card uk-card-default clothing-card uk-margin-left uk-margin-right">
                                         <div class="uk-card-media-top uk-margin-top">
                                             <img class="uk-align-center" src="{{$category->image_url}}" alt="" style="width:100px;  height:100px;">
@@ -76,7 +76,9 @@
         <!-- Start Category Item  -->
         <div class="axil-about-area " data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
             <div class="container">
-
+                    @php
+                        $chi = $category->children()->random(4)->get();
+                    @endphp
                 <div class="row align-items-center">
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
@@ -92,16 +94,14 @@
                         <div class="about-content content-left mb--100">
 
                             <h4 class="title second-color">{{$category->name}}</h4>
-                            @php
-                                $children = $category->children()->get();
-                            @endphp
-                            @forelse ($children as $child)
+
+                            @forelse ($category->children as $child)
                                 @if ($loop->first || $loop->iteration % 2 == 1)
                                     <div class="uk-child-width-expand@s uk-grid-divider mt--50" uk-grid>
                                 @endif
                                         <div>
                                             <h4>
-                                                <a href="{{route('product.show',$child->slug)}}">
+                                                <a href="{{route('product',$child->slug)}}">
                                                     {{$child->name}}
                                                 </a>
                                             </h4>
@@ -109,7 +109,7 @@
                                                 @forelse ($child->children as $_child)
                                                     @if ($_child->products->count()>=1 )
                                                         <li>
-                                                            <a href="{{route('product.show',$_child->slug)}}">
+                                                            <a href="{{route('product',$_child->slug)}}">
                                                                 {{$_child->name}}
                                                             </a>
                                                         </li>

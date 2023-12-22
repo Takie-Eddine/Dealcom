@@ -459,6 +459,7 @@ return [
     'privacy policy' => 'سياسة الخصوصية ',
     'customer service' => 'خدمة العملاء',
     'articles' => 'المقالات',
+    'special brand' => 'العلامة التجارية الخاصة',
 
 
 ];

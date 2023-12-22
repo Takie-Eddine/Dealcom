@@ -41,7 +41,7 @@
                         <div class="inner">
                             <ul>
                                 <li><a href="{{route('about')}}">{{__('master.who we are')}} </a></li>
-                                <li><a href="{{route('commercial')}}">{{__('master.why dealcom')}}   </a></li>
+                                <li><a href="{{route('commercial')}}">{{__('master.special brand')}}   </a></li>
                                 {{-- <li><a href="cart.html">خدمات</a></li> --}}
                                 <li><a href="">{{__('master.blogs')}} </a></li>
                             </ul>

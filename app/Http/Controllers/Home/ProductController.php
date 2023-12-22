@@ -12,7 +12,9 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request, $slug = null){
+
+
 
         $page = $request->query("page");
         $size = $request->query("size");
@@ -48,19 +50,13 @@ class ProductController extends Controller
         }
 
         $attributes = Attribute::all();
-        // $variants = [];
-        // $product_attributes = ProductAttribute::all();
-        // foreach ($product_attributes as $variants) {
-        //     $slug = Str::slug($variants->value);
-        //     foreach ($attributes as $attribute) {
-
-        //     }
-        // }
+        $category = Category::where('slug','=',$slug)->firstOrFail();
+        $q_categories = tree($category);
 
         $categories = Category::parents()->active()->orderBy("name","ASC")->get();
-        $q_categories = $request->query("categories");
-        $products = Product::where(function($query) use($q_categories){
-                                $query->whereIn('category_id',explode(',',$q_categories))->orWhereRaw("'".$q_categories."'=''");
+
+        $products = Product::whereHas('category',function($query) use($q_categories){
+                                $query->whereIn('categories.id',$q_categories);
                             })->orderBy($_column,$_order)->paginate($size);
 
 
@@ -80,6 +76,7 @@ class ProductController extends Controller
     public function show($slug){
 
         $product = Product::where('slug','=',$slug)->firstOrFail();
+
 
         return view('user.product-details',compact('product'));
     }

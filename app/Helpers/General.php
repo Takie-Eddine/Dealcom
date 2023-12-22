@@ -40,4 +40,17 @@ if (!function_exists('uploadImage')) {
                 Image::make($photo->getRealPath())->save($path);
                 return $file_name;
         }
+
+
+        function tree($category){
+            $categories = [];
+            if ($category->children->empty()) {
+                $categories[] = $category->id;
+            }
+            foreach ($category->children as $child) {
+                $categories = array_merge($categories, tree($child));
+            }
+
+            return $categories;
+        }
     }

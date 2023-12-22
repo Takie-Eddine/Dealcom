@@ -10,9 +10,8 @@
                     <ul id="menuList" >
                         <li><a class="{{request()->routeIs('login') ? 'active' : ''}}" href="{{route('login')}}">دخول</a></li>
                         <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">الفئات</a></li>
-                        <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li>
                         <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">حول ديلكوم</a></li>
-                        <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">مقالات</a></li>
+                        <li><a class="{{request()->routeIs('https://blogs.dealcom.com.tr') ? 'active' : ''}}" href="https://blogs.dealcom.com.tr">مقالات</a></li>
                         <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">تواصل معنا</a></li>
                     </ul>
                 </div>
@@ -34,60 +33,18 @@
                             </a>
                         </div>
                         <ul class="mainmenu me-5">
-
-                            {{-- <li><a class="active" href="{{route('index')}}">الرئيسية</a></li> --}}
                             <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">{{__('master.category')}}</a></li>
-                            {{-- <li><a class="{{request()->routeIs('product') ? 'active' : ''}}" href="{{route('product')}}">المنتجات</a></li> --}}
                             <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">{{__('master.about dealcom')}}</a></li>
-                            <li><a class="{{request()->routeIs('https://blog.dealcom.com.tr') ? 'active' : ''}}" href="https://blog.dealcom.com.tr">{{__('master.blogs')}}</a></li>
+                            <li><a class="{{request()->routeIs('https://blogs.dealcom.com.tr') ? 'active' : ''}}" href="https://blogs.dealcom.com.tr">{{__('master.blogs')}}</a></li>
                             <li><a class="{{request()->routeIs('contact') ? 'active' : ''}}" href="{{route('contact')}}">{{__('master.contact us')}} </a></li>
-
-                            {{-- <li class="menu-item-has-children d-lg-none">
-                                <a href="#">اللغة</a>
-                                <ul class="axil-submenu">
-                                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                                        <li><a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  data-language="{{ $localeCode }}">العربية</a></li>
-                                    @endforeach
-                                </ul>
-                            </li> --}}
-
                         </ul>
 
 
                     </nav>
-                    <!-- End Mainmanu Nav -->
                 </div>
                 <div class="header-action d-flex ">
-                    <!-- <ul class="action-list me-5">
-                        <li class="my-account d-none d-lg-inline-block">
-                            <a href="javascript:void(0)" class=" language-button btn btn-light">
-                                اللغة
-                            </a>
-                            <div class="my-account-dropdown">
-                                <ul>
-                                    <li>
-                                        <a href="#">العربية</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">English</a>
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </li>
-
-                        <li style="margin: 0;" class="axil-mobile-toggle">
-                            <button class="menu-btn mobile-nav-toggler text-white">
-                                <i class="flaticon-menu-2"></i>
-                            </button>
-                        </li>
-                    </ul> -->
-
                     <div class="auth ms-2 d-none d-lg-inline-block">
                         <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">{{__('master.login')}}</a>
-                        <!-- <a href="#" class="btn-lg btn-danger text-white me-3"
-                            style="background-color: #3ec0c2;">دخول</a> -->
-
                     </div>
 
                     <div class="dropdown">
@@ -99,7 +56,6 @@
                             @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                                         <li><a href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"  data-language="{{ $localeCode }}">{{ $properties['native'] }}</a> </li>
                                     @endforeach
-                            <!-- <li><a class="dropdown-item" href="#">Spanish</a></li> -->
                         </ul>
                     </div>
 
