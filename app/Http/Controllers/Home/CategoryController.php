@@ -15,13 +15,13 @@ class CategoryController extends Controller
 
         $category_1 = tree($categories[0]);
 
-        $products_1 = Product::whereHas('category',function($query) use($category_1){
+        $products_1 = Product::featured()->whereHas('category',function($query) use($category_1){
             $query->whereIn('categories.id',$category_1);
         })->take(4)->get();
 
         $category_2 = tree($categories[1]);
 
-        $products_2 = Product::whereHas('category',function($query) use($category_2){
+        $products_2 = Product::featured()->whereHas('category',function($query) use($category_2){
             $query->whereIn('categories.id',$category_2);
         })->take(4)->get();
 
