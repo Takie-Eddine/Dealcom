@@ -81,10 +81,31 @@
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
                             <a href="#" class="images-preview images-preview06">
-                                <img src="https://via.placeholder.com/400x300">
-                                <img src="https://via.placeholder.com/400x300">
-                                <img src="https://via.placeholder.com/400x300">
-                                <img src="https://via.placeholder.com/400x300">
+                                @if ($category->slug == 'apparel')
+                                    <img src="{{$products_1[0]->image_url}}">
+                                    <img src="{{$products_1[1]->image_url}}">
+                                    <img src="{{$products_1[2]->image_url}}">
+                                    <img src="{{$products_1[3]->image_url}}">
+                                @endif
+                                @if ($category->slug == 'furniture-decor')
+                                    <img src="{{$products_2[0]->image_url}}">
+                                    <img src="{{$products_2[1]->image_url}}">
+                                    <img src="{{$products_2[2]->image_url}}">
+                                    <img src="{{$products_2[3]->image_url}}">
+                                @endif
+                                @if ($category->slug == 'food')
+                                    <img src="{{$products_3[0]->image_url}}">
+                                    <img src="{{$products_3[1]->image_url}}">
+                                    <img src="{{$products_3[2]->image_url}}">
+                                    <img src="{{$products_3[3]->image_url}}">
+                                @endif
+                                @if ($category->slug == 'machines')
+                                    <img src="{{$products_4[0]->image_url}}">
+                                    <img src="{{$products_4[1]->image_url}}">
+                                    <img src="{{$products_4[2]->image_url}}">
+                                    <img src="{{$products_4[3]->image_url}}">
+                                @endif
+
                             </a>
                         </div>
                     </div>
@@ -97,25 +118,27 @@
                                 @if ($loop->first || $loop->iteration % 2 == 1)
                                     <div class="uk-child-width-expand@s uk-grid-divider mt--50" uk-grid>
                                 @endif
-                                        <div>
-                                            <h4>
-                                                <a href="{{route('product',$child->slug)}}">
-                                                    {{$child->name}}
-                                                </a>
-                                            </h4>
-                                            <ul class="uk-list">
-                                                @forelse ($child->children as $_child)
-                                                    @if ($_child->products->count()>=1 )
-                                                        <li>
-                                                            <a href="{{route('product',$_child->slug)}}">
-                                                                {{$_child->name}}
-                                                            </a>
-                                                        </li>
-                                                    @endif
-                                                @empty
-                                                @endforelse
-                                            </ul>
-                                        </div>
+                                @if ($child->products->count()>=0)
+                                    <div>
+                                        <h4>
+                                            <a href="{{route('product',$child->slug)}}">
+                                                {{$child->name}}
+                                            </a>
+                                        </h4>
+                                        <ul class="uk-list">
+                                            @forelse ($child->children as $_child)
+                                                @if ($_child->products->count()>=1 )
+                                                    <li>
+                                                        <a href="{{route('product',$_child->slug)}}">
+                                                            {{$_child->name}}
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                            @empty
+                                            @endforelse
+                                        </ul>
+                                    </div>
+                                @endif
                                 @if ($loop->last || $loop->iteration % 2 == 0)
                                     </div>
                                 @endif
