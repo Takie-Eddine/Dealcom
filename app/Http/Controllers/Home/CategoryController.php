@@ -17,7 +17,7 @@ class CategoryController extends Controller
 
         $products_1 = Product::whereHas('category',function($query) use($category_1){
             $query->whereIn('categories.id',$category_1);
-        })->take(4)->get();
+        })->take(5)->get();
 
         $category_2 = tree($categories[1]);
 

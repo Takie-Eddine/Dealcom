@@ -86,6 +86,7 @@
                                     <img src="{{$products_1[1]->image_url}}">
                                     <img src="{{$products_1[2]->image_url}}">
                                     <img src="{{$products_1[3]->image_url}}">
+                                    <img src="{{$products_1[4]->image_url}}">
                                 @endif
                                 @if ($category->slug == 'furniture-decor')
                                     <img src="{{$products_2[0]->image_url}}">

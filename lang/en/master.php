@@ -461,6 +461,7 @@ return [
     'customer service' => 'Customer Service',
     'articles' => 'Articles',
     'special brand' => 'Private Label',
+    'browsing' => 'Browse all products here',
 
 
 

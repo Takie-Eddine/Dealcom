@@ -30,18 +30,18 @@
 <main class="main-wrapper mt-5 mb-5">
 
     <!-- Start Breadcrumb Area  -->
-    <div class="axil-breadcrumb-area" data-aos="fade-left" data-aos-offset="300" data-aos-easing="ease-in-sine"
+    <div class="axil-breadcrumb-area" data-aos="" data-aos-offset="300" data-aos-easing="ease-in-sine"
         data-aos-duration="1100">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-8">
                     <div class="inner">
                         <ul class="axil-breadcrumb">
-                            <li class="axil-breadcrumb-item"><a href="{{route('index')}}">الرئيسية</a></li>
+                            <li class="axil-breadcrumb-item"><a href="{{route('index')}}">{{__('master.home')}}</a></li>
                             <li class="separator"></li>
-                            <li class="axil-breadcrumb-item active" aria-current="page">المنتجات</li>
+                            <li class="axil-breadcrumb-item active" aria-current="page">{{__('master.products')}}</li>
                         </ul>
-                        <h1 class="title">تصفح جميع المنتجات هنا</h1>
+                        <h1 class="title"> {{__('master.browsing')}}</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-4">
@@ -60,14 +60,14 @@
     <div class="axil-shop-area axil-section-gap bg-color-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+                <div class="col-lg-3" data-aos="" data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000">
                     <div class="axil-shop-sidebar">
                         <div class="d-lg-none">
                             <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
                         </div>
                         <div class="toggle-list product-categories active">
-                            <h6 class="title">التصنيفات</h6>
+                            <h6 class="title">{{__('master.categories')}}</h6>
                             <div class="shop-submenu">
                                 <ul>
                                     @forelse ($categories as $category)
@@ -91,26 +91,6 @@
                                 </ul>
                             </div>
                         </div>
-                        @forelse ($attributes as $attribute)
-                            <div class="toggle-list product-size active">
-                                <h6 class="title">{{$attribute->name}}</h6>
-                                <div class="shop-submenu">
-                                    <ul>
-                                        <li class="chosen"><a href="#">XS</a></li>
-                                        <li><a href="#">S</a></li>
-                                        <li><a href="#">M</a></li>
-                                        <li><a href="#">L</a></li>
-                                        <li><a href="#">XL</a></li>
-                                        <li><a href="#">XXL</a></li>
-                                        <li><a href="#">3XL</a></li>
-                                        <li><a href="#">4XL</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        @empty
-
-                        @endforelse
-
 
                         <a href="" class="axil-btn btn-bg-primary">اعادة الكل</a>
                     </div>
@@ -118,7 +98,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-12" data-aos="flip-right" data-aos-easing="ease-out-cubic"
+                        <div class="col-lg-12" data-aos="" data-aos-easing="ease-out-cubic"
                             data-aos-duration="2000">
                             <div class="axil-shop-top mb--40">
                                 <div
@@ -137,17 +117,24 @@
                                         <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
                                         {{-- <option>ترتيب حسب السعر</option> --}}
                                     </select>
+                                    <select class="single-select" name="order" id="orderby">
+                                        <option value="-1" {{$order == -1 ? 'selected':''}}>Default</option>
+                                        <option value="1" {{$order == 1 ? 'selected':''}}>ترتيب حسب الاحدث</option>
+                                        <option value="2" {{$order == 2 ? 'selected':''}}>ترتيب حسب الاقدم</option>
+                                        <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
+                                        {{-- <option>ترتيب حسب السعر</option> --}}
+                                    </select>
                                     <!-- End Single Select  -->
+                                    <input  type="text" name="name" value="" class="form-control">
                                 </div>
                                 <div class="d-lg-none">
-                                    <button class="product-filter-mobile filter-toggle"><i
-                                            class="fas fa-filter"></i>بحث</button>
+                                    <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i>بحث</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End .row -->
-                    <div class="row row--15" data-aos="fade-right" data-aos-offset="300"
+                    <div class="row row--15" data-aos="" data-aos-offset="300"
                         data-aos-easing="ease-in-sine" data-aos-duration="1000">
                         @forelse ($products as $product)
                         <!-- Start of single product -->

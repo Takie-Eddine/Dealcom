@@ -460,6 +460,7 @@ return [
     'customer service' => 'خدمة العملاء',
     'articles' => 'المقالات',
     'special brand' => 'العلامة التجارية الخاصة',
+    'browsing' => 'تصفح جميع المنتجات هنا',
 
 
 ];
