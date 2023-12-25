@@ -5,6 +5,7 @@ use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\CategoryController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
+use App\Http\Controllers\Home\HowtobyController;
 use App\Http\Controllers\Home\PageController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -48,9 +49,7 @@ Route::group([
         Route::get('/', [ContactController::class, 'index'])->name('contact');
     });
 
-    Route::get('/how-to-by', function () {
-        return view('user.howtoby');
-    })->name('howtoby');
+    Route::get('/how-to-by', [HowtobyController::class, 'index'])->name('howtoby');
     Route::get('/commercial-brand',[PageController::class, 'index']  )->name('commercial');
 
         // Route::get('/dashboard', function () {
