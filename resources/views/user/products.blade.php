@@ -117,15 +117,10 @@
                                         <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
                                         {{-- <option>ترتيب حسب السعر</option> --}}
                                     </select>
-                                    <select class="single-select" name="order" id="orderby">
-                                        <option value="-1" {{$order == -1 ? 'selected':''}}>Default</option>
-                                        <option value="1" {{$order == 1 ? 'selected':''}}>ترتيب حسب الاحدث</option>
-                                        <option value="2" {{$order == 2 ? 'selected':''}}>ترتيب حسب الاقدم</option>
-                                        <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
-                                        {{-- <option>ترتيب حسب السعر</option> --}}
-                                    </select>
+                                    <div style="border:2px solid; color:#CBD3D9;width: auto; margin: 10px;padding-right: 43px;"  >
+                                        <input  type="text" name="search" value="" >
+                                    </div>
                                     <!-- End Single Select  -->
-                                    <input  type="text" name="name" value="" class="form-control">
                                 </div>
                                 <div class="d-lg-none">
                                     <button class="product-filter-mobile filter-toggle"><i class="fas fa-filter"></i>بحث</button>
@@ -145,16 +140,9 @@
                                             <img src="{{$product->image_url}}"
                                                 alt="Product Images" style="width:300px;  height:300px;">
                                         </a>
-                                        {{-- <div class="label-block label-right">
-                                            <div class="product-badget">10% خصم</div>
-                                        </div> --}}
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                {{-- <li class="wishlist"><a href="wishlist.html"><i
-                                                            class="far fa-heart"></i></a></li> --}}
                                                 <li class="select-option"><a href="{{route('product.show',$product->slug)}}">اطلب المنتج </a></li>
-                                                {{-- <li class="quickview"><a href="product-details.html"><i
-                                                            class="far fa-eye"></i></a></li> --}}
                                             </ul>
                                         </div>
                                     </div>
@@ -163,8 +151,6 @@
                                             <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
                                             </h5>
                                             <div class="product-price-variant">
-                                                {{-- <span class="price current-price">$30</span>
-                                                <span class="price old-price">$30</span> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -174,8 +160,6 @@
                         @empty
 
                         @endforelse
-
-
                     </div>
 
                     <div class="text-center pt--20">
