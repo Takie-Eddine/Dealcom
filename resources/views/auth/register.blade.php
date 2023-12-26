@@ -63,7 +63,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/logo/Asset 3.png')}}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/logo/logo.png')}}">
 
     <!-- CSS
     ============================================ -->
