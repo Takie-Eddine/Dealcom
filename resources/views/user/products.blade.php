@@ -117,9 +117,9 @@
                                         <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
                                         {{-- <option>ترتيب حسب السعر</option> --}}
                                     </select>
-                                    <div style="border:2px solid; color:#CBD3D9;width: auto; margin: 10px;padding-right: 43px;"  >
-                                        <input  type="text" name="search" value="" >
-                                    </div>
+                                        <div style="border:2px solid; color:#CBD3D9;width: auto; margin: 10px;padding-right: 43px;"  >
+                                            <input  type="text" name="keyword" id="keyword1" placeholder="Search here" value="{{$keyword}}">
+                                        </div>
                                     <!-- End Single Select  -->
                                 </div>
                                 <div class="d-lg-none">
@@ -179,6 +179,7 @@
     <input type="hidden" name="page" id="page" value="{{$page}}">
     <input type="hidden" name="size" id="size" value="{{$size}}">
     <input type="hidden" name="order" id="order" value="{{$order}}">
+    <input type="hidden" name="keyword" id="keyword" value="{{$keyword}}">
     {{-- <input type="hidden" name="categories" id="categories" value="{{$q_categories}}"> --}}
 
 </form>
@@ -193,6 +194,10 @@
         });
         $('#orderby').on("change",function(){
             $("#order").val($("#orderby option:selected").val());
+            $('#frmFilter').submit();
+        });
+        $('#keyword1').on("change",function(){
+            $("#keyword").val($("#keyword1").val());
             $('#frmFilter').submit();
         });
 

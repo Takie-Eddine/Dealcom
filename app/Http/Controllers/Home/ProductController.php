@@ -18,6 +18,7 @@ class ProductController extends Controller
 
         $page = $request->query("page");
         $size = $request->query("size");
+        $keyword = $request->query("keyword");
         if (!$page) {
             $page = 1;
         }
@@ -57,7 +58,10 @@ class ProductController extends Controller
 
         $products = Product::whereHas('category',function($query) use($q_categories){
                                 $query->whereIn('categories.id',$q_categories);
-                            })->orderBy($_column,$_order)->paginate($size);
+                            })->when($keyword != null,function ($query) use($keyword){
+                                $query->search($keyword);
+                            })
+                            ->orderBy($_column,$_order)->paginate($size);
 
 
         return view('user.products',[
@@ -68,6 +72,7 @@ class ProductController extends Controller
             'order' => $order,
             'q_categories' => $q_categories,
             'attributes' => $attributes,
+            'keyword' => $keyword,
         ]);
     }
 
