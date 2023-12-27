@@ -55,7 +55,7 @@
                             <div class="contact-form">
                                 <h3 class="title mb--50">لنحصل على فرصة للتعرف اليك</h3>
                                 <!-- <p>If you’ve got great products your making or looking to work with us then drop us a line.</p> -->
-                                <form id="contact-form" class="axil-contact-form">
+                                {{-- <form id="contact-form" class="axil-contact-form">
                                     <div class="row row--10">
                                         <div class="col-lg-4">
                                             <div class="form-group">
@@ -91,7 +91,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
+                                <script data-b24-form="inline/80/npkjxv" data-skip-moving="true">
+                                    (function(w,d,u){
+                                    var s=d.createElement('script');s.async=true;s.src=u+'?'+(Date.now()/180000|0);
+                                    var h=d.getElementsByTagName('script')[0];h.parentNode.insertBefore(s,h);
+                                    })(window,document,'https://cdn.bitrix24.com/b18545041/crm/form/loader_80.js');
+                                </script>
                             </div>
                         </div>
                         <div class="col-lg-4">
