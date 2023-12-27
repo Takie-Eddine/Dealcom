@@ -100,22 +100,31 @@
                                 </script>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
                             <div class="contact-location mb--40">
                                 <h4 class="title mb--20">معلومات التواصل</h4>
-                                <span class="address mb--20">8212 E. Glen Creek Street Orchard Park, NY 14127, United
-                                    States of America</span>
+                                <span class="address mb--20">Dumlupinar Cad. 44/1 Third Floor, Office No. 10 Zafer Mah. Bahcelievler, Istanbul, Turkey
+                                </span>
                                 <!-- <span class="phone">Phone: +123 456 7890</span>
                                 <span class="email">Email: Hello@etrade.com</span>
                             </div> -->
                                 <div class="contact-career mb--40">
                                     <h4 class="title mb--20">البريد الالكتروني</h4>
-                                    <span class="email">Dealcom@info.com</span>
+                                    <span class="email">info@dealcom.com.tr</span>
 
                                 </div>
                                 <div class="opening-hour">
                                     <h4 class="title mb--20">رقم الهاتف</h4>
-                                    <span class="phone">+123 456 7890</span>
+                                    <span class="phone">0090 544 86888 66 </span>
                                 </div>
                             </div>
                         </div>
