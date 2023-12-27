@@ -35,7 +35,7 @@
                 <div class="row justify-content-center">
                     <div class="col-sm-6">
                         <div class="main-slider-content">
-                            <h1 class="text-white text-center">اتصل بنا</h1>
+                            <h1 class="text-white text-center"></h1>
                             <!-- <p class="section-breadcrumb text-center">الرئيسية>> من نحن</p> -->
 
                         </div>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="opening-hour">
                                     <h4 class="title mb--20">رقم الهاتف</h4>
-                                    <span class="phone">0090 544 86888 66 </span>
+                                    <span class="phone">00905448688866 </span>
                                 </div>
                             </div>
                         </div>
