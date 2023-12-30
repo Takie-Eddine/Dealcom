@@ -337,19 +337,19 @@
                             <div class="slick-single-layout">
                                 <div class="slider-product-custom axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="{{route('product.request')}}">
+                                        <a href="{{route('product.request',$product->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
                                                 src="{{$product->image_url}}" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request')}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.request'$product->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="{{route('product.request')}}">{{$product->name}}</a>
+                                            <h5 class="title"><a href="{{route('product.request'$product->slug)}}">{{$product->name}}</a>
 
                                             </h5>
                                             <div class="product-rating">
