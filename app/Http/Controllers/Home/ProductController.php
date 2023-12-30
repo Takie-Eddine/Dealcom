@@ -83,10 +83,18 @@ class ProductController extends Controller
 
         $category = $product->category;
 
+        $tags = $product->tags ;
+
+        $product_tags = Product::active()->whereHas('category',function($query) use($tags){
+            $query->whereIn('tags.id',$tags);
+        })->get();
+
+
+        $product_featured = Product::active()->featured()->get();
 
         $products = Product::where('category_id',$category->id)->get();
 
-        return view('user.product-details',compact('product','products'));
+        return view('user.product-details',compact('product','products','product_tags','product_featured'));
     }
 
 
