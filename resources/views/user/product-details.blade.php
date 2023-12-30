@@ -211,7 +211,7 @@
                             <div class="slick-single-layout">
                                 <div class="slider-product-custom axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="single-product-7.html">
+                                        <a href="{{route('product.request',$product->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
                                                 src="{{$product->image}}" alt="Product Images">
                                         </a>
@@ -223,7 +223,7 @@
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="{{route('product.request',$product->slug)}}">{{$product->name}}</a>
+                                            <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
 
                                             </h5>
                                             <div class="product-rating">
@@ -235,7 +235,7 @@
                                                     <i class="far fa-star"></i>
                                                 </span>
 
-                                                <a class="d-block" href="{{route('product.request',$product->slug)}}" style="color: #3ec0c2;
+                                                <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
                                                     ">{{$product->code}} </a>
                                             </div>
                                         </div>
@@ -273,19 +273,19 @@
                             <div class="slick-single-layout">
                                 <div class="slider-product-custom axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="{{route('product.request',$product->slug)}}">
+                                        <a href="{{route('product.show',$feature->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$product->image_url}}" alt="Product Images">
+                                                src="{{$feature->image_url}}" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request',$product->slug)}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.request',$feature->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="{{route('product.request',$product->slug)}}">{{$product->name}}</a>
+                                            <h5 class="title"><a href="{{route('product.show',$feature->slug)}}">{{$feature->name}}</a>
 
                                             </h5>
                                             <div class="product-rating">
@@ -297,8 +297,8 @@
                                                     <i class="far fa-star"></i>
                                                 </span>
 
-                                                <a class="d-block" href="{{route('product.request',$product->slug)}}" style="color: #3ec0c2;
-                                                    ">{{$product->code}} </a>
+                                                <a class="d-block" href="{{route('product.show',$feature->slug)}}" style="color: #3ec0c2;
+                                                    ">{{$feature->code}} </a>
 
                                                 <p class="product-text"> </p>
                                             </div>
@@ -337,19 +337,19 @@
                             <div class="slick-single-layout">
                                 <div class="slider-product-custom axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="{{route('product.request',$product->slug)}}">
+                                        <a href="{{route('product.show',$tags->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$product->image_url}}" alt="Product Images">
+                                                src="{{$tags->image_url}}" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request'$product->slug)}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.request',$tags->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="product-content">
                                         <div class="inner">
-                                            <h5 class="title"><a href="{{route('product.request'$product->slug)}}">{{$product->name}}</a>
+                                            <h5 class="title"><a href="{{route('product.show',$tags->slug)}}">{{$tags->name}}</a>
 
                                             </h5>
                                             <div class="product-rating">
@@ -361,8 +361,8 @@
                                                     <i class="far fa-star"></i>
                                                 </span>
 
-                                                <a class="d-block" href="{{route('product.request',$product->slug)}}" style="color: #3ec0c2;
-                                                    ">{{$product->code}} </a>
+                                                <a class="d-block" href="{{route('product.show',$tags->slug)}}" style="color: #3ec0c2;
+                                                    ">{{$tags->code}} </a>
 
                                                 <p class="product-text">
                                                 </p>
