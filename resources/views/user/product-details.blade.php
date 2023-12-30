@@ -162,7 +162,7 @@
                                             </div>
                                             <div class="col-md-6 text-end">
                                                 <div class="bradcrumb-thumb">
-                                                    <img src="{{$product->supplier->image}}"
+                                                    <img src="{{$product->supplier->image_url}}"
                                                         class="rounded-circle" alt="Image">
                                                 </div>
                                             </div>
@@ -213,7 +213,7 @@
                                     <div class="thumbnail">
                                         <a href="{{route('product.request',$product->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$product->image}}" alt="Product Images">
+                                                src="{{$product->image_url}}" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">

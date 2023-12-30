@@ -32,7 +32,7 @@ class ProductImage extends Model
             return $this->name;
         }
 
-        return asset('assets/product_images/' .$this->name);
+        return asset('assets/images/product_images/' .$this->name);
 
     }
 }
