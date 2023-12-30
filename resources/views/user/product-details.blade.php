@@ -132,7 +132,7 @@
                                         <!-- Start Product Action  -->
                                         <ul class="product-action d-flex-center mb--0">
                                             <li class="add-to-cart"><a href="{{route('product.request',$product->slug)}}"
-                                                    class="axil-btn btn-bg-primary">اضف المنتج</a></li>
+                                                    class="axil-btn btn-bg-primary">اطلب المنتج</a></li>
                                             <li class="wishlist"><a href="{{route('product.wishlist',$product->slug)}}"
                                                     class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                         </ul>
@@ -146,23 +146,23 @@
                                         <div class="row mb-5">
                                             <div class="col-md-6">
                                                 <h4 class="primary-color mb--40 desc-heading">تواصل مع الشركة</h4>
-                                                <h4 class="primary-color mb--40 desc-heading fw-light"> {{$product->supplier->name}}
+                                                <h4 class="primary-color mb--40 desc-heading fw-light"> {{$product->brand->name}}
                                                 </h4>
                                                 <div class="product-rating">
                                                     <div class="">
-                                                        {{$product->supplier->email}}
+                                                        {{$product->brand->email}}
                                                     </div>
                                                 </div>
                                                 <div class="product-rating">
                                                     <div class="">
-                                                        {{$product->supplier->mobile_phone}}
+                                                        {{$product->brand->mobile_phone}}
                                                     </div>
 
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-end">
                                                 <div class="bradcrumb-thumb">
-                                                    <img src="{{$product->supplier->image_url}}"
+                                                    <img src="{{$product->brand->image_url}}"
                                                         class="rounded-circle" alt="Image">
                                                 </div>
                                             </div>

@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function index(){
 
-        $categories = Category::parents()->with(['children'])->active()->get();
+        $categories = Category::active()->parents()->with(['children'])->get();
 
         $category_1 = tree($categories[0]);
 
