@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -39,5 +40,15 @@ class CategoryController extends Controller
 
 
         return view('user.categories',compact('categories','products_1','products_2','products_3','products_4'));
+    }
+
+
+
+    public function get($slug){
+
+        Session::put('category',$slug);
+        $categories = Category::parents()->active()->orderBy("name","ASC")->get();
+        return view('user.products',compact('categories'));
+
     }
 }

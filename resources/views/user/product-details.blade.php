@@ -84,10 +84,10 @@
 
                                     </div>
                                     <div class="company-name mb-2">
-                                        <span class="main-color me-5">{{$product->brand->name}}</span>
+                                        <span class="main-color me-5">{{$product->code}}</span>
                                     </div>
 
-                                    <p class="description text-dark">{!!$product->description!!}</p>
+                                    <div class="how-to-sell">{!!$product->description!!}</div>
 
                                     <div class="product-variations-wrapper">
                                         @forelse ($product->variants as $variant)
@@ -129,15 +129,11 @@
 
                                     <!-- Start Product Action Wrapper  -->
                                     <div class="product-action-wrapper d-flex-center">
-                                        <!-- Start Quentity Action  -->
-                                        <div class="pro-qty mr--20"><input type="text" value="1"></div>
-                                        <!-- End Quentity Action  -->
-
                                         <!-- Start Product Action  -->
                                         <ul class="product-action d-flex-center mb--0">
-                                            <li class="add-to-cart"><a href="cart.html"
-                                                    class="axil-btn btn-bg-primary">اضف للسلة</a></li>
-                                            <li class="wishlist"><a href="wishlist.html"
+                                            <li class="add-to-cart"><a href="{{route('product.request',$product->slug)}}"
+                                                    class="axil-btn btn-bg-primary">اضف المنتج</a></li>
+                                            <li class="wishlist"><a href="{{route('product.wishlist',$product->slug)}}"
                                                     class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                         </ul>
                                         <!-- End Product Action  -->
@@ -150,22 +146,23 @@
                                         <div class="row mb-5">
                                             <div class="col-md-6">
                                                 <h4 class="primary-color mb--40 desc-heading">تواصل مع الشركة</h4>
-                                                <h4 class="primary-color mb--40 desc-heading fw-light">مثال على الاسم
+                                                <h4 class="primary-color mb--40 desc-heading fw-light"> {{$product->supplier->name}}
                                                 </h4>
                                                 <div class="product-rating">
-                                                    <div class="star-rating">
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="fas fa-star"></i>
-                                                        <i class="far fa-star"></i>
+                                                    <div class="">
+                                                        {{$product->supplier->email}}
+                                                    </div>
+                                                </div>
+                                                <div class="product-rating">
+                                                    <div class="">
+                                                        {{$product->supplier->mobile_phone}}
                                                     </div>
 
                                                 </div>
                                             </div>
                                             <div class="col-md-6 text-end">
                                                 <div class="bradcrumb-thumb">
-                                                    <img src="assets/images/product/product-45.png"
+                                                    <img src="{{$product->supplier->image}}"
                                                         class="rounded-circle" alt="Image">
                                                 </div>
                                             </div>
@@ -173,14 +170,8 @@
 
                                         <div class="row">
                                             <div class="col-md-4 mb-sm-3">
-                                                <button class="btn-lg btn-primary bg-second-color">اتصال</button>
-                                            </div>
-                                            <div class="col-md-4 mb-sm-3">
                                                 <button class="btn-lg btn-outline-danger main-color-outline-btn">ارسال
                                                     رسالة</button>
-                                            </div>
-                                            <div class="col-md-4 mb-sm-3">
-                                                <button class="btn-lg btn-primary bg-second-color">مشاركة</button>
                                             </div>
                                         </div>
 
@@ -215,294 +206,44 @@
 
                 </div>
                 <div class="recent-product-activation slick-layout-wrapper--15 axil-slick-arrow arrow-top-slide">
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
+                    @forelse ($products as $product)
+                        <div class="slick-single-layout">
+                            <div class="slider-product-custom axil-product product-style-one">
+                                <div class="thumbnail">
+                                    <a href="single-product-7.html">
+                                        <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
+                                            src="{{$product->image}}" alt="Product Images">
+                                    </a>
+                                    <div class="product-hover-action">
+                                        <ul class="cart-action">
+                                            <li class="select-option"><a href="{{route('product.request',$product->slug)}}">طلب المنتج</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
+                                <div class="product-content">
+                                    <div class="inner">
+                                        <h5 class="title"><a href="{{route('product.request',$product->slug)}}">{{$product->name}}</a>
 
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
+                                        </h5>
+                                        <div class="product-rating">
+                                            <span class="icon">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                            </span>
 
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
+                                            <a class="d-block" href="{{route('product.request',$product->slug)}}" style="color: #3ec0c2;
+                                                ">{{$product->code}} </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
+                    @empty
 
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
-
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
-
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
-
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
-
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slick-single-layout">
-                        <div class="slider-product-custom axil-product product-style-one">
-                            <div class="thumbnail">
-                                <a href="single-product-7.html">
-                                    <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                        src="assets/images/product/nft/product-15.png" alt="Product Images">
-                                </a>
-                                <div class="product-hover-action">
-                                    <ul class="cart-action">
-                                        <li class="select-option"><a href="single-product-7.html">شراء
-                                                المنتج</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="product-content">
-                                <div class="inner">
-                                    <h5 class="title"><a href="single-product-7.html">سيارة</a>
-
-                                    </h5>
-                                    <div class="product-rating">
-                                        <span class="icon">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                        </span>
-
-                                        <a class="d-block" href="single-product-7.html" style="color: #3ec0c2;
-                                            ">اسم الشركة</a>
-
-                                        <p class="product-text">هذا النص هو مثال لنص يمكن أن يستبدل
-                                            في
-                                            نفس
-                                            المساحة، لقد تم توليد
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                    @endforelse
 
                 </div>
             </div>

@@ -8,11 +8,12 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function index(Request $request, $slug = null){
+    public function index(Request $request, $slug){
 
 
 
@@ -50,7 +51,7 @@ class ProductController extends Controller
                 break;
         }
 
-        $attributes = Attribute::all();
+        // $slug = Session::get('category')->slug;
         $category = Category::where('slug','=',$slug)->firstOrFail();
         $q_categories = tree($category);
 
@@ -70,8 +71,6 @@ class ProductController extends Controller
             'size' => $size,
             'page' => $page,
             'order' => $order,
-            'q_categories' => $q_categories,
-            'attributes' => $attributes,
             'keyword' => $keyword,
         ]);
     }
@@ -82,14 +81,23 @@ class ProductController extends Controller
 
         $product = Product::where('slug','=',$slug)->firstOrFail();
 
+        $category = $product->category;
 
-        return view('user.product-details',compact('product'));
+
+        $products = Product::where('category_id',$category->id)->get();
+
+        return view('user.product-details',compact('product','products'));
     }
 
 
 
 
-    public function request(){
+    public function request($slug){
         return view('user.request-product');
+    }
+
+
+    public function wishlist($slug){
+
     }
 }

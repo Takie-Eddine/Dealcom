@@ -35,12 +35,13 @@ Route::group([
 
     Route::group(['prefix'=>'category'  ],function(){
         Route::get('/', [CategoryController::class, 'index'])->name('category');
-        Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+        Route::get('/{slug}', [CategoryController::class, 'get'])->name('category.get');
     });
     Route::group(['prefix'=>'product'  ],function(){
         Route::get('/{slug}', [ProductController::class, 'index'])->name('product');
         Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
-        Route::get('/request', [ProductController::class, 'request'])->name('product.request');
+        Route::get('/request/{slug}', [ProductController::class, 'request'])->name('product.request');
+        Route::get('/wishlist/{slug}', [ProductController::class, 'request'])->name('product.wishlist');
     });
     Route::group(['prefix'=>'about'  ],function(){
         Route::get('/', [AboutController::class, 'index'])->name('about');

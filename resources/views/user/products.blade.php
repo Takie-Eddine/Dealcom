@@ -72,26 +72,23 @@
                                 <ul>
                                     @forelse ($categories as $category)
                                         <li>
-                                            <div class="form-check ps-0 custom-form-check">
-                                                <input type="checkbox" class="checkbox_animated check-it" id="ct{{$category->id}}" name="categories"  value="{{$category->id}}" onchange="filterProductsByCategory(this)">
-                                                <label class="form-check-label">{{$category->name}}</label>
-                                            </div>
+                                            <x-categories-tree :category="$category" />
+                                            <ul>
+                                                @forelse ($category->children as $child)
+                                                    <li>
+                                                        <x-categories-tree :category="$child" />
+
+
+                                                    </li>
+                                                @empty
+                                                @endforelse
+                                            </ul>
                                         </li>
                                     @empty
-
                                     @endforelse
-                                    {{-- <li class="current-cat"><a href="#">أزياء</a></li>
-                                    <li><a href="#">مستحضرات تجميل</a></li>
-                                    <li><a href="#">أثاث</a></li>
-                                    <li><a href="#">الاجهزة</a></li>
-                                    <li><a href="#">العاب</a></li>
-                                    <li><a href="#">طبي</a></li>
-                                    <li><a href="#">بناء</a></li>
-                                    <li><a href="#">مواد التنظيف</a></li> --}}
                                 </ul>
                             </div>
                         </div>
-
                         <a href="" class="axil-btn btn-bg-primary">اعادة الكل</a>
                     </div>
                     <!-- End .axil-shop-sidebar -->
