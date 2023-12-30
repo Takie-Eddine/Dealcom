@@ -83,7 +83,7 @@ class ProductController extends Controller
 
         $category = $product->category;
 
-        $tags = $product->tags ;
+        $tags = $product->tags->pluck('id') ;
 
         $product_tags = Product::active()->whereHas('category',function($query) use($tags){
             $query->whereIn('tags.id',$tags);
