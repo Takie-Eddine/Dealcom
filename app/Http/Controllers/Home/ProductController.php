@@ -85,7 +85,7 @@ class ProductController extends Controller
 
         $tags = $product->tags->pluck('id') ;
 
-        $product_tags = Product::active()->whereHas('category',function($query) use($tags){
+        $product_tags = Product::active()->whereHas('tags',function($query) use($tags){
             $query->whereIn('tags.id',$tags);
         })->get();
 
