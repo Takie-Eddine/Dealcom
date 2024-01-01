@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Attribute;
+use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Content;
 use App\Models\Product;
 use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
@@ -101,7 +103,14 @@ class ProductController extends Controller
 
 
     public function request($slug){
-        return view('user.request-product');
+        $product = Product::where('slug','=',$slug)->FirstOrFail();
+
+        $content_top = Content::active()->request()->top()->first();
+        $content_center = Content::active()->request()->center()->first();
+
+        $brands = Brand::all();
+
+        return view('user.request-product',compact('product','content_top','content_center','brands'));
     }
 
 

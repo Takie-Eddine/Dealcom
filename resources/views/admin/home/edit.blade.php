@@ -153,6 +153,7 @@
                                         <option value="home" @selected('home' == $content->page)>{{__('master.home')}}</option>
                                         <option value="product" @selected('product' == $content->page)>{{__('master.product')}}</option>
                                         <option value="category" @selected('category' == $content->page)>{{__('master.category')}}</option>
+                                        <option value="request" @selected('request' == $content->page)>{{__('master.request')}}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->

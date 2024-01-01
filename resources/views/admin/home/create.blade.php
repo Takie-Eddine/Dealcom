@@ -152,6 +152,7 @@
                                         <option value="home" @selected('home' == old('page'))>{{__('master.home')}}</option>
                                         <option value="product" @selected('product' == old('page'))>{{__('master.product')}}</option>
                                         <option value="category" @selected('category' == old('page'))>{{__('master.category')}}</option>
+                                        <option value="request" @selected('request' == old('page'))>{{__('master.request')}}</option>
                                     </select>
                                 </div>
                                 <!--end::Col-->

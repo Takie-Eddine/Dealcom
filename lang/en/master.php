@@ -462,8 +462,12 @@ return [
     'articles' => 'Articles',
     'special brand' => 'Private Label',
     'browsing' => 'Browse all products here',
-
-
+    'request' => 'Request product',
+    'company sponsoring' => 'Sponsoring Companies',
+    'get product' => 'Did not find your product ?',
+    'fill out' => 'Fill out the questionnaire and get special price offers',
+    'no account' => 'If you do not have an account',
+    'register here' =>  'Register here',
 
 
 ];

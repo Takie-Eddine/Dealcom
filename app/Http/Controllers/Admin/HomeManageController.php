@@ -42,7 +42,7 @@ class HomeManageController extends Controller
             'position' => ['required','in:top,center,bottom'],
             'status' => ['required','in:active,draft'],
             //'locale' => ['required','in:en,ar'],
-            'page' => ['required','in:home,product,category'],
+            'page' => ['required','in:home,product,category,request'],
         ]);
 
         $translation = [] ;
@@ -90,7 +90,7 @@ class HomeManageController extends Controller
             'position' => ['required','in:top,center,bottom'],
             'status' => ['required','in:active,draft'],
             //'locale' => ['required','in:en,ar'],
-            'page' => ['required','in:home,product,category'],
+            'page' => ['required','in:home,product,category,request'],
         ]);
         $content = Content::findOrFail($id);
         if ($request->image) {

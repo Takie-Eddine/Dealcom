@@ -260,7 +260,7 @@
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="product-details.html">{{$product->name}}</a>
+                                                <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -671,8 +671,8 @@
             <div class="row d-flex flex-column align-items-center">
                 <div class="col-md-4 py-5">
                     <h3>{{__('master.not found')}}<span style="color: #3ec0c2;">{{__('master.your product')}}</span> {{__('master.here')}}</h3>
-                    <a href="{{route('product.request')}}" class="btn btn-primary w-50 p-3 "
-                        style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;"> {{__('master.ask price list')}}
+                    <a href="{{route('category')}}" class="btn btn-primary w-50 p-3 "
+                        style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;"> {{__('master.products')}}
                         </a>
 
                 </div>

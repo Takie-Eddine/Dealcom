@@ -28,34 +28,30 @@
 
 
         <!-- Start About Area  -->
-        <div class="axil-about-area about-style-2">
-            <div class="container">
+        @if ($content_top)
+            <div class="axil-about-area about-style-2">
+                <div class="container">
 
-                <div class="row align-items-center">
-                    <div class="col-lg-5 order-lg-2">
-                        <div class="about-thumbnail">
-                            <!-- <img src="https://via.placeholder.com/400x300" alt="about"> -->
-                            <a href="#" class="images-preview images-preview06">
-                                <img src="https://picsum.photos/400/300?image=684">
-                                <img src="https://picsum.photos/400/300?image=676">
-                                <img src="https://picsum.photos/400/300?image=664">
-                                <img src="https://picsum.photos/400/300?image=565">
-                            </a>
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 order-lg-2">
+                            <div class="about-thumbnail">
+                                <!-- <img src="https://via.placeholder.com/400x300" alt="about"> -->
+                                <img src="{{$content_top->image_url}}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-7 order-lg-1">
-                        <div class="about-content content-left">
-                            <h4 class="title">وصف المنصه</h4>
-                            <p class="lead text-dark">إذا كنت تحتاج إلى عدد أكبر من الفقرات يتيح لك مولد العربي</p>
-                            <button class="btn btn-primary w-25 p-3 "
-                                style="background-color: #3ec0c2;font-size: 1.3em;">سجل الان</button>
+                        <div class="col-lg-7 order-lg-1">
+                            <div class="about-content content-left">
+                                <h4 class="title"> {{$content_top->title}}</h4>
+                                <div class="how-to-sell">{!!$content_top->sub_title!!}</div>
+                            </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
             </div>
-        </div>
+        @endif
+
         <!-- End About Area  -->
 
 
@@ -63,9 +59,8 @@
             <div class="container ">
                 <div class="row pt-3">
                     <div class="col-md-6">
-                        <h3>الشركات الممولة</h3>
+                        <h3>{{__('master.company sponsoring')}} </h3>
                     </div>
-                    -->
                 </div>
             </div>
         </div>
@@ -74,38 +69,14 @@
         <div class="service-area mt-5">
             <div class="container">
                 <div class="row ">
-
-                    <div class="col-6 col-md-3">
-                        <div class="service-box">
-
-                            <img src="https://via.placeholder.com/300x200" alt="Service">
-
+                    @forelse ($brands as $brand)
+                        <div class="col-6 col-md-3">
+                            <div class="service-box">
+                                <img src="{{$brand->image_url}}" alt="Service">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="col-6 col-md-3">
-                        <div class="service-box">
-
-                            <img src="https://via.placeholder.com/300x200" alt="Service">
-
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-3">
-                        <div class="service-box">
-
-                            <img src="https://via.placeholder.com/300x200" alt="Service">
-
-                        </div>
-                    </div>
-
-                    <div class="col-6 col-md-3">
-                        <div class="service-box">
-
-                            <img src="https://via.placeholder.com/300x200" alt="Service">
-
-                        </div>
-                    </div>
+                    @empty
+                    @endforelse
 
                 </div>
             </div>
@@ -115,42 +86,36 @@
             <div class="container ">
                 <div class="row pt-3">
                     <div class="col-md-6">
-                        <h3>طلب منتج</h3>
+                        <h3>{{__('master.request')}}</h3>
                     </div>
-                    -->
                 </div>
             </div>
         </div>
 
 
         <!-- Start About Area  -->
-        <div class="axil-about-area about-style-2 mb-md-5">
-            <div class="container">
+        @if ($content_center)
+            <div class="axil-about-area about-style-2 mb-md-5">
+                <div class="container">
 
-                <div class="row align-items-center">
-                    <div class="col-lg-5 order-lg-2">
-                        <div class="about-thumbnail">
-                            <!-- <img src="https://via.placeholder.com/300x250" alt="about"> -->
-                            <a href="#" class="images-preview images-preview06">
-                                <img src="https://picsum.photos/400/300?image=684">
-                                <img src="https://picsum.photos/400/300?image=676">
-                                <img src="https://picsum.photos/400/300?image=664">
-                                <img src="https://picsum.photos/400/300?image=565">
-                            </a>
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 order-lg-2">
+                            <div class="about-thumbnail">
+                                    <img src="{{$content_center->image_url}}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-7 order-lg-1">
-                        <div class="about-content content-left">
-                            <h4 class="title">ديلكوم</h4>
-                            <p class="lead text-dark">لدينا اكثر من 1000 علامة تجارية تسهل عليك عملك</p>
-
+                        <div class="col-lg-7 order-lg-1">
+                            <div class="about-content content-left">
+                                <h4 class="title">{{$content_center->title}}</h4>
+                                <div class="how-to-sell">{!!$content_center->sub_title!!}</div>
+                            </div>
                         </div>
+
                     </div>
-
-
                 </div>
             </div>
-        </div>
+        @endif
+
         <!-- End About Area  -->
 
 
@@ -165,41 +130,48 @@
                                 <img src="./assets/images/product/author1.png" alt="Hello Annie">
                             </div> -->
                             <div class="media-body">
-                                <h2 class="title mb-md-2">لم تحصل على منتجك؟</h2>
-                                <span class="joining-date"> قم بتعئبة الاستبانه و احصل على عروض أسعار مميزة</span>
+                                <h2 class="title mb-md-2">{{__('master.get product')}} </h2>
+                                <span class="joining-date">{{__('master.fill out')}}</span>
                             </div>
                         </div>
                     </div>
 
-
-                    <div class="container py-4 mb-md-5 form-div" style="background-color: #eee;">
-                        <p class="lead text-dark fs-3 mb-4">اذا لم يكن لديك حساب املاء الحقول /لدي حساب <a
-                                class="second-link" href="{{route('login')}}">سجل دخولك
-                                هنا</a>
-                        </p>
-                        <form class="row g-2 justify-content-center">
-                            <div class="col-4">
-                                <label for="inputName" class="visually-hidden">الاسم</label>
-                                <input type="text" class="form-control" id="inputName" placeholder="الاسم">
-                            </div>
-                            <div class="col-4">
-                                <label for="inputEmail" class="visually-hidden">البريد الالكتروني</label>
-                                <input type="text" class="form-control" id="inputEmail" placeholder="البريد الالكتروني">
-                            </div>
-                            <div class="col-4">
-                                <label for="inputPassword" class="visually-hidden">كلمة المرور</label>
-                                <input type="password" class="form-control" id="inputPassword"
-                                    placeholder="كلمة المرور">
-                            </div>
-                            <div class="row">
-                                <div class="col-4 mt-md-3">
-                                    <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color">
-                                        <span class="fs-4">سجل الان</span>
-                                    </button>
+                    @guest
+                        <div class="container py-4 mb-md-5 form-div" style="background-color: #eee;">
+                            <p class="lead text-dark fs-3 mb-4">{{__('master.no account')}} <a
+                                    class="second-link" href="{{route('register')}}">{{__('master.register here')}} </a>
+                            </p>
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <h5>Error Occured!</h5>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
+                            @endif
+                            <form class="row g-2 justify-content-center" action="{{route('login')}}" method="POST" >
+                                @csrf
+                                <div class="col-6">
+                                    <label for="inputEmail" class="visually-hidden">{{__('master.email')}} </label>
+                                    <input type="text" class="form-control" name="email" value="{{old('email')}}" id="inputEmail" placeholder="{{__('master.email')}}">
+                                </div>
+                                <div class="col-6">
+                                    <label for="inputPassword" class="visually-hidden"> {{__('master.password')}}</label>
+                                    <input type="password" class="form-control" name="password"  id="inputPassword" placeholder=" {{__('master.password')}}">
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 mt-md-3">
+                                        <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color">
+                                            <span class="fs-4">{{__('master.login')}} </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    @endguest
+
 
 
 

@@ -48,6 +48,9 @@ class Content extends Model
     public function scopeTop(Builder $builder){
         $builder->where('position' , '=' , 'top');
     }
+    public function scopeRequest(Builder $builder){
+        $builder->where('page' , '=' , 'request');
+    }
 
 
     public function getImageUrlAttribute(){
