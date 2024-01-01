@@ -268,7 +268,7 @@
                                             <!--begin::User details-->
                                         </td>
                                         <td>{{$product->code}}</td>
-                                        <td>{{$product->category->name}}</td>
+                                        <td>{{$product->category->name ?? '__'}}</td>
                                         <td>{{$product->supplier->name}}</td>
                                         <td>{{$product->brand->name}}</td>
                                         <td>{{$product->price_type}}</td>
