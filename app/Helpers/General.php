@@ -22,6 +22,12 @@ if (!function_exists('uploadImage')) {
                 return $file_name;
         }
 
+        function uploadImageGalery($folder,$image){
+            $image->store('assets/images/', $folder);
+            $filename = $image->hashName();
+            return  $filename;
+        }
+
 
         function UnlinkImage($folder, $name, $value){
             if(File::exists('assets/images/'.$folder.'/'.$name) && $name) {

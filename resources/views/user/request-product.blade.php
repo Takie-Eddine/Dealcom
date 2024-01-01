@@ -70,7 +70,7 @@
             <div class="container">
                 <div class="row ">
                     @forelse ($brands as $brand)
-                        <div class="col-6 col-md-3">
+                        <div class="col-6 col-md-2">
                             <div class="service-box">
                                 <img src="{{$brand->image_url}}" alt="Service">
                             </div>
