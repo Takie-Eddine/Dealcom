@@ -218,7 +218,7 @@
                                             @if ($category->slug == 'apparel')
                                                 <img src="{{asset('assets/logo/clothes.jpg')}}" alt="">
                                             @endif
-                                            @if ($category->slug == 'furniture')
+                                            @if ($category->slug == 'furniture-decor')
                                                 <img src="{{asset('assets/logo/fourniture.jpg')}}" alt="">
                                             @endif
                                             @if ($category->slug == 'food')
