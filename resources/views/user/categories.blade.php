@@ -74,7 +74,7 @@
 
     @forelse ($categories as $category)
         <!-- Start Category Item  -->
-        <div class="axil-about-area " data-aos="fade-up" data-aos-anchor-placement="top-center" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
+        <div class="axil-about-area " data-aos="" data-aos-anchor-placement="top-center" data-aos-easing="ease-out-cubic" data-aos-duration="1000">
             <div class="container">
 
                 <div class="row align-items-center">
