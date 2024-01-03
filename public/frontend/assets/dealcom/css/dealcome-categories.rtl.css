@@ -40,11 +40,13 @@ a:hover {
   text-align: center !important;
   position: relative !important;
   margin: auto !important;
+  padding: 10px 40px;
 }
 
 .uk-card-title {
   font-weight: 500 !important;
   position: relative !important;
+
 }
 
 .clothing-card {
