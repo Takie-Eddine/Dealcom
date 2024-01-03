@@ -45,7 +45,7 @@
                                         </div>
                                         @forelse ($product->images as $image)
                                             <div class="thumbnail">
-                                                <img src="{{$image->image_url}}" alt="Product Images" style="width:300px;height: 300px; ">
+                                                <img src="{{$image->image_url}}" alt="Product Images" >
                                             </div>
                                         @empty
                                         @endforelse
@@ -213,7 +213,7 @@
                                     <div class="thumbnail">
                                         <a href="{{route('product.show',$product->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$product->image_url}}" alt="Product Images">
+                                                src="{{$product->image_url}}" alt="Product Images" style="width:300px;height: 300px; ">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -275,7 +275,7 @@
                                     <div class="thumbnail">
                                         <a href="{{route('product.show',$feature->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$feature->image_url}}" alt="Product Images">
+                                                src="{{$feature->image_url}}" alt="Product Images" style="width:300px;height: 300px; ">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
@@ -339,7 +339,7 @@
                                     <div class="thumbnail">
                                         <a href="{{route('product.show',$tags->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
-                                                src="{{$tags->image_url}}" alt="Product Images">
+                                                src="{{$tags->image_url}}" alt="Product Images" style="width:300px;height: 300px; ">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
