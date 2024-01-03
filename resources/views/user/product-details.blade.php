@@ -45,7 +45,7 @@
                                         </div>
                                         @forelse ($product->images as $image)
                                             <div class="thumbnail">
-                                                <img src="{{$image->image_url}}" alt="Product Images">
+                                                <img src="{{$image->image_url}}" alt="Product Images" style="width:300px;height: 300px; ">
                                             </div>
                                         @empty
                                         @endforelse
