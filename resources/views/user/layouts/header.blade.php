@@ -42,9 +42,24 @@
 
                     </nav>
                 </div>
-                <div class="header-action d-flex ">
+                <div class="header-action d-flex mr-2">
                     <div class="auth ms-2 d-none d-lg-inline-block">
-                        <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">{{__('master.login')}}</a>
+                        @auth
+                            <div class="dropdown">
+                                <button style="background-color: #3ec0c2;color: white;" class="dropdown-toggle"
+                                    type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{asset('assets/logo/user.png')}}" alt="">
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{route('profile')}}">{{__('master.profile')}}</a></li>
+                                    <li><a href="{{route('logout')}}">{{__('master.logout')}}</a></li>
+                                </ul>
+                            </div>
+                        @endauth
+
+                        @guest
+                            <a id="loginButton" href="{{route('login')}}" style="color: #3ec0c2;" class="m-5">{{__('master.login')}}</a>
+                        @endguest
                     </div>
 
                     <div class="dropdown">

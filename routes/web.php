@@ -8,7 +8,7 @@ use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\HowtobyController;
 use App\Http\Controllers\Home\PageController;
 use App\Http\Controllers\Home\ProductController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Home\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -48,6 +48,10 @@ Route::group([
     });
     Route::group(['prefix'=>'contact'  ],function(){
         Route::get('/', [ContactController::class, 'index'])->name('contact');
+    });
+
+    Route::group(['prefix'=>'profile'  ],function(){
+        Route::get('/', [ProfileController::class, 'index'])->name('profile');
     });
 
     Route::get('/how-to-by', [HowtobyController::class, 'index'])->name('howtoby');

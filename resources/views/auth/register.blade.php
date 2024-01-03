@@ -100,7 +100,7 @@
         <div class="signin-header">
             <div class="row align-items-center">
                 <div class="col-sm-4">
-                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('frontend/assets/dealcom/images/logos/logo-light.png')}}"
+                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('assets/logo/Asset 15 (1).png')}}"
                             alt="logo" class="w-75"></a>
                 </div>
                 <div class="col-sm-8">
@@ -124,7 +124,18 @@
                     <div class="axil-signin-form">
                         <h3 class="title">تسجيل حساب جديد</h3>
                         <p class="b2 mb--55">قم بتسجيل حساب للاستمرار</p>
-                        <form class="singin-form">
+                        @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <h5>Error Occured!</h5>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                        @endif
+                        <form class="singin-form" action="{{route('register')}}" method="POST">
+                            @csrf
 
                             <span class="mb-4 d-block">نوع المستخدم</span>
                             <div class="isotope-button mb-3">
@@ -139,7 +150,7 @@
 
                             </div>
 
-                            <div class="row mb-sm-4">
+                            {{-- <div class="row mb-sm-4">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>الاسم الاول</label>
@@ -152,19 +163,23 @@
                                         <input type="text" class="form-control" name="email">
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
                                 <label>البريد الالكتروني</label>
-                                <input type="email" class="form-control" name="email">
+                                <input type="email" class="form-control" name="email" value="{{old('email')}}" required>
                             </div>
                             <div class="form-group">
                                 <label>اسم المستخدم</label>
-                                <input type="text" class="form-control" name="email">
+                                <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
                                 <label>كلمة المرور</label>
-                                <input type="password" class="form-control" name="password">
+                                <input type="password" class="form-control" name="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label> تاكيد كلمة المرور </label>
+                                <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <button type="submit" class="axil-btn second-bg-color submit-btn w-100">التالي</button>

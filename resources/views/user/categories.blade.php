@@ -80,33 +80,18 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 order-lg-2">
                         <div class="about-thumbnail">
-                            <a href="#" class="images-preview images-preview06">
                                 @if ($category->slug == 'apparel')
-                                    <img src="{{$products_1[0]->image_url}}">
-                                    <img src="{{$products_1[1]->image_url}}">
-                                    <img src="{{$products_1[2]->image_url}}">
-                                    <img src="{{$products_1[3]->image_url}}">
+                                    <img src="{{asset('assets/logo/f1.png')}}">
                                 @endif
                                 @if ($category->slug == 'furniture-decor')
-                                    <img src="{{$products_2[0]->image_url}}">
-                                    <img src="{{$products_2[1]->image_url}}">
-                                    <img src="{{$products_2[2]->image_url}}">
-                                    <img src="{{$products_2[3]->image_url}}">
+                                <img src="{{asset('assets/logo/f3.png')}}">
                                 @endif
                                 @if ($category->slug == 'food')
-                                    <img src="{{$products_3[0]->image_url}}">
-                                    <img src="{{$products_3[1]->image_url}}">
-                                    <img src="{{$products_3[2]->image_url}}">
-                                    <img src="{{$products_3[3]->image_url}}">
+                                <img src="{{asset('assets/logo/f5.png')}}">
                                 @endif
                                 @if ($category->slug == 'machines')
-                                    <img src="{{$products_4[0]->image_url}}">
-                                    <img src="{{$products_4[1]->image_url}}">
-                                    <img src="{{$products_4[2]->image_url}}">
-                                    <img src="{{$products_4[3]->image_url}}">
+                                <img src="{{asset('assets/logo/f4.png')}}">
                                 @endif
-
-                            </a>
                         </div>
                     </div>
                     <div class="col-lg-7 order-lg-1">

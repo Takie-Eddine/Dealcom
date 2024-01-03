@@ -30,7 +30,7 @@
     <main class="main-wrapper mt-5 mb-5">
 
         <!-- Start Shop Area  -->
-        <div class="axil-single-product-area bg-color-white" data-aos="fade-left" data-aos-offset="300"
+        <div class="axil-single-product-area bg-color-white" data-aos="" data-aos-offset="300"
             data-aos-easing="ease-in-sine" data-aos-duration="1000">
             <div class="single-product-thumb axil-section-gap pb--20 pb_sm--0 ">
                 <div class="container">
@@ -192,7 +192,7 @@
 
         <!-- Start Simlair Product Area  -->
         @if ($products->count()>0)
-            <div id="similar-products" class="axil-product-area bg-color-white mb-md-5 " data-aos="flip-left"
+            <div id="similar-products" class="axil-product-area bg-color-white mb-md-5 " data-aos=""
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
@@ -211,13 +211,13 @@
                             <div class="slick-single-layout">
                                 <div class="slider-product-custom axil-product product-style-one">
                                     <div class="thumbnail">
-                                        <a href="{{route('product.request',$product->slug)}}">
+                                        <a href="{{route('product.show',$product->slug)}}">
                                             <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500"
                                                 src="{{$product->image_url}}" alt="Product Images">
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request',$product->slug)}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.show',$product->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -254,7 +254,7 @@
 
         <!-- Start Most Orderd Product Area  -->
         @if ($product_featured->count()>0)
-            <div id="most-orderd-products" class="axil-product-area bg-color-white mb-md-5 " data-aos="flip-right"
+            <div id="most-orderd-products" class="axil-product-area bg-color-white mb-md-5 " data-aos=""
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
@@ -279,7 +279,7 @@
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request',$feature->slug)}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.show',$feature->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -318,7 +318,7 @@
         <!-- End  Most oreded Product Area  -->
         <!-- Start Most Orderd Product Area  -->
         @if ($product_tags->count()>0)
-            <div id="could-like-products" class="axil-product-area bg-color-white " data-aos="flip-left"
+            <div id="could-like-products" class="axil-product-area bg-color-white " data-aos=""
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
@@ -343,7 +343,7 @@
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.request',$tags->slug)}}">طلب المنتج</a></li>
+                                                <li class="select-option"><a href="{{route('product.show',$tags->slug)}}">طلب المنتج</a></li>
                                             </ul>
                                         </div>
                                     </div>
