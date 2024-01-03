@@ -468,6 +468,10 @@ return [
     'fill out' => 'Fill out the questionnaire and get special price offers',
     'no account' => 'If you do not have an account',
     'register here' =>  'Register here',
-
+    'contact company' => 'Contact the company',
+    'similair' => 'Similar Products ',
+    'most requested' => 'Most requested products',
+    'may like' => 'Products you may like',
+    'send message' => 'Send Message',
 
 ];

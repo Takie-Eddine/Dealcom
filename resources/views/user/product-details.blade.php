@@ -132,7 +132,7 @@
                                         <!-- Start Product Action  -->
                                         <ul class="product-action d-flex-center mb--0">
                                             <li class="add-to-cart"><a href="{{route('product.request',$product->slug)}}"
-                                                    class="axil-btn btn-bg-primary">اطلب المنتج</a></li>
+                                                    class="axil-btn btn-bg-primary">{{__('master.request')}} </a></li>
                                             <li class="wishlist"><a href="{{route('product.wishlist',$product->slug)}}"
                                                     class="axil-btn wishlist-btn"><i class="far fa-heart"></i></a></li>
                                         </ul>
@@ -145,7 +145,7 @@
                                     <div class="product-desc-wrapper pt--80 pt_sm--60 mt-md-4">
                                         <div class="row mb-5">
                                             <div class="col-md-6">
-                                                <h4 class="primary-color mb--40 desc-heading">تواصل مع الشركة</h4>
+                                                <h4 class="primary-color mb--40 desc-heading">{{__('master.contact company')}}  </h4>
                                                 <h4 class="primary-color mb--40 desc-heading fw-light"> {{$product->brand->name}}
                                                 </h4>
                                                 <div class="product-rating">
@@ -170,8 +170,7 @@
 
                                         <div class="row">
                                             <div class="col-md-4 mb-sm-3">
-                                                <button class="btn-lg btn-outline-danger main-color-outline-btn">ارسال
-                                                    رسالة</button>
+                                                <a href="https://wa.me/{{$product->brand->mobile_phone}}" class="btn-lg btn-outline-danger main-color-outline-btn">{{__('master.send message')}}</a>
                                             </div>
                                         </div>
 
@@ -198,7 +197,7 @@
                     <div class="section-title-wrapper">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2 class="title">المنتجات المشابهة</h2>
+                                <h2 class="title">{{__('master.similair')}} </h2>
                             </div>
                             <!-- <div class="col-md-6 text-end">
                                 <h2 class="title">المزيد</h2>
@@ -260,7 +259,7 @@
                     <div class="section-title-wrapper">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2 class="title">المنتجات الاكثر طلبا</h2>
+                                <h2 class="title">  {{__('master.most requested')}}</h2>
                             </div>
                             <!-- <div class="col-md-6 text-end">
                                 <h2 class="title">المزيد</h2>
@@ -324,7 +323,7 @@
                     <div class="section-title-wrapper">
                         <div class="row">
                             <div class="col-md-6">
-                                <h2 class="title">منتجات قد تعجبك</h2>
+                                <h2 class="title"> {{__('master.may like')}} </h2>
                             </div>
                             <!-- <div class="col-md-6 text-end">
                                 <h2 class="title">المزيد</h2>
