@@ -43,7 +43,7 @@
                                 <a href="{{route('product',$category->slug)}}">
                                     <div class="uk-card uk-card-default clothing-card uk-margin-left uk-margin-right">
                                         <div class="uk-card-media-top uk-margin-top">
-                                            <img class="uk-align-center" src="{{$category->image_url}}" alt="" style="width: 75px;height: 750px;">
+                                            <img class="uk-align-center" src="{{$category->image_url}}" alt="" style="width: 80px;height: 80px;">
                                         </div>
                                         <div class="uk-card-body">
                                             <h3 class="uk-card-title">{{$category->name}}</h3>
