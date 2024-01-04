@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="opening-hour">
                                     <h4 class="title mb--20">رقم الهاتف</h4>
-                                    <span class="phone">00905448688866 </span>
+                                    <span class="phone">00905448688822 </span>
                                 </div>
                             </div>
                         </div>
