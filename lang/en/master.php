@@ -473,5 +473,7 @@ return [
     'most requested' => 'Most requested products',
     'may like' => 'Products you may like',
     'send message' => 'Send Message',
+    'logout' => 'Logout',
+    'profile' => 'Profile'
 
 ];
