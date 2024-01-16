@@ -13,7 +13,7 @@
         <!--end::Sidebar mobile toggle-->
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="{{route('admin.dashboard')}}" class="d-lg-none">
+            <a href="{{route('index')}}" class="d-lg-none">
                 <img alt="Logo" src="{{asset('assets/logo/Asset 3.png')}}" class="h-30px" />
             </a>
         </div>
@@ -4569,12 +4569,7 @@
                 <div class="app-navbar-item ms-1 ms-md-3" id="kt_header_user_menu_toggle">
                     <!--begin::Menu wrapper-->
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
-                        @if (Auth::user('admin')->profile->getFirstMediaUrl('avatars'))
-                            <img src="{{Auth::user('admin')->profile->getFirstMediaUrl('avatars')}}" alt="user" />
-                        @else
-                            <img src="{{asset('assets/media/avatars/300-1.jpg')}}" alt="user" />
-                        @endif
-
+                        <img src="{{Auth::user('web')->profile->image_url}}" alt="user" />
                     </div>
                     <!--begin::User account menu-->
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px" data-kt-menu="true">
@@ -4583,11 +4578,7 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    @if (Auth::user('admin')->profile->getFirstMediaUrl('avatars'))
-                                        <img src="{{Auth::user('admin')->profile->getFirstMediaUrl('avatars')}}" alt="user" />
-                                    @else
-                                        <img src="{{asset('assets/media/avatars/300-1.jpg')}}" alt="user" />
-                                    @endif
+                                    <img src="{{Auth::user('web')->profile->image_url}}" alt="user" />
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
@@ -4605,7 +4596,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="{{route('admin.profile')}}" class="menu-link px-5">{{__('master.my profile')}}</a>
+                            <a href="{{route('profile')}}" class="menu-link px-5">{{__('master.my profile')}}</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
@@ -4697,12 +4688,12 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5 my-1">
-                            <a href="{{route('admin.profile.edit',Auth::user('admin')->id)}}" class="menu-link px-5">{{__('master.acount settings')}}</a>
+                            <a href="{{route('profile.edit',Auth::user('web')->id)}}" class="menu-link px-5">{{__('master.acount settings')}}</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a class="button-ajax menu-link px-5" href="{{ route('admin.logout') }}" data-action="{{ route('admin.logout') }}" data-method="post" data-csrf="{{ csrf_token() }}" data-reload="true" >{{__('master.sign out')}}</a>
+                            <a class="button-ajax menu-link px-5" href="{{ route('logout') }}" data-action="{{ route('logout') }}" data-method="post" data-csrf="{{ csrf_token() }}" data-reload="true" >{{__('master.sign out')}}</a>
                         </div>
                         <!--end::Menu item-->
                     </div>

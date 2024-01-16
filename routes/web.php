@@ -9,6 +9,7 @@ use App\Http\Controllers\Home\HowtobyController;
 use App\Http\Controllers\Home\PageController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\ProfileController;
+use App\Http\Controllers\Home\RequestController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -50,12 +51,26 @@ Route::group([
         Route::get('/', [ContactController::class, 'index'])->name('contact');
     });
 
-    Route::group(['prefix'=>'profile'  ],function(){
-        Route::get('/', [ProfileController::class, 'index'])->name('profile');
-    });
-
     Route::get('/how-to-by', [HowtobyController::class, 'index'])->name('howtoby');
     Route::get('/commercial-brand',[PageController::class, 'index']  )->name('commercial');
+
+    Route::group(['prefix'=>'profile','middleware' => ['auth:web','verified'] ],function(){
+        Route::get('/', [ProfileController::class, 'index'])->name('profile');
+        Route::get('/edit/{id}', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::post('/update', [ProfileController::class, 'update_email'])->name('profile.update_email');
+        Route::put('/update', [ProfileController::class, 'update_password'])->name('profile.update_password');
+    });
+
+    Route::group(['prefix'=>'request','middleware' => ['auth:web','verified'] ],function(){
+        Route::get('/', [RequestController::class, 'index'])->name('request');
+        Route::get('/create', [RequestController::class, 'create'])->name('request.create');
+        Route::post('/store', [RequestController::class, 'store'])->name('request.store');
+        Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
+        Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
+    });
+
+
 
         // Route::get('/dashboard', function () {
         //     return view('dashboard');

@@ -474,6 +474,17 @@ return [
     'may like' => 'Products you may like',
     'send message' => 'Send Message',
     'logout' => 'Logout',
-    'profile' => 'Profile'
+    'profile' => 'Profile',
+    'new user' => 'Are you a new user ?',
+    'register' => 'New Account',
+    'sign in' => 'Sign In',
+    'forgot password' => 'Did you forget your password ?',
+    'best products' => 'We have the best products',
+    'have account' => 'You have account ?',
+    'new account' => 'Register a new account',
+    'confirm password' => 'Confim Password',
+    'add request' => 'Add New Request',
+    'canceled' => 'Canceled',
+    'ordered' => 'Ordered',
 
 ];

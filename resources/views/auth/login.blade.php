@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}" direction="{{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}" dir="{{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}" style="direction: {{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}>
+<html class="no-js" lang="{{ str_replace('_', '-', app()->getLocale()) }}" direction="{{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}" dir="{{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}" style="direction: {{ app() -> getLocale() === 'ar' ? 'rtl' : 'ltr'}}">
 
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-M6WQJTNFPS"></script>
@@ -12,7 +12,7 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dealcome || Sign In</title>
+    <title>Sign In</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -46,13 +46,13 @@
         <div class="signin-header">
             <div class="row align-items-center">
                 <div class="col-sm-4">
-                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('frontend/assets/dealcom/images/logos/logo-light.png')}}"
+                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('http://127.0.0.1:8000/assets/logo/Asset 15 (1).png')}}"
                             alt="logo" class="w-75"></a>
                 </div>
                 <div class="col-sm-8">
                     <div class="singin-header-btn">
-                        <p>هل انت مستخدم جديد؟</p>
-                        <a href="{{route('register')}}" class="axil-btn second-bg-color sign-up-btn">حساب جديد</a>
+                        <p>{{__('master.new user')}}</p>
+                        <a href="{{route('register')}}" class="axil-btn second-bg-color sign-up-btn">{{__('master.register')}}</a>
                     </div>
                 </div>
             </div>
@@ -62,17 +62,27 @@
         <div class="row">
             <div class="col-xl-4 col-lg-6 ">
                 <div class="axil-signin-banner bg_image login-bg-image">
-                    <h3 class="title text-white">لدينا افضل المنتجات</h3>
+                    <h3 class="title text-white">{{__('master.best products')}}  </h3>
                 </div>
             </div>
             <div class="col-lg-6 offset-xl-2">
                 <div class="axil-signin-form-wrap">
                     <div class="axil-signin-form">
-                        <h3 class="title">تسجيل الدخول</h3>
-                        <p class="b2 mb--55">قم بتسجيل الدخول للاستمرار</p>
-                        <form class="singin-form">
-
-                            <span class="mb-4 d-block">نوع المستخدم</span>
+                        <h3 class="title">{{__('master.sign in')}} </h3>
+                        {{-- <p class="b2 mb--55">قم بتسجيل الدخول للاستمرار</p> --}}
+                        @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <h5>Error Occured!</h5>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                        @endif
+                        <form class="singin-form" action="{{route('login')}}" method="POST">
+                            @csrf
+                            {{-- <span class="mb-4 d-block">نوع المستخدم</span>
                             <div class="isotope-button mb-3">
                                 <div class="isotope-button filter-button-group mb-3 extra-service-filter w-100">
 
@@ -83,19 +93,19 @@
 
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                             <div class="form-group">
-                                <label>البريد الالكتروني</label>
-                                <input type="email" class="form-control" name="email" value="annie@example.com">
+                                <label>{{__('master.email')}} </label>
+                                <input type="email" class="form-control" name="email" value="{{old('email')}}">
                             </div>
                             <div class="form-group">
-                                <label>كلمة المرور</label>
-                                <input type="password" class="form-control" name="password" value="123456789">
+                                <label>{{__('master.password')}} </label>
+                                <input type="password" class="form-control" name="password" >
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
-                                <button type="submit" class="axil-btn second-bg-color submit-btn">تسجيل الدخول</button>
-                                <a href="forgot-password.html" class="forgot-btn">هل نسيت كلمة المرور ؟</a>
+                                <button type="submit" class="axil-btn second-bg-color submit-btn">{{__('master.sign in')}} </button>
+                                <a href="{{route('password.request')}}" class="forgot-btn">{{__('master.forgot password')}}</a>
                             </div>
                         </form>
                     </div>

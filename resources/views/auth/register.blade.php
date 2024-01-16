@@ -66,7 +66,7 @@
     </script>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Dealcome || Sign up</title>
+    <title>Sign up</title>
     <meta name="robots" content="noindex, follow" />
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -105,8 +105,8 @@
                 </div>
                 <div class="col-sm-8">
                     <div class="singin-header-btn">
-                        <p>هل لديك حساب ؟</p>
-                        <a href="{{route('login')}}" class="axil-btn second-bg-color sign-up-btn">تسجيل الدخول</a>
+                        <p>{{__('master.have account')}}</p>
+                        <a href="{{route('login')}}" class="axil-btn second-bg-color sign-up-btn">{{__('master.sign in')}} </a>
                     </div>
                 </div>
             </div>
@@ -116,14 +116,14 @@
         <div class="row">
             <div class="col-xl-4 col-lg-6">
                 <div class="axil-signin-banner bg_image login-bg-image">
-                    <h3 class="title text-white">لدينا افضل المنتجات</h3>
+                    <h3 class="title text-white">{{__('master.best products')}}  </h3>
                 </div>
             </div>
             <div class="col-lg-6 offset-xl-2">
                 <div class="axil-signin-form-wrap">
                     <div class="axil-signin-form">
-                        <h3 class="title">تسجيل حساب جديد</h3>
-                        <p class="b2 mb--55">قم بتسجيل حساب للاستمرار</p>
+                        <h3 class="title"> {{__('master.new account')}} </h3>
+                        {{-- <p class="b2 mb--55">قم بتسجيل حساب للاستمرار</p> --}}
                         @if ($errors->any())
                                 <div class="alert alert-danger">
                                     <h5>Error Occured!</h5>
@@ -137,7 +137,7 @@
                         <form class="singin-form" action="{{route('register')}}" method="POST">
                             @csrf
 
-                            <span class="mb-4 d-block">نوع المستخدم</span>
+                            {{-- <span class="mb-4 d-block">نوع المستخدم</span>
                             <div class="isotope-button mb-3">
                                 <div class="isotope-button filter-button-group mb-3 extra-service-filter w-100">
 
@@ -148,7 +148,7 @@
 
                                 </div>
 
-                            </div>
+                            </div> --}}
 
                             {{-- <div class="row mb-sm-4">
                                 <div class="col-md-6">
@@ -166,23 +166,23 @@
                             </div> --}}
 
                             <div class="form-group">
-                                <label>البريد الالكتروني</label>
+                                <label>{{__('master.email')}} </label>
                                 <input type="email" class="form-control" name="email" value="{{old('email')}}" required>
                             </div>
                             <div class="form-group">
-                                <label>اسم المستخدم</label>
+                                <label>{{__('master.username')}} </label>
                                 <input type="text" class="form-control" name="name" value="{{old('name')}}" required>
                             </div>
                             <div class="form-group">
-                                <label>كلمة المرور</label>
+                                <label>{{__('master.password')}} </label>
                                 <input type="password" class="form-control" name="password" required>
                             </div>
                             <div class="form-group">
-                                <label> تاكيد كلمة المرور </label>
+                                <label> {{__('master.confirm password')}}   </label>
                                 <input type="password" class="form-control" name="password_confirmation" required>
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
-                                <button type="submit" class="axil-btn second-bg-color submit-btn w-100">التالي</button>
+                                <button type="submit" class="axil-btn second-bg-color submit-btn w-100">{{__('master.register')}}</button>
 
                             </div>
                         </form>

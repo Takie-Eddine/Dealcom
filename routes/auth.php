@@ -60,7 +60,7 @@ Route::group([
 
         Route::put('password', [PasswordController::class, 'update'])->name('password.update');
 
-        Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
+        Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
                     ->name('logout');
     });
 });
