@@ -129,9 +129,9 @@
                                 </i>Export</button> --}}
                                 <!--end::Export-->
                                 <!--begin::Add user-->
-                                <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
+                                {{-- <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
                                     <a  class="btn btn-primary"  href="{{route('request.create')}}"><i class="ki-duotone ki-plus fs-2"></i>{{__('master.add request')}}</a>
-                                </div>
+                                </div> --}}
                                 <!--end::Add user-->
                             </div>
                             <!--end::Toolbar-->
@@ -237,21 +237,15 @@
                                 </tr>
                             </thead>
                             <tbody class="text-gray-600 fw-semibold">
-
-
                                 @forelse ($requests as $request)
                                     <tr>
                                         <td>
                                             {{$request->id}}
                                         </td>
                                         <td class="d-flex align-items-center">
-
-                                            <!--begin::User details-->
                                             <div class="d-flex flex-column">
                                                 <a href="{{route('request.show',$request->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name}}</a>
-
                                             </div>
-                                            <!--begin::User details-->
                                         </td>
                                         <td >
                                             @if ($request->status == 'approved')
@@ -266,12 +260,6 @@
                                             @if ($request->status == 'ordered')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-info">{{$request->status}}</span>
                                             @endif
-                                        </td>
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                            <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
-                                            <!--begin::Menu-->
-                                            <!--end::Menu-->
                                         </td>
                                     </tr>
                                 @empty

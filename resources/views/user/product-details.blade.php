@@ -71,7 +71,7 @@
                                     <h2 class="product-title">{{$product->name}}</h2>
                                     <h4 class="text-muted">{{$product->category->name}} </h4>
                                     @if ($product->price)
-                                        <span class="price-amount main-color">اسعار تبدأ من 20$</span>
+                                        <span class="price-amount main-color">{{$product->price}} $</span>
                                     @endif
                                     <div class="product-rating">
                                         <div class="star-rating">
@@ -93,22 +93,21 @@
                                         @forelse ($product->variants as $variant)
                                             <!-- Start Product Variation  -->
                                             <div class="product-variation">
-                                                <h6 class="title">{{$variant}}</h6>
+                                                <h6 class="title">{{$variant->name}}</h6>
                                                 <div class="color-variant-wrapper">
                                                     <ul class="color-variant mt--0">
-                                                        <li class="color-extra-01 active"><span><span
-                                                                    class="color"></span></span>
-                                                        </li>
-                                                        <li class="color-extra-02"><span><span class="color"></span></span>
-                                                        </li>
-                                                        <li class="color-extra-03"><span><span class="color"></span></span>
-                                                        </li>
+                                                        @forelse ($product->attributes as $attribute)
+                                                            @if ($attribute->attribute_id == $variant->id)
+                                                                <li class=""><span><span class=""></span>{{$attribute->value}},</span>
+                                                                </li>
+                                                            @endif
+                                                        @empty
+                                                        @endforelse
                                                     </ul>
                                                 </div>
                                             </div>
                                             <!-- End Product Variation  -->
                                         @empty
-
                                         @endforelse
 
 

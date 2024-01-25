@@ -486,5 +486,17 @@ return [
     'add request' => 'Add New Request',
     'canceled' => 'Canceled',
     'ordered' => 'Ordered',
-
+    'quantity' => 'Quantity',
+    'unit' => 'Unit',
+    'select Unit' => 'Select Unit',
+    'shipping method' => 'Shipping Method',
+    'select shipping method' => 'Select Shipping Method',
+    'sea freight' => 'Sea Freight',
+    'air freight' => 'Air Freight',
+    'land freight' => 'Land Freight',
+    'get a quote' => 'Get A Quote',
+    'piece' => 'Piece',
+    'box' => 'Box',
+    'container' => 'Container',
+    'dozen' => 'Dozen',
 ];

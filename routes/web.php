@@ -64,6 +64,7 @@ Route::group([
 
     Route::group(['prefix'=>'request','middleware' => ['auth:web','verified'] ],function(){
         Route::get('/', [RequestController::class, 'index'])->name('request');
+        Route::get('/show/{id}', [RequestController::class, 'show'])->name('request.show');
         Route::get('/create', [RequestController::class, 'create'])->name('request.create');
         Route::post('/store', [RequestController::class, 'store'])->name('request.store');
         Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');

@@ -73,7 +73,7 @@
                             </div>
                             <!--end:Menu item-->
                             <!--begin:Menu item-->
-                            <div class="menu-item">
+                            {{-- <div class="menu-item">
                                 <!--begin:Menu link-->
                                 <a class="menu-link" href="{{route('request.create')}}">
                                     <span class="menu-bullet">
@@ -82,7 +82,7 @@
                                     <span class="menu-title">{{__('master.add request')}}</span>
                                 </a>
                                 <!--end:Menu link-->
-                            </div>
+                            </div> --}}
                             <!--end:Menu item-->
                         </div>
                         <!--end:Menu sub-->

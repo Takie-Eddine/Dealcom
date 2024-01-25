@@ -12,6 +12,7 @@ use App\Models\ProductAttribute;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Symfony\Component\Intl\Countries;
 
 class ProductController extends Controller
 {
@@ -110,7 +111,10 @@ class ProductController extends Controller
 
         $brands = Brand::all();
 
-        return view('user.request-product',compact('product','content_top','content_center','brands'));
+        $countries = Countries::getNames();
+
+
+        return view('user.request-product',compact('product','content_top','content_center','brands','countries'));
     }
 
 
