@@ -30,7 +30,7 @@
 <main class="main-wrapper mt-5 mb-5">
 
     <!-- Start Breadcrumb Area  -->
-    <div class="axil-breadcrumb-area" data-aos="" data-aos-offset="300" data-aos-easing="ease-in-sine"
+    <div class="axil-breadcrumb-area"  data-aos-offset="300" data-aos-easing="ease-in-sine"
         data-aos-duration="1100">
         <div class="container">
             <div class="row align-items-center">
@@ -60,7 +60,7 @@
     <div class="axil-shop-area axil-section-gap bg-color-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3" data-aos="" data-aos-easing="ease-out-cubic"
+                <div class="col-lg-3"  data-aos-easing="ease-out-cubic"
                     data-aos-duration="2000">
                     <div class="axil-shop-sidebar">
                         <div class="d-lg-none">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-12" data-aos="" data-aos-easing="ease-out-cubic"
+                        <div class="col-lg-12"  data-aos-easing="ease-out-cubic"
                             data-aos-duration="2000">
                             <div class="axil-shop-top mb--40">
                                 <div
@@ -126,7 +126,7 @@
                         </div>
                     </div>
                     <!-- End .row -->
-                    <div class="row row--15" data-aos="" data-aos-offset="300"
+                    <div class="row row--15"  data-aos-offset="300"
                         data-aos-easing="ease-in-sine" data-aos-duration="1000">
                         @forelse ($products as $product)
                         <!-- Start of single product -->

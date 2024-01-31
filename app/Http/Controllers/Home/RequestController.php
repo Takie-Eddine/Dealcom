@@ -77,4 +77,15 @@ class RequestController extends Controller
         toastr()->success(' Your Request Had Been Submited !', 'Congrats', ['timeOut' => 8000]);
         return redirect()->route('request');
     }
+
+    public function show($id){
+
+        $request = ModelsRequest::findOrFail($id);
+
+        return view('user.dashboard.request.show',compact('request'));
+    }
+
+
+
+
 }

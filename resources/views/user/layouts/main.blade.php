@@ -11,7 +11,7 @@
 
 <main class="main-wrapper mt-5 mb-5">
     <!-- Start Slider Area -->
-    <div class="axil-main-slider-area main-slider-style-2 mb-5" data-aos="fade-left" data-aos-offset="300"
+    <div class="axil-main-slider-area main-slider-style-2 mb-5" data-aos-offset="300"
         data-aos-easing="ease-in-sine" data-aos-duration="1100">
         <div class="slider">
             <div class="row row--20 justify-content-center">
@@ -81,7 +81,7 @@
     <!-- End Slider Area -->
 
     <!-- Start Ads slider Area -->
-    <section id="Ads Area mb-5" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"
+    <section id="Ads Area mb-5"  data-aos-offset="300" data-aos-easing="ease-in-sine"
         data-aos-duration="1200">
         <div class="container">
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -139,7 +139,7 @@
     </div>
 
 
-    <section id="category" data-aos="fade-right" data-aos-offset="300" data-aos-easing="ease-in-sine"
+    <section id="category"  data-aos-offset="300" data-aos-easing="ease-in-sine"
         data-aos-duration="1000">
         <!-- <div class="container border-shadow">
             <div class="row justify-content-around">
@@ -695,7 +695,7 @@
     <!-- End Categories Section -->
 
     <!-- Start About Area  -->
-    <div class="axil-about-area about-style-2" data-aos="fade-up" data-aos-anchor-placement="top-center"
+    <div class="axil-about-area about-style-2"  data-aos-anchor-placement="top-center"
         data-aos-easing="ease-out-cubic" data-aos-duration="1000">
         <div class="container">
 
@@ -745,7 +745,7 @@
     </div>
 
 
-    <div class="service-area mt-5" data-aos="fade-up" data-aos-anchor-placement="top-center"
+    <div class="service-area mt-5"  data-aos-anchor-placement="top-center"
         data-aos-easing="ease-out-cubic" data-aos-duration="1000">
         <div class="container">
             <div class="row ">
@@ -766,7 +766,7 @@
 
 
     <!-- Video Banner Area  -->
-    <div class="video-banner-area mt-5" data-aos="fade-up" data-aos-anchor-placement="top-center"
+    <div class="video-banner-area mt-5"  data-aos-anchor-placement="top-center"
         data-aos-easing="ease-out-cubic" data-aos-duration="1000">
         <div class="container">
             <div class="product-area pb--80">

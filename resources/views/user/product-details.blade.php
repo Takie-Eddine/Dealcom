@@ -30,7 +30,7 @@
     <main class="main-wrapper mt-5 mb-5">
 
         <!-- Start Shop Area  -->
-        <div class="axil-single-product-area bg-color-white" data-aos="" data-aos-offset="300"
+        <div class="axil-single-product-area bg-color-white"  data-aos-offset="300"
             data-aos-easing="ease-in-sine" data-aos-duration="1000">
             <div class="single-product-thumb axil-section-gap pb--20 pb_sm--0 ">
                 <div class="container">
@@ -190,7 +190,7 @@
 
         <!-- Start Simlair Product Area  -->
         @if ($products->count()>0)
-            <div id="similar-products" class="axil-product-area bg-color-white mb-md-5 " data-aos=""
+            <div id="similar-products" class="axil-product-area bg-color-white mb-md-5 "
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
@@ -252,7 +252,7 @@
 
         <!-- Start Most Orderd Product Area  -->
         @if ($product_featured->count()>0)
-            <div id="most-orderd-products" class="axil-product-area bg-color-white mb-md-5 " data-aos=""
+            <div id="most-orderd-products" class="axil-product-area bg-color-white mb-md-5 "
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
@@ -316,7 +316,7 @@
         <!-- End  Most oreded Product Area  -->
         <!-- Start Most Orderd Product Area  -->
         @if ($product_tags->count()>0)
-            <div id="could-like-products" class="axil-product-area bg-color-white " data-aos=""
+            <div id="could-like-products" class="axil-product-area bg-color-white "
                 data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                 <div class="container">
                     <div class="section-title-wrapper">
