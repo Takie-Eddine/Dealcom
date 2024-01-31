@@ -43,12 +43,8 @@
                     <span class="menu-link">
                         <span class="menu-icon">
                             <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
-                                </svg>
+                                <i class="ki-duotone ki-home fs-2 ">
+                                </i>
                             </span>
                         </span>
                         <a class="menu-link" href="{{route('admin.dashboard')}}">
@@ -62,10 +58,12 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-address-book fs-2">
+                            <i class="ki-duotone ki-people  fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                                 <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.suppliers')}}</span>
@@ -107,12 +105,9 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-element-plus fs-2">
+                            <i class="ki-duotone ki-abstract-24  fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.brands')}}</span>
@@ -154,9 +149,12 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-abstract-39 fs-2">
+                            <i class="ki-duotone ki-data fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.categories')}}</span>
@@ -197,9 +195,15 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-abstract-39 fs-2">
+                            <i class="ki-duotone ki-lots-shopping fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                                <span class="path5"></span>
+                                <span class="path6"></span>
+                                <span class="path7"></span>
+                                <span class="path8"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.products')}}</span>
@@ -240,7 +244,7 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-abstract-39 fs-2">
+                            <i class="ki-duotone ki-brush fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </i>
@@ -283,9 +287,10 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-abstract-39 fs-2">
+                            <i class="ki-duotone ki-scroll fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
+                                <span class="path3"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.price lists')}}</span>
@@ -325,7 +330,7 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-abstract-39 fs-2">
+                            <i class="ki-duotone ki-picture fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
                             </i>

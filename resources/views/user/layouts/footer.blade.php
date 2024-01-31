@@ -25,10 +25,10 @@
                         <h5 class="widget-title">{{__('master.services')}}</h5>
                         <div class="inner">
                             <ul>
-                                <li><a href="#">{{__('master.shipping services')}} </a></li>
-                                <li><a href="#">{{__('master.money transfer services')}}  </a></li>
-                                <li><a href="#">{{__('master.translation')}} </a></li>
-                                <li><a href="#">{{__('master.trade shows')}} </a></li>
+                                <li><a >{{__('master.shipping services')}} </a></li>
+                                <li><a >{{__('master.money transfer services')}}  </a></li>
+                                <li><a >{{__('master.translation')}} </a></li>
+                                <li><a >{{__('master.trade shows')}} </a></li>
                             </ul>
                         </div>
                     </div>

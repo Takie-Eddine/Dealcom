@@ -462,7 +462,7 @@ return [
     'special brand' => 'العلامة التجارية الخاصة',
     'browsing' => 'تصفح جميع المنتجات هنا',
     'request' => 'طلب المنتج',
-    'company sponsoring' => 'الشركات الممولة',
+    'company sponsoring' => 'شركاؤنا ',
     'get product' => 'لم تحصل على منتجك ؟',
     'fill out' => 'قم بتعئبة الاستبانه و احصل على عروض أسعار مميزة',
     'no account' => 'اذا لم يكن لديك حساب',
@@ -498,4 +498,6 @@ return [
     'box' => 'صندوق',
     'container' => 'حاوية',
     'dozen' => 'دزينة',
+    'all categories' => 'عرض الكل',
+    'private label' => 'منتج مخصص',
 ];

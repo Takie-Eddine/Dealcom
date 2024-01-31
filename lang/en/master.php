@@ -463,7 +463,7 @@ return [
     'special brand' => 'Private Label',
     'browsing' => 'Browse all products here',
     'request' => 'Request product',
-    'company sponsoring' => 'Sponsoring Companies',
+    'company sponsoring' => ' Our Partners',
     'get product' => 'Did not find your product ?',
     'fill out' => 'Fill out the questionnaire and get special price offers',
     'no account' => 'If you do not have an account',
@@ -499,4 +499,6 @@ return [
     'box' => 'Box',
     'container' => 'Container',
     'dozen' => 'Dozen',
+    'all categories' => 'Show All',
+    'private label' => 'Private Label',
 ];
