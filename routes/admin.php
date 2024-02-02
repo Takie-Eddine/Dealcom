@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HomeManageController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RequestController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SupplierController;
 use Illuminate\Support\Facades\Route;
@@ -152,6 +153,15 @@ Route::group([
             Route::get('/edit/{id}', [HomeManageController::class, 'edit'])->name('content.edit');
             Route::patch('/update/{id}', [HomeManageController::class, 'update'])->name('content.update');
             Route::get('/delete/{id}', [HomeManageController::class, 'destroy'])->name('content.delete');
+        });
+
+        Route::group(['prefix'=>'request'],function(){
+            Route::get('/', [RequestController::class, 'index'])->name('request');
+            Route::get('/show/{id}', [RequestController::class, 'show'])->name('request.show');
+            Route::get('/create', [RequestController::class, 'create'])->name('request.create');
+            Route::post('/store', [RequestController::class, 'store'])->name('request.store');
+            Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
+            Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
         });
 
 
