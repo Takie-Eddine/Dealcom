@@ -31,7 +31,7 @@ class MessageCreated implements ShouldBroadcast
      */
     public function broadcastOn(): array
     {
-        $other_user = $this->message->conversation->participants()->where('tallker_id', '<>', Auth::id())->first();
+        $other_user = $this->message->conversation->participants()->where('tallker_id', '<>', $this->message->tallker_id)->first();
 
         return [
             new PresenceChannel('Messenger.'.$other_user->id),
