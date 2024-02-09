@@ -501,4 +501,5 @@ return [
     'dozen' => 'Dozen',
     'all categories' => 'Show All',
     'private label' => 'Private Label',
+    'edit request' => 'Edit Request',
 ];

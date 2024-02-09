@@ -500,4 +500,5 @@ return [
     'dozen' => 'دزينة',
     'all categories' => 'عرض الكل',
     'private label' => 'منتج مخصص',
+    'edit request' => 'تعديل طلب منتح',
 ];

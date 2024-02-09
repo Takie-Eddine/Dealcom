@@ -14,6 +14,7 @@
         "laravel/tinker": "^2.8",
         "mcamara/laravel-localization": "^1.8",
         "nicolaslopezj/searchable": "^1.13",
+        "pusher/pusher-php-server": "^7.2",
         "spatie/laravel-medialibrary": "^10.0.0",
         "spatie/laravel-translatable": "^6.5",
         "symfony/intl": "^6.3",

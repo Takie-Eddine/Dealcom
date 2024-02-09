@@ -8,7 +8,13 @@
                 <div class="mobile-menu me-5">
                     <button id="toggleMenu">☰</button>
                     <ul id="menuList" >
-                        <li><a class="{{request()->routeIs('login') ? 'active' : ''}}" href="{{route('login')}}">{{__('master.login')}}</a></li>
+                        @guest
+                            <li><a class="{{request()->routeIs('login') ? 'active' : ''}}" href="{{route('login')}}">{{__('master.login')}}</a></li>
+                        @endguest
+                        @auth
+                            <li><a class="{{request()->routeIs('profile') ? 'active' : ''}}" href="{{route('profile')}}">{{__('master.profile')}}</a></li>
+                            <li><a class="{{request()->routeIs('logout') ? 'active' : ''}}" href="{{route('logout')}}">{{__('master.logout')}}</a></li>
+                        @endauth
                         <li><a class="{{request()->routeIs('category') ? 'active' : ''}}" href="{{route('category')}}">{{__('master.category')}}</a></li>
                         <li><a class="{{request()->routeIs('about') ? 'active' : ''}}" href="{{route('about')}}">{{__('master.about dealcom')}} </a></li>
                         <li><a class="{{request()->routeIs('https://blogs.dealcom.com.tr') ? 'active' : ''}}" href="https://blogs.dealcom.com.tr">{{__('master.blogs')}}</a></li>

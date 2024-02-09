@@ -11,8 +11,10 @@ use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RequestController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\MessaageController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use Symfony\Component\Mime\MessageConverter;
 
 /*
 |--------------------------------------------------------------------------
@@ -158,12 +160,16 @@ Route::group([
         Route::group(['prefix'=>'request'],function(){
             Route::get('/', [RequestController::class, 'index'])->name('request');
             Route::get('/show/{id}', [RequestController::class, 'show'])->name('request.show');
-            Route::get('/create', [RequestController::class, 'create'])->name('request.create');
-            Route::post('/store', [RequestController::class, 'store'])->name('request.store');
             Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
-            Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
+            Route::patch('/update/{id}', [RequestController::class, 'update'])->name('request.update');
+            route::get('/send-message/{id}', [RequestController::class, 'send'])->name('request.send');
         });
 
+        Route::group(['prefix'=>'chat'],function(){
+            Route::get('/{id}/messages', [MessaageController::class, 'index'])->name('chat');
+            Route::post('/messages', [MessaageController::class, 'store'])->name('chat.store');
+            route::delete('/messages/{id}', [MessaageController::class, 'destroy'])->name('chat.destroy');
+        });
 
     });
 
