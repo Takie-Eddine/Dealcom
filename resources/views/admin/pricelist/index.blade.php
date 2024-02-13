@@ -251,7 +251,7 @@
                                             </div>
                                             <!--begin::User details-->
                                         </td>
-                                        <td>{{$pricelist->supplier->name}}</td>
+                                        <td>{{$pricelist->supplier->name ?? '__'}}</td>
                                         <td >
                                             @if ($pricelist->status == 'active')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-success">{{$pricelist->status}}</span>
