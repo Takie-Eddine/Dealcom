@@ -55,4 +55,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function request(){
         return $this->hasMany(Request::class);
     }
+
+
+    public function tallker(){
+        return $this->hasOne(Tallker::class,'user_id','id');
+    }
 }

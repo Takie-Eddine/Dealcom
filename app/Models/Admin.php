@@ -52,4 +52,9 @@ class Admin extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(AdminProfile::class,'admin_id' , 'id')
         ->withDefault();
     }
+
+
+    public function tallker(){
+        return $this->hasOne(Tallker::class,'admin_id','id');
+    }
 }

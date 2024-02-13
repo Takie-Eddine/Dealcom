@@ -372,9 +372,10 @@
                     <!--begin:Menu link-->
                     <span class="menu-link">
                         <span class="menu-icon">
-                            <i class="ki-duotone ki-mouse-square fs-2">
+                            <i class="ki-duotone ki-message-text-2 fs-2">
                                 <span class="path1"></span>
                                 <span class="path2"></span>
+                                <span class="path3"></span>
                             </i>
                         </span>
                         <span class="menu-title">{{__('master.chat')}}</span>

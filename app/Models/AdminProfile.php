@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Str;
 
 class AdminProfile extends Model implements HasMedia
 {
@@ -32,5 +33,19 @@ class AdminProfile extends Model implements HasMedia
         $this
             ->addMediaCollection('avatars')
             ->singleFile();
+    }
+
+    public function getImageUrlAttribute(){
+
+        if(!$this->photo){
+            return asset('assets/media/avatars/300-1.jpg');
+
+        }
+
+        if (Str::startsWith($this->photo,['http://' , 'https://'])) {
+            return $this->photo;
+        }
+
+        return asset('assets/images/admin_images/' .$this->photo);
     }
 }

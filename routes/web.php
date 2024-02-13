@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\CategoryController;
+use App\Http\Controllers\Home\ChatController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\HowtobyController;
@@ -69,6 +70,10 @@ Route::group([
         Route::post('/store', [RequestController::class, 'store'])->name('request.store');
         Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
         Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
+    });
+
+    Route::group(['prefix'=>'chat'],function(){
+        Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
     });
 
 

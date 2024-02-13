@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Events\MessageCreated;
+use App\Http\Controllers\Controller;
 use App\Models\Conversation;
 use App\Models\Recipient;
-use App\Models\Tallker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Throwable;
 
-class MessaageController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.

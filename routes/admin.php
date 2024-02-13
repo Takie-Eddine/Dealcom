@@ -3,15 +3,17 @@
 use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\ConversationsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeManageController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RequestController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SupplierController;
-use App\Http\Controllers\MessaageController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Symfony\Component\Mime\MessageConverter;
@@ -166,10 +168,17 @@ Route::group([
         });
 
         Route::group(['prefix'=>'chat'],function(){
-            Route::get('/{id}/messages', [MessaageController::class, 'index'])->name('chat');
-            Route::post('/messages', [MessaageController::class, 'store'])->name('chat.store');
-            route::delete('/messages/{id}', [MessaageController::class, 'destroy'])->name('chat.destroy');
+            Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
         });
+
+        Route::get('/conversations', [ConversationsController::class, 'index']);
+        Route::get('/conversations/{conversation}', [ConversationsController::class, 'show']);
+        Route::post('/conversations/{conversation}/participants', [ConversationsController::class, 'addParticipant']);
+        Route::delete('/conversations/{conversation}/participants', [ConversationsController::class, 'removeParticipant']);
+
+        Route::get('/conversations/{id}/messages', [MessageController::class, 'index']);
+        Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+        route::delete('/messages/{id}', [MessageController::class, 'destroy']);
 
     });
 
