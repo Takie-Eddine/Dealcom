@@ -73,7 +73,7 @@
 		<script src="{{asset('assets/plugins/global/plugins.bundle.js')}}"></script>
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<!--begin::Vendors Javascript(used for this page only)-->
-
+        <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
         @stack('script')
 	</body>
 </html>

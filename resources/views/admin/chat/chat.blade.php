@@ -236,4 +236,19 @@
 	<script src="{{asset('assets/js/custom/utilities/modals/create-app.js')}}"></script>
 	<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
     <script src="{{asset('assets/js/messenger.js')}}"></script>
+    <script>
+        const userId = "{{Auth::user()->tallker->id}}";
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('79fe233b95b9e1100555', {
+            cluster: 'eu',
+            authEndpoint : "/broadcasting/auth",
+        });
+
+        var channel = pusher.subscribe(`presence-Messenger.${userId}`);
+        channel.bind('new-message', function(data) {
+            alert(JSON.stringify(data));
+        });
+    </script>
 @endpush
