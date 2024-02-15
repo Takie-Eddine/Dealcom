@@ -243,7 +243,7 @@
 
         var pusher = new Pusher('79fe233b95b9e1100555', {
             cluster: 'eu',
-            authEndpoint : "/broadcasting/auth",
+            authEndpoint : "admin/broadcasting/auth",
         });
 
         var channel = pusher.subscribe(`presence-Messenger.${userId}`);
