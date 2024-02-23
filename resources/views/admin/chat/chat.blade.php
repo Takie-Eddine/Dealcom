@@ -260,7 +260,7 @@
 
         var channel = pusher.subscribe(`presence-Messenger.${userId}`);
         channel.bind('new-message', function(data) {
-            alert(JSON.stringify(data));
+            addMessage(data.message.body);
         });
     </script>
 @endpush
