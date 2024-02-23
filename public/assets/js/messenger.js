@@ -6,16 +6,16 @@ $('.chat-form').on('submit', function(e){
     $.post($(this).attr('action'), $(this).serialize(), function(response){
 
     });
-    addMessage(msg);
+    addMessage(msg,'justify-content-end','bg-light-primary','text-end');
     $(this).find('textarea').val('');
 })
 
 
 
-const addMessage = function(msg){
+const addMessage = function(msg, c = 'justify-content-start', c1 = 'bg-light-info', c2 = 'text-start'){
     $('#kt_chat_messenger_body').append(`
 
-        <div class="d-flex justify-content-end mb-10">
+        <div class="d-flex ${c} mb-10">
 
             <div class="d-flex flex-column align-items-start">
 
@@ -33,7 +33,7 @@ const addMessage = function(msg){
 
                 </div>
 
-                <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end " data-kt-element="message-text">${msg}</div>
+                <div class="p-5 rounded ${c1} text-dark fw-semibold mw-lg-400px ${c2} " data-kt-element="message-text">${msg}</div>
             </div>
         </div>
     `);
