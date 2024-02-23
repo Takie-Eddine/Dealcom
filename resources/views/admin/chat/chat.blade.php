@@ -188,7 +188,7 @@
                                 <!--end::Card body-->
                                 <!--begin::Card footer-->
                                 <div class="card-footer pt-4" id="kt_chat_messenger_footer">
-                                    <form class="chat-form" method="POST" action="{{route('admin.messages.store')}}">
+                                    <form class="chat-form" method="POST" action="{{route('api.messages.store')}}">
                                         @csrf
                                         <input type="hidden" name="conversation_id" value="{{$activeChat->id}}">
                                         <!--begin::Input-->
@@ -241,7 +241,7 @@
 	<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
     <script src="{{asset('assets/js/messenger.js')}}"></script>
     <script>
-        const userId = "{{Auth::user()->id}}";
+        const userId = "{{Auth::user()->tallker->id}}";
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 

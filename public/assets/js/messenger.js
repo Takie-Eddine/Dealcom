@@ -6,13 +6,13 @@ $('.chat-form').on('submit', function(e){
     $.post($(this).attr('action'), $(this).serialize(), function(response){
 
     });
-    addMessage(msg,'justify-content-end','bg-light-primary','text-end');
+    addMessage(msg,'justify-content-start','bg-light-info','text-start');
     $(this).find('textarea').val('');
 })
 
 
 
-const addMessage = function(msg, c = 'justify-content-start', c1 = 'bg-light-info', c2 = 'text-start'){
+const addMessage = function(msg, c = 'justify-content-end', c1 = 'bg-light-primary', c2 = 'text-end'){
     $('#kt_chat_messenger_body').append(`
 
         <div class="d-flex ${c} mb-10">
