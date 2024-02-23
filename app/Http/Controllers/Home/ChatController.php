@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Conversation;
 use App\Models\Tallker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class ChatController extends Controller
         ])->get();
 
         $messages = [];
-        $activeChat = null;
+        $activeChat = new Conversation();
 
         if ($id) {
             $activeChat = $chats->where('id', $id)->first();

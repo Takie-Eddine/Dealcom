@@ -125,7 +125,11 @@
                                     <div class="card-title">
                                         <!--begin::User-->
                                         <div class="d-flex justify-content-center flex-column me-3">
-                                            <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
+                                            @if ($activeChat->id)
+                                                <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">{{$activeChat->label ?? $activeChat->user->name}}</a>
+                                            @else
+                                                <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">New Chat</a>
+                                            @endif
                                             <!--begin::Info-->
                                             <div class="mb-0 lh-1">
                                                 <span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
@@ -184,7 +188,7 @@
                                 <!--end::Card body-->
                                 <!--begin::Card footer-->
                                 <div class="card-footer pt-4" id="kt_chat_messenger_footer">
-                                    <form class="chat-form" method="POST" action="{{route('admin.messages.store')}}">
+                                    <form class="chat-form" method="POST" action="{{route('api.messages.store')}}">
                                         @csrf
                                         <input type="hidden" name="conversation_id" value="{{$activeChat->id}}">
                                         <!--begin::Input-->
@@ -237,13 +241,21 @@
 	<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
     <script src="{{asset('assets/js/messenger.js')}}"></script>
     <script>
-        const userId = "{{Auth::user()->tallker->id}}";
+        const userId = "{{Auth::user()->id}}";
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
         var pusher = new Pusher('79fe233b95b9e1100555', {
             cluster: 'eu',
-            authEndpoint : "admin/broadcasting/auth",
+            authEndpoint: '/broadcasting/auth',
+            auth: {
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }
+            },
+            params: {
+                guard: 'admin'
+            }
         });
 
         var channel = pusher.subscribe(`presence-Messenger.${userId}`);

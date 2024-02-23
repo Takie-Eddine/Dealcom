@@ -6,7 +6,13 @@ $('.chat-form').on('submit', function(e){
     $.post($(this).attr('action'), $(this).serialize(), function(response){
 
     });
+    addMessage(msg);
+    $(this).find('textarea').val('');
+})
 
+
+
+const addMessage = function(msg){
     $('#kt_chat_messenger_body').append(`
 
         <div class="d-flex justify-content-end mb-10">
@@ -31,6 +37,4 @@ $('.chat-form').on('submit', function(e){
             </div>
         </div>
     `);
-
-    $(this).find('textarea').val('');
-})
+}

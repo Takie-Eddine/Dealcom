@@ -25,7 +25,7 @@
                         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                             <!--begin::Item-->
                             <li class="breadcrumb-item text-muted">
-                                <a href="{{route('admin.dashboard')}}" class="text-muted text-hover-primary">{{__('master.home')}}</a>
+                                <a href="{{route('index')}}" class="text-muted text-hover-primary">{{__('master.home')}}</a>
                             </li>
                             <!--end::Item-->
                             <!--begin::Item-->
@@ -88,7 +88,7 @@
                                                     <!--end::Avatar-->
                                                     <!--begin::Details-->
                                                     <div class="ms-5">
-                                                        <a href="{{route('admin.chat',$chat->id)}}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">{{$chat->participants[0]->name}}</a>
+                                                        <a href="{{route('chat',$chat->id)}}" class="fs-5 fw-bold text-gray-900 text-hover-primary mb-2">{{$chat->participants[0]->name}}</a>
                                                         <div class="fw-semibold text-muted">{{Str::words($chat->lastMessage->body,20)}}</div>
                                                     </div>
                                                     <!--end::Details-->
@@ -125,7 +125,11 @@
                                     <div class="card-title">
                                         <!--begin::User-->
                                         <div class="d-flex justify-content-center flex-column me-3">
-                                            <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">Brian Cox</a>
+                                            @if ($activeChat->id)
+                                                <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">{{$activeChat->label ?? $activeChat->user->name}}</a>
+                                            @else
+                                                <a href="#" class="fs-4 fw-bold text-gray-900 text-hover-primary me-1 mb-2 lh-1">New Chat</a>
+                                            @endif
                                             <!--begin::Info-->
                                             <div class="mb-0 lh-1">
                                                 <span class="badge badge-success badge-circle w-10px h-10px me-1"></span>
@@ -236,5 +240,28 @@
 	<script src="{{asset('assets/js/custom/utilities/modals/create-app.js')}}"></script>
 	<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
     <script src="{{asset('assets/js/messenger.js')}}"></script>
+    <script>
+        const userId = "{{Auth::user()->id}}";
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('79fe233b95b9e1100555', {
+            cluster: 'eu',
+            authEndpoint: '/broadcasting/auth',
+            auth: {
+                headers: {
+                    'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                }
+            },
+                params: {
+                guard: 'web' // or 'admin'
+            }
+        });
+
+        var channel = pusher.subscribe(`presence-Messenger.${userId}`);
+        channel.bind('new-message', function(data) {
+            addMessage(data.message.body);
+        });
+    </script>
 
 @endpush
