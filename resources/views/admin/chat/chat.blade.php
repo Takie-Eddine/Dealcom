@@ -188,7 +188,7 @@
                                 <!--end::Card body-->
                                 <!--begin::Card footer-->
                                 <div class="card-footer pt-4" id="kt_chat_messenger_footer">
-                                    <form class="chat-form" method="POST" action="{{route('api.messages.store')}}">
+                                    <form class="chat-form" method="POST" action="{{route('admin.messages.store')}}">
                                         @csrf
                                         <input type="hidden" name="conversation_id" value="{{$activeChat->id}}">
                                         <!--begin::Input-->
