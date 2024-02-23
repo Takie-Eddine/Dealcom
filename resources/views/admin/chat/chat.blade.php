@@ -241,7 +241,7 @@
 	<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
     <script src="{{asset('assets/js/messenger.js')}}"></script>
     <script>
-        const userId = "{{Auth::user()->id}}";
+        const userId = "{{Auth::user()->tallker->id}}";
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
