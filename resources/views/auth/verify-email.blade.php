@@ -56,7 +56,7 @@
                         <div class="card-body py-15 py-lg-20">
                             <div class="mb-14">
                                 <a href="{{route('index')}}" class="">
-                                    <img alt="Logo" src="{{asset('assets/logo/Asset 15.png')}}" class="h-40px" />
+                                    <img alt="Logo" src="{{asset('assets/logo/Asset 3.png')}}" class="h-40px" />
                                 </a>
                             </div>
                             <h1 class="fw-bolder text-gray-900 mb-5">{{__('master.verify your email')}}</h1>
