@@ -54,7 +54,6 @@ class ProductController extends Controller
                 break;
         }
 
-        // $slug = Session::get('category')->slug;
         $category = Category::where('slug','=',$slug)->firstOrFail();
         $q_categories = tree($category);
 
@@ -75,6 +74,7 @@ class ProductController extends Controller
             'page' => $page,
             'order' => $order,
             'keyword' => $keyword,
+            'category' => $category,
         ]);
     }
 

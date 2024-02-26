@@ -39,7 +39,12 @@
                         <ul class="axil-breadcrumb">
                             <li class="axil-breadcrumb-item"><a href="{{route('index')}}">{{__('master.home')}}</a></li>
                             <li class="separator"></li>
-                            <li class="axil-breadcrumb-item active" aria-current="page">{{__('master.products')}}</li>
+                            <li class="axil-breadcrumb-item " aria-current="page">{{__('master.products')}}</li>
+                            @forelse ($category->parent as $_parent)
+                                <li class="separator"></li>
+                                <li class="axil-breadcrumb-item active" aria-current="page">{{$_parent->name}}</li>
+                            @empty
+                            @endforelse
                         </ul>
                         <h1 class="title"> {{__('master.browsing')}}</h1>
                     </div>
@@ -77,8 +82,6 @@
                                                 @forelse ($category->children as $child)
                                                     <li>
                                                         <x-categories-tree :category="$child" />
-
-
                                                     </li>
                                                 @empty
                                                 @endforelse
