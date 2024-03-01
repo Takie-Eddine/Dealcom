@@ -242,14 +242,14 @@
                                 @forelse ($requests as $request)
                                     <tr>
                                         <td>
-                                            {{$request->id}}
+                                            <a href="{{route('admin.request.show', $request->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->id}}</a>
                                         </td>
                                         <td>
                                             {{$request->user->name}}
                                         </td>
                                         <td class="d-flex align-items-center">
                                             <div class="d-flex flex-column">
-                                                <a href="" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name}}</a>
+                                                <a href="{{route('admin.product.show', $request->product_id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name}}</a>
                                             </div>
                                         </td>
                                         <td >

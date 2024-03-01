@@ -40,11 +40,16 @@
                             <li class="axil-breadcrumb-item"><a href="{{route('index')}}">{{__('master.home')}}</a></li>
                             <li class="separator"></li>
                             <li class="axil-breadcrumb-item " aria-current="page">{{__('master.products')}}</li>
-                            @forelse ($category->parent as $_parent)
+                            @if (optional($category->parent)->parent)
                                 <li class="separator"></li>
-                                <li class="axil-breadcrumb-item active" aria-current="page">{{$_parent->name}}</li>
-                            @empty
-                            @endforelse
+                                <li class="axil-breadcrumb-item " aria-current="page"><a href="{{ route('product',$category->parent->parent->slug) }}">{{$category->parent->parent->name}}</a></li>
+                            @endif
+                            @if ($category->parent)
+                                <li class="separator"></li>
+                                <li class="axil-breadcrumb-item " aria-current="page"><a href="{{ route('product',$category->parent->slug) }}">{{$category->parent->name}}</a></li>
+                            @endif
+                            <li class="separator"></li>
+                            <li class="axil-breadcrumb-item active" aria-current="page">{{$category->name}}</li>
                         </ul>
                         <h1 class="title"> {{__('master.browsing')}}</h1>
                     </div>

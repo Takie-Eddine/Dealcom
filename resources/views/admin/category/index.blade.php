@@ -265,7 +265,7 @@
                                             </div>
                                             <!--begin::User details-->
                                         </td>
-                                        <td>{{$category->parent->name}}</td>
+                                        <td>{{$category->parent->name ?? '__'}}</td>
                                         <td >
                                             @if ($category->status == 'active')
                                                 <span class="badge py-3 px-4 fs-7 badge-light-success">{{$category->status}}</span>

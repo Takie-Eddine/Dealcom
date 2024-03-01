@@ -36,8 +36,8 @@ class CategoryController extends Controller
 
         //return $request ;
         $request->validate([
-            'name_en' => ['required', 'string' ,'min:4', 'max:190', 'unique:categories,name'] ,
-            'name_ar' => ['required', 'string' ,'min:4', 'max:190', 'unique:categories,name'] ,
+            'name_en' => ['required', 'string' ,'min:3', 'max:190', 'unique:categories,name'] ,
+            'name_ar' => ['required', 'string' ,'min:3', 'max:190', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
             'description_en' => ['nullable','string' , 'min:5'] ,
             'description_ar' => ['nullable','string' , 'min:5'] ,
@@ -97,8 +97,8 @@ class CategoryController extends Controller
     public function update(Request $request, $id){
 
         $request->validate([
-            'name_en' => ['required', 'string' ,'min:4', 'max:190', 'unique:categories,name'] ,
-            'name_ar' => ['required', 'string' ,'min:4', 'max:190', 'unique:categories,name'] ,
+            'name_en' => ['required', 'string' ,'min:3', 'max:190', 'unique:categories,name'] ,
+            'name_ar' => ['required', 'string' ,'min:3', 'max:190', 'unique:categories,name'] ,
             'category' => ['nullable' , 'int' , 'exists:categories,id'] ,
             'description_en' => ['nullable','string' , 'min:5'] ,
             'description_ar' => ['nullable','string' , 'min:5'] ,

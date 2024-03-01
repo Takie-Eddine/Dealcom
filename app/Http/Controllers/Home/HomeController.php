@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(){
+    public function index($slug = null){
 
 
 
@@ -32,6 +32,16 @@ class HomeController extends Controller
         $data['content_top'] = Content::active()->home()->top()->first();
         $data['content_center'] = Content::active()->home()->center()->get();
         $data['content_bottom'] = Content::active()->home()->bottom()->get();
+
+        if ($slug) {
+
+            $category = Category::where('slug', '=', $slug)->firstOrFail();
+            $q_categories = tree($category);
+            $data['products'] = Product::active()->featured()->whereHas('category',function($query) use($q_categories){
+                            $query->whereIn('categories.id',$q_categories);
+                        })
+                        ->take(8)->get();
+        }
 
 
         return view('user.layouts.main',$data);

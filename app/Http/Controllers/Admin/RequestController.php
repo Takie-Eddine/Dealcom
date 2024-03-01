@@ -82,6 +82,14 @@ class RequestController extends Controller
     }
 
 
+    public function show($id){
+
+        $modelrequest = ModelsRequest::findOrFail($id);
+
+        return view('admin.request.show', compact('modelrequest'));
+    }
+
+
 
 
 

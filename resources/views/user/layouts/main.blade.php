@@ -213,7 +213,7 @@
                             <div class="isotope-button mb-3">
                                     <button class="is-checked"><span class="filter-text">{{__('master.all')}}</span></button>
                                 @forelse ($categories as $category)
-                                    <button  data-filter=".{{$category}}">
+                                    <button id="category"  data-filter=".{{$category->name}}">
                                         <span class="filter-text">
                                             @if ($category->slug == 'apparel')
                                                 <img src="{{asset('assets/logo/clothes.jpg')}}" alt="">
@@ -272,7 +272,7 @@
                                                         <i class="far fa-star"></i>
                                                     </span>
 
-                                                    <a class="d-block" href="product-details.html" style="color: #3ec0c2;
+                                                    <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
                                                         ">{{$product->brand->name}}</a>
 
                                                     <p class="product-text"{{$product->description}}
