@@ -202,7 +202,7 @@
                                                         </i>{{__('master.email')}}</div>
                                                     </td>
                                                     <td class="fw-bold text-end">
-                                                        <a href="../../demo1/dist/apps/user-management/users/view.html" class="text-gray-600 text-hover-primary">{{$modelrequest->user->email}}</a>
+                                                        <a href="" class="text-gray-600 text-hover-primary">{{$modelrequest->user->email}}</a>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -367,7 +367,7 @@
                                                                     <!--end::Title-->
                                                                 </div>
                                                             </td>
-                                                            <td class="text-end"><a href="" class="symbol symbol-50px">{{$modelrequest->product->code}}</a></td>
+                                                            <td class="text-end"><a href="{{route('admin.supplier.show',$modelrequest->product->supplier->id)}}" class="symbol symbol-50px">{{$modelrequest->product->code}}</a></td>
                                                             <td class="text-end">{{$modelrequest->details->quantity}}</td>
                                                             <td class="text-end">{{$modelrequest->details->unit}}</td>
                                                         </tr>
