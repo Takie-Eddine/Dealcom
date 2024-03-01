@@ -357,7 +357,7 @@
                                                                 <div class="d-flex align-items-center">
                                                                     <!--begin::Thumbnail-->
                                                                     <a href="{{route('admin.product.show',$modelrequest->product_id)}}" class="symbol symbol-50px">
-                                                                        <span class="symbol-label" style="background-image:url({{$modelrequest->product->image}});"></span>
+                                                                        <span class="symbol-label" style="background-image:url({{$modelrequest->product->image_url}});"></span>
                                                                     </a>
                                                                     <!--end::Thumbnail-->
                                                                     <!--begin::Title-->
