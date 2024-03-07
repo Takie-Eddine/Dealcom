@@ -63,7 +63,7 @@ Route::group([
         Route::put('/update', [ProfileController::class, 'update_password'])->name('profile.update_password');
     });
 
-    Route::group(['prefix'=>'request','middleware' => ['auth:web','verified'] ],function(){
+    Route::group(['prefix'=>'request','middleware' => ['auth:web','verified','profile'] ],function(){
         Route::get('/', [RequestController::class, 'index'])->name('request');
         Route::get('/show/{id}', [RequestController::class, 'show'])->name('request.show');
         Route::get('/create', [RequestController::class, 'create'])->name('request.create');
@@ -72,7 +72,7 @@ Route::group([
         Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
     });
 
-    Route::group(['prefix'=>'chat'],function(){
+    Route::group(['prefix'=>'chat','middleware' => ['auth:web','verified','profile']],function(){
         Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
     });
 
