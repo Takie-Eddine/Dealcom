@@ -8,6 +8,7 @@ use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\HowtobyController;
 use App\Http\Controllers\Home\PageController;
+use App\Http\Controllers\Home\PrivateLabelController;
 use App\Http\Controllers\Home\ProductController;
 use App\Http\Controllers\Home\ProfileController;
 use App\Http\Controllers\Home\RequestController;
@@ -45,6 +46,10 @@ Route::group([
         Route::get('/request/{slug}', [ProductController::class, 'request'])->name('product.request');
         Route::get('/wishlist/{slug}', [ProductController::class, 'request'])->name('product.wishlist');
     });
+
+    Route::get('/private-label', [ProductController::class, 'private'])->name('private');
+    Route::post('/private-label/store', [PrivateLabelController::class, 'store'])->name('private.store');
+
     Route::group(['prefix'=>'about'  ],function(){
         Route::get('/', [AboutController::class, 'index'])->name('about');
     });

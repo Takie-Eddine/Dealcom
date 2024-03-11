@@ -121,4 +121,16 @@ class ProductController extends Controller
     public function wishlist($slug){
 
     }
+
+
+    public function private(){
+
+        $content_top = Content::active()->request()->top()->first();
+        $content_center = Content::active()->request()->center()->first();
+
+        $brands = Brand::all();
+        $countries = Countries::getNames();
+
+        return view('user.specialproduct',compact('content_top','content_center','brands','countries'));
+    }
 }

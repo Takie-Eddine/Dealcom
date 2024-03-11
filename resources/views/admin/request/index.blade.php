@@ -247,9 +247,13 @@
                                         <td>
                                             {{$request->user->name}}
                                         </td>
-                                        <td class="d-flex align-items-center">
+                                        <td class="">
                                             <div class="d-flex flex-column">
-                                                <a href="{{route('admin.product.show', $request->product_id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name}}</a>
+                                                @if ($request->product_id)
+                                                    <a href="{{route('admin.product.show', $request->product_id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name ?? 'Private-Label'}}</a>
+                                                @else
+                                                    <a href="" class="text-gray-800 text-hover-primary mb-1">Private-Label</a>
+                                                @endif
                                             </div>
                                         </td>
                                         <td >

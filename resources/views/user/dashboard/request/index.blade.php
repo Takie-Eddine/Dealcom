@@ -242,9 +242,9 @@
                                         <td>
                                             {{$request->id}}
                                         </td>
-                                        <td class="d-flex align-items-center">
+                                        <td class="">
                                             <div class="d-flex flex-column">
-                                                <a href="{{route('request.show',$request->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name}}</a>
+                                                <a href="{{route('request.show',$request->id)}}" class="text-gray-800 text-hover-primary mb-1">{{$request->product->name ?? 'Private Label'}}</a>
                                             </div>
                                         </td>
                                         <td >

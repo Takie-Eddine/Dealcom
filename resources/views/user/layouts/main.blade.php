@@ -671,7 +671,7 @@
             <div class="row d-flex flex-column align-items-center">
                 <div class="col-md-4 py-5">
                     <h3>{{__('master.not found')}}<span style="color: #3ec0c2;">{{__('master.your product')}}</span> {{__('master.here')}}</h3>
-                    <a href="{{route('request')}}" class="btn btn-primary w-50 p-3 "
+                    <a href="{{route('private')}}" class="btn btn-primary w-50 p-3 "
                         style="margin-right: 20%;background-color: #3ec0c2;font-size: 1.3em;"> {{__('master.private label')}}
                         </a>
 

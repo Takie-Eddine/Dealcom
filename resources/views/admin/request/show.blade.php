@@ -365,20 +365,36 @@
                                                     <tbody class="fw-semibold text-gray-600">
                                                         <tr>
                                                             <td>
-                                                                <div class="d-flex align-items-center">
-                                                                    <!--begin::Thumbnail-->
-                                                                    <a href="{{route('admin.product.show',$modelrequest->product_id)}}" class="symbol symbol-50px">
-                                                                        <span class="symbol-label" style="background-image:url({{$modelrequest->product->image_url}});"></span>
-                                                                    </a>
-                                                                    <!--end::Thumbnail-->
-                                                                    <!--begin::Title-->
-                                                                    <div class="ms-5">
-                                                                        <a href="" class="fw-bold text-gray-600 text-hover-primary">{{$modelrequest->product->name}}</a>
+                                                                @if ($modelrequest->product_id)
+                                                                    <div class="d-flex align-items-center">
+                                                                        <!--begin::Thumbnail-->
+                                                                        <a href="{{route('admin.product.show',$modelrequest->product_id)}}" class="symbol symbol-50px">
+                                                                            <span class="symbol-label" style="background-image:url({{$modelrequest->product->image_url}});"></span>
+                                                                        </a>
+                                                                        <!--end::Thumbnail-->
+                                                                        <!--begin::Title-->
+                                                                        <div class="ms-5">
+                                                                            <a href="" class="fw-bold text-gray-600 text-hover-primary">{{$modelrequest->product->name}}</a>
+                                                                        </div>
+                                                                        <!--end::Title-->
                                                                     </div>
-                                                                    <!--end::Title-->
-                                                                </div>
+                                                                @else
+                                                                    <div class="d-flex align-items-center">
+                                                                        <!--begin::Thumbnail-->
+                                                                        {{-- <a href="{{route('admin.product.show',$modelrequest->product_id)}}" class="symbol symbol-50px">
+                                                                            <span class="symbol-label" style="background-image:url({{$modelrequest->product->image_url}});"></span>
+                                                                        </a> --}}
+                                                                        <!--end::Thumbnail-->
+                                                                        <!--begin::Title-->
+                                                                        <div class="ms-5">
+                                                                            <a href="" class="fw-bold text-gray-600 text-hover-primary">{{$modelrequest->product->name ?? 'Private-Label'}}</a>
+                                                                        </div>
+                                                                        <!--end::Title-->
+                                                                    </div>
+                                                                @endif
+
                                                             </td>
-                                                            <td class="text-end"><a href="" class="symbol symbol-50px">{{$modelrequest->product->code}}</a></td>
+                                                            <td class="text-end"><a href="" class="symbol symbol-50px">{{$modelrequest->product->code ?? '__'}}</a></td>
                                                             <td class="text-end">{{$modelrequest->details->quantity}}</td>
                                                             <td class="text-end">{{$modelrequest->details->unit}}</td>
                                                         </tr>
