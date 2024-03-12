@@ -51,7 +51,7 @@ class NewEmailNotification extends Notification
                     ->line('An offer has been sent to you.Please check your account')
                     ->action('Show Details', url('request/show', $this->request->id))
                     ->line('Thank you for using our application!')
-                    ->view('user.index');
+                    ;
         }else{
             $message
                     ->subject('Request Confirmation')
@@ -60,7 +60,7 @@ class NewEmailNotification extends Notification
                     ->line('An offer has been sent to you.Please check your account')
                     ->action('Show Details', url('request/show', $this->request->id))
                     ->line('Thank you for using our application!')
-                    ->view('user.index');
+                    ;
         }
 
         return $message;
