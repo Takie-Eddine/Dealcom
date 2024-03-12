@@ -63,15 +63,17 @@ class RequestController extends Controller
 
         $modelrequest = ModelsRequest::findOrFail($id);
 
-        $file_name = null;
+
         if ($file =  $request->file('offer')) {
             $file_name = $modelrequest->user->name.'-'.$file->getClientOriginalName();
             $file->move(public_path('assets/files/'),$file_name);
+            $modelrequest->update([
+                'offer' => $file_name,
+            ]);
         }
         $modelrequest->update([
             'admin_id' => Auth::user()->id,
             'status' => $request->status,
-            'offer' => $file_name,
         ]);
 
         $modelrequest->details()->update([
