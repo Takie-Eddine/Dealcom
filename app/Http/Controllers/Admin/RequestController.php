@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Request as ModelsRequest;
+use App\Notifications\NewEmailNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -67,6 +68,12 @@ class RequestController extends Controller
             'shipping_type' => $request->shipping_method,
             'description' => $request->description,
         ]);
+
+        if ($modelrequest->status == 'approved') {
+            $modelrequest->user->notify(new NewEmailNotification($modelrequest));
+        }
+
+
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();
 

@@ -2,6 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Models\Product;
+use App\Models\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,12 +13,16 @@ class NewEmailNotification extends Notification
 {
     use Queueable;
 
+
+    protected $request;
+
+
     /**
      * Create a new notification instance.
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
-        //
+        $this->request = $request;
     }
 
     /**
@@ -26,7 +32,7 @@ class NewEmailNotification extends Notification
      */
     public function via(object $notifiable): array
     {
-        return ['mail'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -34,10 +40,24 @@ class NewEmailNotification extends Notification
      */
     public function toMail(object $notifiable): MailMessage
     {
-        return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
+        $message = new MailMessage ;
+            $message
+                    ->subject('Request Confirmation')
+                    ->greeting("Hello {$notifiable->name},")
+                    ->line('Your request '.$this->request->id.' for the product has been evaluated.')
+                    ->action('Show Details', url('request/show', $this->request->id))
                     ->line('Thank you for using our application!');
+        return $message;
+    }
+
+    public function toDatabase(object $notifiable)
+    {
+        return[
+            'title' => 'Request Confirmation',
+            'body' => 'Your request '.$this->request->id.' for the product has been evaluated',
+            'image' => '',
+            'url' => route('request.show', $this->request->id),
+        ];
     }
 
     /**

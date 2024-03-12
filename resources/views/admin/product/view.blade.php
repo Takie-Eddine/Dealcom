@@ -115,7 +115,7 @@
                                             <!--begin::Text-->
                                             <div class="fw-semibold fs-5 text-gray-600 text-dark mt-4">{!!$product->description!!}</div>
                                             <div class="fs-5 fw-bold">
-                                                <a href="{{route('admin.category.show',$product->category->id)}}" class="text-gray-700 text-hover-primary">{{__('master.category')}} </a>
+                                                <a href="" class="text-gray-700 text-hover-primary">{{__('master.category')}} </a>
                                                 <span class="text-muted">{{$product->category->name}}</span>
                                             </div>
                                             <div class="fs-5 fw-bold">

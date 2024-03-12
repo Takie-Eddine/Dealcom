@@ -80,9 +80,9 @@ class RequestController extends Controller
 
     public function show($id){
 
-        $request = ModelsRequest::findOrFail($id);
+        $modelrequest = ModelsRequest::findOrFail($id);
 
-        return view('user.dashboard.request.show',compact('request'));
+        return view('user.dashboard.request.show', compact('modelrequest'));
     }
 
 

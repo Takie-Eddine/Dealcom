@@ -7,6 +7,7 @@ use App\Http\Controllers\Home\ChatController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\HowtobyController;
+use App\Http\Controllers\Home\NotificationsController;
 use App\Http\Controllers\Home\PageController;
 use App\Http\Controllers\Home\PrivateLabelController;
 use App\Http\Controllers\Home\ProductController;
@@ -79,6 +80,9 @@ Route::group([
 
     Route::group(['prefix'=>'chat','middleware' => ['auth:web','verified','profile']],function(){
         Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
+    });
+    Route::group(['prefix'=>'notification','middleware' => ['auth:web','verified','profile']],function(){
+        Route::get('/', [NotificationsController::class, 'index'])->name('notifications');
     });
 
 
