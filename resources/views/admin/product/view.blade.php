@@ -116,7 +116,7 @@
                                             <div class="fw-semibold fs-5 text-gray-600 text-dark mt-4">{!!$product->description!!}</div>
                                             <div class="fs-5 fw-bold">
                                                 <a href="" class="text-gray-700 text-hover-primary">{{__('master.category')}} </a>
-                                                <span class="text-muted">{{$product->category->name}}</span>
+                                                <span class="text-muted">{{$product->category->name ?? '__'}}</span>
                                             </div>
                                             <div class="fs-5 fw-bold">
                                                 <a  class="text-gray-700 text-hover-primary">{{__('master.base price')}} </a>
