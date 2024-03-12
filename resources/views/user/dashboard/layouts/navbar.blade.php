@@ -3739,7 +3739,7 @@
                                             <!--begin::Section-->
                                             <div class="d-flex align-items-center me-2">
                                                 <!--begin::Title-->
-                                                <a href="#" class="text-gray-800 text-hover-primary fw-semibold">{{$notification->data['title']}}</a>
+                                                <a href="{{route('notification.read',$notification->id)}}" class="text-gray-800 text-hover-primary fw-semibold">{{$notification->data['title']}}</a>
                                                 <!--end::Title-->
                                             </div>
                                             <!--end::Section-->
@@ -3753,7 +3753,7 @@
                                 <!--end::Items-->
                                 <!--begin::View more-->
                                 <div class="py-3 text-center border-top">
-                                    <a href="" class="btn btn-color-gray-600 btn-active-color-primary">View All
+                                    <a href="{{route('notifications')}}" class="btn btn-color-gray-600 btn-active-color-primary">View All
                                     <i class="ki-duotone ki-arrow-right fs-5">
                                         <span class="path1"></span>
                                         <span class="path2"></span>

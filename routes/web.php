@@ -76,6 +76,7 @@ Route::group([
         Route::post('/store', [RequestController::class, 'store'])->name('request.store');
         Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
         Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
+        Route::get('/download/{id}', [RequestController::class, 'download'])->name('request.download');
     });
 
     Route::group(['prefix'=>'chat','middleware' => ['auth:web','verified','profile']],function(){
@@ -83,6 +84,7 @@ Route::group([
     });
     Route::group(['prefix'=>'notification','middleware' => ['auth:web','verified','profile']],function(){
         Route::get('/', [NotificationsController::class, 'index'])->name('notifications');
+        Route::get('/read/{id}', [NotificationsController::class, 'read'])->name('notification.read');
     });
 
 

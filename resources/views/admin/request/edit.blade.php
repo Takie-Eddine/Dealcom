@@ -87,12 +87,16 @@
                                 <div class="row mb-8">
                                     <!--begin::Col-->
                                     <div class="col-xl-3">
-                                        <div class="fs-6 fw-semibold mt-2 mb-3"><span class="required">{{__('master.name')}}</span></div>
+                                        <div class="fs-6 fw-semibold mt-2 mb-3"><span class="">{{__('master.name')}}</span></div>
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
-                                        <input type="text" class="form-control form-control-solid" name="name" value="{{$request->product->name}}" placeholder="{{__('master.name')}}" />
+                                        <input type="text" class="form-control form-control-solid" name="name" @if ($request->product)
+                                            value="{{$request->product->name}}"
+                                        @else
+                                            value="{{old('name')}}"
+                                        @endif  placeholder="{{__('master.name')}}" />
                                     </div>
                                 </div>
                                 <div class="row mb-8">
@@ -193,6 +197,17 @@
                                     <!--begin::Col-->
                                     <div class="col-xl-9 fv-row">
                                         <textarea name="description" class="form-control form-control-solid" id="" cols="30" rows="10" placeholder="{{__('master.description')}}">{{$request->details->description}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-8">
+                                    <!--begin::Col-->
+                                    <div class="col-xl-3">
+                                        <div class="fs-6 fw-semibold mt-2 mb-3"><span class="">{{__('master.offer')}}</span></div>
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-xl-9 fv-row">
+                                        <input type="file" class="form-control form-control-solid" name="offer"  placeholder="{{__('master.offer')}}" />
                                     </div>
                                 </div>
 

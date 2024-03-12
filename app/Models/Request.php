@@ -12,7 +12,7 @@ class Request extends Model
 
 
     protected $fillable = [
-        'user_id', 'product_id', 'admin_id', 'status',
+        'user_id', 'product_id', 'admin_id', 'status', 'offer',
     ];
 
 

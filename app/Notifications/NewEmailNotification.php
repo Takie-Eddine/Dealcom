@@ -15,14 +15,16 @@ class NewEmailNotification extends Notification
 
 
     protected $request;
+    protected $product;
 
 
     /**
      * Create a new notification instance.
      */
-    public function __construct(Request $request)
+    public function __construct(Request $request, Product $product = null)
     {
         $this->request = $request;
+        $this->product = $product;
     }
 
     /**
@@ -41,23 +43,46 @@ class NewEmailNotification extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         $message = new MailMessage ;
+        if ($this->product) {
             $message
                     ->subject('Request Confirmation')
                     ->greeting("Hello {$notifiable->name},")
-                    ->line('Your request '.$this->request->id.' for the product has been evaluated.')
+                    ->line('Your request number '.$this->request->id.' for the product ('.$this->product->name.') has been evaluated.')
+                    ->line('An offer has been sent to you.Please check your account')
                     ->action('Show Details', url('request/show', $this->request->id))
                     ->line('Thank you for using our application!');
+        }else{
+            $message
+                    ->subject('Request Confirmation')
+                    ->greeting("Hello {$notifiable->name},")
+                    ->line('Your request number '.$this->request->id.' for the product has been evaluated.')
+                    ->line('An offer has been sent to you.Please check your account')
+                    ->action('Show Details', url('request/show', $this->request->id))
+                    ->line('Thank you for using our application!');
+        }
+
         return $message;
     }
 
     public function toDatabase(object $notifiable)
     {
-        return[
-            'title' => 'Request Confirmation',
-            'body' => 'Your request '.$this->request->id.' for the product has been evaluated',
-            'image' => '',
-            'url' => route('request.show', $this->request->id),
-        ];
+        if ($this->product) {
+            return[
+                'title' => 'Request Confirmation',
+                'body' => 'Your request number '.$this->request->id.' for the product ('.$this->product->name.') has been evaluated.
+                            An offer has been sent to you.Please check your account',
+                'image' => '',
+                'url' => route('request.show', $this->request->id),
+            ];
+        }else{
+            return[
+                'title' => 'Request Confirmation',
+                'body' => 'Your request number '.$this->request->id.' for the product has been evaluated.
+                            An offer has been sent to you.Please check your account',
+                'image' => '',
+                'url' => route('request.show', $this->request->id),
+            ];
+        }
     }
 
     /**

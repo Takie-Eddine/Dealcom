@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ class NotificationsController extends Controller
     public function index(){
         $user = Auth::user();
 
-        return view('user.dashboard.notifications',[
+        return view('admin.notification.notifications',[
             'notifications' => $user->notifications,
         ]);
     }

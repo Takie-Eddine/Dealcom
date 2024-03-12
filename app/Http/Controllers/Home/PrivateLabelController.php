@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\RequestDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Request as ModelsRequest;
+use App\Notifications\ProductRequestNotification;
 
 class PrivateLabelController extends Controller
 {
@@ -36,6 +38,11 @@ class PrivateLabelController extends Controller
             'shipping_type' => $request->shipping_method,
             'description' => $request->description,
         ]);
+
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            $admin->notify(new ProductRequestNotification($modelrequest));
+        }
 
         toastr()->success(' Your Request Had Been Submited !', 'Congrats', ['timeOut' => 8000]);
         return redirect()->route('request');

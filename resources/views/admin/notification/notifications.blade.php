@@ -1,4 +1,4 @@
-@extends('user.dashboard.layouts.admin')
+@extends('admin.layouts.admin')
 
 
 @section('title', 'Notifications')
@@ -26,7 +26,7 @@
                     <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
                         <!--begin::Item-->
                         <li class="breadcrumb-item text-muted">
-                            <a href="{{route('index')}}" class="text-muted text-hover-primary">{{__('master.home')}}</a>
+                            <a href="{{route('admin.dashboard')}}" class="text-muted text-hover-primary">{{__('master.home')}}</a>
                         </li>
                         <!--end::Item-->
                         <!--begin::Item-->

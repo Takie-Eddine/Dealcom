@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Attribute;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Request as ModelsRequest;
 use App\Models\RequestDetail;
+use App\Notifications\ProductRequestNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -73,6 +75,11 @@ class RequestController extends Controller
             'shipping_type' => $request->shipping_method,
             'description' => $request->description,
         ]);
+        $admins = Admin::all();
+        foreach ($admins as $admin) {
+            $admin->notify(new ProductRequestNotification($modelrequest));
+        }
+
 
         toastr()->success(' Your Request Had Been Submited !', 'Congrats', ['timeOut' => 8000]);
         return redirect()->route('request');
@@ -86,6 +93,11 @@ class RequestController extends Controller
     }
 
 
+    public function download($id){
 
+        $modelrequest = ModelsRequest::findOrFail($id);
+
+        return response()->download(public_path('assets/files/'.$modelrequest->offer));
+    }
 
 }

@@ -509,4 +509,6 @@ return [
     'customer' => 'العميل',
     'approval date' => 'تاريخ الموافقة',
     'billing address' => '',
+    'notifications' => 'الاشعارات',
+    'offer' => 'العرض',
 ];

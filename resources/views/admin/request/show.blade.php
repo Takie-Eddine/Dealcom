@@ -402,6 +402,13 @@
                                                             <td colspan="2" class="text-end">Description</td>
                                                             <td class="text-end">{{$modelrequest->details->description}}</td>
                                                         </tr>
+                                                        @if ($modelrequest->offer)
+                                                            <tr>
+                                                                <td colspan="2" class="text-end">Offer</td>
+                                                                <td class="text-end"><a href="{{route('admin.request.download',$modelrequest->id)}}">{{$modelrequest->offer}}</a></td>
+                                                            </tr>
+                                                        @endif
+
                                                     </tbody>
                                                 </table>
                                                 <!--end::Table-->

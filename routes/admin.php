@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ConversationsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeManageController;
 use App\Http\Controllers\Admin\MessageController;
+use App\Http\Controllers\Admin\NotificationsController;
 use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
@@ -165,10 +166,16 @@ Route::group([
             Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
             Route::patch('/update/{id}', [RequestController::class, 'update'])->name('request.update');
             route::get('/send-message/{id}', [RequestController::class, 'send'])->name('request.send');
+            Route::get('/download/{id}', [RequestController::class, 'download'])->name('request.download');
         });
 
         Route::group(['prefix'=>'chat'],function(){
             Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
+        });
+
+        Route::group(['prefix'=>'notification'],function(){
+            Route::get('/', [NotificationsController::class, 'index'])->name('notifications');
+            Route::get('/read/{id}', [NotificationsController::class, 'read'])->name('notification.read');
         });
 
         Route::get('/conversations', [ConversationsController::class, 'index']);

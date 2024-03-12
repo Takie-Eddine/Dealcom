@@ -510,4 +510,6 @@ return [
     'customer' => 'Customer',
     'approval date' => 'Approval Date',
     'billing address' => 'Billing Address',
+    'notifications' => 'Notifications',
+    'offer' => 'Offer',
 ];

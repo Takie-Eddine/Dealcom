@@ -39,9 +39,17 @@ class RequestController extends Controller
 
     public function update(Request $request,$id){
 
+
         $request->validate([
-            'product_id' => ['required',Rule::exists('requests','product_id')],
-            'name' => ['required', 'min:3'],
+            'product_id' => [ Rule::requiredIf(function() use($request){
+                                    return $request->input('name');
+                                }),
+                                Rule::exists('requests','product_id')
+                            ],
+            'name' => [Rule::requiredIf(function() use($request){
+                                return $request->input('product_id');
+                            }),
+                        ],
             'category' => ['nullable','min:3'],
             'quantity' => ['required','numeric','min:1'],
             'unit' => ['required','in:box,piece,container,dozen'],
@@ -49,14 +57,21 @@ class RequestController extends Controller
             'shipping_method' => ['required' ,'in:sea freight,air freight,land freight'],
             'description' => ['required', 'min:1' ],
             'status' => ['required','in:pending,approved,canceled,ordered'],
+            'offer' => ['nullable', 'file', 'mimes:doc,docx,pdf,xls,xlsx,csv,tsv,ppt,pptx,pages,odt,rtf','max:8192']
         ]);
 
 
         $modelrequest = ModelsRequest::findOrFail($id);
 
+        $file_name = null;
+        if ($file =  $request->file('offer')) {
+            $file_name = $modelrequest->user->name.'-'.$file->getClientOriginalName();
+            $file->move(public_path('assets/files/'),$file_name);
+        }
         $modelrequest->update([
             'admin_id' => Auth::user()->id,
-            'status' => $request->status
+            'status' => $request->status,
+            'offer' => $file_name,
         ]);
 
         $modelrequest->details()->update([
@@ -70,7 +85,7 @@ class RequestController extends Controller
         ]);
 
         if ($modelrequest->status == 'approved') {
-            $modelrequest->user->notify(new NewEmailNotification($modelrequest));
+            $modelrequest->user->notify(new NewEmailNotification($modelrequest,$modelrequest->product));
         }
 
 
@@ -94,6 +109,13 @@ class RequestController extends Controller
         $modelrequest = ModelsRequest::findOrFail($id);
 
         return view('admin.request.show', compact('modelrequest'));
+    }
+
+    public function download($id){
+
+        $modelrequest = ModelsRequest::findOrFail($id);
+
+        return response()->download(public_path('assets/files/'.$modelrequest->offer));
     }
 
 

@@ -54,72 +54,6 @@
 
         <!-- End About Area  -->
 
-
-        <div class="section-spreator mt-5">
-            <div class="container ">
-                <div class="row pt-3">
-                    <div class="col-md-6">
-                        <h3>{{__('master.company sponsoring')}} </h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="service-area mt-5">
-            <div class="container">
-                <div class="row ">
-                    @forelse ($brands as $brand)
-                        <div class="col-6 col-md-2">
-                            <div class="service-box">
-                                <img src="{{$brand->image_url}}" alt="Service">
-                            </div>
-                        </div>
-                    @empty
-                    @endforelse
-
-                </div>
-            </div>
-        </div>
-
-        <div class="section-spreator mt-5">
-            <div class="container ">
-                <div class="row pt-3">
-                    <div class="col-md-6">
-                        <h3>{{__('master.request')}}</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Start About Area  -->
-        @if ($content_center)
-            <div class="axil-about-area about-style-2 mb-md-5">
-                <div class="container">
-
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 order-lg-2">
-                            <div class="about-thumbnail">
-                                    <img src="{{$content_center->image_url}}">
-                            </div>
-                        </div>
-                        <div class="col-lg-7 order-lg-1">
-                            <div class="about-content content-left">
-                                <h4 class="title">{{$content_center->title}}</h4>
-                                <div class="how-to-sell">{!!$content_center->sub_title!!}</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        @endif
-
-        <!-- End About Area  -->
-
-
-
         <!-- Start My Account Area  -->
         <div class="axil-dashboard-area mt-md-5" style="margin-top: 7em !important; ">
             <div class="container">
@@ -252,6 +186,74 @@
                 </div>
             </div>
         </div>
+
+
+        <div class="section-spreator mt-5">
+            <div class="container ">
+                <div class="row pt-3">
+                    <div class="col-md-6">
+                        <h3>{{__('master.company sponsoring')}} </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="service-area mt-5">
+            <div class="container">
+                <div class="row ">
+                    @forelse ($brands as $brand)
+                        <div class="col-6 col-md-2">
+                            <div class="service-box">
+                                <img src="{{$brand->image_url}}" alt="Service">
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-spreator mt-5">
+            <div class="container ">
+                <div class="row pt-3">
+                    <div class="col-md-6">
+                        <h3>{{__('master.request')}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Start About Area  -->
+        @if ($content_center)
+            <div class="axil-about-area about-style-2 mb-md-5">
+                <div class="container">
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 order-lg-2">
+                            <div class="about-thumbnail">
+                                    <img src="{{$content_center->image_url}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 order-lg-1">
+                            <div class="about-content content-left">
+                                <h4 class="title">{{$content_center->title}}</h4>
+                                <div class="how-to-sell">{!!$content_center->sub_title!!}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <!-- End About Area  -->
+
+
+
+
 
 
 
