@@ -21,6 +21,6 @@ class NotificationsController extends Controller
         $notification = auth()->user()->unreadNotifications()->findOrFail($id);
             $notification->markAsRead();
 
-        return redirect()->back();
+        return redirect()->route('admin.request');
     }
 }

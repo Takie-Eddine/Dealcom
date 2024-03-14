@@ -25,7 +25,147 @@
 
 @section('content')
     <main class="main-wrapper mt-5 mb-5">
+    <!-- Start My Account Area  -->
+    <div class="axil-dashboard-area mt-md-5" style="margin-top: 7em !important; ">
+        <div class="container">
+            <div class="axil-dashboard-warp">
+                <div class="axil-dashboard-author">
+                    <div class="media">
+                        <!-- <div class="thumbnail">
+                            <img src="./assets/images/product/author1.png" alt="Hello Annie">
+                        </div> -->
+                        {{-- <div class="media-body">
+                            <h2 class="title mb-md-2">{{__('master.get product')}} </h2>
+                            <span class="joining-date">{{__('master.fill out')}}</span>
+                        </div> --}}
+                    </div>
+                </div>
 
+                @guest
+                    <div class="container py-4 mb-md-5 form-div" style="background-color: #eee;">
+                        <p class="lead text-dark fs-3 mb-4">{{__('master.no account')}} <a
+                                class="second-link" href="{{route('register')}}">{{__('master.register here')}} </a>
+                        </p>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <h5>Error Occured!</h5>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="row g-2 justify-content-center" action="{{route('login')}}" method="POST" >
+                            @csrf
+                            <div class="col-6">
+                                <label for="inputEmail" class="visually-hidden">{{__('master.email')}} </label>
+                                <input type="text" class="form-control" name="email" value="{{old('email')}}" id="inputEmail" placeholder="{{__('master.email')}}">
+                            </div>
+                            <div class="col-6">
+                                <label for="inputPassword" class="visually-hidden"> {{__('master.password')}}</label>
+                                <input type="password" class="form-control" name="password"  id="inputPassword" placeholder=" {{__('master.password')}}">
+                            </div>
+                            <div class="row">
+                                <div class="col-4 mt-md-3">
+                                    <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color">
+                                        <span class="fs-4">{{__('master.login')}} </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                @endguest
+
+
+
+
+                <div class="container py-4 mb-md-5 form-div" style="background-color: #dff8ed;">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <h5>Error Occured!</h5>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <p class="lead text-dark fs-3 mb-4">{{__('master.product details')}} </p>
+                    <form action="{{route('request.store')}}" method="POST">
+                        <input type="hidden" name="code" value="{{$product->slug}}">
+                        @csrf
+                        <div class="row g-2 justify-content-center mb-md-4">
+                            <div class="col-4">
+                                <label for="inputName" class="visually-hidden">{{__('master.name')}}</label>
+                                <input type="text" class="form-control" name="name" value="{{$product->name}}" id="inputName" placeholder="{{__('master.name')}}*">
+                            </div>
+                            <div class="col-4">
+                                <label for="inputEmail" class="visually-hidden">{{__('master.category')}}</label>
+                                <input type="text" class="form-control" id="inputEmail" name="category" value="{{$product->category->name}}" placeholder="{{__('master.category')}}">
+                            </div>
+                            <div class="col-4">
+                                <label for="inputPassword" class="visually-hidden">{{__('master.quantity')}} </label>
+                                <input type="number" name="quantity" value="{{old('quantity')}}" class="form-control" min="1" id="inputPassword" placeholder="{{__('master.quantity')}}*">
+                            </div>
+
+                        </div>
+                        <div class="row g-2 justify-content-center mb-md-4">
+                            <div class="col-4">
+                                <label for="inputName" class="visually-hidden">{{__('master.unit')}} </label>
+                                <select name="unit" aria-label="Select a shipping method" data-control="select2" data-placeholder="{{__('master.unit')}}*" class="form-select form-select-solid form-select-lg fw-semibold">
+                                    <option value="">{{__('master.unit')}}*</option>
+                                    <option value="piece"  @selected('piece' == old('unit'))>{{__('master.piece')}}</option>
+                                    <option value="box"  @selected('box' == old('unit'))>{{__('master.box')}}</option>
+                                    <option value="container"  @selected('container' == old('unit'))>{{__('master.container')}}</option>
+                                    <option value="dozen"  @selected('dozen' == old('unit'))>{{__('master.dozen')}}</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="inputEmail" class="visually-hidden">{{__('master.country')}}* </label>
+                                <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="{{__('master.select country')}}*" class="form-select form-select-solid form-select-lg fw-semibold">
+                                @foreach ($countries as $country => $value)
+                                    <option value="{{$country}}"  @selected($country == old('country'))>{{$value}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="inputPassword" class="visually-hidden">{{__('master.shipping method')}} </label>
+                                <select name="shipping method" aria-label="Select a shipping method" data-control="select2" data-placeholder="{{__('master.select shipping method')}}" class="form-select form-select-solid form-select-lg fw-semibold">
+                                    <option value="">{{__('master.select shipping method')}}*</option>
+                                    <option value="sea freight"  @selected('sea freight' == old('shipping method'))>{{__('master.sea freight')}}</option>
+                                    <option value="air freight"  @selected('air freight' == old('shipping method'))>{{__('master.air freight')}}</option>
+                                    <option value="land freight"  @selected('land freight' == old('shipping method'))>{{__('master.land freight')}}</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="exampleFormControlTextarea1" class="visually-hidden required">{{__('master.description')}}</label>
+                                <textarea name="description" class="form-control" rows="8" placeholder="{{__('master.description')}}*">{{old('description')}}</textarea>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            @auth
+                                <div class="col-4 mt-md-3">
+                                    <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color py-3">
+                                        <span class="fs-4">{{__('master.get a quote')}} </span>
+                                    </button>
+                                </div>
+                            @endauth
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
 
         <!-- Start About Area  -->
         @if ($content_top)
@@ -54,147 +194,6 @@
 
 
         <!-- End About Area  -->
-        <!-- Start My Account Area  -->
-        <div class="axil-dashboard-area mt-md-5" style="margin-top: 7em !important; ">
-            <div class="container">
-                <div class="axil-dashboard-warp">
-                    <div class="axil-dashboard-author">
-                        <div class="media">
-                            <!-- <div class="thumbnail">
-                                <img src="./assets/images/product/author1.png" alt="Hello Annie">
-                            </div> -->
-                            {{-- <div class="media-body">
-                                <h2 class="title mb-md-2">{{__('master.get product')}} </h2>
-                                <span class="joining-date">{{__('master.fill out')}}</span>
-                            </div> --}}
-                        </div>
-                    </div>
-
-                    @guest
-                        <div class="container py-4 mb-md-5 form-div" style="background-color: #eee;">
-                            <p class="lead text-dark fs-3 mb-4">{{__('master.no account')}} <a
-                                    class="second-link" href="{{route('register')}}">{{__('master.register here')}} </a>
-                            </p>
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <h5>Error Occured!</h5>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-                            <form class="row g-2 justify-content-center" action="{{route('login')}}" method="POST" >
-                                @csrf
-                                <div class="col-6">
-                                    <label for="inputEmail" class="visually-hidden">{{__('master.email')}} </label>
-                                    <input type="text" class="form-control" name="email" value="{{old('email')}}" id="inputEmail" placeholder="{{__('master.email')}}">
-                                </div>
-                                <div class="col-6">
-                                    <label for="inputPassword" class="visually-hidden"> {{__('master.password')}}</label>
-                                    <input type="password" class="form-control" name="password"  id="inputPassword" placeholder=" {{__('master.password')}}">
-                                </div>
-                                <div class="row">
-                                    <div class="col-4 mt-md-3">
-                                        <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color">
-                                            <span class="fs-4">{{__('master.login')}} </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    @endguest
-
-
-
-
-                    <div class="container py-4 mb-md-5 form-div" style="background-color: #dff8ed;">
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <h5>Error Occured!</h5>
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{$error}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                        <p class="lead text-dark fs-3 mb-4">{{__('master.product details')}} </p>
-                        <form action="{{route('request.store')}}" method="POST">
-                            <input type="hidden" name="code" value="{{$product->slug}}">
-                            @csrf
-                            <div class="row g-2 justify-content-center mb-md-4">
-                                <div class="col-4">
-                                    <label for="inputName" class="visually-hidden">{{__('master.name')}}</label>
-                                    <input type="text" class="form-control" name="name" value="{{$product->name}}" id="inputName" placeholder="{{__('master.name')}}*">
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputEmail" class="visually-hidden">{{__('master.category')}}</label>
-                                    <input type="text" class="form-control" id="inputEmail" name="category" value="{{$product->category->name}}" placeholder="{{__('master.category')}}">
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputPassword" class="visually-hidden">{{__('master.quantity')}} </label>
-                                    <input type="number" name="quantity" value="{{old('quantity')}}" class="form-control" min="1" id="inputPassword" placeholder="{{__('master.quantity')}}*">
-                                </div>
-
-                            </div>
-                            <div class="row g-2 justify-content-center mb-md-4">
-                                <div class="col-4">
-                                    <label for="inputName" class="visually-hidden">{{__('master.unit')}} </label>
-                                    <select name="unit" aria-label="Select a shipping method" data-control="select2" data-placeholder="{{__('master.unit')}}*" class="form-select form-select-solid form-select-lg fw-semibold">
-                                        <option value="">{{__('master.unit')}}*</option>
-                                        <option value="piece"  @selected('piece' == old('unit'))>{{__('master.piece')}}</option>
-                                        <option value="box"  @selected('box' == old('unit'))>{{__('master.box')}}</option>
-                                        <option value="container"  @selected('container' == old('unit'))>{{__('master.container')}}</option>
-                                        <option value="dozen"  @selected('dozen' == old('unit'))>{{__('master.dozen')}}</option>
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputEmail" class="visually-hidden">{{__('master.country')}}* </label>
-                                    <select name="country" aria-label="Select a Country" data-control="select2" data-placeholder="{{__('master.select country')}}*" class="form-select form-select-solid form-select-lg fw-semibold">
-                                    @foreach ($countries as $country => $value)
-                                        <option value="{{$country}}"  @selected($country == old('country'))>{{$value}}</option>
-                                    @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-4">
-                                    <label for="inputPassword" class="visually-hidden">{{__('master.shipping method')}} </label>
-                                    <select name="shipping method" aria-label="Select a shipping method" data-control="select2" data-placeholder="{{__('master.select shipping method')}}" class="form-select form-select-solid form-select-lg fw-semibold">
-                                        <option value="">{{__('master.select shipping method')}}*</option>
-                                        <option value="sea freight"  @selected('sea freight' == old('shipping method'))>{{__('master.sea freight')}}</option>
-                                        <option value="air freight"  @selected('air freight' == old('shipping method'))>{{__('master.air freight')}}</option>
-                                        <option value="land freight"  @selected('land freight' == old('shipping method'))>{{__('master.land freight')}}</option>
-                                    </select>
-                                </div>
-
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <label for="exampleFormControlTextarea1" class="visually-hidden required">{{__('master.description')}}</label>
-                                    <textarea name="description" class="form-control" rows="8" placeholder="{{__('master.description')}}*">{{old('description')}}</textarea>
-
-                                </div>
-                            </div>
-
-
-                            <div class="row">
-                                @auth
-                                    <div class="col-4 mt-md-3">
-                                        <button type="submit" class="btn btn-primary btn-lg mb-2 second-bg-color py-3">
-                                            <span class="fs-4">{{__('master.get a quote')}} </span>
-                                        </button>
-                                    </div>
-                                @endauth
-                            </div>
-                        </form>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
 
 
         <div class="section-spreator mt-5">

@@ -45,7 +45,7 @@ Route::group([
         Route::get('/{slug}', [ProductController::class, 'index'])->name('product');
         Route::get('/show/{slug}', [ProductController::class, 'show'])->name('product.show');
         Route::get('/request/{slug}', [ProductController::class, 'request'])->name('product.request');
-        Route::get('/wishlist/{slug}', [ProductController::class, 'request'])->name('product.wishlist');
+        Route::get('/wishlist/{slug}', [ProductController::class, 'wishlist'])->name('product.wishlist')->middleware('auth:web');
     });
 
     Route::get('/private-label', [ProductController::class, 'private'])->name('private');

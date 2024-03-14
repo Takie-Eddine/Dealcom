@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
-use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Content;
 use App\Models\Product;
-use App\Models\ProductAttribute;
+use App\Models\Wishlist;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Intl\Countries;
 
 class ProductController extends Controller
@@ -120,6 +118,26 @@ class ProductController extends Controller
 
     public function wishlist($slug){
 
+        $product = Product::where('slug', '=', $slug)->firstOrFail();
+
+        $user = Auth::user();
+
+        if (!$user) {
+
+        }
+
+        $wishlist = Wishlist::where('product_id', '=', $product->id)->where('user_id', '=', $user->id)->firstOrFail();
+
+        if ($wishlist) {
+            toastr()->success('Already exists!', 'Congrats', ['timeOut' => 6000]);
+            return redirect()->back();
+        }
+        Wishlist::create([
+            'product_id' => $product->id,
+            'user_id' => $user->id,
+        ]);
+        toastr()->success('Added successfully!', 'Congrats', ['timeOut' => 6000]);
+        return redirect()->back();
     }
 
 

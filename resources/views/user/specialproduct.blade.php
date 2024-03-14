@@ -25,35 +25,6 @@
 
 @section('content')
     <main class="main-wrapper mt-5 mb-5">
-
-
-        <!-- Start About Area  -->
-        @if ($content_top)
-            <div class="axil-about-area about-style-2">
-                <div class="container">
-
-                    <div class="row align-items-center">
-                        <div class="col-lg-5 order-lg-2">
-                            <div class="about-thumbnail">
-                                <!-- <img src="https://via.placeholder.com/400x300" alt="about"> -->
-                                <img src="{{$content_top->image_url}}">
-                            </div>
-                        </div>
-                        <div class="col-lg-7 order-lg-1">
-                            <div class="about-content content-left">
-                                <h4 class="title"> {{$content_top->title}}</h4>
-                                <div class="how-to-sell">{!!$content_top->sub_title!!}</div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        @endif
-
-        <!-- End About Area  -->
-
         <!-- Start My Account Area  -->
         <div class="axil-dashboard-area mt-md-5" style="margin-top: 7em !important; ">
             <div class="container">
@@ -186,6 +157,35 @@
                 </div>
             </div>
         </div>
+
+        <!-- Start About Area  -->
+        @if ($content_top)
+            <div class="axil-about-area about-style-2">
+                <div class="container">
+
+                    <div class="row align-items-center">
+                        <div class="col-lg-5 order-lg-2">
+                            <div class="about-thumbnail">
+                                <!-- <img src="https://via.placeholder.com/400x300" alt="about"> -->
+                                <img src="{{$content_top->image_url}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-7 order-lg-1">
+                            <div class="about-content content-left">
+                                <h4 class="title"> {{$content_top->title}}</h4>
+                                <div class="how-to-sell">{!!$content_top->sub_title!!}</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        @endif
+
+        <!-- End About Area  -->
+
+
 
 
         <div class="section-spreator mt-5">

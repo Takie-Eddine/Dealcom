@@ -12,18 +12,46 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index($slug = null){
+    public function index(){
 
 
 
         $data['products'] = Product::active()->featured()->take(8)->get();
-
-        // return $data['products'];
-        // if (isset($data['products'])) {
-        //     $data['products'] = Product::active()->orderBy('updated_at','DESC')->take(8)->get();
-        // }
-
         $data['categories'] = Category::parents()->active()->get();
+
+        $aparel = tree($data['categories'][0]);
+        $data['product_apparel'] = [];
+        foreach ($data['products'] as $product) {
+            if (in_array($product->category->id,$aparel )) {
+                $data['product_apparel'] [] = $product;
+            }
+        }
+        $carpets = tree($data['categories'][1]);
+        $data['product_carpets'] = [];
+        foreach ($data['products'] as $product) {
+            if (in_array($product->category->id,$carpets )) {
+                $data['product_carpets'] [] = $product;
+            }
+        }
+        $food = tree($data['categories'][2]);
+        $data['product_food'] = [];
+        foreach ($data['products'] as $product) {
+            if (in_array($product->category->id,$food )) {
+                $data['product_food'] [] = $product;
+            }
+        }
+
+        $machines = tree($data['categories'][3]);
+        $data['product_machine'] = [];
+        foreach ($data['products'] as $product) {
+            if (in_array($product->category->id,$machines )) {
+                $data['product_machine'] [] = $product;
+            }
+        }
+
+
+
+
 
         $data['sliders'] = Slider::active()->home()->get();
 
@@ -32,16 +60,6 @@ class HomeController extends Controller
         $data['content_top'] = Content::active()->home()->top()->first();
         $data['content_center'] = Content::active()->home()->center()->get();
         $data['content_bottom'] = Content::active()->home()->bottom()->get();
-
-        if ($slug) {
-
-            $category = Category::where('slug', '=', $slug)->firstOrFail();
-            $q_categories = tree($category);
-            $data['products'] = Product::active()->featured()->whereHas('category',function($query) use($q_categories){
-                            $query->whereIn('categories.id',$q_categories);
-                        })
-                        ->take(8)->get();
-        }
 
 
         return view('user.layouts.main',$data);
