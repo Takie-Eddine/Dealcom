@@ -227,6 +227,9 @@
                                             @if ($category->slug == 'machines')
                                                 <img src="{{asset('assets/logo/equipment.jpg')}}" alt="">
                                             @endif
+                                            @if ($category->slug == 'building-materials')
+                                                <img src="{{asset('assets/logo/building.jpg')}}" alt="">
+                                            @endif
                                             {{$category->name}}
                                         </span>
                                     </button>

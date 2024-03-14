@@ -14,8 +14,6 @@ class HomeController extends Controller
 {
     public function index(){
 
-
-
         $data['products'] = Product::active()->featured()->take(8)->get();
         $data['categories'] = Category::parents()->active()->get();
 
@@ -49,12 +47,7 @@ class HomeController extends Controller
             }
         }
 
-
-
-
-
         $data['sliders'] = Slider::active()->home()->get();
-
         $data['vedio_top'] = Vedio::active()->home()->top()->get();
         $data['vedio_bottom'] = Vedio::active()->home()->bottom()->get();
         $data['content_top'] = Content::active()->home()->top()->first();

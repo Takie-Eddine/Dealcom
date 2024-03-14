@@ -70,8 +70,7 @@
     <div class="axil-shop-area axil-section-gap bg-color-white">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3"  data-aos-easing="ease-out-cubic"
-                    data-aos-duration="2000">
+                <div class="col-lg-3"  data-aos-easing="ease-out-cubic" data-aos-duration="2000">
                     <div class="axil-shop-sidebar">
                         <div class="d-lg-none">
                             <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
@@ -79,14 +78,16 @@
                         <div class="toggle-list product-categories active">
                             <h6 class="title">{{__('master.categories')}}</h6>
                             <div class="shop-submenu">
+
+                                <!--end::Accordion-->
                                 <ul>
                                     @forelse ($categories as $category)
                                         <li>
-                                            <x-categories-tree :category="$category" />
+                                            <a href="{{route('product',$category->slug)}}">{{$category->name}}</a>
                                             <ul>
                                                 @forelse ($category->children as $child)
                                                     <li>
-                                                        <x-categories-tree :category="$child" />
+                                                        <a href="{{route('product',$child->slug)}}">{{$child->name}}</a>
                                                     </li>
                                                 @empty
                                                 @endforelse
@@ -97,7 +98,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="" class="axil-btn btn-bg-primary">اعادة الكل</a>
+                        <a href="" class="axil-btn btn-bg-primary">{{__('master.all')}}</a>
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>
@@ -110,20 +111,20 @@
                                     class="category-select align-items-center justify-content-lg-end justify-content-between">
                                     <!-- Start Single Select  -->
                                     <select class="single-select" name="size" id="pagesize">
-                                        <option value="15" {{$size == 15 ? 'selected':''}}>15 Products Per Page</option>
-                                        <option value="30" {{$size == 30 ? 'selected':''}}>30 Products Per Page</option>
-                                        <option value="50" {{$size == 50 ? 'selected':''}}>50 Products Per Page</option>
-                                        <option value="100" {{$size == 100 ? 'selected':''}}>100 Products Per Page</option>
+                                        <option value="15" {{$size == 15 ? 'selected':''}}>{{__('master.15 Products Per Page')}}</option>
+                                        <option value="30" {{$size == 30 ? 'selected':''}}>{{__('master.30 Products Per Page')}}</option>
+                                        <option value="50" {{$size == 50 ? 'selected':''}}>{{__('master.50 Products Per Page')}}</option>
+                                        <option value="100" {{$size == 100 ? 'selected':''}}>{{__('master.100 Products Per Page')}}</option>
                                     </select>
                                     <select class="single-select" name="order" id="orderby">
-                                        <option value="-1" {{$order == -1 ? 'selected':''}}>Default</option>
-                                        <option value="1" {{$order == 1 ? 'selected':''}}>ترتيب حسب الاحدث</option>
-                                        <option value="2" {{$order == 2 ? 'selected':''}}>ترتيب حسب الاقدم</option>
-                                        <option value="3" {{$order == 3 ? 'selected':''}}>ترتيب حسب الاسم</option>
+                                        <option value="-1" {{$order == -1 ? 'selected':''}}>{{__('master.default')}}</option>
+                                        <option value="1" {{$order == 1 ? 'selected':''}}>{{__('master.Sort by newest')}}  </option>
+                                        <option value="2" {{$order == 2 ? 'selected':''}}>{{__('master.Sort by oldest')}}  </option>
+                                        <option value="3" {{$order == 3 ? 'selected':''}}>{{__('master.Sort by name')}}  </option>
                                         {{-- <option>ترتيب حسب السعر</option> --}}
                                     </select>
                                         <div style="border:2px solid; color:#CBD3D9;width: auto; margin: 10px;padding-right: 43px;"  >
-                                            <input  type="text" name="keyword" id="keyword1" placeholder="Search here" value="{{$keyword}}">
+                                            <input  type="text" name="keyword" id="keyword1" placeholder="{{__('master.search product')}}" value="{{$keyword}}">
                                         </div>
                                     <!-- End Single Select  -->
                                 </div>
@@ -147,7 +148,7 @@
                                         </a>
                                         <div class="product-hover-action">
                                             <ul class="cart-action">
-                                                <li class="select-option"><a href="{{route('product.show',$product->slug)}}">اطلب المنتج </a></li>
+                                                <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}}</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -206,20 +207,6 @@
             $('#frmFilter').submit();
         });
 
-        function filterProductsByCategory(brand){
-            var categories = "";
-            $("input[name='categories']:checked").each(function(){
-                if(categories=="")
-                {
-                    categories += this.value;
-                }
-                else{
-                    categories += "," + this.value;
-                }
-            });
-            $("#categories").val(categories);
-            $("#frmFilter").submit();
-        }
     </script>
 
 @endpush

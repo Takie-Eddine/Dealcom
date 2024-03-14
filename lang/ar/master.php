@@ -511,4 +511,13 @@ return [
     'billing address' => '',
     'notifications' => 'الاشعارات',
     'offer' => 'العرض',
+    '15 Products Per Page' => '15 منتجًا في كل صفحة',
+    '30 Products Per Page' => '30 منتجًا في كل صفحة',
+    '50 Products Per Page' => '50 منتجًا في كل صفحة',
+    '100 Products Per Page' => '100 منتجًا في كل صفحة',
+    'Sort by newest' => 'ترتيب حسب الاحدث',
+    'Sort by oldest' => 'ترتيب حسب الاقدم',
+    'Sort by name' => 'ترتيب حسب الاسم',
+    'default' => 'الافتراضي',
+    // 'all' => 'اعادة الكل',
 ];

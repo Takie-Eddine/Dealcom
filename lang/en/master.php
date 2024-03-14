@@ -512,4 +512,13 @@ return [
     'billing address' => 'Billing Address',
     'notifications' => 'Notifications',
     'offer' => 'Offer',
+    '15 Products Per Page' => '15 Products Per Page',
+    '30 Products Per Page' => '30 Products Per Page',
+    '50 Products Per Page' => '50 Products Per Page',
+    '100 Products Per Page' => '100 Products Per Page',
+    'Sort by newest' => 'Sort by newest',
+    'Sort by oldest' => 'Sort by oldest',
+    'Sort by name' => 'Sort by name',
+    'default' => 'Default',
+    // 'all' => '',
 ];
