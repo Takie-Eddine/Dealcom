@@ -75,10 +75,9 @@
                         <div class="d-lg-none">
                             <button class="sidebar-close filter-close-btn"><i class="fas fa-times"></i></button>
                         </div>
-                        <div class="toggle-list product-categories active">
+                        <div class="toggle-list  active">
                             <h6 class="title">{{__('master.categories')}}</h6>
                             <div class="shop-submenu">
-
                                 <!--end::Accordion-->
                                 <ul>
                                     @forelse ($categories as $category)
