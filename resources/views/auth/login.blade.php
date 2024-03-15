@@ -46,7 +46,7 @@
         <div class="signin-header">
             <div class="row align-items-center">
                 <div class="col-sm-4">
-                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('http://127.0.0.1:8000/assets/logo/Asset 15 (1).png')}}"
+                    <a href="{{route('index')}}" class="site-logo"><img src="{{asset('assets/logo/Asset 15 (1).png')}}"
                             alt="logo" class="w-75"></a>
                 </div>
                 <div class="col-sm-8">
