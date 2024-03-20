@@ -16,8 +16,6 @@ class ProductController extends Controller
 {
     public function index(Request $request, $slug){
 
-
-
         $page = $request->query("page");
         $size = $request->query("size");
         $keyword = $request->query("keyword");

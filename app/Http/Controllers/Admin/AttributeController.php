@@ -11,6 +11,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 class AttributeController extends Controller
 {
     public function index(){
+
         $attributes = Attribute::when(request()->keyword != null,function ($query){
             $query->search(request()->keyword);
         })

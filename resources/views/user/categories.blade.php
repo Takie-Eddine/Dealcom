@@ -90,7 +90,10 @@
                                 <img src="{{asset('assets/logo/f5.png')}}">
                                 @endif
                                 @if ($category->slug == 'machines')
-                                <img src="{{asset('assets/logo/f4.png')}}">
+                                <img src="{{asset('assets/logo/f7.png')}}">
+                                @endif
+                                @if ($category->slug == 'building-materials')
+                                <img src="{{asset('assets/logo/f6.png')}}">
                                 @endif
                         </div>
                     </div>
