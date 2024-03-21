@@ -90,7 +90,7 @@
                                             <ul class="collapse" id="collapseExample{{$category->id}}">
                                                 @forelse ($category->children as $child)
                                                     <li>
-                                                        <div style="margin-right: 20px;">
+                                                        <div class="element">
                                                             <p class="d-inline ">
                                                                 <a class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$child->id}}" aria-expanded="false" aria-controls="collapseExample">
                                                                     <img src="{{asset("assets/logo/plus.png")}}" alt="">
@@ -101,7 +101,7 @@
                                                         <ul class="collapse" id="collapseExample{{$child->id}}">
                                                             @forelse ($child->children as $_child)
                                                                 <li>
-                                                                    <div style="margin-right: 40px;">
+                                                                    <div class="element1">
                                                                         <p class="d-inline ">
                                                                             <a class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$_child->id}}" aria-expanded="false" aria-controls="collapseExample">
                                                                                 <img src="{{asset("assets/logo/plus.png")}}" alt="">
@@ -112,7 +112,7 @@
                                                                     <ul class="collapse" id="collapseExample{{$_child->id}}">
                                                                         @forelse ($_child->children as $__child)
                                                                             <li>
-                                                                                <div style="margin-right: 80px;">
+                                                                                <div class="element2">
                                                                                     <img src="{{asset("assets/logo/moins.png")}}" alt="">
                                                                                     <a href="{{route('product',$__child->slug)}}">{{$__child->name}}</a>
                                                                                 </div>
@@ -134,7 +134,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <a href="" class="axil-btn btn-bg-primary">{{__('master.all')}}</a>
+                        {{-- <a href="" class="axil-btn btn-bg-primary">{{__('master.all')}}</a> --}}
                     </div>
                     <!-- End .axil-shop-sidebar -->
                 </div>

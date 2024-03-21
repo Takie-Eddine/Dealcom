@@ -279,4 +279,26 @@ a#loginButton:hover {
   transform: scale(0.49);
 }
 
+:lang(ar) .element {
+    margin-right: 10%;
+}
+:lang(en) .element {
+    margin-left: 10%;
+}
+
+
+:lang(ar) .element1 {
+    margin-right: 15%;
+}
+:lang(en) .element1 {
+    margin-left: 15%;
+}
+
+
+:lang(ar) .element2 {
+    margin-right: 20%;
+}
+:lang(en) .element2 {
+    margin-left: 20%;
+}
 /* end of images css */
