@@ -78,15 +78,52 @@
                         <div class="toggle-list  active">
                             <h6 class="title">{{__('master.categories')}}</h6>
                             <div class="shop-submenu">
-                                <!--end::Accordion-->
                                 <ul>
                                     @forelse ($categories as $category)
                                         <li>
+                                            <p class="d-inline ">
+                                                <a class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$category->id}}" aria-expanded="false" aria-controls="collapseExample">
+                                                    <img src="{{asset("assets/logo/plus.png")}}" alt="">
+                                                </a>
+                                            </p>
                                             <a href="{{route('product',$category->slug)}}">{{$category->name}}</a>
-                                            <ul>
+                                            <ul class="collapse" id="collapseExample{{$category->id}}">
                                                 @forelse ($category->children as $child)
                                                     <li>
-                                                        <a href="{{route('product',$child->slug)}}">{{$child->name}}</a>
+                                                        <div style="margin-right: 20px;">
+                                                            <p class="d-inline ">
+                                                                <a class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$child->id}}" aria-expanded="false" aria-controls="collapseExample">
+                                                                    <img src="{{asset("assets/logo/plus.png")}}" alt="">
+                                                                </a>
+                                                            </p>
+                                                            <a href="{{route('product',$child->slug)}}">{{$child->name}}</a>
+                                                        </div>
+                                                        <ul class="collapse" id="collapseExample{{$child->id}}">
+                                                            @forelse ($child->children as $_child)
+                                                                <li>
+                                                                    <div style="margin-right: 40px;">
+                                                                        <p class="d-inline ">
+                                                                            <a class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample{{$_child->id}}" aria-expanded="false" aria-controls="collapseExample">
+                                                                                <img src="{{asset("assets/logo/plus.png")}}" alt="">
+                                                                            </a>
+                                                                        </p>
+                                                                        <a href="{{route('product',$_child->slug)}}">{{$_child->name}}</a>
+                                                                    </div>
+                                                                    <ul class="collapse" id="collapseExample{{$_child->id}}">
+                                                                        @forelse ($_child->children as $__child)
+                                                                            <li>
+                                                                                <div style="margin-right: 80px;">
+                                                                                    <img src="{{asset("assets/logo/moins.png")}}" alt="">
+                                                                                    <a href="{{route('product',$__child->slug)}}">{{$__child->name}}</a>
+                                                                                </div>
+                                                                            </li>
+                                                                        @empty
+                                                                        @endforelse
+                                                                    </ul>
+                                                                </li>
+                                                            @empty
+                                                            @endforelse
+                                                        </ul>
                                                     </li>
                                                 @empty
                                                 @endforelse
