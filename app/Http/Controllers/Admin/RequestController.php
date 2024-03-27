@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Chat;
+use App\Models\ChatMessage;
 use App\Models\Request as ModelsRequest;
 use App\Notifications\NewEmailNotification;
 use Illuminate\Http\Request;
@@ -109,8 +111,104 @@ class RequestController extends Controller
     public function show($id){
 
         $modelrequest = ModelsRequest::findOrFail($id);
+        $messages = [];
+        $chat = new Chat();
+        if ($modelrequest->chat) {
+            $chat = Chat::where('request_id',$modelrequest->id)->firstOrFail();
 
-        return view('admin.request.show', compact('modelrequest'));
+            $messages = $chat->messages()->get();
+
+        }
+
+        return view('admin.request.show', compact('modelrequest','chat','messages'));
+    }
+
+    public function addMessage(Request $request){
+
+        $request->validate([
+            'body' => [
+                Rule::requiredIf(function()use($request){
+                    return !$request->has('file');
+                }),
+                ],
+            'file' => [
+                Rule::requiredIf(function()use($request){
+                    return !$request->input('body');
+                }),
+                'file',
+                'mimes:doc,docx,pdf,xls,xlsx,csv,tsv,ppt,pptx,pages,odt,rtf,jpg,jpeg,png','max:8192'],
+            'request_id' => ['required',Rule::exists('requests','id')],
+            'conversation_id' => [
+                Rule::requiredIf(function() use ($request) {
+                    return !$request->input('user_id');
+                }),
+                'int',
+                'exists:chats,id',
+            ],
+        ]);
+
+        if (!$request->input('conversation_id')) {
+            $chat = Chat::create([
+                'request_id' => $request->request_id,
+                'admin_id' => Auth::user('admin')->id,
+                'user_id' => $request->user_id,
+                'type' => 'peer',
+            ]);
+            if ($file = $request->file('file')) {
+
+                $file_name = $file->getClientOriginalName();
+                $file->move(public_path('assets/messages/'),$file_name);
+
+                $messages = ChatMessage::create([
+                    'chat_id' => $chat->id,
+                    'admin_id' => Auth::user('admin')->id,
+                    'body' => $file_name,
+                    'type' => 'attachement',
+                ]);
+            } else {
+                $messages = ChatMessage::create([
+                    'chat_id' => $chat->id,
+                    'admin_id' => Auth::user('admin')->id,
+                    'body' => $request->body,
+                    'type' => 'text',
+                ]);
+            }
+
+
+        }else{
+            $user = Chat::find($request->conversation_id)->request->user;
+            if ($file = $request->file('file')) {
+
+                $file_name = $file->getClientOriginalName();
+                $file->move(public_path('assets/messages/'),$file_name);
+
+                $messages = ChatMessage::create([
+                    'chat_id' => $request->conversation_id,
+                    'admin_id' => Auth::user('admin')->id,
+                    'body' => $file_name,
+                    'type' => 'attachement',
+                ]);
+            } else {
+                $messages = ChatMessage::create([
+                    'chat_id' => $request->conversation_id,
+                    'admin_id' => Auth::user('admin')->id,
+                    'body' => $request->body,
+                    'type' => 'text',
+                ]);
+            }
+
+
+        }
+
+        return $messages;
+
+    }
+
+
+    public function downloadMessage($id){
+        $message = ChatMessage::findOrFail($id);
+
+        return response()->download(public_path('assets/messages/'.$message->body));
     }
 
     public function download($id){

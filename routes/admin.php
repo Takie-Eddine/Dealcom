@@ -165,8 +165,10 @@ Route::group([
             Route::get('/show/{id}', [RequestController::class, 'show'])->name('request.show');
             Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
             Route::patch('/update/{id}', [RequestController::class, 'update'])->name('request.update');
-            route::get('/send-message/{id}', [RequestController::class, 'send'])->name('request.send');
+            Route::get('/send-message/{id}', [RequestController::class, 'send'])->name('request.send');
+            Route::post('/send-message', [RequestController::class, 'addMessage'])->name('request.send');
             Route::get('/download/{id}', [RequestController::class, 'download'])->name('request.download');
+            Route::get('/download-message/{id}', [RequestController::class, 'downloadMessage'])->name('request.download.message');
         });
 
         Route::group(['prefix'=>'chat'],function(){

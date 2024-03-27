@@ -105,7 +105,7 @@
                             </div>
                             <div class="form-group d-flex align-items-center justify-content-between">
                                 <button type="submit" class="axil-btn second-bg-color submit-btn">{{__('master.sign in')}} </button>
-                                <a href="{{route('password.request')}}" class="forgot-btn">{{__('master.forgot password')}}</a>
+                                {{-- <a href="{{route('password.request')}}" class="forgot-btn">{{__('master.forgot password')}}</a> --}}
                             </div>
                         </form>
                     </div>

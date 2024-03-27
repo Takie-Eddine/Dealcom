@@ -459,33 +459,55 @@
                                     <div class="card-body" id="kt_drawer_chat_messenger_body">
                                         <!--begin::Messages-->
                                         <div class="scroll-y me-n5 pe-5" data-kt-element="messages" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_drawer_chat_messenger_header, #kt_drawer_chat_messenger_footer" data-kt-scroll-wrappers="#kt_drawer_chat_messenger_body" data-kt-scroll-offset="0px">
-                                            <!--begin::Message(in)-->
-                                            <div class="d-flex justify-content-start mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-start">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-25.jpg" />
+                                            @forelse ($messages as $message)
+                                                <!--begin::Message(in)-->
+                                                <div class="d-flex @if (Auth::user('admin')->id == $message->admin_id ) justify-content-end @else justify-content-start @endif mb-10">
+                                                    <!--begin::Wrapper-->
+                                                    <div class="d-flex flex-column @if (Auth::user('admin')->id == $message->admin_id ) align-items-end @else align-items-start @endif">
+                                                        <!--begin::User-->
+                                                        <div class="d-flex align-items-center mb-2">
+                                                            <!--begin::Avatar-->
+                                                            <div class="symbol symbol-35px symbol-circle">
+                                                                @if (Auth::user('admin')->id == $message->admin_id)
+                                                                    <img alt="Pic" src="{{$message->admin->profile->image_url}}" />
+                                                                @else
+                                                                    <img alt="Pic" src="{{$message->user->profile->image_url}}" />
+                                                                @endif
+                                                            </div>
+                                                            <!--end::Avatar-->
+                                                            <!--begin::Details-->
+                                                            <div class="ms-3">
+                                                                @if (Auth::user('admin')->id == $message->admin_id)
+                                                                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">{{$message->admin->name}}</a>
+                                                                @else
+                                                                    <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">{{$message->user->name}}</a>
+                                                                @endif
+                                                                <span class="text-muted fs-7 mb-1">{{$message->created_at->longAbsoluteDiffForHumans()}}</span>
+                                                            </div>
+                                                            <!--end::Details-->
                                                         </div>
-                                                        <!--end::Avatar-->
-                                                        <!--begin::Details-->
-                                                        <div class="ms-3">
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                                            <span class="text-muted fs-7 mb-1">2 mins</span>
+                                                        <!--end::User-->
+                                                        <!--begin::Text-->
+                                                        <div class="p-5 rounded @if (Auth::user('admin')->id == $message->admin_id) bg-light-primary  @else bg-light-info  @endif text-dark fw-semibold mw-lg-400px @if (Auth::user('admin')->id == $message->admin_id) text-end  @else text-start @endif " data-kt-element="message-text">
+                                                            @if ($message->type == 'text')
+                                                                {{$message->body}}
+                                                            @else
+                                                                @if (pathinfo($message->body, PATHINFO_EXTENSION) == 'png' || pathinfo($message->body, PATHINFO_EXTENSION) == 'jpg' || pathinfo($message->body, PATHINFO_EXTENSION) == 'jpeg' )
+                                                                    <img src="{{asset('assets/messages/'.$message->body)}}" >
+                                                                @else
+                                                                    <a href="{{route('admin.request.download.message',$message->id)}}">{{$message->body}}</a>
+                                                                @endif
+                                                            @endif
+
                                                         </div>
-                                                        <!--end::Details-->
+                                                        <!--end::Text-->
                                                     </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">How likely are you to recommend our company to your friends and family ?</div>
-                                                    <!--end::Text-->
+                                                    <!--end::Wrapper-->
                                                 </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(in)-->
-                                            <!--begin::Message(out)-->
+                                                <!--end::Message(in)-->
+                                            @empty
+                                            @endforelse
+                                            {{-- <!--begin::Message(out)-->
                                             <div class="d-flex justify-content-end mb-10">
                                                 <!--begin::Wrapper-->
                                                 <div class="d-flex flex-column align-items-end">
@@ -510,220 +532,39 @@
                                                 </div>
                                                 <!--end::Wrapper-->
                                             </div>
-                                            <!--end::Message(out)-->
-                                            <!--begin::Message(in)-->
-                                            <div class="d-flex justify-content-start mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-start">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-25.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                        <!--begin::Details-->
-                                                        <div class="ms-3">
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                                            <span class="text-muted fs-7 mb-1">1 Hour</span>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Ok, Understood!</div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(in)-->
-                                            <!--begin::Message(out)-->
-                                            <div class="d-flex justify-content-end mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-end">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Details-->
-                                                        <div class="me-3">
-                                                            <span class="text-muted fs-7 mb-1">2 Hours</span>
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-1.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text">You’ll receive notifications for all issues, pull requests!</div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(out)-->
-                                            <!--begin::Message(in)-->
-                                            <div class="d-flex justify-content-start mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-start">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-25.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                        <!--begin::Details-->
-                                                        <div class="ms-3">
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                                            <span class="text-muted fs-7 mb-1">3 Hours</span>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">You can unwatch this repository immediately by clicking here:
-                                                    <a href="https://keenthemes.com">Keenthemes.com</a></div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(in)-->
-                                            <!--begin::Message(out)-->
-                                            <div class="d-flex justify-content-end mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-end">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Details-->
-                                                        <div class="me-3">
-                                                            <span class="text-muted fs-7 mb-1">4 Hours</span>
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-1.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text">Most purchased Business courses during this sale!</div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(out)-->
-                                            <!--begin::Message(in)-->
-                                            <div class="d-flex justify-content-start mb-10">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-start">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-25.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                        <!--begin::Details-->
-                                                        <div class="ms-3">
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                                            <span class="text-muted fs-7 mb-1">5 Hours</span>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided</div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(in)-->
-                                            <!--begin::Message(template for out)-->
-                                            <div class="d-flex justify-content-end mb-10 d-none" data-kt-element="template-out">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-end">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Details-->
-                                                        <div class="me-3">
-                                                            <span class="text-muted fs-7 mb-1">Just now</span>
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-1.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end" data-kt-element="message-text"></div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(template for out)-->
-                                            <!--begin::Message(template for in)-->
-                                            <div class="d-flex justify-content-start mb-10 d-none" data-kt-element="template-in">
-                                                <!--begin::Wrapper-->
-                                                <div class="d-flex flex-column align-items-start">
-                                                    <!--begin::User-->
-                                                    <div class="d-flex align-items-center mb-2">
-                                                        <!--begin::Avatar-->
-                                                        <div class="symbol symbol-35px symbol-circle">
-                                                            <img alt="Pic" src="assets/media/avatars/300-25.jpg" />
-                                                        </div>
-                                                        <!--end::Avatar-->
-                                                        <!--begin::Details-->
-                                                        <div class="ms-3">
-                                                            <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian Cox</a>
-                                                            <span class="text-muted fs-7 mb-1">Just now</span>
-                                                        </div>
-                                                        <!--end::Details-->
-                                                    </div>
-                                                    <!--end::User-->
-                                                    <!--begin::Text-->
-                                                    <div class="p-5 rounded bg-light-info text-dark fw-semibold mw-lg-400px text-start" data-kt-element="message-text">Right before vacation season we have the next Big Deal for you.</div>
-                                                    <!--end::Text-->
-                                                </div>
-                                                <!--end::Wrapper-->
-                                            </div>
-                                            <!--end::Message(template for in)-->
+                                            <!--end::Message(out)--> --}}
                                         </div>
                                         <!--end::Messages-->
                                     </div>
                                     <!--end::Card body-->
                                     <!--begin::Card footer-->
-                                    <div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
-                                        <!--begin::Input-->
-                                        <textarea class="form-control form-control-flush mb-3" rows="1" data-kt-element="input" placeholder="Type a message"></textarea>
-                                        <!--end::Input-->
-                                        <!--begin:Toolbar-->
-                                        <div class="d-flex flex-stack">
-                                            <!--begin::Actions-->
-                                            <div class="d-flex align-items-center me-2">
-                                                <button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon">
-                                                    <i class="ki-duotone ki-paper-clip fs-3"></i>
-                                                </button>
-                                                <button class="btn btn-sm btn-icon btn-active-light-primary me-1" type="button" data-bs-toggle="tooltip" title="Coming soon">
-                                                    <i class="ki-duotone ki-cloud-add fs-3">
-                                                        <span class="path1"></span>
-                                                        <span class="path2"></span>
-                                                    </i>
-                                                </button>
+                                    <form action="{{route('admin.request.send')}}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        @if ($chat->id)
+                                            <input type="hidden" name="conversation_id" value="{{$chat->id}}">
+                                        @else
+                                            <input type="hidden" name="user_id" value="{{$modelrequest->user->id}}">
+                                        @endif
+                                        <input type="hidden" name="request_id" value="{{$modelrequest->id}}">
+                                        <div class="card-footer pt-4" id="kt_drawer_chat_messenger_footer">
+                                            <!--begin::Input-->
+                                            <textarea class="form-control form-control-flush mb-3" name="body" rows="1" data-kt-element="input" placeholder="Type a message"></textarea>
+                                            <!--end::Input-->
+                                            <!--begin:Toolbar-->
+                                            <div class="d-flex flex-stack">
+                                                <!--begin::Actions-->
+                                                <div class="d-flex align-items-center me-2">
+                                                    <input class="btn btn-sm btn-icon btn-active-light-primary me-1" name="file" type="file" data-bs-toggle="tooltip" title="Upload">
+                                                        <i class="ki-duotone ki-paper-clip fs-3"></i>
+                                                </div>
+                                                <!--end::Actions-->
+                                                <!--begin::Send-->
+                                                <button class="btn btn-primary" type="submit" data-kt-element="send">Send</button>
+                                                <!--end::Send-->
                                             </div>
-                                            <!--end::Actions-->
-                                            <!--begin::Send-->
-                                            <button class="btn btn-primary" type="button" data-kt-element="send">Send</button>
-                                            <!--end::Send-->
+                                            <!--end::Toolbar-->
                                         </div>
-                                        <!--end::Toolbar-->
-                                    </div>
+                                    </form>
                                     <!--end::Card footer-->
                                 </div>
                                 <!--end::Messenger-->

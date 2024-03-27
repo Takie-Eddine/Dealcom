@@ -71,22 +71,10 @@
                                 <!--end:Menu link-->
                             </div>
                             <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            {{-- <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{route('request.create')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">{{__('master.add request')}}</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div> --}}
-                            <!--end:Menu item-->
                         </div>
                         <!--end:Menu sub-->
                     </div>
-                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    {{-- <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
                         <!--begin:Menu link-->
                         <span class="menu-link">
                             <span class="menu-icon">
@@ -115,20 +103,10 @@
                             </div>
                             <!--end:Menu item-->
                             <!--begin:Menu item-->
-                            {{-- <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link" href="{{route('admin.request.create')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">{{__('master.add request')}}</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div> --}}
                             <!--end:Menu item-->
                         </div>
                         <!--end:Menu sub-->
-                    </div>
+                    </div> --}}
                 <!--end:Menu item-->
 
             </div>

@@ -20,6 +20,16 @@
                             <h1 class="text-dark fw-bolder mb-3">{{__('master.forgot password')}}</h1>
                             <div class="text-gray-500 fw-semibold fs-6">{{__('master.Enter your email to reset your password')}}</div>
                         </div>
+                        @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <h5>Error Occured!</h5>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{$error}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                        @endif
                         <div class="fv-row mb-8">
                             <input type="text" placeholder="{{__('master.email')}}" name="email" value="{{old('email')}}" autocomplete="off" class="form-control bg-transparent" />
                         </div>

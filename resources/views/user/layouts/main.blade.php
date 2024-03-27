@@ -236,19 +236,11 @@
                                 @empty
 
                                 @endforelse
-                                {{-- <button data-filter=".clothes" class=""><span class="filter-text"><i
-                                            class="bi bi-star"></i> ملابس</span></button>
-                                <button data-filter=".cars"><span class="filter-text"> <i class="bi bi-star"></i>
-                                        سيارات</span></button>
-                                <button data-filter=".phones"><span class="filter-text"><i class="bi bi-star"></i>
-                                        هواتف</span></button>
-                                <button data-filter=".machine"><span class="filter-text"><i class="bi bi-star"></i>
-                                        اجهزة</span></button> --}}
                             </div>
 
                         </div>
                         <div class="row row--15 isotope-list">
-                            @forelse ($products as $product)
+                            {{-- @forelse ($products as $product)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product all">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
@@ -277,33 +269,30 @@
 
                                                     <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
                                                         ">{{$product->brand->name}}</a>
-
-                                                    <p class="product-text"{{$product->description}}
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             @empty
-                            @endforelse
+                            @endforelse --}}
 
-                            @forelse ($product_apparel as $product)
+                            @forelse ($product_apparel as $product1)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product apparel">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
-                                            <a href="{{route('product.show',$product->slug)}}">
-                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
+                                            <a href="{{route('product.show',$product1->slug)}}">
+                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product1->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}} </a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product1->slug)}}">{{__('master.request product')}} </a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
+                                                <h5 class="title"><a href="{{route('product.show',$product1->slug)}}">{{$product1->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -315,11 +304,9 @@
                                                         <i class="far fa-star"></i>
                                                     </span>
 
-                                                    <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
-                                                        ">{{$product->brand->name}}</a>
+                                                    <a class="d-block" href="{{route('product.show',$product1->slug)}}" style="color: #3ec0c2;
+                                                        ">{{$product1->brand->name}}</a>
 
-                                                    <p class="product-text"{{$product->description}}
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -328,22 +315,22 @@
                             @empty
                             @endforelse
 
-                            @forelse ($product_carpets as $product)
+                            @forelse ($product_carpets as $product2)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product furniture-decor">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
-                                            <a href="{{route('product.show',$product->slug)}}">
-                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
+                                            <a href="{{route('product.show',$product2->slug)}}">
+                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product2->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}} </a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product2->slug)}}">{{__('master.request product')}} </a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
+                                                <h5 class="title"><a href="{{route('product.show',$product2->slug)}}">{{$product2->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -355,11 +342,9 @@
                                                         <i class="far fa-star"></i>
                                                     </span>
 
-                                                    <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
-                                                        ">{{$product->brand->name}}</a>
+                                                    <a class="d-block" href="{{route('product.show',$product2->slug)}}" style="color: #3ec0c2;
+                                                        ">{{$product2->brand->name}}</a>
 
-                                                    <p class="product-text"{{$product->description}}
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -368,22 +353,22 @@
                             @empty
                             @endforelse
 
-                            @forelse ($product_food as $product)
+                            @forelse ($product_food as $product3)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product food">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
-                                            <a href="{{route('product.show',$product->slug)}}">
-                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
+                                            <a href="{{route('product.show',$product3->slug)}}">
+                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product3->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}} </a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product3->slug)}}">{{__('master.request product')}} </a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
+                                                <h5 class="title"><a href="{{route('product.show',$product3->slug)}}">{{$product3->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -395,11 +380,9 @@
                                                         <i class="far fa-star"></i>
                                                     </span>
 
-                                                    <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
-                                                        ">{{$product->brand->name}}</a>
+                                                    <a class="d-block" href="{{route('product.show',$product3->slug)}}" style="color: #3ec0c2;
+                                                        ">{{$product3->brand->name}}</a>
 
-                                                    <p class="product-text"{{$product->description}}
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -408,22 +391,22 @@
                             @empty
                             @endforelse
 
-                            @forelse ($product_machine as $product)
+                            @forelse ($product_machine as $product4)
                                 <div class="col-xl-3 col-lg-4 col-sm-6 col-12 mb--30 product machines">
                                     <div class="axil-product product-style-one">
                                         <div class="thumbnail">
-                                            <a href="{{route('product.show',$product->slug)}}">
-                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
+                                            <a href="{{route('product.show',$product4->slug)}}">
+                                                <img data-sal="fade" data-sal-delay="100" data-sal-duration="1500" src="{{$product4->image_url}}" style="width:200px;  height:200px;" width="350" height="350" alt="Product Images">
                                             </a>
                                             <div class="product-hover-action">
                                                 <ul class="cart-action">
-                                                    <li class="select-option"><a href="{{route('product.show',$product->slug)}}">{{__('master.request product')}} </a></li>
+                                                    <li class="select-option"><a href="{{route('product.show',$product4->slug)}}">{{__('master.request product')}} </a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div class="product-content">
                                             <div class="inner">
-                                                <h5 class="title"><a href="{{route('product.show',$product->slug)}}">{{$product->name}}</a>
+                                                <h5 class="title"><a href="{{route('product.show',$product4->slug)}}">{{$product4->name}}</a>
 
                                                 </h5>
                                                 <div class="product-rating">
@@ -435,11 +418,10 @@
                                                         <i class="far fa-star"></i>
                                                     </span>
 
-                                                    <a class="d-block" href="{{route('product.show',$product->slug)}}" style="color: #3ec0c2;
-                                                        ">{{$product->brand->name}}</a>
+                                                    <a class="d-block" href="{{route('product.show',$product4->slug)}}" style="color: #3ec0c2;
+                                                        ">{{$product4->brand->name}}</a>
 
-                                                    <p class="product-text"{{$product->description}}
-                                                    </p>
+
                                                 </div>
                                             </div>
                                         </div>

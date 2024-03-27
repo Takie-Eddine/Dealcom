@@ -31,4 +31,8 @@ class Request extends Model
     public function product(){
         return $this->hasOne(Product::class,'id','product_id');
     }
+
+    public function chat(){
+        return $this->hasOne(Chat::class);
+    }
 }

@@ -15,6 +15,7 @@
             <div class="d-flex flex-center flex-column flex-lg-row-fluid">
                 <div class="w-lg-500px p-10">
                     <form class="form w-100" novalidate="novalidate" id="kt_new_password_form" data-action="{{ route('admin.password.store') }}" action="{{ route('admin.password.store') }}" method="POST">
+                        @csrf
                         <div class="text-center mb-10">
                             <h1 class="text-dark fw-bolder mb-3">{{__('master.setup new password')}}</h1>
                             <div class="text-gray-500 fw-semibold fs-6">{{__('master.have you already reset the password')}}
@@ -29,7 +30,7 @@
                         <div class="fv-row mb-8" data-kt-password-meter="true">
                             <div class="mb-1">
                                 <div class="position-relative mb-3">
-                                    <input class="form-control bg-transparent" type="password" placeholder="{{__('master.password')}}" name="password" value="{{old('email', $request->email)}}" required autofocus autocomplete="username" class="form-control bg-transparent"/>
+                                    <input class="form-control bg-transparent" type="password" placeholder="{{__('master.password')}}" name="password" value="" required autofocus autocomplete="username" class="form-control bg-transparent"/>
                                     <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
                                         <i class="ki-duotone ki-eye-slash fs-2"></i>
                                         <i class="ki-duotone ki-eye fs-2 d-none"></i>

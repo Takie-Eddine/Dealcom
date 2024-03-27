@@ -77,6 +77,8 @@ Route::group([
         Route::get('/edit/{id}', [RequestController::class, 'edit'])->name('request.edit');
         Route::patch('/update', [RequestController::class, 'update'])->name('request.update');
         Route::get('/download/{id}', [RequestController::class, 'download'])->name('request.download');
+        Route::post('/send-message', [RequestController::class, 'addMessage'])->name('request.send');
+        Route::get('/download-message/{id}', [RequestController::class, 'downloadMessage'])->name('request.download.message');
     });
 
     Route::group(['prefix'=>'chat','middleware' => ['auth:web','verified','profile']],function(){
