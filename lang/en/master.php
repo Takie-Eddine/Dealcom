@@ -520,5 +520,17 @@ return [
     'Sort by oldest' => 'Sort by oldest',
     'Sort by name' => 'Sort by name',
     'default' => 'Default',
-    // 'all' => '',
+    'read more' => 'Read More',
+    'complaints' => 'Complaints',
+    'complaint' => 'Complaint',
+    'add complaint' => 'Add Complaint',
+    'edit complaint' => 'Edit Complaint',
+    'complaint type' => 'Complaint Type',
+    'product complaint' => 'Complaint About Product',
+    'request complaint' => ' Complaint About Request Product',
+    'other' => 'Other',
+    'answer complaint' => 'Answer Complaint',
+    'answer' => 'Answer',
+    'show complaint' => 'Show Complaint',
+
 ];

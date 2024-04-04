@@ -60,4 +60,9 @@ class User extends Authenticatable implements MustVerifyEmail
     public function tallker(){
         return $this->hasOne(Tallker::class,'user_id','id');
     }
+
+
+    public function complaints(){
+        return $this->hasMany(Complaint::class);
+    }
 }

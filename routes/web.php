@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\CategoryController;
 use App\Http\Controllers\Home\ChatController;
+use App\Http\Controllers\Home\ComplaintController;
 use App\Http\Controllers\Home\ContactController;
 use App\Http\Controllers\Home\HomeController;
 use App\Http\Controllers\Home\HowtobyController;
@@ -84,9 +85,17 @@ Route::group([
     Route::group(['prefix'=>'chat','middleware' => ['auth:web','verified','profile']],function(){
         Route::get('/{id?}', [ChatController::class, 'index'])->name('chat');
     });
+
     Route::group(['prefix'=>'notification','middleware' => ['auth:web','verified','profile']],function(){
         Route::get('/', [NotificationsController::class, 'index'])->name('notifications');
         Route::get('/read/{id}', [NotificationsController::class, 'read'])->name('notification.read');
+    });
+
+    Route::group(['prefix'=>'complaint','middleware' => ['auth:web','verified','profile']],function(){
+        Route::get('/', [ComplaintController::class, 'index'])->name('complaints');
+        Route::get('/create', [ComplaintController::class, 'create'])->name('complaints.create');
+        Route::post('/store', [ComplaintController::class, 'store'])->name('complaints.store');
+        Route::get('/show/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
     });
 
 

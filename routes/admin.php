@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\ComplaintController;
 use App\Http\Controllers\Admin\ConversationsController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\HomeManageController;
@@ -178,6 +179,13 @@ Route::group([
         Route::group(['prefix'=>'notification'],function(){
             Route::get('/', [NotificationsController::class, 'index'])->name('notifications');
             Route::get('/read/{id}', [NotificationsController::class, 'read'])->name('notification.read');
+        });
+
+        Route::group(['prefix'=>'complaint'],function(){
+            Route::get('/', [ComplaintController::class, 'index'])->name('complaints');
+            Route::get('/show/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
+            Route::get('/answer/{id}', [ComplaintController::class, 'answer'])->name('complaints.answer');
+            Route::post('/answer/{id}', [ComplaintController::class, 'answerstore'])->name('complaints.answer.post');
         });
 
         Route::get('/conversations', [ConversationsController::class, 'index']);
