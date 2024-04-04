@@ -92,7 +92,11 @@
                                             <!--begin::User details-->
                                         </td>
                                         <td>
-                                            <a href="{{route('admin.product.show',$complaint->product->id)}}" class="text-gray-800 text-hover-primary mb-1"> {{$complaint->product->code ?? '__'}}</a>
+                                            @if ($complaint->product_id)
+                                                <a href="{{route('admin.product.show',$complaint->product->id)}}" class="text-gray-800 text-hover-primary mb-1"> {{$complaint->product->code ?? '__'}}</a>
+                                            @else
+                                                __
+                                            @endif
                                         </td>
                                         <td>
                                             @if ($complaint->request_id)

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complaint;
+use App\Notifications\ComplaintNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,6 +39,8 @@ class ComplaintController extends Controller
             'admin_id' => Auth::user('admin')->id,
             'answer' => $request->description,
         ]);
+
+        $complaint->user->notify(new ComplaintNotification($complaint));
 
         toastr()->success('Sent successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->route('admin.complaints.show',$complaint->id);
