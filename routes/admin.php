@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AttributeController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Http\Controllers\Admin\ComplaintController;
 use App\Http\Controllers\Admin\ConversationsController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -14,8 +15,11 @@ use App\Http\Controllers\Admin\PricelistController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\RequestController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SupplierController;
+use App\Http\Controllers\Admin\TaskController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use Symfony\Component\Mime\MessageConverter;
@@ -186,6 +190,51 @@ Route::group([
             Route::get('/show/{id}', [ComplaintController::class, 'show'])->name('complaints.show');
             Route::get('/answer/{id}', [ComplaintController::class, 'answer'])->name('complaints.answer');
             Route::post('/answer/{id}', [ComplaintController::class, 'answerstore'])->name('complaints.answer.post');
+        });
+
+        Route::group(['prefix' =>'role'], function () {
+            Route::get('/', [RoleController::class, 'rolepermission'])->name('roles');
+            Route::get('/create', [RoleController::class, 'create'])->name('roles.create');
+            Route::post('/store', [RoleController::class, 'store'])->name('roles.store');
+            Route::get('/edit/{id}', [RoleController::class, 'edit'])->name('roles.edit');
+            Route::post('/update/{id}', [RoleController::class, 'update'])->name('roles.update');
+            Route::get('/delete/{id}', [RoleController::class, 'delete'])->name('roles.delete');
+            Route::get('/view/{id}', [RoleController::class, 'view'])->name('roles.view');
+
+        });
+
+        Route::group(['prefix'=>'admin'  ],function(){
+            Route::get('/', [UserController::class, 'index'])->name('users');
+            Route::get('/create', [UserController::class, 'create'])->name('users.create');
+            Route::post('/store', [UserController::class, 'store'])->name('users.store');
+            Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+            Route::post('/update/{id}', [UserController::class, 'update'])->name('users.update');
+            Route::get('/delete/{id}', [UserController::class, 'delete'])->name('users.delete');
+            Route::get('/view/{id}', [UserController::class, 'view'])->name('users.view');
+            Route::post('/status/{id}', [UserController::class, 'status'])->name('users.status');
+        });
+
+        Route::group(['prefix' =>'task'], function () {
+            Route::get('/', [TaskController::class, 'index'])->name('tasks');
+            Route::get('/create', [TaskController::class, 'create'])->name('tasks.create');
+            Route::post('/store', [TaskController::class, 'store'])->name('tasks.store');
+            Route::get('/edit/{id}', [TaskController::class, 'edit'])->name('tasks.edit');
+            Route::post('/update/{id}', [TaskController::class, 'update'])->name('tasks.update');
+            Route::get('/delete/{id}', [TaskController::class, 'delete'])->name('tasks.delete');
+            // Route::get('/view/{id}', [TaskController::class, 'view'])->name('tasks.view');
+        });
+
+        Route::group(['prefix' =>'users'], function () {
+            Route::get('/', [ClientController::class, 'index'])->name('clients');
+            Route::get('/create', [ClientController::class, 'create'])->name('clients.create');
+            Route::post('/store', [ClientController::class, 'store'])->name('clients.store');
+            Route::get('/edit/{id}', [ClientController::class, 'edit'])->name('clients.edit');
+            Route::post('/update/{id}', [ClientController::class, 'update'])->name('clients.update');
+            Route::get('/delete/{id}', [ClientController::class, 'delete'])->name('clients.delete');
+            Route::get('/view/{id}', [ClientController::class, 'show'])->name('clients.view');
+            Route::get('/wishlist/{id}', [ClientController::class, 'wishlist'])->name('clients.wishlist');
+            Route::get('/request/{id}', [ClientController::class, 'request'])->name('clients.request');
+            Route::get('/activate/{id}', [ClientController::class, 'active'])->name('clients.activate');
         });
 
         Route::get('/conversations', [ConversationsController::class, 'index']);

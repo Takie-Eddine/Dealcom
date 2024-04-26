@@ -46,6 +46,6 @@ class AdminProfile extends Model implements HasMedia
             return $this->photo;
         }
 
-        return asset('assets/images/admin_images/' .$this->photo);
+        return asset('assets/images/profile/' .$this->photo);
     }
 }

@@ -6,13 +6,15 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Nicolaslopezj\Searchable\SearchableTrait;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, SearchableTrait, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -46,6 +48,15 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
 
+    protected $searchable = [
+
+        'columns' => [
+            'users.name' => 10,
+            'users.email' => 10,
+        ],
+    ];
+
+
     public function profile(){
         return $this->hasOne(Profile::class,'user_id' , 'id')
         ->withDefault();
@@ -64,5 +75,11 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function complaints(){
         return $this->hasMany(Complaint::class);
+    }
+
+
+
+    public function wishlists(){
+        return $this->hasMany(Wishlist::class);
     }
 }

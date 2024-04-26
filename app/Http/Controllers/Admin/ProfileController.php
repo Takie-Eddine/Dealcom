@@ -39,7 +39,6 @@ class ProfileController extends Controller
 
     public function update(Request $request){
 
-
         $request->validate([
             'fname' => ['required' ,'string' , 'max:255'],
             'lname' => ['required' ,'string' , 'max:255'],
@@ -58,6 +57,12 @@ class ProfileController extends Controller
 
         $admin = $request->user();
 
+        if ($photo = $request->file('avatar')) {
+            UnlinkImage('profile',$admin->photo,$admin);
+            $file_name = uploadImage($photo, 'profile', $request->name);
+            $input['photo'] =  $file_name;
+        }
+
         $input['first_name'] = $request-> fname;
         $input['last_name'] = $request-> lname;
         $input['birthday'] = $request-> birthday;
@@ -70,9 +75,7 @@ class ProfileController extends Controller
 
         $admin->profile->fill($input)->save();
 
-        if ($photo = $request->file('avatar')) {
-            $admin->profile->addMediaFromRequest('avatar')->toMediaCollection('avatars');
-        }
+
 
         toastr()->success('Updated successfully!', 'Congrats', ['timeOut' => 6000]);
         return redirect()->back();

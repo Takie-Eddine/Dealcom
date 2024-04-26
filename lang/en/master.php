@@ -532,5 +532,16 @@ return [
     'answer complaint' => 'Answer Complaint',
     'answer' => 'Answer',
     'show complaint' => 'Show Complaint',
+    'check' => 'Check',
+    'tasks' => 'Tasks',
+    'add task' => 'Add Task',
+    'add user' => 'Add User',
+    'edit user' => 'Edit User',
+    'show user' => 'Show User',
+    'user details' => 'User Details',
+    'search user' => 'Search User',
+    'wishlist' => 'Wishlist',
+    'user' => 'User',
+    'privat product' => 'Privat Product',
 
 ];
